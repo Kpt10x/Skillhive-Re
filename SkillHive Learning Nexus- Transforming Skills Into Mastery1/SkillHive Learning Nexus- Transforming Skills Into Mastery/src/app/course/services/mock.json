@@ -1,0 +1,100 @@
+[
+    {
+      "courseId": "1233333",
+      "courseName": "Web Development",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Tanishq Singh",
+      "startDate": "2024-01-01",
+      "endDate": "2024-05-01"
+    },
+    {
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "instructorName": "Ananya Sharma",
+      "startDate": "2024-02-01",
+      "endDate": "2024-08-01"
+    },
+    {
+      "courseId": "3235555",
+      "courseName": "Graphic Design",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructorName": "Rohan Verma",
+      "startDate": "2024-03-01",
+      "endDate": "2024-06-01"
+    },
+    {
+      "courseId": "123444",
+      "courseName": "mongo db",
+      "courseCategory": "Data Science",
+      "courseDuration": "3months",
+      "instructorName": "jiss",
+      "startDate": "2024-12-19",
+      "endDate": "2025-02-19",
+      "assignmentDate": "2025-03-01"
+    },
+    {
+      "courseId": "1234",
+      "courseName": "web development",
+      "courseCategory": "Web Development",
+      "courseDuration": "2months",
+      "instructorName": "prathyusha",
+      "startDate": "2024-12-20",
+      "endDate": "2025-03-20",
+      "assignmentDate": "2025-01-04"
+    },
+    {
+      "courseId": "1234",
+      "courseName": "web development",
+      "courseCategory": "Web Development",
+      "courseDuration": "2months",
+      "instructorName": "prathyusha",
+      "startDate": "2024-12-20",
+      "endDate": "2025-02-20",
+      "assignmentDate": "2025-03-01"
+    },
+    {
+      "courseId": "4321",
+      "courseName": "AI",
+      "courseCategory": "Data Analysis",
+      "courseDuration": "2months",
+      "instructorName": " Prof Prathyusha",
+      "startDate": "2024-12-21",
+      "endDate": "2025-02-23",
+      "assignmentDate": "2025-02-01"
+    },
+    {
+      "courseId": "1234",
+      "courseName": "web development",
+      "courseCategory": "Web Development",
+      "courseDuration": "2months",
+      "instructorName": "prathyusha",
+      "startDate": "2024-12-22",
+      "endDate": "2025-02-22",
+      "assignmentDate": "2025-03-01"
+    },
+    {
+      "courseId": "12345",
+      "courseName": "web development",
+      "courseCategory": "Web Development",
+      "courseDuration": "2",
+      "instructorName": " Prof Prathyusha",
+      "startDate": "2024-12-22",
+      "endDate": "2025-02-22",
+      "assignmentDate": "2025-03-01"
+    },
+    {
+      "courseId": "12345",
+      "courseName": "web development",
+      "courseCategory": "Web Development",
+      "courseDuration": "2",
+      "instructorName": " Prof Prathyusha",
+      "startDate": "2024-12-17",
+      "endDate": "2025-02-17",
+      "assignmentDate": "2025-03-01"
+    }
+  ]
+  
