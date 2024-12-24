@@ -1,0 +1,166 @@
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Balsamiq Sans;
+
+
+}
+
+    
+.main {
+    font-family: 'Balsamiq Sans', sans-serif;
+      display: flex;
+      /*  */
+      background: #ffffff;
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #1E1E1E;
+    }
+
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 20px;
+    border : 50px solid #C1DBC6;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    margin: auto; /* Center horizontally and vertically */
+}
+
+.left-section {
+    flex: 1;
+    background-color: #eaf6e9;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+}
+
+.left-section .content {
+    text-align: center;
+    max-width: 80%;
+}
+
+.left-section img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.left-section h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.left-section p {
+    font-size: 16px;
+    color: #555;
+}
+
+
+    .right-section {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+    }
+    
+    .right-section h2 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    form label {
+        display: block;
+        margin: 10px 0 5px;
+        font-size: 14px;
+        color: #555;
+    }
+    
+    form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .btn {
+        width: 100%;
+        background: #263339;
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .btn:hover {
+        background: #86A788;
+    }
+    
+    .login-link {
+        margin-top: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .login-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+    /* Styling for the warning messages */
+small {
+    color: red;
+    font-size: 0.9rem; /* Adjust size if needed */
+    display: block; /* Ensures each message is on a new line */
+    margin-top: 0.3rem; /* Adds spacing above the message */
+  }
+  
+  /* Optional: Styling for the form group */
+  .form-group {
+    margin-bottom: 1rem; /* Adds spacing between form fields */
+  }
+  
+  /* Optional: Styling for the form labels */
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: inline-block; /* Ensures spacing below labels */
+  }
+  /* Style for the error message */
+.error-message {
+    color: red;
+    font-size: 0.9rem; /* Adjust size if needed */
+    display: block; /* Ensures each message is on a new line */
+    margin-top: 0.3rem; /* Makes the text stand out */
+  }
+  
+  
+  .successMessage {
+    /* background-color: #e6f9e6; */
+    color: #28a745;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+  }

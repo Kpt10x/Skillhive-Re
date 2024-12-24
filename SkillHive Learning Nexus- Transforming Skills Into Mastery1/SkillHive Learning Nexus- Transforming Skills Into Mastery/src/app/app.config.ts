@@ -1,9 +1,19 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app.component';
+import { CandidateRegistrationComponent } from './candidates/components/candidate-registration/candidate-registration.component';
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration()]
+  providers: [
+    provideHttpClient(),
+    provideClientHydration(),
+    provideRouter([
+      { path: '', component: AppComponent },
+      { path: 'register', component: CandidateRegistrationComponent},
+     
+    ]),
+  ],
 };

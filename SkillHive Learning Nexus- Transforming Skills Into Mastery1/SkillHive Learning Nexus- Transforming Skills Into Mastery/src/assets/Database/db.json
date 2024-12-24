@@ -1,0 +1,18 @@
+{
+  "candidates": [
+    {
+      "id": "u01",
+      "name": "Jatin",
+      "email": "jatin.cu14@gmail.com",
+      "password": "Jatin@123",
+      "phone": "9876543210"
+    },
+    {
+      "id": "u02",
+      "name": "Nikhil",
+      "email": "nikki@gmail.com",
+      "password": "Nikki@123",
+      "phone": "9876543211"
+    }
+  ]
+}
