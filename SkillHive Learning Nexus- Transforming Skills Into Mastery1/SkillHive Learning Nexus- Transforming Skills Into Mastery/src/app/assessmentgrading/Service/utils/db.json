@@ -1,0 +1,204 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "text": "What is the output of print(2 ** 3)?",
+            "options": ["6", "8", "9", "None of the above"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 2,
+            "text": "Which of the following is not a valid Python data type?",
+            "options": ["list", "tuple", "array", "dictionary"],
+            "correctAnswer": 2,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 3,
+            "text": "What is the result of 3 + '3' in Python?",
+            "options": ["6", "33", "Error", "None"],
+            "correctAnswer": 2,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 4,
+            "text": "Which method is used to remove whitespace from the right end of a string?",
+            "options": ["rstrip()", "lstrip()", "strip()", "trim()"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 5,
+            "text": "What is the output of len([1, 2, [3, 4]])?",
+            "options": ["4", "3", "5", "Error"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 6,
+            "text": "Which operator is used for floor division in Python?",
+            "options": ["/", "//", "%", "**"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 7,
+            "text": "What will be the output of print(bool(0))?",
+            "options": ["True", "False", "None", "Error"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 8,
+            "text": "Which method is used to add an element at the end of a list?",
+            "options": ["append()", "extend()", "insert()", "add()"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 9,
+            "text": "What is the correct way to create an empty set in Python?",
+            "options": ["set()", "{}", "[]", "()"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 10,
+            "text": "Which of the following is immutable in Python?",
+            "options": ["list", "dictionary", "set", "tuple"],
+            "correctAnswer": 3,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 11,
+            "text": "What is the output of print('Hello'[::-1])?",
+            "options": ["Hello", "olleH", "Error", "None"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 12,
+            "text": "Which method is used to get all keys from a dictionary?",
+            "options": ["keys()", "values()", "items()", "get()"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 13,
+            "text": "What is the output of type([]) in Python?",
+            "options": ["array", "list", "tuple", "set"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 14,
+            "text": "Which keyword is used for function declaration in Python?",
+            "options": ["function", "def", "fun", "define"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 15,
+            "text": "What will be the output of print(2 * 'hello')?",
+            "options": ["hello2", "hellohello", "Error", "None"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 16,
+            "text": "Which method converts a string to uppercase?",
+            "options": ["upper()", "capitalize()", "title()", "toUpper()"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 17,
+            "text": "What is the result of 'python' in 'python programming'?",
+            "options": ["Error", "False", "True", "None"],
+            "correctAnswer": 2,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 18,
+            "text": "Which function is used to get the length of a sequence?",
+            "options": ["size()", "length()", "len()", "count()"],
+            "correctAnswer": 2,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 19,
+            "text": "What is the output of print(list(range(3)))?",
+            "options": ["[1, 2, 3]", "[0, 1, 2]", "[0, 1, 2, 3]", "[1, 2]"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 20,
+            "text": "Which operator is used for string formatting in Python 3?",
+            "options": ["+", "%", "format()", "All of the above"],
+            "correctAnswer": 3,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 21,
+            "text": "What is the output of print(int('101', 2))?",
+            "options": ["101", "5", "2", "Error"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 22,
+            "text": "Which method is used to remove an item from a list by index?",
+            "options": ["remove()", "pop()", "delete()", "discard()"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 23,
+            "text": "What is the result of 3 > 2 > 1 in Python?",
+            "options": ["True", "False", "Error", "None"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 24,
+            "text": "Which of the following is used to handle exceptions in Python?",
+            "options": ["try-except", "try-catch", "try-finally", "try-handle"],
+            "correctAnswer": 0,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        },
+        {
+            "id": 25,
+            "text": "What is the output of print(bool([]))?",
+            "options": ["True", "False", "None", "Error"],
+            "correctAnswer": 1,
+            "marks": 1.00,
+            "negativeMark": 0.00
+        }
+    ]
+}

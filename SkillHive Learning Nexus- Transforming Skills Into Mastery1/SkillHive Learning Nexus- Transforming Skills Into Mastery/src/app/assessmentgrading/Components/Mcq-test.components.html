@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Test (Set-1)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <header>
+            <div class="quiz-header">
+                <div class="left-section">
+                    
+                    <h1> Python Test</h1>
+                </div>
+                <div class="right-section">
+                    <button class="header-btn" id="reportError">⚠ Report an Error</button>
+                    <button class="header-btn" id="viewAll">👁 View All Questions</button>
+                </div>
+            </div>
+            <div class="timer">
+                Remaining Time: <span id="time">00:30:00</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="question-section">
+                <div class="question-header">
+                    <div class="question-info">
+                        Question <span id="current-question">1</span>
+                        <div class="marks-info">
+                            Marks for correct response: <span class="positive">1.00</span> |
+                            Negative Marking: <span class="negative">0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-content">
+                    <p id="question-text"></p>
+                    <div id="options-container"></div>
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <div class="status-boxes">
+                    <div class="status-box answered">
+                        <span class="count" id="answered-count">0</span>
+                        <span class="label">Answered</span>
+                    </div>
+                    <div class="status-box not-answered">
+                        <span class="count" id="not-answered-count">0</span>
+                        <span class="label">Not Answered</span>
+                    </div>
+                    <div class="status-box not-visited">
+                        <span class="count" id="not-visited-count">25</span>
+                        <span class="label">Not Visited</span>
+                    </div>
+                    <div class="status-box marked">
+                        <span class="count" id="marked-count">0</span>
+                        <span class="label">Mark for Review</span>
+                    </div>
+                </div>
+
+                <div class="question-grid">
+                    <h3>Choose a Question</h3>
+                    <div class="grid" id="question-numbers"></div>
+                </div>
+
+                <button id="submit-quiz" class="submit-btn">Submit</button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="action-buttons">
+                <button id="mark-review" class="review-btn">Mark for Review & Next</button>
+                <button id="clear-response" class="clear-btn">Clear Response</button>
+                <button id="save-next" class="save-btn">Save and Next</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../../../app/assessmentgrading/Service/script.js"></script>
+
+</body>
+</html>

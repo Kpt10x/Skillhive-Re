@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color:#e6e2e7;
+        }
+        
+        .container {
+            width: 40%;
+            height: 75%;
+            background-color: white; 
+            padding: 20px;
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        }
+        .circle-wrap {
+            margin: 50px auto;
+            width: 150px;
+            height: 150px;
+            background: #e6e2e7;
+            border-radius: 50%;
+            position: relative;
+        }
+        .circle-wrap .circle .mask,
+        .circle-wrap .circle .fill {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            border-radius: 50%;
+        }
+        .circle-wrap .circle .mask {
+            clip: rect(0px, 150px, 150px, 75px);
+        }
+        .circle-wrap .circle .mask .fill {
+            clip: rect(0px, 75px, 150px, 0px);
+            background-color: #9e00b1;
+        }
+        .circle-wrap .circle .mask.full,
+        .circle-wrap .circle .fill {
+            animation: fill ease-in-out 1s forwards;
+        }
+        @keyframes fill {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(calc(var(--percentage) * 1.8deg)); 
+            }
+        }
+        .circle-wrap .inside-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #fff;
+            line-height: 150px;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 10px;
+            position: absolute;
+            z-index: 100;
+            font-weight: 700;
+            font-size: 2em;
+        }
+        .stats {
+            margin-top: 20px;
+            font-size: 1.0em;
+            margin-bottom: 35px;
+        }
+        .stats p{
+            margin: 10px 0;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Result</h1>
+        <p style="font-size: 105%;margin-top: 1em;">You have completed the Assessment.</p>
+    
+        <div class="circle-wrap">
+            <div class="circle" id="resultCircle" style="--percentage: 0;">
+                <div class="mask full">
+                    <div class="fill"></div>
+                </div>
+                <div class="mask half">
+                    <div class="fill"></div>
+                </div>
+                <div class="inside-circle">0%</div>
+            </div>
+        </div>
+    
+        <div class="stats">
+            <p>Score: <span id="score">0</span></p> <!-- Added Score Display -->
+            <p>Correct Answers: <span id="correctAnswers">0</span></p>
+            <p>Wrong Answers: <span id="wrongAnswers">0</span></p>
+            <p>Not Attempted: <span id="notAttempted">0</span></p>
+        </div>
+        
+        <a href="../../assessmentgrading/Components/Dashboard.component.html" style="background-color: aliceblue;margin-top: 20px; color: black; text-decoration: none; padding: 10px 40px;  border-radius: 30px; font-size: 18px; box-shadow: 0 3px #5b91b3;">Go Home</a>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to calculate and display the score and statistics
+        function displayScore() {
+    const score = parseInt(getQueryParam('score'));
+    const totalMarks = parseInt(getQueryParam('totalMarks'));
+    const correctAnswers = parseInt(getQueryParam('correctAnswers'));
+    const notAttempted = parseInt(getQueryParam('notAttempted'));
+    const wrongAnswers = totalMarks - correctAnswers - notAttempted; // Calculate wrong answers
+    const percentage = (score / totalMarks) * 100;
+
+    // Update the circular progress indicator
+    const resultCircle = document.getElementById('resultCircle');
+    resultCircle.style.setProperty('--percentage', percentage);
+    resultCircle.querySelector('.inside-circle').textContent = `${Math.round(percentage)}%`;
+
+    // Update statistics
+    document.getElementById('score').textContent = score;
+    document.getElementById('correctAnswers').textContent = correctAnswers;
+    document.getElementById('wrongAnswers').textContent = wrongAnswers;
+    document.getElementById('notAttempted').textContent = notAttempted;
+
+    // Trigger animation
+    const fillElements = resultCircle.querySelectorAll('.fill');
+    fillElements.forEach((fill, index) => {
+        fill.style.animation = `fill ease-in-out 1s forwards`;
+        if (index === 0) {
+            fill.style.transform = `rotate(0deg)`;
+        } else {
+            fill.style.transform = `rotate(calc(${percentage} * 1.8deg))`;
+        }
+    });
+}
+        window.onload = displayScore;
+
+        //function goHome() {
+          //  window.location.href = `html/index1.html`; 
+        //}
+    </script>
+    <script src="../../../../src/app/assessmentgrading/Service/utils/script1.js"></script>
+
+</body>
+</html>

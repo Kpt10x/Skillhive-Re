@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillHive Dashboard</title>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif;"> 
+
+    <!-- Main Container -->
+    <div style="display: flex; height: 100vh;">
+
+        <!-- Sidebar -->
+        <div style="width: 250px; background-color: #121226; color: white; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="./assets/Skill-Hive_Logo.png" alt="SkillHive Logo"
+                style="width: 180px; margin-bottom: 10px;"> <!-- Increased logo size -->
+                <p style="font-size: 14px;">Transforming Skills into Mastery</p>
+            </div>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 15px 0;">
+                    <img src="./assets/DashboardIcon.png" alt="Dashboard" style="width: 20px; margin-right: 10px;"> Dashboard
+                </li>
+                <li style="margin: 15px 0;">
+                    <img src="./assets/CourseIcon.png" alt="Courses" style="width: 20px; margin-right: 10px;"> My Courses
+                </li>
+                <li style="margin: 15px 0;">
+                    <img src="./assets/LiveClassesIcon.png" alt="Live" style="width: 20px; margin-right: 10px;"> Live Classes
+                </li>
+                <li style="margin: 15px 0; color: #00D2FF; font-weight: bold;">
+                    <img src="./assets/AssessmentIcon.png" alt="Assessments" style="width: 20px; margin-right: 10px;"> Assessments
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div style="flex: 1; background: linear-gradient(to right, #2C2F3F, #121629); color: white; padding: 20px;">
+            <h1 style="text-align: center;">Get Ready for your next Online Assessment</h1>
+            <div style="text-align: center; margin: 20px 0;">
+                <input type="text" placeholder="Type the course ID / name..." 
+                       style="width: 60%; padding: 10px; border-radius: 20px; border: none; font-size: 16px;">
+            </div>
+
+            <h2 style="margin-left: 20px;">Explore the Assessments</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; overflow-y: auto; height: 300px;">
+                <!-- Python Card -->
+                <div onclick="window.location.href='../../assessmentgrading/Models/python-assessment.components.html'" 
+     style="width: 220px; background: linear-gradient(to right, #4BD8E4, #0066CC); text-align: center; 
+            border-radius: 10px; padding: 15px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); position: relative;">
+    <span style="position: absolute; left: -25px; top: 10px; color: #00FF00; font-size: 30px;">●</span>
+    <img src="./assets/PythonCourse Logo.png" alt="Python Logo" style="width: 60px; margin-bottom: 10px;">
+    <p style="margin: 0; color: #fff;">#P100</p>
+    <h3 style="margin: 10px 0;">Python for Beginners</h3>
+</div>
+
+                <!-- Java Card -->
+                <div onclick="window.location.href='java-assessment.html'" 
+                     style="width: 220px; background: linear-gradient(to right, #4BD8E4, #0066CC); text-align: center; 
+                            border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); position: relative;">
+                    <!-- Yellow dot before Java course name (shifted right) -->
+                    <span style="position: absolute; left: -20px; top: 10px; color: #FFCC00; font-size: 30px;">●</span>
+                    <img src="./assets/JavaCourse Logo.png" alt="Java Logo" style="width: 60px; margin-bottom: 10px;">
+                    <p style="margin: 0; color: #fff;">#J100</p>
+                    <h3 style="margin: 10px 0;">Java for Beginners</h3>
+                </div>
+
+                <!-- MySQL Card -->
+                <div onclick="window.location.href='mysql-assessment.html'" 
+                     style="width: 220px; background: linear-gradient(to right, #4BD8E4, #0066CC); text-align: center; 
+                            border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); position: relative;">
+                    <!-- Red dot before MySQL course name (adjusted position) -->
+                    <span style="position: absolute; left: -25px; top: 10px; color: #FF0000; font-size: 30px;">●</span>
+                    <img src="./assets/MysqlCourse_logo.png" alt="MySQL Logo" style="width: 60px; margin-bottom: 10px;">
+                    <p style="margin: 0; color: #fff;">#D100</p>
+                    <h3 style="margin: 10px 0;">Database for Developers</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div style="width: 250px; background-color: #121226; color: white; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="../assets/profile.png" alt="Profile Picture" 
+                     style="width: 80px; border-radius: 50%; margin-bottom: 10px;">
+                <h3>Ayushman Podder</h3>
+            </div>
+            <div style="margin-top: 20px;">
+                <p style="margin: 10px 0;"><span style="color: #00FF00;">●</span> Live Tests</p>
+                <p style="margin: 10px 0;"><span style="color: #FFCC00;">●</span> Upcoming Tests</p>
+                <p style="margin: 10px 0;"><span style="color: #FF0000;">●</span> Completed Tests</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <img src="../../../../src/app/assessmentgrading/Components/assets/MarksheetIcon.png" alt="Marksheet Icon" style="width: 40px;">
+
+                <p>View Marksheets</p>
+            </div>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>
