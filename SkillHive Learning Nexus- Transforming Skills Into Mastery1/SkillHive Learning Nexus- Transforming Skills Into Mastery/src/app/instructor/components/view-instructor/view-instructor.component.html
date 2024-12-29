@@ -1,0 +1,34 @@
+<div class="view-instructor-container">
+  <h1>View Instructors</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Subject</th>
+        <th>Experience</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instructor of instructors; let i = index">
+        <td>{{ instructor.id }}</td>
+        <td>{{ instructor.name }}</td>
+        <td>{{ instructor.email }}</td>
+        <td>{{ instructor.phone }}</td>
+        <td>{{ instructor.subject }}</td>
+        <td>{{ instructor.experience }}</td>
+        <td>{{ instructor.start_date }}</td>
+        <td>{{ instructor.end_date }}</td>
+        <td>
+          <button (click)="onEdit(i)">Edit</button>
+          <button (click)="onDelete(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
