@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-create-course',
+    standalone: true,
     templateUrl: './create-course.component.html',
     styleUrls: ['./create-course.component.css']
 })
