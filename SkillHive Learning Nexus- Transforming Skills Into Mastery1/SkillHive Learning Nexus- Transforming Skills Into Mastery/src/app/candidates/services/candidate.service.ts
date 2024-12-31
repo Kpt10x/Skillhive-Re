@@ -9,7 +9,9 @@ export interface Candidate {
   name: string;
   email: string;
   password: string;
-  phone?: string; 
+  phone?: string;
+  enrolledCourses: any[];  // Add enrolledCourses as an array of course objects
+  // Optional for registration, can be added during update
 }
 
 
@@ -65,7 +67,13 @@ export class CandidateService {
     );
   }
 
-  
-  
-  
+  // Fetch a candidate by ID
+  getCandidateById(id: string): Observable<Candidate> {
+    return this.http.get<Candidate>(`${this.apiUrl}/${id}`);
+  }
+
+  // Update an existing candidate's profile
+  updateCandidate(id: string, updatedCandidate: Partial<Candidate>): Observable<Candidate> {
+    return this.http.put<Candidate>(`${this.apiUrl}/${id}`, updatedCandidate);
+  }
 }

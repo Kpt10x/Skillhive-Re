@@ -1,0 +1,115 @@
+
+.main {
+    font-family: 'Balsamiq Sans', sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?technology,education') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      /*  */
+      background-color: #fff;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #1E1E1E;
+    }
+   
+    
+    .container {
+      display: flex;
+      width: 90%;
+      max-width: 1000px; /* Increased card width */
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      border : 50px solid #C1DBC6;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    
+    
+    .left-section {
+      flex: 1;
+      padding: 30px;
+      background: #E7FEEC;
+      color: #1E1E1E;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      /* border-radius: 10px;  */
+    }
+    
+    .left-section img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    
+    .right-section {
+      flex: 2;
+      padding: 50px;
+      /* border-radius: 10px; */
+      background-color: #FAFFFB;
+    }
+    
+    .right-section h2 {
+      margin-bottom: 20px;
+      color: #1E1E1E;
+      font-size: 24px; /* Adjusted font size */
+      text-align: center;
+    }
+    
+    .right-section input {
+      width: 100%;
+      padding: 12px; /* Increased padding for input fields */
+      margin-bottom: 20px; /* Increased margin */
+      border:1px solid #D3D3D3;
+      border-radius: 5px;
+      font-size: 14px; /* Adjusted font size */
+      transition: border-color 0.3s;
+    }
+    
+    .right-section input:focus {
+      border-color: #007bff;
+    }
+    label {
+      color: black;
+    }
+    .btn {
+      padding: 12px 24px;
+      background: #263339;
+      color: #fff;
+      border: 1px solid #D3D3D3;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    
+    .btn:hover {
+      background: #86A788;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        max-width: 100%;
+      }
+    
+      .left-section,
+      .right-section {
+        width: 100%;
+        padding: 20px;
+      }
+    
+      .left-section h1 {
+        font-size: 20px;
+      }
+    
+      .right-section h2 {
+        font-size: 20px;
+      }
+    }
+    
