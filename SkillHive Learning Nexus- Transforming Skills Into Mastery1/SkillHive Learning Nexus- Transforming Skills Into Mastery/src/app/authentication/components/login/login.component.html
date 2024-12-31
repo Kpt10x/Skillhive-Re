@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="left-section">
+    <div class="learning">
+      <img src="https://i.imgur.com/m0OuPNi.png" alt="LifeLongLearning" class="image-placeholder">
+    </div>
+    <h1 class="title">Skillhive Learning Nexus</h1>
+    <p class="subtitle">Transforming skills into mastery</p>
+  </div>
+  <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        class="input-field"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+        <small class="error-message">Email is required and must be valid.</small>
+      </div>
+  
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        class="input-field"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <small class="error-message">Password is required and must be at least 6 characters long.</small>
+      </div>
+  
+      <label for="role">Role:</label>
+      <select
+        id="role"
+        class="input-field role-select"
+        formControlName="role"
+        (change)="onRoleChange($event)"
+      >
+        <option value="admin">Admin</option>
+        <option value="instructor">Instructor</option>
+        <option value="candidate">Candidate</option>
+      </select>
+  
+      <button class="signin-button" type="submit" [disabled]="loginForm.invalid">
+        Sign in
+      </button>
+  
+      <div *ngIf="showRegisterLink" class="register-link">
+        <a routerLink="/register">Are you new? Register for an Account</a>
+      </div>
+    </form>
+  </div>
+  
+</div>
