@@ -49,7 +49,7 @@ export class CandidateRegistrationComponent {
           this.registrationForm.reset();
 
 
-          this.router.navigate(['/profile', generatedId]);
+          this.router.navigate(['/dashboard', generatedId]);
         },
         error: () => {
           this.errorMessage = 'Error in registration.';

@@ -23,24 +23,30 @@ export class EnrolledCoursesComponent implements OnInit {
   ngOnInit() {
     // Extract the user ID from route params
     this.id = this.route.snapshot.paramMap.get('id') || 'u01';
-
-    // Fetch data from JSON
-    this.http.get('JSON_Server/db.json').pipe(
+  
+    // Fetch data from JSON Server
+    this.http.get('http://localhost:3000/candidates').pipe(
       catchError((error) => {
         console.error('Error fetching data:', error);
         return of({ candidates: [] });
       })
     ).subscribe((data: any) => {
-      this.candidates = data.candidates || [];
-      this.user = this.candidates.find((candidate: any) => candidate.id === this.id);
-
-      if (this.user) {
-        this.enrolledCourses = this.user.enrolledCourses || [];
+      // Check if the data contains candidates
+      if (data && Array.isArray(data)) {
+        this.candidates = data;
+        this.user = this.candidates.find((candidate: any) => candidate.id === this.id);
+  
+        if (this.user) {
+          this.enrolledCourses = this.user.enrolledCourses || [];
+        } else {
+          console.error(`User with ID ${this.id} not found.`);
+        }
       } else {
-        console.error(`User with ID ${this.id} not found.`);
+        console.error('Invalid data format received:', data);
       }
     });
   }
+  
 
   // Add any additional functionality here if needed
 }

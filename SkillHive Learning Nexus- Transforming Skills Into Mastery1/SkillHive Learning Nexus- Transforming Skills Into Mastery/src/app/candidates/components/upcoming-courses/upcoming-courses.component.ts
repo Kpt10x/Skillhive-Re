@@ -24,20 +24,20 @@ export class UpcomingCoursesComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || 'u01';
 
-    // Fetch courses
-    this.http.get('assets/Database/db.json').pipe(
+    // Fetch courses from JSON Server
+    this.http.get('http://localhost:3000/courses').pipe(
       catchError((error) => {
-        console.error('Error fetching courses', error);
+        console.error('Error fetching courses:', error);
         return of({ courses: [] });
       })
     ).subscribe((data: any) => {
       this.courses = data.courses || [];
     });
 
-    // Fetch candidates
-    this.http.get('JSON_Server/db.json').pipe(
+    // Fetch candidates from JSON Server
+    this.http.get('http://localhost:3000/candidates').pipe(
       catchError((error) => {
-        console.error('Error fetching candidates', error);
+        console.error('Error fetching candidates:', error);
         return of({ candidates: [] });
       })
     ).subscribe((data: any) => {
@@ -48,6 +48,10 @@ export class UpcomingCoursesComponent implements OnInit {
 
       // Set the current user based on the route ID
       this.user = this.candidates.find(candidate => candidate.id === this.id);
+
+      if (!this.user) {
+        console.error(`User with ID ${this.id} not found.`);
+      }
     });
   }
 

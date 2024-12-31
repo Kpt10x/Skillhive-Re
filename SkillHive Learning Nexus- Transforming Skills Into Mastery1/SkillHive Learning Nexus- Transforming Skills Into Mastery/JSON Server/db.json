@@ -124,6 +124,13 @@
           "id": "a47e"
         }
       ]
+    },
+    {
+      "id": "u07",
+      "name": "Suriya",
+      "email": "abc@example.com",
+      "phone": "9087654321",
+      "password": "123456"
     }
   ],
   "courses": []
