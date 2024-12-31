@@ -1,0 +1,51 @@
+{
+    "admin": [
+      {
+        "id": "1",
+        "fullName": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "admin123",
+        "role": "admin"
+      },
+      {
+        "id": "2",
+        "fullName": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "password": "instructor123",
+        "role": "instructor"
+      },
+      {
+        "id": "3",
+        "fullName": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "password": "candidate123",
+        "role": "candidate"
+      },
+      {
+        "id": "4",
+        "fullName": "Bob Williams",
+        "email": "bob.williams@example.com",
+        "password": "candidate456",
+        "role": "candidate"
+      },
+      {
+        "id": "5",
+        "fullName": "Charlie Brown",
+        "email": "charlie.brown@example.com",
+        "password": "admin456",
+        "role": "admin"
+      },
+      {
+        "id": "2san3pcv6e2",
+        "fullName": "oktested",
+        "email": "oktested@gmail.com",
+        "password": "123456",
+        "role": "admin"
+      }
+    ],
+    "instructors":[],
+    "candidates":[],
+    "courses":[]
+  }
+  
+}
