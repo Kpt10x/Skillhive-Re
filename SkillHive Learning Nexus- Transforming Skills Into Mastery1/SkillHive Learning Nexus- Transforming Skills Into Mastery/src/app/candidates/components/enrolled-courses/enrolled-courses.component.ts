@@ -1,52 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CandidateService, Candidate } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-enrolled-courses',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './enrolled-courses.component.html',
   styleUrls: ['./enrolled-courses.component.css'],
 })
 export class EnrolledCoursesComponent implements OnInit {
-  id: string = '';
-  candidates: any[] = [];
-  user: any | undefined;
   enrolledCourses: any[] = [];
+  user: Candidate | null = null;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private candidateService: CandidateService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {
-    // Extract the user ID from route params
-    this.id = this.route.snapshot.paramMap.get('id') || 'u01';
-  
-    // Fetch data from JSON Server
-    this.http.get('http://localhost:3000/candidates').pipe(
-      catchError((error) => {
-        console.error('Error fetching data:', error);
-        return of({ candidates: [] });
-      })
-    ).subscribe((data: any) => {
-      // Check if the data contains candidates
-      if (data && Array.isArray(data)) {
-        this.candidates = data;
-        this.user = this.candidates.find((candidate: any) => candidate.id === this.id);
-  
-        if (this.user) {
-          this.enrolledCourses = this.user.enrolledCourses || [];
-        } else {
-          console.error(`User with ID ${this.id} not found.`);
-        }
-      } else {
-        console.error('Invalid data format received:', data);
-      }
-    });
+  ngOnInit(): void {
+    // Fetch the logged-in candidate's ID
+    const loggedInUserId = this.candidateService.getLoggedInCandidateId();
+
+    if (loggedInUserId) {
+      this.candidateService.getCandidateById(loggedInUserId).subscribe({
+        next: (candidate) => {
+          this.user = candidate;
+          this.enrolledCourses = candidate.enrolledCourses || [];
+        },
+        error: (err) => {
+          console.error('Error fetching logged-in candidate:', err);
+          this.enrolledCourses = []; // Reset in case of error
+        },
+      });
+    } else {
+      console.error('No logged-in candidate found.');
+      this.enrolledCourses = []; // Reset if no candidate is logged in
+    }
   }
-  
-
-  // Add any additional functionality here if needed
 }

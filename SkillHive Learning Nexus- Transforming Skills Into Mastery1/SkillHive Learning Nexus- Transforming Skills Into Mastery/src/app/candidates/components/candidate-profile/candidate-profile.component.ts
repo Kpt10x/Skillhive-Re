@@ -1,32 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CandidateService,Candidate } from '../../services/candidate.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CandidateService, Candidate } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-candidate-profile',
   templateUrl: './candidate-profile.component.html',
   styleUrls: ['./candidate-profile.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
 })
 export class CandidateProfileComponent implements OnInit {
   student: Candidate | null = null;
   newPassword: string = '';
   newPhoneNumber: string = '';
+  userId: string | null = null; // Added to store the current user ID
 
   constructor(
     private candidateService: CandidateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const studentId = this.route.snapshot.paramMap.get('id');
-    if (studentId) {
-      this.candidateService.getCandidateById(studentId).subscribe((data: Candidate) => {
-        this.student = data;
-      });
+    // Fetch candidateId from route parameters
+    this.userId = this.route.snapshot.paramMap.get('id');
+    if (this.userId) {
+      this.candidateService.getCandidateById(this.userId).subscribe(
+        (data) => {
+          this.student = data;
+        },
+        (error) => {
+          console.error('Error fetching candidate profile:', error);
+        }
+      );
     }
   }
 
@@ -50,6 +59,12 @@ export class CandidateProfileComponent implements OnInit {
           alert('Failed to update profile.');
         }
       );
+    }
+  }
+
+  navigateTo(route: string): void {
+    if (this.userId) {
+      this.router.navigate([route, this.userId]);
     }
   }
 }

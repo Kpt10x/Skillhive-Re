@@ -1,14 +1,17 @@
 <div class="main">
   <div class="container">
-      <!-- Left Section -->
-      <div class="left-section">
-        <h1>SkillHive - An E-Learning Platform</h1>
+    <div class="left-section">
+      <div class="content">
         <img
-          src="../../../../assets/Images/SkillHive_Img.png"
+          src="https://s3-alpha-sig.figma.com/img/31a5/c6c6/96b4d5b4fc60bc2aaedf2ecb88b257ae?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iztAdDYA-wbBjMun7RxbOEDcmyTZDckmTgSKr8QfVKIDeY6z8hyJROwl-7L1~Er9QVnfoBVlLC0EBcApYHnSQa~DsRSEn2Pd2QrvD2DRG0tnTiXktUdknnLXCuXBWDiqXHSQprc~keq9qOXweTm0OBByAWStRRY~B11uN2~45b5wy-lcpQIpHHitbRvcmuF2vxl5Wmwr5fANNkbdhVwKZv~y8l2zz4q66hpIqxU-IzcovJAaGsIl~E9gUkv-NFOyTufRgTljlh3PMXNm8Nk-~pvkGNAC5DndjiLNwQN~3y6Ph4Z0HSc7Qc3NxOCPKWFx0sB-Cf3OwVr1WQ2YzMcTmg__"
           alt="E-Learning"
           class="image"
         />
+   <h1>Skillhive E-Learning</h1>
+              <p>Transforming skills into mastery</p>
       </div>
+    </div>
+  
     
       <!-- Right Section -->
       <div class="right-section">
@@ -138,17 +141,17 @@
               </small>
             </div>
           </div>
-          <div *ngIf="errorMessage" class="error-message">
-            {{ errorMessage }}
-          </div>
+    
           <!-- Submit Button -->
           <button type="submit" class="btn" [disabled]="registrationForm.invalid">
             Register
           </button>
         </form>
-    
+        <div class="login-link">
+          <p>Already have an account? <a [routerLink]="['/login']">Log in here</a></p>
+        </div>
         <!-- Success Message -->
-        <div *ngIf="successMessage" class="successMessage">
+        <div *ngIf="successMessage" class="login-link error-message">
           {{ successMessage }}
         </div>
       </div>

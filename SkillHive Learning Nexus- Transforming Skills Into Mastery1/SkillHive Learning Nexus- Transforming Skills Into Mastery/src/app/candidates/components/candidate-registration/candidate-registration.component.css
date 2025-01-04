@@ -1,4 +1,4 @@
-    /* General Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -101,7 +101,7 @@
     
     .btn {
         width: 100%;
-        background: #263339;
+        background-color: #000000;
         color: #fff;
         padding: 10px;
         font-size: 16px;
@@ -111,7 +111,7 @@
     }
     
     .btn:hover {
-        background: #86A788;
+        background-color: #86A788;
     }
     
     .login-link {
@@ -150,17 +150,8 @@ small {
   /* Style for the error message */
 .error-message {
     color: red;
-    font-size: 0.9rem; /* Adjust size if needed */
-    display: block; /* Ensures each message is on a new line */
-    margin-top: 0.3rem; /* Makes the text stand out */
+    font-size: 0.9rem; /* Adjust font size as needed */
+    margin-top: 0.5rem; /* Adds spacing above the message */
+    font-weight: bold; /* Makes the text stand out */
   }
   
-  
-  .successMessage {
-    /* background-color: #e6f9e6; */
-    color: #28a745;
-    font-size: 1rem;
-    font-weight: bold;
-    display: block;
-    margin-top: 1rem;
-  }

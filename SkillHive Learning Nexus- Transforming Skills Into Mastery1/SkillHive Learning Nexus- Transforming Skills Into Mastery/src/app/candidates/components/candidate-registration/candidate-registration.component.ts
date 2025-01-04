@@ -3,18 +3,18 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { CandidateService } from '../../services/candidate.service';
 import { Router } from '@angular/router';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-candidate-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,RouterModule],
   templateUrl: './candidate-registration.component.html',
   styleUrls: ['./candidate-registration.component.scss']
 })
 export class CandidateRegistrationComponent {
   registrationForm: FormGroup;
   successMessage = '';
-  errorMessage='';
+
   constructor(
     private fb: FormBuilder,
     private candidateService: CandidateService,
@@ -35,28 +35,32 @@ export class CandidateRegistrationComponent {
   register(): void {
     if (this.registrationForm.valid) {
       const { confirmPassword, ...candidate } = this.registrationForm.value;
-
+  
       if (candidate.password !== confirmPassword) {
-        this.errorMessage= 'Passwords do not match!';
+        this.successMessage = 'Passwords do not match!';
         return;
       }
-      this.errorMessage = '';
+  
+      // Clear any old session data before registering a new candidate
+      sessionStorage.removeItem('loggedInCandidate'); // Clear the old session data
+      
       this.candidateService.registerCandidate(candidate).subscribe({
         next: (response) => {
           const generatedId = response.id; // Extract the ID from the server response
           this.successMessage = `Registration successful! Your registration ID is ${generatedId}`;
           alert(this.successMessage); // Show alert with registration ID
           this.registrationForm.reset();
-
-
+  
+          // Redirect to the newly registered candidate's dashboard
           this.router.navigate(['/dashboard', generatedId]);
         },
         error: () => {
-          this.errorMessage = 'Error in registration.';
+          this.successMessage = 'Error in registration.';
         }
       });
     } else {
-      this.errorMessage= 'Invalid form submission!';
+      this.successMessage = 'Invalid form submission!';
     }
   }
+  
 }

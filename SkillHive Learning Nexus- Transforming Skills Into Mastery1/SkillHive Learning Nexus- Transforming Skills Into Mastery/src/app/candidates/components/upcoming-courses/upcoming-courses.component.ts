@@ -1,86 +1,138 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { CandidateService, Candidate } from '../../services/candidate.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Candidate } from '../../models/candidate.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-upcoming-courses',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './upcoming-courses.component.html',
   styleUrls: ['./upcoming-courses.component.css'],
 })
 export class UpcomingCoursesComponent implements OnInit {
   courses: any[] = [];
-  candidates: Candidate[] = [];
-  id: string = '';
-  user: Candidate | undefined;
+  user: Candidate | null = null;
+  filteredCourses: any[] = [];
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpClient,
+    private candidateService: CandidateService
+  ) {}
 
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id') || 'u01';
+  ngOnInit(): void {
+    const loggedInUserId = this.candidateService.getLoggedInCandidateId();
 
-    // Fetch courses from JSON Server
-    this.http.get('http://localhost:3000/courses').pipe(
-      catchError((error) => {
-        console.error('Error fetching courses:', error);
-        return of({ courses: [] });
-      })
-    ).subscribe((data: any) => {
-      this.courses = data.courses || [];
-    });
-
-    // Fetch candidates from JSON Server
-    this.http.get('http://localhost:3000/candidates').pipe(
-      catchError((error) => {
-        console.error('Error fetching candidates:', error);
-        return of({ candidates: [] });
-      })
-    ).subscribe((data: any) => {
-      this.candidates = data.candidates.map((candidate: Candidate) => ({
-        ...candidate,
-        enrolledCourses: candidate.enrolledCourses || [],
-      }));
-
-      // Set the current user based on the route ID
-      this.user = this.candidates.find(candidate => candidate.id === this.id);
-
-      if (!this.user) {
-        console.error(`User with ID ${this.id} not found.`);
-      }
-    });
+    if (loggedInUserId) {
+      this.candidateService.getCandidateById(loggedInUserId).subscribe({
+        next: (candidate) => {
+          this.user = candidate;
+          this.loadCourses();
+        },
+        error: (err) => {
+          console.error('Error fetching logged-in candidate:', err);
+        },
+      });
+    } else {
+      console.error('No logged-in candidate found.');
+    }
   }
 
-  enroll(course: any) {
+  loadCourses(): void {
+    this.http
+      .get('http://localhost:3000/courses')
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching courses:', error);
+          return of([]);
+        })
+      )
+      .subscribe((data: any) => {
+        if (Array.isArray(data)) {
+          this.courses = data;
+
+          const today = new Date();
+          const tomorrow = new Date(today);
+          tomorrow.setDate(today.getDate() + 1);
+
+          if (this.user && Array.isArray(this.user.enrolledCourses)) {
+            const enrolledCourseIds = this.user.enrolledCourses.map(
+              (course: any) => course.courseId
+            );
+            this.filteredCourses = this.courses.filter(
+              (course) =>
+                !enrolledCourseIds.includes(course.courseId) &&
+                new Date(course.startDate) >= tomorrow &&
+                new Date(course.endDate) >= today
+            );
+          } else {
+            this.filteredCourses = this.courses.filter(
+              (course) =>
+                new Date(course.startDate) >= tomorrow &&
+                new Date(course.endDate) >= today
+            );
+          }
+        }
+      });
+  }
+
+  enroll(course: any): void {
     if (!this.user) {
       alert('User not found.');
       return;
     }
 
-    // Check if the course is already enrolled
-    const alreadyEnrolled = this.user.enrolledCourses.some((c: any) => c.courseId === course.courseId);
-    if (alreadyEnrolled) {
-      alert('Already enrolled in this course.');
+    if (!Array.isArray(this.user.enrolledCourses)) {
+      this.user.enrolledCourses = [];
+    }
+
+    const isAlreadyEnrolled = this.user.enrolledCourses.some(
+      (enrolledCourse: any) => enrolledCourse.courseId === course.courseId
+    );
+
+    if (isAlreadyEnrolled) {
+      alert('You are already enrolled in this course.');
       return;
     }
 
-    // Add the course to the user's enrolledCourses array
+    const today = new Date();
+    const startDate = new Date(course.startDate);
+    const endDate = new Date(course.endDate);
+
+    if (startDate <= today || endDate < today) {
+      alert('You can only enroll in courses starting from tomorrow.');
+      return;
+    }
+
     this.user.enrolledCourses.push(course);
 
-    // Persist the changes to the mock JSON server
-    const updatedCandidate = { ...this.user }; // Clone the user to avoid direct mutation
-    this.http.put(`http://localhost:3000/candidates/${this.user.id}`, updatedCandidate).subscribe({
+    const updatedCandidate = { ...this.user };
+    this.candidateService.updateCandidate(this.user.id, updatedCandidate).subscribe({
       next: () => {
         alert('Enrolled successfully!');
+        this.filteredCourses = this.filteredCourses.filter(
+          (c) => c.courseId !== course.courseId
+        );
       },
       error: (err) => {
         console.error('Error updating candidate:', err);
         alert('Failed to enroll. Please try again.');
       },
     });
+  }
+
+  isCourseFinished(course: any): boolean {
+    const today = new Date();
+    return new Date(course.endDate) < today;
+  }
+
+  isCourseAvailable(course: any): boolean {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    return new Date(course.startDate) >= tomorrow && new Date(course.endDate) >= today;
   }
 }
