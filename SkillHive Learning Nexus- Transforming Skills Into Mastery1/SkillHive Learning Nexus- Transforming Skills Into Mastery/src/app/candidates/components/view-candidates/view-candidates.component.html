@@ -1,1 +1,58 @@
-<p>view-candidates works!</p>
+<div *ngIf="role === 'admin'">
+    <h2>Admin View</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Enrolled Courses</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidates">
+          <td>{{ candidate.name }}</td>
+          <td>{{ candidate.email }}</td>
+          <td>{{ candidate.phone || 'N/A' }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let course of candidate.enrolledCourses">
+                {{ course.courseName }} ({{ course.instructorName }})
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button class="btn btn-delete" (click)="deleteCandidate(candidate.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="role === 'instructor'">
+    <h2 class="view-instructor-title">Instructor View</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Enrolled Courses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidates">
+          <td>{{ candidate.name }}</td>
+          <td>{{ candidate.email }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let course of candidate.enrolledCourses">
+                {{ course.courseName }} ({{ course.instructorName }})
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

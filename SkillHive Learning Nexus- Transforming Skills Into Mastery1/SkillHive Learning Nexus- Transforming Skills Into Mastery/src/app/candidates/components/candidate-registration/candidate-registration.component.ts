@@ -52,7 +52,7 @@ export class CandidateRegistrationComponent {
           this.registrationForm.reset();
   
           // Redirect to the newly registered candidate's dashboard
-          this.router.navigate(['/dashboard', generatedId]);
+          this.router.navigate(['/login']);
         },
         error: () => {
           this.successMessage = 'Error in registration.';

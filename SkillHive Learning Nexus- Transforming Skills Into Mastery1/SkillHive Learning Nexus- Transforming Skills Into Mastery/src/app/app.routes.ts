@@ -8,6 +8,7 @@ import { CandidateDashboardComponent } from './candidates/components/candidate-d
 import { EnrolledCoursesComponent } from './candidates/components/enrolled-courses/enrolled-courses.component';
 import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
 import { CandidateLoginComponent } from './candidates/components/candidate-login/candidate-login.component';
+import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
   { path: 'register', component: CandidateRegistrationComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'dashboard/:id', component: CandidateDashboardComponent },
   { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent },
   { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent },
+  { path: 'view-candidates', component: ViewCandidatesComponent }, // New route added here
   { path: '**', redirectTo: '/register' },
 ];
 

@@ -18,6 +18,7 @@ export interface Candidate {
 export class CandidateService {
   private apiUrl = 'http://localhost:3000/courses-enrolled-by-candidates';
   private coursesUrl = 'http://localhost:3000/courses';
+
   private loggedInCandidateId: string | null = null;
 
   constructor(private http: HttpClient) {}
@@ -86,4 +87,27 @@ export class CandidateService {
       })
     );
   }
+
+  // Get candidates for admin
+  getCandidatesForAdmin(): Observable<Candidate[]> {
+    return this.getAllCandidates();
+  }
+
+  // Get candidates for an instructor
+  getCandidatesForInstructor(instructorName: string): Observable<Candidate[]> {
+    return this.getAllCandidates().pipe(
+      map((candidates) =>
+        candidates.filter((candidate) =>
+          (candidate.enrolledCourses||[]).some(
+            (course) => course.instructorName === instructorName
+          )
+        )
+      )
+    );
+  }
+
+  deleteCandidate(candidateId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${candidateId}`);
+  }
+  
 }
