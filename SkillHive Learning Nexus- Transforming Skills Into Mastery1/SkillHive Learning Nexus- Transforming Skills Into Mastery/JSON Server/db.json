@@ -22,7 +22,108 @@
         "role": "admin"
       }
     ],
-    "instructors":[],
+    "instructors":[
+        {
+        "id": 1,
+        "name": "Aarav",
+        "email": "aarav12@example.com",
+        "phone": "0987654320",
+        "Area of Expertise": "Mathematics",
+        "experience": 10,
+        "start_date": "15-11-2024",
+        "end_date": "15-12-2024"
+      },
+      {
+        "id": 2,
+        "name": "Prabash",
+        "email": "prabash12@example.com",
+        "phone": "0987654321",
+        "Area of Expertise": "Physics",
+        "experience": 8,
+        "start_date": "22-11-2024",
+        "end_date": "22-12-2024"
+      },
+      {
+        "id": 3,
+        "name": "Ishani",
+        "email": "ishani12@example.com",
+        "phone": "0987654322",
+        "Area of Expertise": "Chemistry",
+        "experience": 7,
+        "start_date": "01-12-2024",
+        "end_date": "31-12-2024"
+      },
+      {
+        "id": 4,
+        "name": "Rohit",
+        "email": "rohit12@example.com",
+        "phone": "0987654323",
+        "Area of Expertise": "Biology",
+        "experience": 9,
+        "start_date": "12-11-2024",
+        "end_date": "12-12-2024"
+      },
+      {
+        "id": 5,
+        "name": "Divya",
+        "email": "divya12@example.com",
+        "phone": "0987654324",
+        "Area of Expertise": "English",
+        "experience": 6,
+        "start_date": "05-11-2024",
+        "end_date": "05-12-2024"
+      },
+      {
+        "id": 6,
+        "name": "Rahul",
+        "email": "rahul12@example.com",
+        "phone": "0987654325",
+        "Area of Expertise": "History",
+        "experience": 8,
+        "start_date": "10-11-2024",
+        "end_date": "10-12-2024"
+      },
+      {
+        "id": 7,
+        "name": "Sneha",
+        "email": "sneha12@example.com",
+        "phone": "0987654326",
+        "Area of Expertise": "Geography",
+        "experience": 7,
+        "start_date": "20-11-2024",
+        "end_date": "20-12-2024"
+      },
+      {
+        "id": 8,
+        "name": "Vikram",
+        "email": "vikram12@example.com",
+        "phone": "0987654327",
+        "Area of Expertise": "Computer Science",
+        "experience": 10,
+        "start_date": "25-11-2024",
+        "end_date": "25-12-2024"
+      },
+      {
+        "id": 9,
+        "name": "Neha",
+        "email": "neha12@example.com",
+        "phone": "0987654328",
+        "Area of Expertise": "Economics",
+        "experience": 6,
+        "start_date": "30-11-2024",
+        "end_date": "30-12-2024"
+      },
+      {
+        "id": 10,
+        "name": "Arjun",
+        "email": "arjun12@example.com",
+        "phone": "0987654329",
+        "Area of Expertise": "Philosophy",
+        "experience": 9,
+        "start_date": "08-11-2024",
+        "end_date": "08-12-2024"
+      }
+    ],
     "candidates":[],
     "courses":[
          {
@@ -69,16 +170,6 @@
       "courseDuration": "2months",
       "instructorName": "prathyusha",
       "startDate": "2024-12-20",
-      "endDate": "2025-03-20",
-      "assignmentDate": "2025-01-04"
-    },
-    {
-      "courseId": "1234",
-      "courseName": "web development",
-      "courseCategory": "Web Development",
-      "courseDuration": "2months",
-      "instructorName": "prathyusha",
-      "startDate": "2024-12-20",
       "endDate": "2025-02-20",
       "assignmentDate": "2025-03-01"
     },
@@ -112,15 +203,6 @@
       "endDate": "2025-02-22",
       "assignmentDate": "2025-03-01"
     },
-    {
-      "courseId": "12345",
-      "courseName": "web development",
-      "courseCategory": "Web Development",
-      "courseDuration": "2",
-      "instructorName": " Prof Prathyusha",
-      "startDate": "2024-12-17",
-      "endDate": "2025-02-17",
-      "assignmentDate": "2025-03-01"
-    }
+
     ]
   }
