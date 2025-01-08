@@ -1,0 +1,27 @@
+{
+    "forms": [
+      {
+        "formId": "F001",
+        "formName": "Create Instructor Form",
+        "fields": [
+          { "fieldName": "Name", "fieldType": "text", "placeholder": "Enter name", "required": true },
+          { "fieldName": "Email", "fieldType": "email", "placeholder": "Enter email", "required": true },
+          { "fieldName": "Expertise", "fieldType": "text", "placeholder": "Enter expertise area", "required": true },
+          { "fieldName": "Qualification", "fieldType": "text", "placeholder": "Enter qualification", "required": true },
+          { "fieldName": "Experience", "fieldType": "number", "placeholder": "Enter experience in years", "required": true }
+        ]
+      },
+      {
+        "formId": "F002",
+        "formName": "Edit Instructor Form",
+        "fields": [
+          { "fieldName": "Name", "fieldType": "text", "placeholder": "Update name", "required": true },
+          { "fieldName": "Email", "fieldType": "email", "placeholder": "Update email", "required": true },
+          { "fieldName": "Expertise", "fieldType": "text", "placeholder": "Update expertise area", "required": true },
+          { "fieldName": "Qualification", "fieldType": "text", "placeholder": "Update qualification", "required": true },
+          { "fieldName": "Experience", "fieldType": "number", "placeholder": "Update experience in years", "required": true }
+        ]
+      }
+    ]
+  }
+  

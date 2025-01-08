@@ -1,0 +1,132 @@
+.create-instructor-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #C1DBC6; /* Vibrant background color */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50; /* Darker text for contrast */
+  font-family: 'Arial', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50; /* Text matches header */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #8cb390; /* Green border to match the theme */
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f2f9f4; /* Soft background for inputs */
+}
+
+input:focus {
+  outline: none;
+  border-color: #2ecc71; /* Green focus */
+  box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+}
+
+small {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #27ae60; /* Default green for main buttons */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px; /* Add spacing between buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2ecc71;
+  transform: scale(1.05);
+}
+
+/* Cancel Button */
+button:last-child {
+  background-color: #f39c12; /* Bright orange for cancel button */
+}
+
+button:last-child:hover {
+  background-color: #e67e22; /* Lighter orange */
+}
+
+/* Instructor Table Styles */
+.instructor-table-container {
+  margin-top: 30px; /* Gap between form and table */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #8cb390; /* Matches theme border */
+}
+
+th {
+  background-color: #91b59f; /* Muted green header */
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #d4edda; /* Light green for even rows */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f9f4; /* Softer green for odd rows */
+}
+
+tbody tr:hover {
+  background-color: #c1e7cf; /* Highlight row with green on hover */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+td {
+  color: #333;
+}
+
+table caption {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #5d8c74; /* Muted green caption text */
+  text-align: center;
+}
