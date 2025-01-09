@@ -11,4 +11,5 @@ import { CreateCourseComponent } from "./course/components/create-course.compone
 })
 export class AppComponent {
   title = 'AngularProject';
+
 }
