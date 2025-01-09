@@ -51,7 +51,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password, role } = this.loginForm.value;
       this.http
-        .get<any[]>('http://localhost:3000/admin', {
+        .get<any[]>('http://localhost:3000/profiles', {
           params: { email, password, role },
         })
         .subscribe({

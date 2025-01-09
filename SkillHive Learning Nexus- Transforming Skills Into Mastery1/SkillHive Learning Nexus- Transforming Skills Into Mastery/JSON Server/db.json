@@ -1,132 +1,153 @@
 {
-    "profiles": [
-      {
-        "id": "1",
-        "fullName": "John Doe",
-        "email": "john.doe@example.com",
-        "password": "admin123",
-        "role": "admin"
-      },  
-      {
-        "id": "5",
-        "fullName": "Charlie Brown",
-        "email": "charlie.brown@example.com",
-        "password": "admin456",
-        "role": "admin"
-      },
-      {
-        "id": "2san3pcv6e2",
-        "fullName": "oktested",
-        "email": "oktested@gmail.com",
-        "password": "123456",
-        "role": "admin"
-      }
-    ],
-    "instructors":[
-        {
-        "id": 1,
-        "name": "Aarav",
-        "email": "aarav12@example.com",
-        "phone": "0987654320",
-        "Area of Expertise": "Mathematics",
-        "experience": 10,
-        "start_date": "15-11-2024",
-        "end_date": "15-12-2024"
-      },
-      {
-        "id": 2,
-        "name": "Prabash",
-        "email": "prabash12@example.com",
-        "phone": "0987654321",
-        "Area of Expertise": "Physics",
-        "experience": 8,
-        "start_date": "22-11-2024",
-        "end_date": "22-12-2024"
-      },
-      {
-        "id": 3,
-        "name": "Ishani",
-        "email": "ishani12@example.com",
-        "phone": "0987654322",
-        "Area of Expertise": "Chemistry",
-        "experience": 7,
-        "start_date": "01-12-2024",
-        "end_date": "31-12-2024"
-      },
-      {
-        "id": 4,
-        "name": "Rohit",
-        "email": "rohit12@example.com",
-        "phone": "0987654323",
-        "Area of Expertise": "Biology",
-        "experience": 9,
-        "start_date": "12-11-2024",
-        "end_date": "12-12-2024"
-      },
-      {
-        "id": 5,
-        "name": "Divya",
-        "email": "divya12@example.com",
-        "phone": "0987654324",
-        "Area of Expertise": "English",
-        "experience": 6,
-        "start_date": "05-11-2024",
-        "end_date": "05-12-2024"
-      },
-      {
-        "id": 6,
-        "name": "Rahul",
-        "email": "rahul12@example.com",
-        "phone": "0987654325",
-        "Area of Expertise": "History",
-        "experience": 8,
-        "start_date": "10-11-2024",
-        "end_date": "10-12-2024"
-      },
-      {
-        "id": 7,
-        "name": "Sneha",
-        "email": "sneha12@example.com",
-        "phone": "0987654326",
-        "Area of Expertise": "Geography",
-        "experience": 7,
-        "start_date": "20-11-2024",
-        "end_date": "20-12-2024"
-      },
-      {
-        "id": 8,
-        "name": "Vikram",
-        "email": "vikram12@example.com",
-        "phone": "0987654327",
-        "Area of Expertise": "Computer Science",
-        "experience": 10,
-        "start_date": "25-11-2024",
-        "end_date": "25-12-2024"
-      },
-      {
-        "id": 9,
-        "name": "Neha",
-        "email": "neha12@example.com",
-        "phone": "0987654328",
-        "Area of Expertise": "Economics",
-        "experience": 6,
-        "start_date": "30-11-2024",
-        "end_date": "30-12-2024"
-      },
-      {
-        "id": 10,
-        "name": "Arjun",
-        "email": "arjun12@example.com",
-        "phone": "0987654329",
-        "Area of Expertise": "Philosophy",
-        "experience": 9,
-        "start_date": "08-11-2024",
-        "end_date": "08-12-2024"
-      }
-    ],
-    "candidates":[],
-    "courses":[
-         {
+  "profiles": [
+    {
+      "id": "1",
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "fullName": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "instructor123",
+      "role": "instructor"
+    },
+    {
+      "id": "3",
+      "fullName": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "candidate123",
+      "role": "candidate"
+    },
+    {
+      "id": "4",
+      "fullName": "Bob Williams",
+      "email": "bob.williams@example.com",
+      "password": "candidate456",
+      "role": "candidate"
+    },
+    {
+      "id": "5",
+      "fullName": "Charlie Brown",
+      "email": "charlie.brown@example.com",
+      "password": "admin456",
+      "role": "admin"
+    },
+    {
+      "id": "2san3pcv6e2",
+      "fullName": "oktested",
+      "email": "oktested@gmail.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "name": "Aarav",
+      "email": "aarav12@example.com",
+      "phone": "0987654320",
+      "Area of Expertise": "Mathematics",
+      "experience": 10,
+      "start_date": "15-11-2024",
+      "end_date": "15-12-2024"
+    },
+    {
+      "id": 2,
+      "name": "Prabash",
+      "email": "prabash12@example.com",
+      "phone": "0987654321",
+      "Area of Expertise": "Physics",
+      "experience": 8,
+      "start_date": "22-11-2024",
+      "end_date": "22-12-2024"
+    },
+    {
+      "id": 3,
+      "name": "Ishani",
+      "email": "ishani12@example.com",
+      "phone": "0987654322",
+      "Area of Expertise": "Chemistry",
+      "experience": 7,
+      "start_date": "01-12-2024",
+      "end_date": "31-12-2024"
+    },
+    {
+      "id": 4,
+      "name": "Rohit",
+      "email": "rohit12@example.com",
+      "phone": "0987654323",
+      "Area of Expertise": "Biology",
+      "experience": 9,
+      "start_date": "12-11-2024",
+      "end_date": "12-12-2024"
+    },
+    {
+      "id": 5,
+      "name": "Divya",
+      "email": "divya12@example.com",
+      "phone": "0987654324",
+      "Area of Expertise": "English",
+      "experience": 6,
+      "start_date": "05-11-2024",
+      "end_date": "05-12-2024"
+    },
+    {
+      "id": 6,
+      "name": "Rahul",
+      "email": "rahul12@example.com",
+      "phone": "0987654325",
+      "Area of Expertise": "History",
+      "experience": 8,
+      "start_date": "10-11-2024",
+      "end_date": "10-12-2024"
+    },
+    {
+      "id": 7,
+      "name": "Sneha",
+      "email": "sneha12@example.com",
+      "phone": "0987654326",
+      "Area of Expertise": "Geography",
+      "experience": 7,
+      "start_date": "20-11-2024",
+      "end_date": "20-12-2024"
+    },
+    {
+      "id": 8,
+      "name": "Vikram",
+      "email": "vikram12@example.com",
+      "phone": "0987654327",
+      "Area of Expertise": "Computer Science",
+      "experience": 10,
+      "start_date": "25-11-2024",
+      "end_date": "25-12-2024"
+    },
+    {
+      "id": 9,
+      "name": "Neha",
+      "email": "neha12@example.com",
+      "phone": "0987654328",
+      "Area of Expertise": "Economics",
+      "experience": 6,
+      "start_date": "30-11-2024",
+      "end_date": "30-12-2024"
+    },
+    {
+      "id": 10,
+      "name": "Arjun",
+      "email": "arjun12@example.com",
+      "phone": "0987654329",
+      "Area of Expertise": "Philosophy",
+      "experience": 9,
+      "start_date": "08-11-2024",
+      "end_date": "08-12-2024"
+    }
+  ],
+  "candidates": [],
+  "courses": [
+    {
       "courseId": "1233333",
       "courseName": "Web Development",
       "courseCategory": "Technology",
@@ -203,6 +224,15 @@
       "endDate": "2025-02-22",
       "assignmentDate": "2025-03-01"
     },
-
-    ]
-  }
+    {
+      "courseId": "4321",
+      "courseName": "AI",
+      "courseCategory": "Data Analysis",
+      "courseDuration": "2months",
+      "instructorName": "Aarav",
+      "startDate": "2024-01-15",
+      "endDate": "2024-03-15",
+      "assignmentDate": "2024-02-15"
+    }
+  ]
+}
