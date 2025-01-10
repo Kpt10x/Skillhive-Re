@@ -1,0 +1,27 @@
+<div class="view-course-container">
+  <h1>View Instructors by Course</h1>
+  <div class="filters">
+    <label for="course">Select Course:</label>
+    <select id="course" [(ngModel)]="selectedCourse">
+      <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+    </select>
+    <button (click)="filterByCourse()">Filter</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Instructor</th>
+        <th>Course Assigned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instructor of filteredInstructors">
+        <td>{{ instructor.id }}</td>
+        <td>{{ instructor.name}}</td>
+        <td>{{ instructor.course }}</td>
+      </tr>
+    </tbody>
+  </table>
+ 
+</div>

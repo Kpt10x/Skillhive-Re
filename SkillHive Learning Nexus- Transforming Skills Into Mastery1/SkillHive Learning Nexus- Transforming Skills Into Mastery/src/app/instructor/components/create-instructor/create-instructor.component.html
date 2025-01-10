@@ -14,20 +14,12 @@
       <input id="phone" formControlName="phone" type="text" placeholder="Enter Phone" />
     </div>
     <div class="form-group">
-      <label for="subject">Subject</label>
-      <input id="subject" formControlName="subject" type="text" placeholder="Enter Subject" />
+      <label for="subject">Area of Expertise</label>
+      <input id="subject" formControlName="Area_of_Expertise" type="text" placeholder="Enter Area of Expertise" />
     </div>
     <div class="form-group">
       <label for="experience">Experience (in years)</label>
       <input id="experience" formControlName="experience" type="number" />
-    </div>
-    <div class="form-group">
-      <label for="start_date">Start Date</label>
-      <input id="start_date" formControlName="start_date" type="date" />
-    </div>
-    <div class="form-group">
-      <label for="end_date">End Date</label>
-      <input id="end_date" formControlName="end_date" type="date" />
     </div>
     <button type="submit" [disabled]="!createInstructorForm.valid">Save</button>
   </form>

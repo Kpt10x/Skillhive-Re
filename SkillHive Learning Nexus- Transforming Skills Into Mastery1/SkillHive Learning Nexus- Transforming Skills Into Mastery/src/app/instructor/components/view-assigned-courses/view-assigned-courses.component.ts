@@ -1,29 +1,40 @@
-import { CommonModule } from '@angular/common';  // Import CommonModule here
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Course } from '../../Models/course.model';
 
 @Component({
   selector: 'app-view-assigned-courses',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, CommonModule], 
+  imports: [HttpClientModule, CommonModule],
   templateUrl: './view-assigned-courses.component.html',
   styleUrls: ['./view-assigned-courses.component.css'],
-  
 })
 export class ViewAssignedCoursesComponent implements OnInit {
-  courses: any[] = []; // Store the courses fetched from JSON
+  instructorId = '95133'; // Example dynamic instructor ID
+  assignedCourses: Course[] = []; // Array to store courses assigned to the instructor
+  apiUrlCourses = 'http://localhost:3000/courses'; // API endpoint for courses
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Fetch data from the JSON file in the assets folder
-    this.http.get<any>('assets/data/assigned-course-data.json').subscribe(
-      (data) => {
-        this.courses = data.courses; // Assign data to the courses array
+    this.fetchAssignedCourses();
+  }
+
+  fetchAssignedCourses(): void {
+    this.http.get<Course[]>(this.apiUrlCourses).subscribe(
+      (allCourses) => {
+        if (!allCourses || allCourses.length === 0) {
+          console.warn('No courses found in the system.');
+          return;
+        }
+        // Filter courses where instructorId matches and handle null values
+        this.assignedCourses = allCourses.filter(
+          (course) => course.instructorId === this.instructorId
+        );
       },
       (error) => {
-        console.error('Error fetching courses:', error); // Log errors if any
+        console.error('Error fetching courses:', error);
       }
     );
   }

@@ -5,23 +5,17 @@ import { importProvidersFrom } from '@angular/core';
 
 // Instructor imports
 import { DashboardComponent } from './instructor/components/dashboard/dashboard.component';
-import { ViewAssignedCoursesComponent } from './instructor/components/view-assigned-courses/view-assigned-courses.component.spec';
+import { ViewAssignedCoursesComponent } from './instructor/components/view-assigned-courses/view-assigned-courses.component';
 import { CreateInstructorComponent } from './instructor/components/create-instructor/create-instructor.component';
 import { ViewInstructorComponent } from './instructor/components/view-instructor/view-instructor.component';
+import { ViewByAvailabilityComponent } from './instructor/components/view-by-availability/view-by-availability.component';
+import { ViewByCourseComponent } from './instructor/components/view-by-course/view-by-course.component';
+import { ViewByDetailsComponent } from './instructor/components/view-by-details/view-by-details.component';
 
 // Authentication imports
 import { LoginComponent } from './authentication/components/login/login.component';
 import { HomeComponent } from './authentication/components/home/home.component';
 import { AdminDashboardComponent } from './authentication/components/admin-dashboard/admin-dashboard.component';
-
-// Candidate imports
-import { CandidateRegistrationComponent } from './candidates/components/candidate-registration/candidate-registration.component';
-import { CandidateProfileComponent } from './candidates/components/candidate-profile/candidate-profile.component';
-import { CandidateDashboardComponent } from './candidates/components/candidate-dashboard/candidate-dashboard.component';
-import { EnrolledCoursesComponent } from './candidates/components/enrolled-courses/enrolled-courses.component';
-import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
-import { CandidateLoginComponent } from './candidates/components/candidate-login/candidate-login.component';
-import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,21 +25,22 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   
-  // Instructor routes
+  // Instructor Management routes
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
   { path: 'create-instructor', component: CreateInstructorComponent },
-  { path: 'view-instructor', component: ViewInstructorComponent },
   
-  // Candidate routes
-  { path: 'candidate/register', component: CandidateRegistrationComponent },
-  { path: 'candidate/login', component: CandidateLoginComponent },
-  { path: 'candidate/profile/:id', component: CandidateProfileComponent },
-  { path: 'candidate/dashboard/:id', component: CandidateDashboardComponent },
-  { path: 'candidate/enrolled-courses/:id', component: EnrolledCoursesComponent },
-  { path: 'candidate/upcoming-courses', component: UpcomingCoursesComponent },
-  { path: 'candidate/view', component: ViewCandidatesComponent },
+  // Instructor View routes
+  { path: 'view-instructor', component: ViewInstructorComponent }, // Original view
+  { path: 'instructor/view', children: [ // New organized views
+    { path: 'availability', component: ViewByAvailabilityComponent },
+    { path: 'course', component: ViewByCourseComponent },
+    { path: 'details', component: ViewByDetailsComponent }
+  ]},
   
+  // Course Management routes
+  { path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
+  
+  // Fallback route
   { path: '**', redirectTo: 'login' }
 ];
 

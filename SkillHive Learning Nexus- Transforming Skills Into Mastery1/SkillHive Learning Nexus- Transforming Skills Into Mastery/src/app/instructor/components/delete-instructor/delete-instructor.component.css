@@ -1,60 +1,57 @@
 /* Overall container styling */
-.create-instructor-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #A4C6AC; 
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-body {
-  font-family: 'Balsamiq Sans', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #A4C6AC;
-}
-h1 {
-  text-align: center;
-  color: #263339; /* Light green text */
+.delete-instructor-container {
+  margin: 20px;
   font-family: 'Balsamiq Sans', cursive;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-/* Form group styling */
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  color: #263339; /* Light green text */
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #8cb390; /* Green border */
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #f2f9f4; /* Softer green background */
+  background-color: #C2DBC6; /* Light green background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #263339; /* Dark green text */
 }
 
-input:focus {
-  outline: none;
-  border-color: #4caf50; /* Bright green on focus */
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+h1 {
+  text-align: center;
+  color: #263339;
+  font-family: 'Balsamiq Sans', cursive;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: #C1DBC6;
 }
 
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #A4C6AC; /* Medium green */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+th {
+  padding: 15px;
+  text-align: left;
+  background-color: #263339; /* Dark green header */
+  color: #C2DBC6; /* Light green text */
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
-/* Button styling */
+td {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #263339; /* Dark green text */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #C2DBC6; /* Light green */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #A4C6AC; /* Medium green */
+}
+
 /* General Button Styling */
 button {
   padding: 10px 15px;
@@ -124,7 +121,11 @@ button[type="reset"]:hover {
   transform: translateY(-2px);
 }
 
-
-
-
-
+/* Confirmation message styling */
+.confirmation {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #263339;
+  font-weight: bold;
+}

@@ -1,92 +1,72 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-instructor',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, CommonModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './create-instructor.component.html',
-  styleUrls: ['./create-instructor.component.css'],
+  styleUrls: ['./create-instructor.component.css']
 })
 export class CreateInstructorComponent implements OnInit {
-  createInstructorForm: FormGroup; // Form group for managing the instructor form
-  instructors: any[] = []; 
-  editingIndex: number | null = null; 
+  createInstructorForm: FormGroup;
+  profilesApiUrl = 'http://localhost:3000/profiles';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
-    // Initialize the reactive form with validators
     this.createInstructorForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      subject: ['', Validators.required],
+      Area_of_Expertise: ['', Validators.required],
       experience: ['', [Validators.required, Validators.min(1)]],
-      start_date: ['', Validators.required],
-      end_date: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {
-    // Fetch initial instructor data from a JSON file (or an API in a real scenario)
-    this.http.get<any[]>('assets/data/instructors.json').subscribe(
-      (data) => {
-        this.instructors = data;
-      },
-      (error) => {
-        console.error('Error loading instructor data:', error);
-      }
-    );
-  }
+  ngOnInit(): void {}
 
-  /**
-   * Handles form submission for both adding and editing instructors
-   */
   onSubmit(): void {
     if (this.createInstructorForm.valid) {
-      const formData = this.createInstructorForm.value;
+      if (confirm('Are you sure you want to create this instructor?')) {
+        const id = this.generateRandomId();
+        const defaultPassword = this.generateRandomPassword();
 
-      if (this.editingIndex !== null) {
-        // Update existing instructor if in edit mode
-        this.instructors[this.editingIndex] = formData;
-        this.editingIndex = null; // Reset editing index
-        alert('Instructor updated successfully!');
-      } else {
-        // Add a new instructor
-        this.instructors.push({ id: this.instructors.length + 1, ...formData });
-        alert('Instructor added successfully!');
+        const newInstructor = {
+          id: id.toString(),
+          ...this.createInstructorForm.value,
+          role: 'instructor',
+          default_password: defaultPassword
+        };
+
+        this.http.post(this.profilesApiUrl, newInstructor).subscribe(
+          () => {
+            alert('Instructor added successfully!');
+            this.createInstructorForm.reset();
+          },
+          (error) => {
+            console.error('Error adding instructor:', error);
+            alert('Failed to add instructor.');
+          }
+        );
       }
-
-      // Reset the form after submission
-      this.createInstructorForm.reset();
     } else {
-      console.log('Form is invalid');
+      this.createInstructorForm.markAllAsTouched(); // Highlight validation messages
+      alert('Please fill out the form correctly.');
     }
   }
 
-  /**
-   * Loads instructor data into the form for editing
-   */
-  onEdit(index: number): void {
-    const instructor = this.instructors[index];
-    this.createInstructorForm.setValue({
-      name: instructor.name,
-      email: instructor.email,
-      phone: instructor.phone,
-      subject: instructor.subject,
-      experience: instructor.experience,
-    });
-    this.editingIndex = index; // Set the editing index
+  private generateRandomId(): number {
+    return Math.floor(10000 + Math.random() * 90000); // 5-digit random number
   }
 
-  /**
-   * Deletes an instructor from the list
-   */
-  onDelete(index: number): void {
-    if (confirm('Are you sure you want to delete this instructor?')) {
-      this.instructors.splice(index, 1);
-      alert('Instructor deleted successfully!');
+  private generateRandomPassword(): string {
+    const length = 8;
+    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      password += charset.charAt(Math.floor(Math.random() * charset.length));
     }
+    return password;
   }
 }

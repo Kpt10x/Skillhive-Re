@@ -192,101 +192,6 @@
           "startDate": "2024-01-01",
           "endDate": "2024-05-01",
           "id": "3e97"
-        },
-        {
-          "courseId": "2234444",
-          "courseName": "Data Science",
-          "courseCategory": "Data Analytics",
-          "courseDurationInMonths": 6,
-          "instructorName": "Ishani",
-          "startDate": "2024-02-01",
-          "endDate": "2024-08-01",
-          "id": "a47e"
-        },
-        {
-          "courseId": "6238888",
-          "courseName": "Digital Marketing",
-          "courseCategory": "Marketing",
-          "courseDurationInMonths": 3,
-          "instructorName": "Meera Iyer",
-          "startDate": "2024-06-01",
-          "endDate": "2024-09-01",
-          "id": "b63a"
-        },
-        {
-          "courseId": "9242222",
-          "courseName": "Photography Basics",
-          "courseCategory": "Arts",
-          "courseDurationInMonths": 2,
-          "instructorName": "Rohan Gupta",
-          "startDate": "2025-02-01",
-          "endDate": "2025-05-01",
-          "id": "g47c"
-        }
-      ]
-    },
-    {
-      "id": "u03",
-      "name": "Ramya",
-      "email": "ramya@gmail.com",
-      "phone": "9019831137",
-      "password": "Ram@123",
-      "enrolledCourses": [
-        {
-          "courseId": "1233333",
-          "courseName": "Web Development",
-          "courseCategory": "Technology",
-          "courseDurationInMonths": 4,
-          "instructorName": "Tanishq Singh",
-          "startDate": "2024-01-01",
-          "endDate": "2024-05-01",
-          "id": "3e97"
-        },
-        {
-          "courseId": "2234444",
-          "courseName": "Data Science",
-          "courseCategory": "Data Analytics",
-          "courseDurationInMonths": 6,
-          "instructorName": "Ishani",
-          "startDate": "2024-02-01",
-          "endDate": "2024-08-01",
-          "id": "a47e"
-        }
-      ]
-    },
-    {
-      "id": "u04",
-      "name": "Kavya Sree",
-      "email": "kavyasree@gmail.com",
-      "phone": "8907654321",
-      "password": "Kavya@123"
-    },
-    {
-      "id": "u05",
-      "name": "Dhyrya",
-      "email": "dhyrya@gmail.com",
-      "phone": "9019831137",
-      "password": "090909",
-      "enrolledCourses": [
-        {
-          "courseId": "2234444",
-          "courseName": "Data Science",
-          "courseCategory": "Ishani",
-          "courseDurationInMonths": 6,
-          "instructorName": "Ananya Sharma",
-          "startDate": "2025-02-01",
-          "endDate": "2025-08-01",
-          "id": "a47e"
-        },
-        {
-          "courseId": "5237777",
-          "courseName": "Cyber Security",
-          "courseCategory": "Technology",
-          "courseDurationInMonths": 4,
-          "instructorName": "Arjun Nair",
-          "startDate": "2025-05-01",
-          "endDate": "2025-09-01",
-          "id": "f29b"
         }
       ]
     }
@@ -297,87 +202,96 @@
       "courseName": "Web Development",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
-      "instructorName": "Tanishq Singh",
+      "instructorId": 95133,
       "startDate": "2024-01-01",
-      "endDate": "2024-05-01"
+      "endDate": "2024-05-01",
+      "id": "7d43"
     },
     {
-      "courseId": "2234444",
+      "courseId": "22344",
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
+      "instructorId": 80471,
       "startDate": "2024-02-01",
-      "endDate": "2024-08-01"
+      "endDate": "2024-08-01",
+      "id": "0e13"
     },
     {
-      "courseId": "3235555",
+      "courseId": "32355",
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructorName": "Rohan Verma",
+      "instructorId": 30371,
       "startDate": "2024-03-01",
-      "endDate": "2024-06-01"
+      "endDate": "2024-06-01",
+      "id": "f63b"
     },
     {
-      "courseId": "123444",
-      "courseName": "mongo db",
+      "courseId": "12344",
+      "courseName": "Mongo DB",
       "courseCategory": "Data Science",
-      "courseDuration": "3months",
-      "instructorName": "jiss",
+      "courseDuration": "3 months",
+      "instructorId": 57344,
       "startDate": "2024-12-19",
       "endDate": "2025-02-19",
-      "assignmentDate": "2025-03-01"
+      "assignmentDate": "2025-03-01",
+      "id": "e578"
     },
     {
-      "courseId": "1234",
-      "courseName": "web development",
-      "courseCategory": "Web Development",
-      "courseDuration": "2months",
-      "instructorName": "prathyusha",
-      "startDate": "2024-12-20",
-      "endDate": "2025-02-20",
-      "assignmentDate": "2025-03-01"
-    },
-    {
-      "courseId": "4321",
+      "courseId": "43231",
       "courseName": "AI",
       "courseCategory": "Data Analysis",
-      "courseDuration": "2months",
-      "instructorName": " Prof Prathyusha",
+      "courseDuration": "2 months",
+      "instructorId": 57523,
       "startDate": "2024-12-21",
       "endDate": "2025-02-23",
-      "assignmentDate": "2025-02-01"
+      "assignmentDate": "2025-02-01",
+      "id": "6b74"
     },
     {
-      "courseId": "1234",
-      "courseName": "web development",
+      "courseId": "68442",
+      "courseName": "Web Development",
       "courseCategory": "Web Development",
-      "courseDuration": "2months",
-      "instructorName": "prathyusha",
-      "startDate": "2024-12-22",
-      "endDate": "2025-02-22",
-      "assignmentDate": "2025-03-01"
+      "courseDuration": "2 months",
+      "instructorId": 58675,
+      "startDate": "2024-12-20",
+      "endDate": "2025-02-20",
+      "assignmentDate": "2025-03-01",
+      "id": "5819"
     },
     {
       "courseId": "12345",
-      "courseName": "web development",
+      "courseName": "Web Development",
       "courseCategory": "Web Development",
-      "courseDuration": "2",
-      "instructorName": " Prof Prathyusha",
+      "courseDuration": "2 months",
+      "instructorId": 86543,
       "startDate": "2024-12-22",
       "endDate": "2025-02-22",
-      "assignmentDate": "2025-03-01"
+      "assignmentDate": "2025-03-01",
+      "id": "6ea7"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "95133",
+      "name": "Sujatha Sharma",
+      "email": "sujatha45@gmail.com",
+      "phone": "1234567890",
+      "Area_of_Expertise": "Angular",
+      "Experience": "10",
+      "role": "instructor",
+      "default_password": "KwKzEtQy"
     },
     {
-      "courseId": "4321",
-      "courseName": "AI",
-      "courseCategory": "Data Analysis",
-      "courseDuration": "2months",
-      "instructorName": "Aarav",
-      "startDate": "2024-01-15",
-      "endDate": "2024-03-15",
-      "assignmentDate": "2024-02-15"
+      "id": "66534",
+      "name": "Saleem",
+      "email": "saleem@gmail.com",
+      "phone": "8769376846",
+      "Area_of_Expertise": "Data Science",
+      "experience": 4,
+      "role": "instructor",
+      "default_password": "VBmKmAly"
     }
   ]
 }

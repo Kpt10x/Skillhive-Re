@@ -1,0 +1,50 @@
+<div class="view-all-container">
+  <h1>View All Instructors</h1>
+  <input
+    type="text"
+    placeholder="Search by name, email, or phone"
+    [(ngModel)]="searchQuery"
+    (input)="filterByDetails()"
+  />
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Instructor</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instructor of filteredInstructors">
+        <td>{{ instructor.id }}</td>
+        <td>{{ instructor.name }}</td>
+        <td>{{ instructor.email }}</td>
+        <td>{{ instructor.phone }}</td>
+        <td>
+          <button class="btn btn-edit" aria-label="Edit" (click)="editInstructor(instructor)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Form -->
+  <div *ngIf="isEditing" class="edit-form">
+    <h2>Edit Instructor</h2>
+    <label>
+      Name:
+      <input type="text" [(ngModel)]="selectedInstructor.name" />
+    </label>
+    <label>
+      Email:
+      <input type="email" [(ngModel)]="selectedInstructor.email" />
+    </label>
+    <label>
+      Phone:
+      <input type="text" [(ngModel)]="selectedInstructor.phone" />
+    </label>
+    <button class="btn btn-save" (click)="updateInstructor()">Save</button>
+    <button class="btn btn-cancel" (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>
