@@ -1,0 +1,53 @@
+
+<body>
+<div class="create-course-container">
+    <h1>Create a New Course</h1>
+    <form id="courseForm">
+        <div class="form-group">
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" name="courseName" required>
+        </div>
+        <div class="form-group">
+            <label for="courseId">Course ID:</label>
+            <input type="text" id="courseId" name="courseId" required pattern="[A-Za-z0-9]{5,10}" title="Course ID should be 5-10 alphanumeric characters." readonly>
+            <button type="button" id="generateCourseId" onclick="generateCourseId()">Generate Course ID</button>
+        </div>
+        <div class="form-group">
+            <label for="courseCategory">Course Category:</label>
+            <select id="courseCategory" name="courseCategory" required>
+                <option value="">Select a category</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Graphic Designing">Graphic Designing</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="Data Science">Data Science</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="courseDurationMonths">Course Duration (in months):</label>
+            <input type="number" id="courseDurationMonths" name="courseDurationMonths" required min="1" max="24" title="Duration should be between 1 and 24 months.">
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="instructorName">Instructor Name:</label>
+            <select id="instructorName" name="instructorName" required>
+                <option value="">Select an instructor</option>
+                <!-- Dynamically populated -->
+            </select>
+            <button type="button" id="checkAvailability" onclick="filterInstructors()">Check Availability</button>
+        </div>
+        <div class="form-group">
+            <label for="assignmentDate">Assignment Date:</label>
+            <input type="date" id="assignmentDate" name="assignmentDate" required>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" onclick="window.location.href='/'">Cancel</button>
+    </form>
+</div>
+
