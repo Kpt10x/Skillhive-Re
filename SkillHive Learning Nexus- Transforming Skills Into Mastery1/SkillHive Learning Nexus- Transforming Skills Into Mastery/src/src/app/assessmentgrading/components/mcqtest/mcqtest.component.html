@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCQ Test (Set-1)</title>
-    <link rel="stylesheet" href="mcqStyles.css">
+    <link rel="stylesheet" href="./mcqtest.component.css">
 </head>
 <body>
+    <!-- Overlay to darken the background -->
+    <div id="overlay"></div>
+
+    <!-- Custom modal pop-up -->
+    <div id="fullscreen-modal">
+        <p>Click OK to take the test in Full screen mode.</p>
+        <button id="fullscreen-btn">OK</button>
+    </div>
 
     <div class="quiz-container">
         <header>
             <div class="quiz-header">
                 <div class="left-section">
-                    
                     <h1> Python Test</h1>
                 </div>
                 <div class="right-section">
@@ -79,9 +86,6 @@
             </div>
         </footer>
     </div>
-
-    <script src="../Service/script1.js"></script>
-
-
+    <script src="../../Service/script1.js"></script>
 </body>
 </html>

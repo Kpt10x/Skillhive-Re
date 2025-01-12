@@ -4,67 +4,67 @@
         "id": "P0001",
         "name": "Python for Beginners level-1",
         "status": "Ended",
-        "logo": "assets/python-logo.png"
+        "logo": "../../assets/python-logo.png"
       },
       {
         "id": "P0011",
         "name": "Python for Beginners level-2",
         "status": "Live",
-        "logo": "assets/python-logo.png"
+        "logo": "../../assets/python-logo.png"
       },
       {
         "id": "P0021",
         "name": "Python for Beginners level-3",
         "status": "Live",
-        "logo": "assets/python-logo.png"
+        "logo": "../../assets/python-logo.png"
       },
       {
         "id": "J0001",
         "name": "Java for Beginners",
         "status": "Live",
-        "logo": "assets/java-logo.png"
+        "logo": "../../assets/java-logo.png"
       },
       {
         "id": "S0001",
         "name": "MySQL for Beginners",
         "status": "Live",
-        "logo": "assets/mysql-logo (2).png"
+        "logo": "../../assets/mysql-logo (2).png"
       },
       {
         "id": "P0002",
         "name": "Python (Intermediate)",
         "status": "Upcoming",
-        "logo": "assets/python-logo.png"
+        "logo": "../../assets/python-logo.png"
       },
       {
         "id": "J0002",
         "name": "Java (Intermediate)",
         "status": "Upcoming",
-        "logo": "assets/java-logo.png"
+        "logo": "../../assets/java-logo.png"
       },
       {
         "id": "S0002",
         "name": "MySQL (Intermediate)",
         "status": "Upcoming",
-        "logo": "assets/mysql-logo (2).png"
+        "logo": "../../assets/mysql-logo (2).png"
       },
       {
         "id": "H0001",
         "name": "HTML in OneShot",
         "status": "Ended",
-        "logo": "assets/html-logo.png"
+        "logo": "../../assets/html-logo.png"
       },
       {
         "id": "C0001",
         "name": "CSS in OneShot",
         "status": "Ended",
-        "logo": "assets/css-logo.png"
+        "logo": "../../assets/css-logo.png"
       },
       {
         "id": "JS0001",
         "name": "JavaScript in OneShot",
         "status": "Ended",
-        "logo": "assets/js-logo.png"
+        "logo": "../../assets/js-logo.png"
       }
     ]
   }

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Containers Layout</title>
-    <link rel="stylesheet" href="../Components/styles.css">
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -15,30 +14,30 @@
             </div>
             <div class="menu-container">
                 <div class="menu-item">
-                    <img src="../Components/assets/home-icon.png" alt="Home Icon" class="menu-icon">
+                    <img src="../assets/home-icon.png" alt="Home Icon" class="menu-icon">
                     Home
                 </div>
                 <div class="menu-item">
-                    <img src="../Components/assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
+                    <img src="../assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
                     My Courses
                 </div>
                 <div class="menu-item">
-                    <a href="../Components/mainpage.html" style="text-decoration: none; color: inherit;">
-                    <img src="../Components/assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
+                    <a href="mainpage.html" style="text-decoration: none; color: inherit;">
+                    <img src="../assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
                     Assessments
                 </a>
                 </div>
                 <div class="menu-item">
-                    <img src="../Components/assets/marksheet-icon.png" alt="Marksheet Icon" class="menu-icon">
+                    <img src="../assets/marksheet-icon.png" alt="Marksheet Icon" class="menu-icon">
                     Marksheet
                 </div>
             <div class="bottom-menu-container">
                     <div class="menu-item">
-                        <img src="../Components/assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
+                        <img src="../assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
                         User Name
                     </div>
                     <div class="menu-item">
-                        <img src="../Components/assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
+                        <img src="../assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
                         Logout
                     </div>
                 </div>
@@ -48,15 +47,15 @@
             <!-- Test Details Card -->
             <div class="test-card">
                 <div class="card-header">
-                <img src="../Components/assets/python-logo.png" alt="Test Logo" class="card-logo">
+                <img src="../assets/python-logo.png" alt="Test Logo" class="card-logo">
                 <h2 class="card-heading">Python for Beginners (#P0001)</h2>
                 </div>
                 <div class="card-info">
-                    <p><strong>Active Test Window:</strong> 02-01-2025 (12:00:00 PM) to 05-01-2025 (12:00:00 AM)</p>
+                    <p><strong>Active Test Window:</strong> 13-01-2025 (12:00:00 PM) to 15-01-2025 (12:00:00 AM)</p>
                     <p><strong>Duration:</strong> 30 Minutes</p>
                     <p><strong>Number of Questions:</strong> 25</p>
                 </div>
-                <h3 class="instructions-heading">*Instructions*</h3>
+                <h3 class="instructions-heading">Instructions</h3>
                 <hr class="instruction-line">
                 <p class="card-description">
                     <ul class="instruction-list">
@@ -82,8 +81,8 @@ const checkbox = document.getElementById('acknowledge');
 const startButton = document.getElementById('startTestButton');
 
 // Assessment start and end dates
-const assessmentStartDate = new Date('2025-01-02T12:00:00');
-const assessmentEndDate = new Date('2025-01-05T12:00:00');
+const assessmentStartDate = new Date('2025-01-13T12:00:00');
+const assessmentEndDate = new Date('2025-01-15T12:00:00');
 
 // Listen for changes on the checkbox
 checkbox.addEventListener('change', function() {
@@ -96,21 +95,19 @@ checkbox.addEventListener('change', function() {
     }
 });
 
+// Listen for the click event on the Start Test button
 startButton.addEventListener('click', function() {
     const now = new Date();
 
     if (now < assessmentStartDate) {
-        alert('The assessment is available from January 2 to January 5, 2025. Please try again later.');
+        alert('The assessment is available from January 13 to January 15, 2025. Please try again later.');
     } else if (now > assessmentEndDate) {
         alert('The assessment period is over. You can no longer access the test.');
     } else {
-        
-        window.location.href = '../Components/Mcq-test.html'; 
+        window.location.href = '../mcqtest/mcqtest.component.html'; 
     }
 });
 
-
     </script>
-    <!-- <script src="script.js"></script> -->
 </body>
 </html>

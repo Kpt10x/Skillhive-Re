@@ -1,16 +1,13 @@
-
-//js for mcq-test
-
 let currentQuestion = 1;
 let questions = [];
 let answers = new Map();
 let markedForReview = new Set();
 let visitedQuestions = new Set();
-let timeLeft = 30; 
+let timeLeft = 300; 
 let timer;
 
 // Load questions from JSON
-fetch('../Service/utils/db.json')
+fetch('../../Service/utils/db.json')
     .then(response => response.json())
     .then(data => {
         questions = data.questions;
@@ -79,16 +76,14 @@ function displayQuestion(questionNumber) {
 function markQuestionAsVisited(questionNumber) {
     visitedQuestions.add(questionNumber);
     updateStats();
-    updateSubmitButtonState(); // Check if all questions are visited
+    updateSubmitButtonState();
 }
 
 function selectOption(questionNumber, optionIndex) {
-    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-    document.querySelectorAll('.option')[optionIndex].classList.add('selected');
     answers.set(questionNumber, optionIndex);
     updateStats();
     updateQuestionGridStatus();
-    updateSubmitButtonState(); // Enable Submit Button if all questions are visited
+    updateSubmitButtonState();
 }
 
 function initializeQuestionGrid() {
@@ -115,7 +110,7 @@ function updateQuestionGridStatus() {
 
         if (questionNumber === currentQuestion) {
             button.classList.add('current');
- } else if (answers.has(questionNumber)) {
+        } else if (answers.has(questionNumber)) {
             button.classList.add('answered');
         } else if (markedForReview.has(questionNumber)) {
             button.classList.add('marked');
@@ -151,7 +146,7 @@ function startTimer() {
         timeLeft--;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            autoSubmitQuiz(); // Auto submit quiz when timer runs out
+            autoSubmitQuiz();
         }
         updateTimerDisplay();
     }, 1000);
@@ -168,12 +163,11 @@ function updateTimerDisplay() {
 
 function updateSubmitButtonState() {
     const submitButton = document.getElementById('submit-quiz');
-    
     if (visitedQuestions.size === 25) {
-        submitButton.disabled = false; // Enable Submit button
+        submitButton.disabled = false;
         submitButton.style.cursor = 'pointer'; 
     } else {
-        submitButton.disabled = true; // Disable Submit button
+        submitButton.disabled = true;
         submitButton.style.cursor = 'not-allowed'; 
     }
 }
@@ -193,6 +187,19 @@ function setupEventListeners() {
         }
     });
 
+    document.getElementById('mark-review').addEventListener('click', () => {
+        markedForReview.add(currentQuestion);
+        if (currentQuestion < 25) {
+            navigateToQuestion(currentQuestion + 1);
+        }
+        updateQuestionGridStatus();
+    });
+
+    document.getElementById('clear-response').addEventListener('click', () => {
+        answers.delete(currentQuestion);
+        displayQuestion(currentQuestion);
+    });
+
     document.getElementById('submit-quiz').addEventListener('click', () => {
         if (confirm('Are you sure you want to submit the test?')) {
             alert('Your test has been submitted successfully!');
@@ -202,27 +209,77 @@ function setupEventListeners() {
 }
 
 function submitQuiz() {
-    const submitButton = document.getElementById('submit-quiz');
-    submitButton.disabled = true;
-    submitButton.style.cursor = 'not-allowed'; 
-
     clearInterval(timer);
     let score = 0;
     let totalMarks = questions.length;
     let correctAnswers = 0;
-    let notAttempted = 0;
+    let notAttempted = totalMarks - answers.size;
 
     answers.forEach((answer, questionNumber) => {
         const question = questions[questionNumber - 1];
-        if (question) {
-            if (answer === question.correctAnswer) {
-                score++;
-                correctAnswers++;
-            }
+        if (question && answer === question.correctAnswer) {
+            score++;
+            correctAnswers++;
         }
     });
 
-    notAttempted = totalMarks - answers.size;
-
-    window.location.href = `../Models/results.html?score=${score}&totalMarks=${totalMarks}&totalQuestions=${totalMarks}&correctAnswers=${correctAnswers}&notAttempted=${notAttempted}`;
+    window.location.href = `../../Models/results.html?score=${score}&totalMarks=${totalMarks}&totalQuestions=${totalMarks}&correctAnswers=${correctAnswers}&notAttempted=${notAttempted}`;
 }
+window.onload = function () {
+    const modal = document.getElementById('fullscreen-modal');
+    const overlay = document.getElementById('overlay');
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const submitQuizBtn = document.getElementById('submit-quiz'); // Reference to submit button
+
+    // Function to enter fullscreen mode
+    function enterFullscreen() {
+        alert("Warning: Exiting fullscreen mode will automatically submit your test!");
+        const element = document.documentElement;
+        if (element.requestFullscreen) {
+            element.requestFullscreen(); // Chrome, Firefox, Edge
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen(); // Safari
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen(); // Internet Explorer/Edge
+        }
+    }
+
+    // Function to submit the test
+    function submitTest() {
+        alert("You have exited fullscreen mode. Your test is being submitted.");
+        submitQuiz(); // Simulate clicking the submit button
+    }
+
+    // Initial fullscreen entry via button click
+    fullscreenBtn.addEventListener('click', () => {
+        enterFullscreen(); // Enter fullscreen
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+        
+    });
+
+    // Detect fullscreen exit and submit the test
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            submitTest(); // Automatically submit the test if fullscreen is exited
+        }
+    });
+
+    // Prevent exiting fullscreen using ESC key and submit test
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") {
+            e.preventDefault(); // Block ESC key action
+            submitTest(); // Submit the test
+        }
+    });
+
+    // Detect tab switching or minimize and submit the test
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            submitQuiz(); // Submit the test
+        }
+    });  
+};
