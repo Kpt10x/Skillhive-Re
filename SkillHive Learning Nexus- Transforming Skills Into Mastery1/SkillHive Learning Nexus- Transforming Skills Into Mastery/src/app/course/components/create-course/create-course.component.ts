@@ -1,25 +1,67 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { CourseService } from '../../services/course_service'; // Import the CourseService
 
 @Component({
   selector: 'app-create-course',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule, HttpClientModule,ReactiveFormsModule], // Add HttpClientModule here
   templateUrl: './create-course.component.html',
   styleUrls: ['./create-course.component.css'],
 })
-export class CreateCourseComponent {
+export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
-  instructors = [
-    { name: 'John Doe', availability: [['2025-05-01', '2025-09-01']] },
-    { name: 'Jane Smith', availability: [['2024-03-01', '2024-04-15']] },
-    { name: 'Emily Davis', availability: [['2024-02-10', '2024-03-20']] },
-  ];
-  filteredInstructors: string[] = [];
+  instructors: any[] = [];
+  filteredInstructors: any[] = [];
 
-  constructor(private fb: FormBuilder) {
+  // Hardcoded instructor data
+  private instructorData = [
+    {
+      Instructor: "John Doe",
+      start_date: "2025-01-01",
+      end_date: "2025-06-30"
+    },
+    {
+      Instructor: "Jane Smith",
+      start_date: "2025-07-01",
+      end_date: "2025-12-31"
+    },
+    {
+      Instructor: "Alice Johnson",
+      start_date: "2025-01-15",
+      end_date: "2025-05-15"
+    },
+    {
+      Instructor: "Bob Brown",
+      start_date: "2025-03-01",
+      end_date: "2025-09-30"
+    },
+    {
+      Instructor: "Charlie Black",
+      start_date: "2025-02-01",
+      end_date: "2025-04-30"
+    },
+    {
+      Instructor: "Diana White",
+      start_date: "2025-05-01",
+      end_date: "2025-11-30"
+    },
+    {
+      Instructor: "Ethan Green",
+      start_date: "2025-08-01",
+      end_date: "2025-12-31"
+    },
+    {
+      Instructor: "Fiona Blue",
+      start_date: "2025-01-01",
+      end_date: "2025-03-31"
+    }
+  ];
+
+  constructor(private fb: FormBuilder, private courseService: CourseService) {
     this.createCourseForm = this.fb.group({
       courseName: ['', [Validators.required, Validators.minLength(3)]],
       courseId: ['', [Validators.required, Validators.pattern('[A-Za-z0-9]{5,10}')]],
@@ -32,48 +74,54 @@ export class CreateCourseComponent {
     });
   }
 
-  filterInstructors() {
-    const startDate = this.createCourseForm.get('startDate')?.value;
-    const endDate = this.createCourseForm.get('endDate')?.value;
+  ngOnInit(): void {
+    // Use hardcoded data instead of fetching from JSON
+    this.instructors = this.instructorData;
+    this.filteredInstructors = this.instructors; // Initially show all instructors
+  }
 
+  filterByAvailability(): void {
+    const startDate = new Date(this.createCourseForm.get('startDate')?.value);
+    const endDate = new Date(this.createCourseForm.get('endDate')?.value);
+
+    // Check if both dates are valid
     if (startDate && endDate) {
-      this.filteredInstructors = this.instructors
-        .filter((instructor) =>
-          instructor.availability.some(
-            (range) =>
-              new Date(startDate) >= new Date(range[0]) && new Date(endDate) <= new Date(range[1])
-          )
-        )
-        .map((instructor) => instructor.name);
-
-      if (this.filteredInstructors.length === 0) {
-        alert('No instructors are available for the selected dates.');
-      }
+      this.filteredInstructors = this.instructors.filter((instructor) => {
+        const instructorStartDate = new Date(instructor.start_date);
+        const instructorEndDate = new Date(instructor.end_date);
+        return (
+          instructorStartDate <= endDate && instructorEndDate >= startDate
+        );
+      });
     } else {
-      alert('Please select both start and end dates.');
+      // If dates are not valid, show all instructors
+      this.filteredInstructors = this.instructors;
     }
   }
 
   onSubmit() {
     if (this.createCourseForm.valid) {
-      console.log('Form Submitted:', this.createCourseForm.value);
+      const courseData = this.createCourseForm.value;
+
+      // Save course data using the CourseService
+      this.courseService.saveCourse(courseData).subscribe(
+        response => {
+          console.log('Course saved successfully:', response);
+          alert('Course details saved successfully!'); // Show success message
+          this.createCourseForm.reset ();
+        },
+        error => {
+          console.error('Error saving course:', error);
+          alert('There was an error saving the course details.'); // Show error message
+        }
+      );
     } else {
-      console.log('Form is invalid');
+      alert('Please fill in all required fields correctly.'); // Show validation error message
     }
   }
-
   cancel() {
-    this.createCourseForm.reset();
-    this.filteredInstructors = [];
+    // Logic to handle cancellation, e.g., reset the form or navigate away
+    this.createCourseForm.reset(); // Reset the form
+    // Optionally, navigate to another route or perform other actions
   }
 }
-function generateCourseId(): void {
-    const length: number = Math.floor(Math.random() * (10 - 5 + 1)) + 5; // Random length between 5 and 10
-    const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let courseId: string = '';
-    for (let i = 0; i < length; i++) {
-        courseId += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    (document.getElementById('courseId') as HTMLInputElement).value = courseId;
-}
-
