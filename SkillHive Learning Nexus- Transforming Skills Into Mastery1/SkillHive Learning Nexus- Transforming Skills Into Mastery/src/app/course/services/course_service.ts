@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root', // Makes the service globally available
 })
 export class CourseService {
-  private apiUrl = 'http://localhost:3000/api/courses';
+  private apiUrl = 'http://localhost:3000/courses';
 
   constructor(private http: HttpClient) {}
 
@@ -20,5 +20,5 @@ export class CourseService {
 
   deleteCourse(courseId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${courseId}`);
-  }
+  }
 }

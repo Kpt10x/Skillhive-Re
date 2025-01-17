@@ -1,0 +1,81 @@
+<div class="filter-options">
+    <button (click)="setFilter('all')">All</button>
+    <button (click)="setFilter('open')">Open</button>
+    <button (click)="setFilter('closed')">Closed</button>
+    <button (click)="setFilter('upcoming')">Upcoming</button>
+  </div>
+  <div class="course-list">
+    <div *ngFor="let course of filteredCourses" class="course-item">
+      <h3>{{ course.name }}</h3>
+      <p>Status: {{ course.status }}</p>
+      <p>Description: {{ course.description }}</p>
+    </div>
+  </div>
+<!-- Table -->
+  <table class="course-table">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Category</th>
+            <th>Course Name</th>
+            <th>Trainer Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>No. of Enrollments</th>
+            <th>Seats Left</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C101</td>
+            <td>Data Science</td>
+            <td>Introduction to Big Data</td>
+            <td>Example Trainer</td>
+            <td>2024-01-15</td>
+            <td>2024-03-15</td>
+            <td>25</td>
+            <td>5</td>
+            <td>Open</td>
+            <td>
+                <button class="edit-course-btn">Edit</button>
+                <button class="save-course-btn hidden">Save</button>
+                <button class="delete-course-btn hidden">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>C102</td>
+            <td>Web Development</td>
+            <td>Frontend Basics</td>
+            <td>Example Trainer</td>
+            <td>2023-09-01</td>
+            <td>2023-12-01</td>
+            <td>30</td>
+            <td>0</td>
+            <td>Closed</td>
+            <td>
+                <button class="edit-course-btn">Edit</button>
+                <button class="save-course-btn hidden">Save</button>
+                <button class="delete-course-btn hidden">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>C103</td>
+            <td>AI</td>
+            <td>Machine Learning 101</td>
+            <td>Another Trainer</td>
+            <td>2024-06-01</td>
+            <td>2024-08-01</td>
+            <td>0</td>
+            <td>20</td>
+            <td>Upcoming</td>
+            <td>
+                <button class="edit-course-btn">Edit</button>
+                <button class="save-course-btn hidden">Save</button>
+                <button class="delete-course-btn hidden">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script src ="./backend.js"></script>

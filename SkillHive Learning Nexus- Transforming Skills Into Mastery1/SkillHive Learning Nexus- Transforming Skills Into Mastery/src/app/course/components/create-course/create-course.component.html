@@ -1,46 +1,107 @@
-<div class="create-course-container">
-    <h1>Create a New Course</h1>
-    <form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Course</title>
+    <link rel="stylesheet" href="create-course.component.css" />
+    <!-- Update with the correct path to your CSS file -->
+  </head>
+  <body>
+    <div class="create-course-container">
+      <h1>Create New Course</h1>
+      <form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+        <!-- Course Name -->
         <div class="form-group">
-            <label for="courseName">Course Name:</label>
-            <input type="text" id="courseName" formControlName="courseName" required>
+          <label for="courseName">Course Name:</label>
+          <input
+            type="text"
+            id="courseName"
+            formControlName="courseName"
+            placeholder="Enter Course Name"
+            required
+          />
         </div>
+        <!-- Course Category -->
         <div class="form-group">
-            <label for="courseCategory">Course Category:</label>
-            <select id="courseCategory" formControlName="courseCategory" required>
-                <option value="">Select a category</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Graphic Designing">Graphic Designing</option>
-                <option value="Data Analytics">Data Analytics</option>
-                <option value="Data Science">Data Science</option>
-            </select>
+          <label for="courseCategory">Course Category:</label>
+          <select id="courseCategory" formControlName="courseCategory" required>
+            <option value="">Select a category</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Graphic Designing">Graphic Designing</option>
+            <option value="Data Analytics">Data Analytics</option>
+            <option value="Data Science">Data Science</option>
+          </select>
         </div>
+        <!-- Course Duration -->
         <div class="form-group">
-            <label for="courseDurationMonths">Course Duration (in months):</label>
-            <input type="number" id="courseDurationMonths" formControlName="courseDurationMonths" required min="1" max="24" title="Duration should be between 1 and 24 months.">
+          <label for="courseDurationMonths">Course Duration (in months):</label>
+          <input
+            type="number"
+            id="courseDurationMonths"
+            formControlName="courseDurationMonths"
+            placeholder="Enter Course Duration"
+            required
+            min="1"
+            max="24"
+            title="Duration should be between 1 and 24 months."
+          />
         </div>
+        <!-- Start Date -->
         <div class="form-group">
-            <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" formControlName="startDate" (change)="filterByAvailability()" required>
+          <label for="startDate">Start Date:</label>
+          <input
+            type="date"
+            id="startDate"
+            formControlName="startDate"
+            (change)="filterByAvailability()"
+            required
+          />
         </div>
+        <!-- End Date -->
         <div class="form-group">
-            <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" formControlName="endDate" (change)="filterByAvailability()" required>
+          <label for="endDate">End Date:</label>
+          <input
+            type="date"
+            id="endDate"
+            formControlName="endDate"
+            (change)="filterByAvailability()"
+            required
+          />
         </div>
+        <!-- Instructor Name -->
         <div class="form-group">
-            <label for="instructorName">Instructor Name:</label>
-            <select id="instructorName" formControlName="instructorName" required>
-                <option value="">Select an instructor</option>
-                <option *ngFor="let instructor of filteredInstructors" [value]="instructor.Instructor">
-                    {{ instructor.Instructor }}
-                </option>
-            </select>
+          <label for="instructorName">Instructor Name</label>
+          <select formControlName="instructorName" id="instructorName">
+            <option value="" disabled selected>
+              Select an instructor's name
+            </option>
+            <option
+              *ngFor="let instructor of filteredInstructors"
+              [value]="instructor.name"
+            >
+              {{ instructor.name }}
+            </option>
+          </select>
         </div>
+        <!-- Assignment Date -->
         <div class="form-group">
-            <label for="assignmentDate">Assignment Date:</label>
-            <input type="date" id="assignmentDate" formControlName="assignmentDate" required>
+          <label for="assignmentDate">Assignment Date:</label>
+          <input
+            type="date"
+            id="assignmentDate"
+            formControlName="assignmentDate"
+            required
+          />
         </div>
-        <button type="submit" [disabled]="createCourseForm.invalid">Submit</button>
+        <!-- Submit and Cancel Buttons -->
+        <button type="submit" [disabled]="createCourseForm.invalid">
+          Submit
+        </button>
         <button type="button" (click)="cancel()">Cancel</button>
-    </form>
-</div>
+      </form>
+    </div>
+    <script src="path/to/your/angular-app.js"></script>
+    <!-- Update with the correct path to your Angular app -->
+  </body>
+</html>

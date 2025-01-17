@@ -17,9 +17,11 @@ import { LoginComponent } from './authentication/components/login/login.componen
 //import { HomeComponent } from './authentication/components/home/home.component';
 import { AdminDashboardComponent } from './authentication/components/admin-dashboard/admin-dashboard.component';
 import { CreateCourseComponent } from './course/components/create-course/create-course.component';
+import { ManageCourseInstructorComponent } from './course/components/managecourse/managecourse.component';
+import { AdminveiwComponent } from './course/components/adminveiw/adminveiw.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'create-instructor', pathMatch: 'full' },
+  { path: '', redirectTo: 'app-adminveiw', pathMatch: 'full' },
   
   // Authentication routes
   { path: 'login', component: LoginComponent },
@@ -44,6 +46,8 @@ export const routes: Routes = [
 
   //course module 
   { path: 'create-course', component: CreateCourseComponent},
+  {path : 'manage-course', component: ManageCourseInstructorComponent},
+  {path: 'app-adminveiw', component: AdminveiwComponent},
   // Fallback route
   { path: '**', redirectTo: 'login' }
 ];

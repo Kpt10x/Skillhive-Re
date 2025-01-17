@@ -7,8 +7,8 @@ import { NgSwitchCase } from '@angular/common';
   selector: 'app-manage-course-instructor',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './manage-course.component.html',
-  styleUrls: ['./manage-course.component.css']
+  templateUrl: './managecourse.component.html',
+  styleUrls: ['./managecourse.component.css']
 })
 export class ManageCourseInstructorComponent {
   selectedStatus: string = ''; // To hold the selected status
