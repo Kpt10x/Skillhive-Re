@@ -16,7 +16,10 @@ import { RouterModule } from '@angular/router';
 export class UpcomingCoursesComponent implements OnInit {
   courses: any[] = [];
   user: Candidate | null = null;
+  enrolledCourses: any[] = [];
   filteredCourses: any[] = [];
+  isCoursesDropdownVisible = false;
+
 
   constructor(
     private http: HttpClient,
@@ -58,23 +61,26 @@ export class UpcomingCoursesComponent implements OnInit {
           const tomorrow = new Date(today);
           tomorrow.setDate(today.getDate() + 1);
 
-          if (this.user && Array.isArray(this.user.enrolledCourses)) {
-            const enrolledCourseIds = this.user.enrolledCourses.map(
-              (course: any) => course.courseId
-            );
-            this.filteredCourses = this.courses.filter(
-              (course) =>
-                !enrolledCourseIds.includes(course.courseId) &&
-                new Date(course.startDate) >= tomorrow &&
-                new Date(course.endDate) >= today
-            );
-          } else {
-            this.filteredCourses = this.courses.filter(
-              (course) =>
-                new Date(course.startDate) >= tomorrow &&
-                new Date(course.endDate) >= today
-            );
-          }
+          // Fetch enrolled courses from the backend
+          this.http.get(`http://localhost:3000/courses-enrolled-by-candidates?candidateId=${this.user?.id}`)
+            .subscribe({
+              next: (enrolledData: any) => {
+                if (Array.isArray(enrolledData)) {
+                  this.enrolledCourses = enrolledData;
+
+                  // Filter out courses the candidate has already enrolled in
+                  this.filteredCourses = this.courses.filter(
+                    (course) =>
+                      !this.enrolledCourses.some((enrolledCourse: any) => enrolledCourse.courseId === course.courseId) &&
+                      new Date(course.startDate) >= tomorrow &&
+                      new Date(course.endDate) >= today
+                  );
+                }
+              },
+              error: (err) => {
+                console.error('Error fetching enrolled courses:', err);
+              }
+            });
         }
       });
   }
@@ -85,15 +91,12 @@ export class UpcomingCoursesComponent implements OnInit {
       return;
     }
 
-    if (!Array.isArray(this.user.enrolledCourses)) {
-      this.user.enrolledCourses = [];
-    }
-
-    const isAlreadyEnrolled = this.user.enrolledCourses.some(
+    // Check if the candidate has already enrolled in the course
+    const alreadyEnrolled = this.enrolledCourses.some(
       (enrolledCourse: any) => enrolledCourse.courseId === course.courseId
     );
 
-    if (isAlreadyEnrolled) {
+    if (alreadyEnrolled) {
       alert('You are already enrolled in this course.');
       return;
     }
@@ -107,21 +110,38 @@ export class UpcomingCoursesComponent implements OnInit {
       return;
     }
 
-    this.user.enrolledCourses.push(course);
+    const enrollmentData = {
+      id: this.generateSessionId(),
+      candidateId: this.user.id,
+      courseId: course.courseId,
+      courseName: course.courseName,
+      courseCategory: course.courseCategory,
+      courseDurationInMonths: course.courseDurationInMonths,
+      instructorName: course.instructorName,
+      startDate: course.startDate,
+      endDate: course.endDate,
+    };
 
-    const updatedCandidate = { ...this.user };
-    this.candidateService.updateCandidate(this.user.id, updatedCandidate).subscribe({
-      next: () => {
-        alert('Enrolled successfully!');
-        this.filteredCourses = this.filteredCourses.filter(
-          (c) => c.courseId !== course.courseId
-        );
-      },
-      error: (err) => {
-        console.error('Error updating candidate:', err);
-        alert('Failed to enroll. Please try again.');
-      },
-    });
+    this.http.post('http://localhost:3000/courses-enrolled-by-candidates', enrollmentData)
+      .subscribe({
+        next: () => {
+          alert('Enrolled successfully!');
+          this.enrolledCourses.push(course); // Add to enrolled courses
+
+          // Remove the course from filtered courses
+          this.filteredCourses = this.filteredCourses.filter(
+            (c) => c.courseId !== course.courseId
+          );
+        },
+        error: (err) => {
+          console.error('Error enrolling in course:', err);
+          alert('Failed to enroll. Please try again.');
+        },
+      });
+  }
+
+  private generateSessionId(): string {
+    return Math.floor(10000 + Math.random() * 90000).toString();
   }
 
   isCourseFinished(course: any): boolean {

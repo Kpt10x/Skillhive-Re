@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Candidate } from '../../services/candidate.service';  // Assuming you have Candidate model
 import { CandidateService } from '../../services/candidate.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './candidate-dashboard.component.html',
   styleUrl: './candidate-dashboard.component.css'
 })
 export class CandidateDashboardComponent implements OnInit {
   user: Candidate | null = null;
   currentUserId!: string;
+  isCoursesDropdownVisible = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

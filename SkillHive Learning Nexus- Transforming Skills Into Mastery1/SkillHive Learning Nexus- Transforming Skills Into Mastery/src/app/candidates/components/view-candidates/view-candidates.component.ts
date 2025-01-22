@@ -1,43 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidateService, Candidate } from '../../services/candidate.service';
+import { CandidateService, Candidate } from '../../../candidates/services/candidate.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faUsers, faUserPlus, faBook } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-view-candidates',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],  // Add FontAwesomeModule to imports
   templateUrl: './view-candidates.component.html',
-  styleUrl: './view-candidates.component.css'
+  styleUrls: ['./view-candidates.component.css']
 })
 export class ViewCandidatesComponent implements OnInit {
   candidates: Candidate[] = [];
-  // role: string = 'instructor'; // 'admin' or 'instructor'
-  // instructorName: string = 'Ishani'; // Set this for the instructor
-  
-  role: string = 'admin'; // 'admin' or 'instructor'
-  instructorName: string = 'John Doe'; // Set this for the instructor
+  instructorName: string | null = '';
+  role: string | null = '';
+  isSidebarExpanded: boolean = false; // Track sidebar state
+  isCollapsed: boolean = false; // Track collapse state
 
-  constructor(private candidateService: CandidateService) {}
+  constructor(
+    private library: FaIconLibrary, 
+    private candidateService: CandidateService, 
+    private router: Router
+  ) {
+    // Add icons to the library
+    this.library.addIcons(faUsers, faUserPlus, faBook);
+  }
 
   ngOnInit(): void {
-    if (this.role === 'admin') {
-      this.candidateService.getCandidatesForAdmin().subscribe((data) => {
-        this.candidates = data;
+    const loggedInUserId = sessionStorage.getItem('loggedInCandidate');
+    
+    if (loggedInUserId) {
+      this.candidateService.getInstructorProfileById(loggedInUserId).subscribe((profile) => {
+        if (profile.role === 'instructor') {
+          this.instructorName = profile.fullName;
+          this.getCandidatesForInstructor();
+        } else {
+          // Redirect or show error as the user is not an instructor
+        }
       });
-    } else if (this.role === 'instructor') {
-      this.candidateService
-        .getCandidatesForInstructor(this.instructorName)
-        .subscribe((data) => {
-          this.candidates = data;
-        });
     }
   }
 
-  deleteCandidate(candidateId: string): void {
-    // Assuming you have a method in your service to delete a candidate from the API
-    this.candidateService.deleteCandidate(candidateId).subscribe(() => {
-      this.candidates = this.candidates.filter((c) => c.id !== candidateId);
-    });
+  getCandidatesForInstructor(): void {
+    if (this.instructorName) {
+      this.candidateService.getCandidatesByInstructor(this.instructorName).subscribe((candidates) => {
+        this.candidates = candidates;
+      });
+    }
   }
 }
