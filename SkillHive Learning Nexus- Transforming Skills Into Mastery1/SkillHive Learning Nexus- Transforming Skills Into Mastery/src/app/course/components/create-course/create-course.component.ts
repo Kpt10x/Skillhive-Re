@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { HttpClientModule, provideHttpClient } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { CourseService } from "../../services/course_service";
 
 @Component({
@@ -20,8 +20,26 @@ import { CourseService } from "../../services/course_service";
 })
 export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
-  instructors: any[] = [];
+  instructors: any[] = []; // This will be populated with hardcoded data
   filteredInstructors: any[] = [];
+  categories: any[] = []; // Array to hold course categories
+  minAssignmentDate: string | null = null; // Property to hold the minimum assignment date
+
+  // Hardcoded instructor data with 2025 dates
+  hardcodedInstructors: any[] = [
+    { id: 1, name: "John Doe", start_date: "2025-01-01", end_date: "2025-12-31", category: "Technology" },
+    { id: 2, name: "Jane Smith", start_date: "2025-02-01", end_date: "2025-11-30", category: "Data Analytics" },
+    { id: 3, name: "Alice Johnson", start_date: "2025-03-01", end_date: "2025-10-31", category: "Graphic Designing" },
+    { id: 4, name: "Bob Brown", start_date: "2025-04-01", end_date: "2025-09-30", category: "Technology" },
+  ];
+
+  // Hardcoded category data
+  hardcodedCategories: any[] = [
+    { id: 1, name: "Technology" },
+    { id: 2, name: "Data Analytics" },
+    { id: 3, name: "Graphic Designing" },
+    { id: 4, name: "Business" },
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +48,6 @@ export class CreateCourseComponent implements OnInit {
   ) {
     this.createCourseForm = this.fb.group({
       courseName: ["", [Validators.required, Validators.minLength(3)]],
-      // courseId: ['', [Validators.required, Validators.pattern('[A-Za-z0-9]{5,10}')]],
       courseCategory: ["", Validators.required],
       courseDurationMonths: [
         "",
@@ -40,50 +57,41 @@ export class CreateCourseComponent implements OnInit {
       startDate: ["", Validators.required],
       endDate: ["", Validators.required],
       assignmentDate: ["", Validators.required],
+      status: ["", Validators.required],
     });
   }
 
   ngOnInit(): void {
-    console.log("being called");
-    this.fetchInstructors(); // Fetch instructors from JSON
+    this.filteredInstructors = this.hardcodedInstructors; // Initialize with hardcoded instructors
+    this.categories = this.hardcodedCategories; // Initialize with hardcoded categories
   }
 
-  fetchInstructors(): void {
-    console.log("fetch json data");
-    this.http.get<any[]>("http://localhost:3000/instructors").subscribe(
-      (data) => {
-        console.log(data);
-        this.instructors = data;
-        this.filteredInstructors = this.instructors;
-      },
-      (error) => {
-        console.error("Error fetching instructors:", error);
-      }
-    );
-  }
-
-  filterByAvailability(): void {
+  filterInstructors(): void {
+    const selectedCategory = this.createCourseForm.get("courseCategory")?.value;
     const startDate = new Date(this.createCourseForm.get("startDate")?.value);
     const endDate = new Date(this.createCourseForm.get("endDate")?.value);
 
-    // Check if both dates are valid and filled
-    if (
-      this.createCourseForm.get("startDate")?.value &&
-      this.createCourseForm.get("endDate")?.value
-    ) {
-      this.filteredInstructors = this.instructors.filter((instructor) => {
-        const instructorStartDate = new Date(instructor.start_date);
-        const instructorEndDate = new Date(instructor.end_date);
-        return instructorStartDate <= endDate && instructorEndDate >= startDate;
-      });
+    this.filteredInstructors = this.hardcodedInstructors.filter((instructor) => {
+      const instructorStartDate = new Date(instructor.start_date);
+      const instructorEndDate = new Date(instructor.end_date);
+      const isAvailable = instructorStartDate <= endDate && instructorEndDate >= startDate;
+      const isInCategory = selectedCategory ? instructor.category === selectedCategory : true;
 
-      // If no instructors are available, keep the original list
-      if (this.filteredInstructors.length === 0) {
-        this.filteredInstructors = this.instructors;
-      }
+      return isAvailable && isInCategory;
+    });
+  }
+
+  onEndDateChange(): void {
+    const endDate = this.createCourseForm.get("endDate")?.value;
+    if (endDate) {
+      const endDateObj = new Date(endDate);
+      endDateObj.setDate(endDateObj.getDate() + 1); // Set to one day after the end date
+      this.createCourseForm.patchValue({
+        assignmentDate: endDateObj.toISOString().split("T")[0], // Format to YYYY-MM-DD
+      });
+      this.minAssignmentDate = endDateObj.toISOString().split("T")[0]; // Update minAssignmentDate
     } else {
-      // If either date is not valid or filled, show all instructors
-      this.filteredInstructors = this.instructors;
+      this.minAssignmentDate = null; // Reset if no end date is selected
     }
   }
 
@@ -91,54 +99,25 @@ export class CreateCourseComponent implements OnInit {
     if (this.createCourseForm.valid) {
       const courseData = this.createCourseForm.value;
 
-      // Directly use the instructor name from the form
-      const instructorName = courseData.instructorName;
-
-      // Set the instructor's name in courseData
-      courseData.instructorName = instructorName; // Use the name directly
-
-      // Get the selected dates from the form
-      const assignmentDate = new Date(courseData.assignmentDate);
-      const endDate = new Date(courseData.endDate);
-
-      // Check if the assignment date is before the end date
-      if (assignmentDate <= endDate) {
-        alert("Assignment date must be before the end date."); // Show error message
-        return; // Exit the function if validation fails
-      }
-
-      // Save course data using the CourseService
-      this.courseService.saveCourse(courseData).subscribe(
+      this.http.post("http://localhost:3000/courses", courseData).subscribe(
         (response) => {
-          console.log("Course saved successfully:", response);
-          alert("Course details saved successfully!"); // Show success message
-          this.createCourseForm.reset(); // Reset the form
-          this.filteredInstructors = this.instructors; // Reset filtered instructors to show all options
-          this.createCourseForm.get("courseCategory")?.setValue(""); // Reset category selection
-          this.createCourseForm.get("instructorName")?.setValue(""); // Reset instructor selection
+          console.log("Course data saved successfully:", response);
+          alert("Course data saved successfully!");
+          location.reload();
         },
         (error) => {
-          console.error("Error saving course:", error);
-          alert("There was an error saving the course details."); // Show error message
+          console.error("Error saving course data:", error);
+          alert("There was an error saving the course data.");
         }
       );
     } else {
-      alert("Please fill in all required fields correctly."); // Show validation error message
+      alert("Please fill in all required fields correctly.");
     }
   }
 
   cancel() {
-    // Logic to handle cancellation, e.g., reset the form or navigate away
-    this.createCourseForm.reset({
-      courseName: "",
-      courseCategory: "", // Ensure this is reset to show the placeholder
-      courseDurationMonths: "",
-      instructorName: "", // Ensure this is reset to show the placeholder
-      startDate: "",
-      endDate: "",
-      assignmentDate: "",
-    }); // Reset the form with default values
-    this.filteredInstructors = this.instructors; // Reset filtered instructors to show all options
-    // Optionally, navigate to another route or perform other actions
+    this.createCourseForm.reset();
+    this.filteredInstructors = this.hardcodedInstructors; // Reset to all instructors
+    this.minAssignmentDate = null; // Reset minimum assignment date
   }
 }

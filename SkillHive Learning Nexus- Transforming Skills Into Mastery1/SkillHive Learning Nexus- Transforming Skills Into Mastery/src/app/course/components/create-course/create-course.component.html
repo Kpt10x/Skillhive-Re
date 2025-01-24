@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Course</title>
     <link rel="stylesheet" href="create-course.component.css" />
-    <!-- Update with the correct path to your CSS file -->
   </head>
   <body>
     <div class="create-course-container">
@@ -25,27 +24,31 @@
         <!-- Course Category -->
         <div class="form-group">
           <label for="courseCategory">Course Category:</label>
-          <select id="courseCategory" formControlName="courseCategory" required>
-            <option value="">Select a category</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Graphic Designing">Graphic Designing</option>
-            <option value="Data Analytics">Data Analytics</option>
-            <option value="Data Science">Data Science</option>
+          <select id="courseCategory" formControlName="courseCategory" (change)="filterInstructors()" required>
+            <option value="">Select Category</option>
+            <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
           </select>
         </div>
         <!-- Course Duration -->
         <div class="form-group">
-          <label for="courseDurationMonths">Course Duration (in months):</label>
+          <label for="courseDurationMonths">Course Duration (Months):</label>
           <input
             type="number"
             id="courseDurationMonths"
             formControlName="courseDurationMonths"
-            placeholder="Enter Course Duration"
+            placeholder="Enter Duration in Months"
             required
             min="1"
             max="24"
-            title="Duration should be between 1 and 24 months."
           />
+        </div>
+        <!-- Instructor Name -->
+        <div class="form-group">
+          <label for="instructorName">Instructor Name:</label>
+          <select id="instructorName" formControlName="instructorName" required>
+            <option value="">Select Instructor</option>
+            <option *ngFor="let instructor of filteredInstructors" [value]="instructor.name">{{ instructor.name }}</option>
+          </select>
         </div>
         <!-- Start Date -->
         <div class="form-group">
@@ -54,7 +57,7 @@
             type="date"
             id="startDate"
             formControlName="startDate"
-            (change)="filterByAvailability()"
+            (change)="filterInstructors()"
             required
           />
         </div>
@@ -65,43 +68,28 @@
             type="date"
             id="endDate"
             formControlName="endDate"
-            (change)="filterByAvailability()"
+            (change)="onEndDateChange()"
             required
           />
         </div>
-        <!-- Instructor Name -->
-        <div class="form-group">
-          <label for="instructorName">Instructor Name</label>
-          <select formControlName="instructorName" id="instructorName">
-            <option value="" disabled selected>
-              Select an instructor's name
-            </option>
-            <option
-              *ngFor="let instructor of filteredInstructors"
-              [value]="instructor.name"
-            >
-              {{ instructor.name }}
-            </option>
-          </select>
-        </div>
         <!-- Assignment Date -->
         <div class="form-group">
-          <label for="assignmentDate">Assignment Date:</label>
+          <label for="assignmentDate">Assessment Date:</label>
           <input
             type="date"
             id="assignmentDate"
             formControlName="assignmentDate"
             required
+            [min]="minAssignmentDate" 
           />
         </div>
+
         <!-- Submit and Cancel Buttons -->
-        <button type="submit" [disabled]="createCourseForm.invalid">
-          Submit
-        </button>
-        <button type="button" (click)="cancel()">Cancel</button>
+        <div class="form-group">
+          <button type="submit">Create Course</button>
+          <button type="button" (click)="cancel()">Cancel</button>
+        </div>
       </form>
     </div>
-    <script src="path/to/your/angular-app.js"></script>
-    <!-- Update with the correct path to your Angular app -->
   </body>
 </html>
