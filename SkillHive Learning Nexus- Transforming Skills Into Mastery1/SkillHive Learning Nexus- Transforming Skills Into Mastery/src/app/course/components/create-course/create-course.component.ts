@@ -25,7 +25,7 @@ export class CreateCourseComponent implements OnInit {
   categories: any[] = []; // Array to hold course categories
   minAssignmentDate: string | null = null; // Property to hold the minimum assignment date
 
-  // Hardcoded instructor data with 2025 dates
+
   hardcodedInstructors: any[] = [
     { id: 1, name: "John Doe", start_date: "2025-01-01", end_date: "2025-12-31", category: "Technology" },
     { id: 2, name: "Jane Smith", start_date: "2025-02-01", end_date: "2025-11-30", category: "Data Analytics" },
