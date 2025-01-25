@@ -42,14 +42,6 @@
             max="24"
           />
         </div>
-        <!-- Instructor Name -->
-        <div class="form-group">
-          <label for="instructorName">Instructor Name:</label>
-          <select id="instructorName" formControlName="instructorName" required>
-            <option value="">Select Instructor</option>
-            <option *ngFor="let instructor of filteredInstructors" [value]="instructor.name">{{ instructor.name }}</option>
-          </select>
-        </div>
         <!-- Start Date -->
         <div class="form-group">
           <label for="startDate">Start Date:</label>
@@ -72,6 +64,14 @@
             required
           />
         </div>
+        <!-- Instructor Name -->
+        <div class="form-group">
+          <label for="instructorName">Instructor Name:</label>
+          <select id="instructorName" formControlName="instructorName" required>
+            <option value="">Select Instructor</option>
+            <option *ngFor="let instructor of filteredInstructors" [value]="instructor.name">{{ instructor.name }}</option>
+          </select>
+        </div>
         <!-- Assignment Date -->
         <div class="form-group">
           <label for="assignmentDate">Assessment Date:</label>
@@ -80,10 +80,9 @@
             id="assignmentDate"
             formControlName="assignmentDate"
             required
-            [min]="minAssignmentDate" 
+            [min]="minAssignmentDate"
           />
         </div>
-
         <!-- Submit and Cancel Buttons -->
         <div class="form-group">
           <button type="submit">Create Course</button>
