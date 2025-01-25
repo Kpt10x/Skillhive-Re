@@ -34,16 +34,16 @@ export const routes: Routes = [
   // Instructor View routes
   { path: 'view-instructor', component: ViewInstructorComponent }, // Original view
   { path: 'instructor/view', children: [ // New organized views
-    //{ path: 'availability', component: ViewByAvailabilityComponent },
-//{ path: 'course', component: ViewByCourseComponent },
-    //{ path: 'details', component: ViewByDetailsComponent }
+  { path: 'availability', component: ViewByAvailabilityComponent },
+ { path: 'course', component: ViewByCourseComponent },
+  { path: 'details', component: ViewByDetailsComponent }
   ]},
   
   // Course Management routes
-  //{ path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
+  { path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
   
 
-  //course module 
+  //Course Module Routes
   { path: 'create-course', component: CreateCourseComponent},
   {path : 'manage-course', component: ManageCourseInstructorComponent},
   {path: 'admin-veiw',component: AdminveiwComponent},
