@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillHive Landing Page</title>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Skill<span>hive</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#trainers">Our Trainers</a></li>
+      </ul>
+      <button class="login-btn" routerLink="\login">Log in</button>
+    </nav>
+  </header>
+  
+
+  <!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content">
+      <h1>
+           <span><span class="highlight">Skills</span> Into Mastery</span>
+      </h1>
+      <p>Enroll in immersive courses with the world’s best instructors. Unlock your creative potential.</p>
+      <button class="cta-btn" routerLink="\login">Get Started</button>
+  </div>
+  <div class="hero-image">
+      <img src="assets\Images\boy_img.png" alt="Student Illustration">
+  </div>
+</section>
+
+  
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stat">
+      <h2>250+</h2>
+      <p>Total Courses</p>
+    </div>
+    <div class="stat">
+      <h2>300+</h2>
+      <p>Total Instructors</p>
+    </div>
+    <div class="stat">
+      <h2>35K+</h2>
+      <p>Total Students</p>
+    </div>
+  </section>
+
+<!-- About Us Section -->
+<section id="about" class="section about">
+  <h1>About Us</h1>
+  <div class="content">
+    <div class="visual">
+      <img src="assets\Images\girl_img.jpeg" alt="About SkillHive">
+    </div>
+    <div class="text">
+      <div class="info-box">
+        <p>Welcome to Skillhive Learning Nexus, where we believe in transforming skills into mastery. Our platform is dedicated to providing accessible, engaging, and high-quality learning experiences for everyone from beginners looking to explore new opportunities to professionals aiming to advance their careers.</p>
+        <p>At Skillhive, we understand that every learner is unique. That's why our courses are designed to be flexible, interactive, and tailored to meet diverse learning needs. Whether you're looking to upskill, reskill, or pursue a passion, we’ve got you covered with expert-curated content, real-world projects, and an ever-growing community of learners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!-- Why Choose Us Section -->
+<section id="why-choose" class="section why-choose">
+  <h1>Why Choose SkillHive?</h1>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">
+        <div class="circle">
+          <img src="assets\Images\book-open-solid 1.png" alt="Best Content Icon" />
+        </div>
+      </div>
+      <h3>Best Content</h3>
+      <p>Access carefully curated, up-to-date courses tailored to real-world applications.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">
+        <div class="circle">
+          <img src="assets\Images\users-solid 1.png" alt="Expert Instructors Icon" />
+        </div>
+      </div>
+      <h3>Expert Instructors</h3>
+      <p>Learn from seasoned professionals who are leaders in their respective fields.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">
+        <div class="circle">
+          <img src="assets\Images\clock-regular 1.png" alt="Lifetime Access Icon" />
+        </div>
+      </div>
+      <h3>Lifetime Access</h3>
+      <p>Enjoy unlimited access to your courses at any time, anywhere.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+  /* Style for the course container */
+  .course-container {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Button styling */
+  .enroll {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .enroll:hover {
+    background-color: #0056b3;
+  }
+
+  /* Hide all messages by default */
+  .message {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: white; /* White text for the message */
+  }
+
+  /* Display the targeted message */
+  .message.active {
+    display: block;
+  }
+</style>
+
+<!-- Courses Section -->
+<section id="courses" class="section courses">
+  <h1>Our Best Courses</h1>
+  <div class="course-container">
+    <div class="course-cards">
+      <!-- First Set of Courses -->
+      <div class="course-card" id="python">
+        <div class="card-content">
+          <img src="assets\Images/python_img.jpeg" alt="Python">
+          <h3>Python</h3>
+          <p>Course duration: 3 months<br>Instructor: XYZ</p>
+          <a href="#python" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+      <div class="course-card" id="cpp">
+        <div class="card-content">
+          <img src="assets\Images/c++_img.png" alt="C++">
+          <h3>C++</h3>
+          <p>Course duration: 3 months<br>Instructor: ABC</p>
+          <a href="#cpp" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+      <div class="course-card" id="java">
+        <div class="card-content">
+          <img src="assets\Images/java_img.jpeg" alt="Java">
+          <h3>Java</h3>
+          <p>Course duration: 3 months<br>Instructor: LMN</p>
+          <a href="#java" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+      <!-- Second Set of Courses -->
+      <div class="course-card" id="javascript">
+        <div class="card-content">
+          <img src="assets\images/JavaScript-Symbol.png" alt="JavaScript">
+          <h3>JavaScript</h3>
+          <p>Course duration: 3 months<br>Instructor: DEF</p>
+          <a href="#javascript" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+      <div class="course-card" id="ml">
+        <div class="card-content">
+          <img src="assets\images/machine_learning.png" alt="MachineLearning">
+          <h3>MachineLearning</h3>
+          <p>Course duration: 3 months<br>Instructor: GHI</p>
+          <a href="#ml" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+      <div class="course-card" id="sql">
+        <div class="card-content">
+          <img src="assets\images/sql.jpeg" alt="SQL">
+          <h3>SQL</h3>
+          <p>Course duration: 3 months<br>Instructor: JKL</p>
+          <a href="#sql" class="enroll">Enroll Now</a>
+          <p class="message">You must log in to enroll.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.enroll').forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault(); // Prevent default anchor behavior
+
+      const message = button.nextElementSibling; // Get the next sibling element (message)
+      const targetId = button.getAttribute('href'); // Get the target ID from href
+      const targetElement = document.querySelector(targetId);
+
+      if (message) {
+        // Display the message
+        message.classList.add('active');
+
+        // Wait for 3 seconds, then scroll smoothly
+        setTimeout(() => {
+          message.classList.remove('active'); // Hide the message
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth', // Smooth scrolling
+              block: 'start', // Scroll to the top of the element
+            });
+          }
+        }, 3000); // Adjust the delay time (3000ms = 3 seconds)
+      }
+    });
+  });
+</script>
+
+
+
+  <!-- Trainers Section -->
+<section id="trainers" class="section trainers">
+  <h1>Our Trainers</h1>
+  <div class="trainer-container">
+    <div class="trainer-cards">
+      <!-- Trainer 1 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\person1.jpeg" alt="Trainer 1">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Full Stack Developer</p>
+        </div>
+      </div>
+      <!-- Trainer 2 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\person2.jpeg" alt="Trainer 2">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Python Developer</p>
+        </div>
+      </div>
+      <!-- Trainer 3 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\person3.jpeg" alt="Trainer 3">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Data Scientist</p>
+        </div>
+      </div>
+      <!-- Trainer 4 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\pic-1.jpeg" alt="Trainer 4">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Machine Learning Engineer</p>
+        </div>
+      </div>
+      <!-- Trainer 5 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\pic-2.jpeg" alt="Trainer 5">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Web Developer</p>
+        </div>
+      </div>
+      <!-- Trainer 6 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\pic-3.jpeg" alt="Trainer 6">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Graphic Designer</p>
+        </div>
+      </div>
+      <!-- Trainer 7 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\person8.png" alt="Trainer 7">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Mobile App Developer</p>
+        </div>
+      </div>
+      <!-- Trainer 8 -->
+      <div class="trainer-card">
+        <div class="card-content">
+          <div class="trainer-image">
+            <img src="assets\Images\person4.jpeg" alt="Trainer 8">
+          </div>
+          <h3>Instructor Name</h3>
+          <p>Cloud Specialist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <p>&copy; 2025 SkillHive</p>
+    <div class="social-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="#" class="social-icon"><img src="assets\Images\insta.png" alt="Instagram" class="social-img" id="insta"></a>
+    <a href="#" class="social-icon"><img src="assets\Images\twitter.png" alt="Twitter" class="social-img" id="twitter"></a>
+    <a href="#" class="social-icon"><img src="assets\Images\linkedin.png" alt="LinkedIn" class="social-img" id="linkedin"></a>
+    <a href="#" class="social-icon"><img src="assets\Images\utube.png" alt="YouTube" class="social-img" id="utube"></a>
+  </div>
+</footer>

@@ -16,7 +16,7 @@ export class CandidateDashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private candidateService: CandidateService
-  ) {}
+  ) { }
   // constructor(private userService: CandidateService) {}
 
   ngOnInit(): void {

@@ -1,3 +1,78 @@
+/* Navbar */
+.navbar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2em;
+  background-color: #1d2a30;
+  color: #fff;
+
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+
+
+}
+.logo b{
+  color: white;
+}
+
+.logo span {
+  color: #6dc48d;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #6dc48d;
+}
+
+.login-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #6dc48d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #53a473;
+}
+
+.forgot-password-link {
+  font-size: 16px;
+  color: #333; /* General text color */
+}
+
+.forgot-link {
+  color: #007bff; 
+  text-decoration: none; 
+  font-weight: bold;
+}
+
+.forgot-link:hover {
+  color: #0056b3; 
+  text-decoration: underline;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +101,7 @@ html {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: auto; /* Ensure the container is centered */
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .left-section, .right-section {
@@ -160,4 +235,73 @@ label {
 
 .register a:hover {
   text-decoration: underline;
+}
+
+.footer {
+  margin-top: 20px;
+  height: 125px;
+  text-align: center;
+  padding: 2rem;
+  background-color: #1d2a30;
+  color: #fff;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem; /* Space between top and bottom rows */
+}
+
+.footer-top p {
+  margin: 0;
+}
+
+.footer .social-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.footer .social-links a:hover {
+  color: #6dc48d;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.social-img {
+  width: 100%;
+  height: auto;
+}
+
+.footer-bottom a:hover .social-img {
+  opacity: 0.7; /* Slight fade effect when hovering over social icons */
+}
+
+/* Responsive Design for small screens */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .social-icon {
+    margin-bottom: 1rem;
+  }
 }
