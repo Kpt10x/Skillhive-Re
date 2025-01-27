@@ -6,24 +6,6 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-error-dialog',
-  template: `
-    <h1 mat-dialog-title>Error</h1>
-    <div mat-dialog-content>
-      <p>{{ message }}</p>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close>Close</button>
-    </div>
-  `,
-  standalone: true,
-  imports: [MatDialogModule],
-})
-export class ErrorDialogComponent {
-  message!: string; 
-}
-
-@Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
@@ -32,24 +14,25 @@ export class ErrorDialogComponent {
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  showRegisterLink: boolean = true; 
+  showRegisterLink: boolean = true;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient,
-    private dialog: MatDialog 
+    private dialog: MatDialog
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['candidate', Validators.required], 
+      role: ['candidate', Validators.required],
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password, role } = this.loginForm.value;
+
       this.http
         .get<any[]>('http://localhost:3000/profiles', {
           params: { email, password, role },
@@ -57,44 +40,55 @@ export class LoginComponent {
         .subscribe({
           next: (users) => {
             if (users.length > 0) {
-              sessionStorage.setItem('user', JSON.stringify(users[0]));
-              switch (role) {
-                case 'admin':
-                  this.router.navigate(['admin-dashboard']);
-                  break;
-                case 'instructor':
-                  this.router.navigate(['instructor-dashboard']);
-                  break;
-                case 'candidate':
-                  this.router.navigate(['candidate-dashboard']);
-                  break;
-                default:
-                  this.showErrorDialog('Invalid role selected.');
-              }
+              const user = users[0];
+              sessionStorage.setItem('user', JSON.stringify(user));
+              this.navigateBasedOnRole(role, user);
             } else {
-              this.showErrorDialog('Invalid credentials or role.');
+              this.showErrorAlert('Please check email and password.');
             }
           },
           error: () => {
-            this.showErrorDialog('Error connecting to the server.');
+            this.showErrorAlert('Error connecting to the server.');
           },
         });
     } else {
-      this.showErrorDialog('Please fill out the form correctly.');
+      this.showErrorAlert('Please fill out the form correctly.');
     }
   }
 
   onRoleChange(event: Event) {
     const selectedRole = (event.target as HTMLSelectElement).value;
-    console.log('Role changed to:', selectedRole);
-
     this.showRegisterLink = selectedRole === 'candidate';
-
     this.loginForm.patchValue({ role: selectedRole });
   }
 
-  private showErrorDialog(message: string): void {
-    const dialogRef = this.dialog.open(ErrorDialogComponent);
-    dialogRef.componentInstance.message = message;
+  private navigateBasedOnRole(role: string, user: any): void {
+    switch (role) {
+      case 'admin':
+        this.router.navigate(['admin-dashboard']);
+        break;
+      case 'instructor':
+        this.router.navigate(['dashboard']);
+        break;
+      case 'candidate':
+        this.router.navigate([`dashboard/${user.id}`]);
+        break;
+      default:
+        this.showErrorAlert('Invalid role selected.');
+    }
   }
+
+  private showErrorAlert(message: string): void {
+    alert(message); 
+  }
+
+  redirectToRegister(): void {
+    this.router.navigate(['/register']);
+  }
+  
+  navigateToForgotPassword(): void {
+    this.router.navigate(['/forgot-password']);
+  }
+  
+
 }

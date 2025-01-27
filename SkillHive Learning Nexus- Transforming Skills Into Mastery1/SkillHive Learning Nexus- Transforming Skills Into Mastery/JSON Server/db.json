@@ -31,14 +31,7 @@
       "id": "3",
       "fullName": "Alice Johnson",
       "email": "alice.johnson@example.com",
-      "password": "candidate123",
-      "role": "candidate"
-    },
-    {
-      "id": "4",
-      "fullName": "Bob Williams",
-      "email": "bob.williams@example.com",
-      "password": "candidate456",
+      "password": "candidate1234",
       "role": "candidate"
     },
     {
@@ -56,58 +49,22 @@
       "role": "admin"
     }
   ],
-  "candidates": [],
   "courses-enrolled-by-candidates": [
     {
       "id": "u01",
-      "name": "Jatin",
-      "email": "jatin.cu14@gmail.com",
-      "password": "Jatin@123",
-      "phone": "9876543210",
-      "enrolledCourses": [
-        {
-          "courseId": "1233333",
-          "courseName": "Web Development",
-          "courseCategory": "Technology",
-          "courseDurationInMonths": 4,
-          "instructorName": "Tanishq Singh",
-          "startDate": "2024-01-01",
-          "endDate": "2024-05-01",
-          "id": "3e97"
-        },
-        {
-          "courseId": "2234444",
-          "courseName": "Data Science",
-          "courseCategory": "Data Analytics",
-          "courseDurationInMonths": 6,
-          "instructorName": "Ishani",
-          "startDate": "2024-02-01",
-          "endDate": "2024-08-01",
-          "id": "a47e"
-        }
-      ]
+      "name": "Binoy Benson",
+      "email": "binoybenson@gmail.com",
+      "phone": "1234567890",
+      "password": "binoybenson@gmail.com"
     },
     {
       "id": "u02",
-      "name": "Nikhil",
-      "email": "nikki@gmail.com",
-      "password": "Nikki@123",
-      "phone": "9876543211",
-      "enrolledCourses": [
-        {
-          "courseId": "1233333",
-          "courseName": "Web Development",
-          "courseCategory": "Technology",
-          "courseDurationInMonths": 4,
-          "instructorName": "Tanishq Singh",
-          "startDate": "2024-01-01",
-          "endDate": "2024-05-01",
-          "id": "3e97"
-        }
-      ]
+      "name": "Benson",
+      "email": "ben@gmail.com",
+      "phone": "1231231231",
+      "password": "ben@gmail.com"
     }
   ],
-  
   "assessments": [
     {
       "id": "DS001",
@@ -116,25 +73,45 @@
         {
           "id": 1,
           "text": "Which of the following is NOT a type of machine learning?",
-          "options": ["Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Determined Learning"],
+          "options": [
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Reinforcement Learning",
+            "Determined Learning"
+          ],
           "correctAnswer": "Determined Learning"
         },
         {
           "id": 2,
           "text": "Which library is commonly used for data manipulation in Python?",
-          "options": ["NumPy", "Matplotlib", "Pandas", "TensorFlow"],
+          "options": [
+            "NumPy",
+            "Matplotlib",
+            "Pandas",
+            "TensorFlow"
+          ],
           "correctAnswer": "Pandas"
         },
         {
           "id": 3,
           "text": "What does the 'K' represent in K-Means clustering?",
-          "options": ["Kernel", "Clusters", "Neighbors", "Data Points"],
+          "options": [
+            "Kernel",
+            "Clusters",
+            "Neighbors",
+            "Data Points"
+          ],
           "correctAnswer": "Clusters"
         },
         {
           "id": 4,
           "text": "Which of the following is an example of a classification algorithm?",
-          "options": ["Linear Regression", "Decision Tree", "K-Means", "Principal Component Analysis"],
+          "options": [
+            "Linear Regression",
+            "Decision Tree",
+            "K-Means",
+            "Principal Component Analysis"
+          ],
           "correctAnswer": "Decision Tree"
         },
         {
@@ -151,7 +128,12 @@
         {
           "id": 6,
           "text": "Which of the following metrics is NOT used to evaluate a classification model?",
-          "options": ["Accuracy", "Precision", "Recall", "Mean Squared Error"],
+          "options": [
+            "Accuracy",
+            "Precision",
+            "Recall",
+            "Mean Squared Error"
+          ],
           "correctAnswer": "Mean Squared Error"
         },
         {
@@ -168,7 +150,12 @@
         {
           "id": 8,
           "text": "Which of the following methods is used for dimensionality reduction?",
-          "options": ["Random Forest", "Gradient Boosting", "Principal Component Analysis", "K-Nearest Neighbors"],
+          "options": [
+            "Random Forest",
+            "Gradient Boosting",
+            "Principal Component Analysis",
+            "K-Nearest Neighbors"
+          ],
           "correctAnswer": "Principal Component Analysis"
         },
         {
@@ -202,13 +189,23 @@
         {
           "id": 1,
           "text": "Which of the following is NOT a key component of business analytics?",
-          "options": ["Data Analysis", "Data Visualization", "Data Mining", "Product Manufacturing"],
+          "options": [
+            "Data Analysis",
+            "Data Visualization",
+            "Data Mining",
+            "Product Manufacturing"
+          ],
           "correctAnswer": "Product Manufacturing"
         },
         {
           "id": 2,
           "text": "What does KPI stand for in business analytics?",
-          "options": ["Key Performance Indicator", "Key Product Index", "Knowledge Performance Insight", "Knowledge Process Indicator"],
+          "options": [
+            "Key Performance Indicator",
+            "Key Product Index",
+            "Knowledge Performance Insight",
+            "Knowledge Process Indicator"
+          ],
           "correctAnswer": "Key Performance Indicator"
         },
         {
@@ -225,7 +222,12 @@
         {
           "id": 4,
           "text": "Which tool is commonly used for business data visualization?",
-          "options": ["Tableau", "R", "Python", "MySQL"],
+          "options": [
+            "Tableau",
+            "R",
+            "Python",
+            "MySQL"
+          ],
           "correctAnswer": "Tableau"
         },
         {
@@ -275,23 +277,58 @@
         {
           "id": 9,
           "text": "Which statistical measure indicates the central tendency of a dataset?",
-          "options": ["Mean", "Variance", "Standard Deviation", "Correlation"],
+          "options": [
+            "Mean",
+            "Variance",
+            "Standard Deviation",
+            "Correlation"
+          ],
           "correctAnswer": "Mean"
         },
         {
           "id": 10,
           "text": "Which of the following is a commonly used programming language in business analytics?",
-          "options": ["Ruby", "C++", "Python", "Swift"],
+          "options": [
+            "Ruby",
+            "C++",
+            "Python",
+            "Swift"
+          ],
           "correctAnswer": "Python"
         }
       ]
     }
   ],
   "courses": [
-    { "id": "DS001", "name": "Data Science", "status": "Live", "logo": "../assets/images/data.png" },
-    { "id": "BA001", "name": "Business Analytics", "status": "Live", "logo": "" },
-    { "id": "WD001", "name": "Web Development", "status": "Upcoming", "logo": "..assets/images/web.png" },
-    { "id": "GD001", "name": "Graphics Design", "status": "Upcoming", "logo": "" },
-    { "id": "DM001", "name": "Digital Marketing", "status": "Upcoming", "logo": "" }
+    {
+      "id": "DS001",
+      "name": "Data Science",
+      "status": "Live",
+      "logo": "../assets/images/data.png"
+    },
+    {
+      "id": "BA001",
+      "name": "Business Analytics",
+      "status": "Live",
+      "logo": ""
+    },
+    {
+      "id": "WD001",
+      "name": "Web Development",
+      "status": "Upcoming",
+      "logo": "..assets/images/web.png"
+    },
+    {
+      "id": "GD001",
+      "name": "Graphics Design",
+      "status": "Upcoming",
+      "logo": ""
+    },
+    {
+      "id": "DM001",
+      "name": "Digital Marketing",
+      "status": "Upcoming",
+      "logo": ""
+    }
   ]
 }

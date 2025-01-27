@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { CandidateService } from '../../services/candidate.service';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-candidate-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,RouterModule],
+  imports: [ReactiveFormsModule, CommonModule,RouterModule,HttpClientModule],
   templateUrl: './candidate-registration.component.html',
   styleUrls: ['./candidate-registration.component.scss']
 })

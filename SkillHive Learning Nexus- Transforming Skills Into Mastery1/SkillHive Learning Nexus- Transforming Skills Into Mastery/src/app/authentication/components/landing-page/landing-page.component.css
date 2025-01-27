@@ -1,0 +1,632 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Balsamiq Sans', cursive; /* Uniform font */
+    line-height: 1.6;
+    background-color: #f4fff4;
+    scroll-behavior: smooth;
+  }
+  
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1d2a30;
+    color: #fff;
+    
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    color: #6dc48d;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #6dc48d;
+  }
+  
+  .login-btn {
+    padding: 0.5rem 1.5rem;
+    background-color: #6dc48d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #53a473;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    flex-direction: row; /* Default direction: text on the left, image on the right */
+    background-color: #E7FEEC; /* Unified background color */
+   
+  
+  }
+  
+  .hero-content {
+    flex: 1;
+    margin-top: -3rem;
+    
+  }
+  
+  .hero h1 {
+    font-size: 5.5rem; /* Larger font size */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1.2; /* Adjust spacing between lines */
+    color: #1d2a30;
+    margin-bottom: 1.5rem; /* Space below the heading */
+  }
+  
+  .hero h1 .highlight {
+    color: #5F9D70; /* Updated color for "Skills" */
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 2rem; /* Increased space below the paragraph */
+  }
+  
+  .cta-btn {
+    font-size: 1.5rem;
+    padding: 1.25rem 3rem; /* Further increased button size */
+    background-color: #1d2a30;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    margin-top:-1.9rem;
+    margin-left: 10rem; /* Move the button further to the right */
+  }
+  
+  .cta-btn:hover {
+    background-color: #333;
+  }
+  
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Align the image to the right */
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Stats Section */
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: #E7FEEC; /* Unified background color */
+    margin: 0; /* Remove outer margins */
+    border-radius: 0; /* Remove border radius for seamless blending */
+    width: 100%; /* Ensure the section spans the full width of the page */
+    
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat h2 {
+    font-size: 2rem;
+    color: #1d2a30;
+  }
+  
+  .stat p {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* About Us Section */
+  .about {
+    padding: 3rem;
+    background-color: #E7FEEC; /* Unified background color */
+  }
+  
+  .about h1 {
+    font-size: 3.5rem; /* Increased font size for About Us heading */
+    font-weight: 700;
+    text-align: center; /* Centered the heading */
+    color: #1d2a30;
+    margin-bottom: 2rem; /* Space below the heading */
+  }
+  
+  .about .content {
+    display: flex;
+    align-items: stretch; /* Ensure both containers have the same height */
+    justify-content: space-between; /* Place text on the right and image on the left */
+    margin-top: 2rem;
+    gap: 1.5rem; /* Adjust space between the image and text containers */
+  }
+  
+  .about .visual {
+    flex: 1; /* Image container takes up equal space */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align image slightly to the left */
+    padding-left: 1rem; /* Push image a bit to the right */
+  }
+  
+  .about .visual img {
+    max-width: 100%; /* Ensure the image fills its container */
+    height: 100%; /* Match the height of the container */
+    object-fit: cover; /* Scale the image properly without distortion */
+    border-radius: 15px; /* Smooth finishing for the image */
+  }
+  
+  .about .text {
+    flex: 1.5; /* Reduce text container width */
+    display: flex;
+    align-items: center; /* Vertically align the text content */
+  }
+  
+  .about .info-box {
+    background-color: #C1DBC6; /* Light green color box */
+    padding: 2rem;
+    border-radius: 15px; /* Smooth finishing for the box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a smooth box effect */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically align text inside the box */
+  }
+  
+  .about .info-box p {
+    font-size: 1.5rem; /* Increased font size for better readability */
+    color: #333;
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+  
+    /* Why Choose Us Section */
+  .why-choose {
+    font-size: 2.5rem;
+    padding: 3rem;
+    background-color: #E7FEEC;
+    font-family: 'Balsamiq Sans', cursive;
+  }
+  
+  .why-choose h1 {
+    text-align: center;
+    color: #1d2a30;
+    font-weight: bold;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Ensures boxes wrap to the next line on smaller screens */
+  }
+  
+  .feature {
+    text-align: center;
+    background-color: #C1DBC6;
+    border-radius: 20px;
+    padding: 2rem;
+    flex: 1 1 calc(30% - 1.5rem); /* Adjusts size to fit three boxes per row */
+    max-width: 32%; /* Ensures consistent size */
+    height: 400px; /* Increased height */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .feature .icon {
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature .circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature .circle img {
+    height: 50px;
+    width: 50px;
+  }
+  
+  .feature h3 {
+    font-size: 1.5rem;
+    color: #1d2a30;
+    margin-bottom: 1rem;
+    font-weight: bold; /* Inner text bold */
+  }
+  
+  .feature p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    font-weight: bold; /* Inner text bold */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 992px) {
+    .feature {
+      flex: 1 1 calc(45% - 1.5rem); /* Two boxes per row */
+      height: 350px; /* Adjusted height for medium screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .feature {
+      flex: 1 1 100%; /* One box per row */
+      height: auto;
+    }
+  }
+  
+  /* Courses Section */
+  .courses {
+    font-size: 2.5rem;
+    padding: 3rem;
+    background-color: #E7FEEC;
+    font-family: 'Balsamiq Sans', cursive;
+  }
+  
+  .courses h1 {
+    text-align: center;
+    color: #1d2a30;
+    font-weight: bold;
+    margin-bottom: 2rem; /* Adds space below the heading */
+  }
+  
+  .course-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2rem; /* Adds space above the container */
+  }
+  
+  .course-cards {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Enable scroll snapping */
+    scroll-behavior: smooth; /* Smooth scroll when user scrolls */
+    margin-bottom: 1rem;
+  }
+  
+  .course-card {
+    flex: 0 0 calc(33.33% - 2rem); /* Three cards in one view with spacing */
+    background-color: #C1DBC6;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    scroll-snap-align: start; /* Ensures cards snap to start when scrolling */
+  }
+  
+  .course-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card-content {
+    padding: 2rem;
+  }
+  
+  .course-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .course-card h3 {
+    font-size: 1.5rem;
+    color: #1d2a30;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .course-card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .course-card .enroll {
+    padding: 0.1rem 0.5rem; /* Reduced size of the button */
+    font-size: 2rem;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .course-card .enroll:hover {
+    background-color: #53a473;
+  }
+  
+  /* Hide default scrollbar */
+  .course-cards::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Scroll Buttons */
+  .scroll-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .scroll-btn {
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .scroll-btn img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .course-card {
+      flex: 0 0 calc(50% - 1rem); /* Two cards in one view for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .course-card {
+      flex: 0 0 100%; /* One card per row for very small screens */
+    }
+  }
+  
+  /* Trainers Section */
+  .trainers {
+    font-size: 2.5rem;
+    padding: 3rem;
+    background-color: #E7FEEC;
+    font-family: 'Balsamiq Sans', cursive;
+  }
+  
+  .trainers h1 {
+    text-align:center;
+    color: #1d2a30;
+    font-weight: bold;
+    margin-bottom: 2rem; /* Adds space below the heading */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  .trainer-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2rem; /* Adds space above the container */
+  }
+  
+  .trainer-cards {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Enable scroll snapping */
+    scroll-behavior: smooth; /* Smooth scroll when user scrolls */
+    margin-bottom: 1rem;
+  }
+  
+  .trainer-card {
+    flex: 0 0 calc(25% - 2rem); /* Four cards in one view with spacing */
+    background-color: #C1DBC6;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    scroll-snap-align: start; /* Ensures cards snap to start when scrolling */
+  }
+  
+  .trainer-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card-content {
+    padding: 2rem;
+    background-color: #C1DBC6; /* Inner box color */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column; /* Ensure the content is stacked vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+  }
+  
+  .trainer-image {
+    width: 100px; /* Set width of the image */
+    height: 100px; /* Set height of the image */
+    margin: 0 auto 1rem; /* Center image and add margin below */
+    border-radius: 50%; /* Circular image */
+    overflow: hidden; /* Ensures the image fits within the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .trainer-image img {
+    width: 100%; /* Ensure the image fills the circle */
+    height: 100%;
+    object-fit: cover; /* Keeps the image proportionate and fills the circle */
+  }
+  
+  .trainer-card h3 {
+    font-size: 1.5rem;
+    color: #1d2a30;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .trainer-card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hide default scrollbar */
+  .trainer-cards::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Scroll Buttons */
+  .scroll-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .scroll-btn {
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .scroll-btn img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .trainer-card {
+      flex: 0 0 calc(50% - 1rem); /* Two cards in one view for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .trainer-card {
+      flex: 0 0 100%; /* One card per row for very small screens */
+    }
+  }
+  
+    /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1d2a30;
+    color: #fff;
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem; /* Space between top and bottom rows */
+  }
+  
+  .footer-top p {
+    margin: 0;
+  }
+  
+  .footer .social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  
+  .footer .social-links a:hover {
+    color: #6dc48d;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .social-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer-bottom a:hover .social-img {
+    opacity: 0.7; /* Slight fade effect when hovering over social icons */
+  }
+  
+  /* Responsive Design for small screens */
+  @media (max-width: 768px) {
+    .footer-top {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-bottom {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .social-icon {
+      margin-bottom: 1rem;
+    }
+  }
