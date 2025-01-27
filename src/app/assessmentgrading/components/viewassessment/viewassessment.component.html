@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="viewassessment.component.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo1-container">
+                <span class="skill">Skill</span><span class="hive">Hive</span>
+            </div>
+            <div class="menu-container">
+                <div class="menu-item">
+                    <img src="assets/home-icon.png" alt="Home Icon" class="menu-icon">
+                    Home
+                </div>
+                <div class="menu-item">
+                    <img src="assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
+                    Course
+                </div>
+                <div class="menu-item">
+                    <img src="assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
+                    Assessments
+                </div>
+                <div class="menu-item">
+                    <img src="assets/marksheet-icon.png" alt="Courses Icon" class="menu-icon">
+                    Submission
+                </div>
+                
+            <div class="bottom-menu-container">
+                    <div class="menu-item">
+                        <img src="assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
+                        User Name
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
+                        Logout
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+              <!-- View Submissions Section -->
+              <div class="view-submissions">
+                <h3>View Submissions</h3>
+                <div class="filters">
+                    <label for="course-filter">Filter by Course:</label>
+                    <select id="course-filter">
+                        <option value="all">All Courses</option>
+                        <option value="course1">Course 1</option>
+                        <option value="course2">Course 2</option>
+                    </select>
+                   <!---- <div class="status-container">
+                    <label for="status-filter">Filter by Status:</label>
+                    <select id="status-filter">
+                        <option value="all">All Statuses</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="pending">Pending</option>
+                    </select>-->
+                </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                            <th>Submission Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A0001</td>
+                            <td>Jeevani</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0002</td>
+                            <td>Fatima</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0003</td>
+                            <td>Lalita</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0004</td>
+                            <td>Ayushman</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0005</td>
+                            <td>Akash</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0006</td>
+                            <td>Rohit</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        <tr>
+                            <td>A0007</td>
+                            <td>Riya</td>
+                            <td>PY001</td>
+                            <td>Course 1</td>
+                            <td>2024-12-20</td>
+                            <td>Submitted</td>
+                            <td><button>View</button></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+</body>
+</html>
+
+        

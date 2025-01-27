@@ -1,0 +1,36 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <button class="collapse-btn" (click)="toggleSidebar()">
+    <fa-icon [icon]="isCollapsed ? 'angle-right' : 'angle-left'"></fa-icon>
+  </button>
+
+  <ul>
+    <li routerLink="./dashboard" routerLinkActive="active">
+      <fa-icon icon="users"></fa-icon>
+      <span *ngIf="!isCollapsed">Dashboard</span>
+    </li>
+    <li routerLink="./create-instructor" routerLinkActive="active">
+      <fa-icon icon="user-plus"></fa-icon>
+      <span *ngIf="!isCollapsed">Create Instructor</span>
+    </li>
+    <li routerLink="./view-assigned-courses" routerLinkActive="active">
+      <fa-icon icon="book"></fa-icon>
+      <span *ngIf="!isCollapsed">View Assigned Courses</span>
+    </li>
+    <li routerLink="/view-by-course" routerLinkActive="active">
+      <fa-icon icon="book"></fa-icon>
+      <span *ngIf="!isCollapsed">View By Courses</span>
+    </li>
+    <li routerLink="/delete-instructor" routerLinkActive="active">
+      <fa-icon icon="book"></fa-icon>
+      <span *ngIf="!isCollapsed">Delete Instructor</span>
+    </li>
+    <li routerLink="/view-all-instructors" routerLinkActive="active">
+      <fa-icon icon="book"></fa-icon>
+      <span *ngIf="!isCollapsed">View all Instructor</span>
+    </li>
+    <li routerLink="/profile-update" routerLinkActive="active">
+      <fa-icon icon="book"></fa-icon>
+      <span *ngIf="!isCollapsed">Profile Update</span>
+    </li>
+  </ul>
+</div>

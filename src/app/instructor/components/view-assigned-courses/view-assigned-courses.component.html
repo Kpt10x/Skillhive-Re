@@ -1,0 +1,32 @@
+<div class="assigned-courses-container">
+  <h1>Assigned Courses</h1>
+
+  <!-- Message displayed if no courses are assigned -->
+  <p *ngIf="assignedCourses.length === 0" class="no-courses-message">
+    No courses are currently assigned to this instructor.
+  </p>
+
+  <!-- Table displayed if there are assigned courses -->
+  <table *ngIf="assignedCourses.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Course Name</th>
+        <th>Category</th>
+        <th>Duration (Months)</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of assignedCourses">
+        <td>{{ course.courseId }}</td>
+        <td>{{ course.courseName }}</td>
+        <td>{{ course.courseCategory }}</td>
+        <td>{{ course.courseDurationInMonths }}</td>
+        <td>{{ course.startDate }}</td>
+        <td>{{ course.endDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

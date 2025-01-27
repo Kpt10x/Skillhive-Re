@@ -1,0 +1,67 @@
+.view-all-container {
+    margin: 20px;
+    font-family: 'Balsamiq Sans', cursive;
+    background-color: #C2DBC6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #263339;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #263339;
+    font-family: 'Balsamiq Sans', cursive;
+    font-weight: bold;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #A4C6AC;
+  }
+  
+  th {
+    background-color: #263339;
+    color: #C2DBC6;
+  }
+  
+  td {
+    color: #263339;
+  }
+  
+  .btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-edit {
+    background-color: #A4C6AC;
+    color: white;
+  }
+  
+  .btn-save {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-cancel {
+    background-color: #BBB;
+    color: white;
+  }
+  
+  .edit-form {
+    margin-top: 20px;
+    background-color: #A4C6AC;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
