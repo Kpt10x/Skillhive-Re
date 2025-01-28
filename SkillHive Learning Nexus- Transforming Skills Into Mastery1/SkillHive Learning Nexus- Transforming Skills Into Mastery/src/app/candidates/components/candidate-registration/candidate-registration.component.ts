@@ -43,7 +43,7 @@ export class CandidateRegistrationComponent {
       }
   
       // Clear any old session data before registering a new candidate
-      sessionStorage.removeItem('loggedInCandidate'); // Clear the old session data
+      sessionStorage.removeItem('loggedInCandidateId'); // Clear the old session data
       
       this.candidateService.registerCandidate(candidate).subscribe({
         next: (response) => {
