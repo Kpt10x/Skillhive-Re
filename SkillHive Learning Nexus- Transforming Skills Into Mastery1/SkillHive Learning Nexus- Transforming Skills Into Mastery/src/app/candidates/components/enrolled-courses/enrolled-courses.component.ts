@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CandidateService, Candidate } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { catchError, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-enrolled-courses',
@@ -13,30 +15,37 @@ import { CommonModule } from '@angular/common';
 export class EnrolledCoursesComponent implements OnInit {
   enrolledCourses: any[] = [];
   user: Candidate | null = null;
+  isCoursesDropdownVisible = false;
 
   constructor(
     private candidateService: CandidateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Fetch the logged-in candidate's ID
     const loggedInUserId = this.candidateService.getLoggedInCandidateId();
 
     if (loggedInUserId) {
-      this.candidateService.getCandidateById(loggedInUserId).subscribe({
-        next: (candidate) => {
-          this.user = candidate;
-          this.enrolledCourses = candidate.enrolledCourses || [];
-        },
-        error: (err) => {
-          console.error('Error fetching logged-in candidate:', err);
-          this.enrolledCourses = []; // Reset in case of error
-        },
-      });
+      this.candidateService
+        .getCandidateById(loggedInUserId)
+        .pipe(
+          switchMap((candidate) => {
+            this.user = candidate;
+            return this.candidateService.getEnrolledCoursesByCandidate(loggedInUserId);
+          }),
+          catchError((err) => {
+            console.error('Error:', err);
+            return of([]); // Return an empty array on error
+          })
+        )
+        .subscribe((enrolledCourses) => {
+          this.enrolledCourses = enrolledCourses;
+          console.log('Enrolled Courses:', this.enrolledCourses);
+        });
     } else {
       console.error('No logged-in candidate found.');
-      this.enrolledCourses = []; // Reset if no candidate is logged in
+      this.enrolledCourses = [];
     }
   }
 }

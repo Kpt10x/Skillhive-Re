@@ -47,22 +47,52 @@
       "email": "oktested@gmail.com",
       "password": "123456",
       "role": "admin"
-    }
-  ],
-  "courses-enrolled-by-candidates": [
-    {
-      "id": "u01",
-      "name": "Binoy Benson",
-      "email": "binoybenson@gmail.com",
-      "phone": "1234567890",
-      "password": "binoybenson@gmail.com"
     },
     {
-      "id": "u02",
-      "name": "Benson",
-      "email": "ben@gmail.com",
-      "phone": "1231231231",
-      "password": "ben@gmail.com"
+      "id": "3",
+      "fullName": "Ishani",
+      "email": "ishani@gmail.com",
+      "password": "instructor123",
+      "role": "instructor"
+    },
+    {
+      "id": "4",
+      "fullName": "Rohan Gupta",
+      "email": "rohan@example.com",
+      "password": "instructor123",
+      "role": "instructor"
+    },
+    {
+      "id": "55874",
+      "name": "Ramya",
+      "email": "ramya@gmail.com",
+      "phone": "9019831137",
+      "password": "989898",
+      "role": "candidate"
+    },
+    {
+      "id": "47987",
+      "name": "Dhyrya",
+      "email": "dhyrya@gmail.com",
+      "phone": "9019831137",
+      "password": "090909",
+      "role": "candidate"
+    },
+    {
+      "id": "84644",
+      "name": "Arjun",
+      "email": "arjunbs@gmail.com",
+      "phone": "9019831137",
+      "password": "090909",
+      "role": "candidate"
+    },
+    {
+      "id": "18626",
+      "name": "Samrat",
+      "email": "sam@gmail.com",
+      "phone": "9538164926",
+      "password": "98989898",
+      "role": "candidate"
     }
   ],
   "assessments": [
@@ -298,37 +328,219 @@
         }
       ]
     }
+  ],      
+  "courses-enrolled-by-candidates": [
+    {
+      "id": "64872",
+      "candidateId": "47987",
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "instructorName": "Ishani",
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "87970",
+      "candidateId": "47987",
+      "courseId": "9242222",
+      "courseName": "Photography Basics",
+      "courseCategory": "Arts",
+      "courseDurationInMonths": 2,
+      "instructorName": "Rohan Gupta",
+      "startDate": "2025-02-01",
+      "endDate": "2025-05-01"
+    },
+    {
+      "id": "24797",
+      "candidateId": "47987",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "80903",
+      "candidateId": "55874",
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "instructorName": "Ishani",
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "58429",
+      "candidateId": "55874",
+      "courseId": "4236666",
+      "courseName": "Graphic Design",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructorName": "Kavya Kapoor",
+      "startDate": "2025-04-01",
+      "endDate": "2025-07-01"
+    },
+    {
+      "id": "91660",
+      "candidateId": "55874",
+      "courseId": "9242222",
+      "courseName": "Photography Basics",
+      "courseCategory": "Arts",
+      "courseDurationInMonths": 2,
+      "instructorName": "Rohan Gupta",
+      "startDate": "2025-02-01",
+      "endDate": "2025-05-01"
+    },
+    {
+      "id": "53525",
+      "candidateId": "84644",
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "instructorName": "Ishani",
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "82649",
+      "candidateId": "84644",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "53193",
+      "candidateId": "84644",
+      "courseId": "4236666",
+      "courseName": "Graphic Design",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructorName": "Kavya Kapoor",
+      "startDate": "2025-04-01",
+      "endDate": "2025-07-01"
+    },
+    {
+      "id": "66069",
+      "candidateId": "55874",
+      "courseId": "10243333",
+      "courseName": "AI for Beginners",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 4,
+      "instructorName": "Sanya Kapoor",
+      "startDate": "2025-10-01",
+      "endDate": "2026-02-01"
+    }
   ],
   "courses": [
     {
-      "id": "DS001",
-      "name": "Data Science",
-      "status": "Live",
-      "logo": "../assets/images/data.png"
+      "courseId": "1233333",
+      "courseName": "Web Development",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Tanishq Singh",
+      "startDate": "2025-01-01",
+      "endDate": "2025-05-01",
+      "id": "3e97"
     },
     {
-      "id": "BA001",
-      "name": "Business Analytics",
-      "status": "Live",
-      "logo": ""
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "instructorName": "Ishani",
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01",
+      "id": "a47e"
     },
     {
-      "id": "WD001",
-      "name": "Web Development",
-      "status": "Upcoming",
-      "logo": "..assets/images/web.png"
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "instructorName": "Raghav Verma",
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01",
+      "id": "5f13"
     },
     {
-      "id": "GD001",
-      "name": "Graphics Design",
-      "status": "Upcoming",
-      "logo": ""
+      "courseId": "4236666",
+      "courseName": "Graphic Design",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructorName": "Kavya Kapoor",
+      "startDate": "2025-04-01",
+      "endDate": "2025-07-01",
+      "id": "c91d"
     },
     {
-      "id": "DM001",
-      "name": "Digital Marketing",
-      "status": "Upcoming",
-      "logo": ""
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01",
+      "id": "f29b"
+    },
+    {
+      "courseId": "6238888",
+      "courseName": "Digital Marketing",
+      "courseCategory": "Marketing",
+      "courseDurationInMonths": 3,
+      "instructorName": "Meera Iyer",
+      "startDate": "2025-03-01",
+      "endDate": "2025-06-01",
+      "id": "b63a"
+    },
+    {
+      "courseId": "7239999",
+      "courseName": "Cloud Computing",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 6,
+      "instructorName": "Vivek Kumar",
+      "startDate": "2024-07-01",
+      "endDate": "2024-12-01",
+      "id": "d85f"
+    },
+    {
+      "courseId": "8241111",
+      "courseName": "Business Analytics",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 5,
+      "instructorName": "Priya Seth",
+      "startDate": "2024-04-01",
+      "endDate": "2024-07-01",
+      "id": "e76d"
+    },
+    {
+      "courseId": "9242222",
+      "courseName": "Photography Basics",
+      "courseCategory": "Arts",
+      "courseDurationInMonths": 2,
+      "instructorName": "Rohan Gupta",
+      "startDate": "2025-02-01",
+      "endDate": "2025-05-01",
+      "id": "g47c"
+    },
+    {
+      "courseId": "10243333",
+      "courseName": "AI for Beginners",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 4,
+      "instructorName": "Sanya Kapoor",
+      "startDate": "2025-10-01",
+      "endDate": "2026-02-01",
+      "id": "h93f"
     }
   ]
 }
