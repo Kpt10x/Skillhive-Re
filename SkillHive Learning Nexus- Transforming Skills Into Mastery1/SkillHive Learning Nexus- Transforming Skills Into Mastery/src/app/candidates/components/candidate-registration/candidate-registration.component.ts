@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule,RouterModule,HttpClientModule],
   templateUrl: './candidate-registration.component.html',
-  styleUrls: ['./candidate-registration.component.scss']
+  styleUrls: ['./candidate-registration.component.css']
 })
 export class CandidateRegistrationComponent {
   registrationForm: FormGroup;

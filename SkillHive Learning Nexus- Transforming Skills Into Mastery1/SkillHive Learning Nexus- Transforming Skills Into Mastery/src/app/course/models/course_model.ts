@@ -1,10 +1,11 @@
 export interface Course {
-    courseName: string;
-    courseId: string;
-    courseCategory: string;
-    courseDurationMonths: number;
-    instructorName: string;
+    courseName: String;
+    courseId: String;
+    courseCategory: String;
+    courseDurationMonths: Number;
+    instructorName: String;
     startDate: Date;
     endDate: Date;
     assignmentDate: Date;
+    status:String;
 }

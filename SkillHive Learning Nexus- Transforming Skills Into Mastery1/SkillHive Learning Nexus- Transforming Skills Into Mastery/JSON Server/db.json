@@ -93,6 +93,14 @@
       "phone": "9538164926",
       "password": "98989898",
       "role": "candidate"
+    },
+    {
+      "id": "42829",
+      "name": "Ben",
+      "email": "ben@gmail.com",
+      "phone": "9999999999",
+      "password": "ben@gmail.com",
+      "role": "candidate"
     }
   ],
   "assessments": [
