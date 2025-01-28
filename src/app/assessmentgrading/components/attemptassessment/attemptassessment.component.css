@@ -1,0 +1,679 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+
+}
+
+.card {
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    background: white;
+}
+
+.card.clickable {
+    cursor: pointer;
+}
+
+.card.clickable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.card.clickable:active {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #f8f8f8;
+}
+
+.card.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+}
+
+/* Optional: Add a subtle ripple effect on click */
+.card.clickable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card.clickable:active::after {
+    opacity: 1;
+}
+
+/* Make the course name more prominent on hover */
+.card.clickable:hover h3 {
+    color: #007bff;
+}
+
+/* Add a subtle transition for the status badge */
+.card.clickable:hover [class*='-badge'] {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.sidebar {
+    background-color: #263339;
+    color: white;
+    width: 15%; /* Reduced width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center logo horizontally */
+    transition: all 0.3s ease;
+}
+
+.logo1-container {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 36px; /* Increased size */
+    font-weight: 400;
+    line-height: 43.2px;
+    text-align: center;
+    margin-bottom: 40px; /* Add spacing below the logo */
+    padding-top:10px;
+    transition: all 0.3s ease; /* Smooth size adjustment */
+}
+
+.logo1-container .skill {
+    color: #C1DBC6;
+}
+
+.logo1-container .hive {
+    color: #9BBF94; /* Slightly darker green */
+}
+
+.menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Uniform spacing between items */
+    margin-bottom: 40px; 
+    padding-top:40px/* Add space between menu-container and bottom-menu-container */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgba(193, 219, 198, 1);
+    padding: 10px 15px;
+    border-radius: 8px; /* Smooth rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth interactions */
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Soft hover background */
+    transform: translateX(5px); /* Slight shift on hover */
+}
+
+.menu-item:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Active state feedback */
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease; /* Smooth scaling */
+}
+.bottom-menu-container {
+    margin-top: auto; /* Push the bottom items to the bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 190px; /* Add extra spacing above bottom-menu-container if needed */
+}
+.main-content {
+    background-color: #C1DBC6; /* Background color */
+    color: #000; /* Text color */
+    flex: 1; /* Fill available space */
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Align content to the top */
+    padding: 20px;
+    overflow-y: auto; /* Handle content overflow */
+    position: relative;
+}
+
+.main-heading {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 46px; /* Keep the font size as is */
+    font-weight: 400;
+    color: #000;
+    text-align: center; /* Align text to the left */
+    margin-bottom: 20px; /* Add spacing below the heading */
+    border: 3px solid #9BBF94; /* Keep the border size */
+    border-radius: 15px; /* Rounded corners around the container */
+    padding: 30px 50px; /* Adjust padding to create more space */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    position: relative; /* Positioning context for the search bar */
+    display: inline-block; /* Ensure the container adjusts its size based on the content */
+    width: auto; /* Allow the container to automatically adjust to fit the content */
+    max-width: 100%; /* Ensure the container doesn't exceed screen width */
+    margin: 0; /* No extra margin to keep it at the top */
+}
+
+.main-heading .highlight {
+    color: #145f28; /* Slightly darker green for highlight */
+}
+
+.search-bar {
+    width: 50%; /* Set relative width for responsiveness */
+    max-width: 1000px; /* Limit the maximum width */
+    padding: 10px 15px; /* Inner padding for comfort */
+    border: 1px solid #9BBF94; /* Green border color */
+    border-radius: 10px; /* Smooth corners */
+    font-size: 20px; /* Font size inside the input */
+    outline: none; /* Remove default focus outline */
+    margin-top: 15px; /* Add spacing above the search bar */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth effects */
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 8px rgba(95, 157, 112, 0.5); /* Green glow on focus */
+    border-color: #5F9D70; /* Darker green border on focus */
+}
+
+.sub-heading {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 32px; /* Adjust font size for subheading */
+    color: #145f28; /* Use the same green color or a different shade */
+    text-align: center; /* Center the subheading */
+    margin-top: 40px; /* Space between the heading and the subheading */
+    margin-left: 20px;
+    font-weight: 500; /* Optional: Adjust the weight for emphasis */
+    position: relative; /* Position the ::after pseudo-element relative to this */
+}
+
+
+.line-above-cards {
+    width: 100%; /* Full width of the container */
+    height: 2px; /* Thickness of the line */
+    background-color: #070707; /* Dark color for the line */
+    margin-bottom: 15px; /* Space below the line */
+    
+}
+
+.assessment-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    justify-content: space-between;
+    gap: 20px; /* Space between cards */
+    width: 100%;
+    margin-top: -5px;
+}
+
+.card {
+    flex: 1 1 20%; /* Allow each card to take up at least 30% of the width */
+    position: relative;
+    background-color: #e9f3e6;
+    border: 3px solid #82b977;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 250px; /* Ensure cards don't shrink too much */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #dbffdb; /* Light green background on hover for interaction */
+}
+
+.card h3 {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 24px;
+    color: #263339;
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+.card p {
+    font-size: 16px;
+    color:#4e4e4e;
+    margin-left: 60px;
+    font-family: 'Balsamiq Sans', sans-serif; /* Consistent font */
+}
+
+/* Adding responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 45%; /* Adjust card width for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%; /* Full width for small screens like mobiles */
+    }
+}
+
+
+/* Live badge container */
+.live-badge {
+    position: absolute; /* Position inside the card */
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: blueviolet; /* White text color */
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+/* Red dot */
+.live-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Circular dot */
+    background-color: rgb(0, 255, 68); /* Red color */
+}
+
+/* Text next to the dot */
+.live-text {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Balsamiq Sans', sans-serif;
+    color: #263339;
+}
+/* Upcoming badge container */
+.upcoming-badge {
+    position: absolute; /* Position inside the card */
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #fff; /* White text color */
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+/* Red dot */
+.upcoming-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Circular dot */
+    background-color: rgb(255, 219, 77); /* Red color */
+}
+
+/* Text next to the dot */
+.upcoming-text {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Balsamiq Sans', sans-serif;
+    color: #263339;
+}
+/* Ended badge container */
+.ended-badge {
+    position: absolute; /* Position inside the card */
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #fff; /* White text color */
+    z-index: 1; /* Ensure it appears above other content */
+}
+
+/* Red dot */
+.ended-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Circular dot */
+    background-color: rgb(253, 42, 42); /* Red color */
+}
+
+/* Text next to the dot */
+.ended-text {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Balsamiq Sans', sans-serif;
+    color: #263339;
+}
+
+/* Circular logo below Live badge */
+.logo-container {
+    position: absolute;
+    top: 50px; /* Position it below the live badge */
+    left: 20px; /* Align it to the left of the card */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Ensure the image fits within the circle */
+    background-color: #ffffff; /* Light background for logo container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black; /* Add a black border */
+}
+
+.logo {
+    width: 100%; /* Make the logo fill the circle */
+    height: 100%; /* Make the logo fill the circle */
+    object-fit: cover; /* Ensure the image maintains aspect ratio */
+}
+
+@media (max-width: 768px) {
+    /* Stack Sidebar and Main Content vertically for smaller screens */
+    .container {
+        flex-direction: column; /* Change from row to column to stack the containers */
+        height: auto; /* Let the container grow based on content height */
+    }
+
+    .sidebar {
+        width: 100%; /* Make sidebar take full width of the screen */
+        padding: 15px; /* Adjust padding for smaller screens */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+
+    .logo1-container {
+        margin-bottom: 15px; /* Decrease space between logo and menu items */
+        text-align: center;
+    }
+
+    .menu-container {
+        display: flex;
+        flex-direction: row; /* Arrange menu items in a row */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        flex-wrap: wrap;
+        margin-bottom: 10px; /* Decrease space between main menu and bottom menu */
+    }
+
+    .menu-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        padding: 10px 5px;
+        text-align: center;
+    }
+
+    .menu-icon {
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+
+    .bottom-menu-container {
+        display: flex; /* Make the bottom menu items appear side-by-side */
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Space between bottom menu icons */
+        width: 100%;
+        margin-top: 20px; /* Space between the menu container and bottom menu */
+    }
+
+    .bottom-menu-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        padding: 8px 5px;
+        text-align: center;
+    }
+
+    .bottom-menu-item .menu-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
+    /* Main content adjustments */
+    .main-content {
+        width: 100%; /* Ensure the main content takes full width */
+        padding: 15px; /* Adjust padding */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 10px; /* Further reduce padding for very small screens */
+    }
+
+    .menu-container {
+        gap: 15px; /* Adjust spacing for small screens */
+    }
+
+    .menu-item {
+        font-size: 12px; /* Reduce font size for mobile */
+        padding: 8px 3px; /* Adjust padding */
+    }
+
+    .menu-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Main content adjustments for smaller screens */
+    .main-content {
+        padding: 10px; /* Further reduce padding for mobile */
+    }
+
+    .bottom-menu-container {
+        gap: 10px; /* Reduce space between bottom menu icons */
+    }
+
+    .bottom-menu-item .menu-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+.main-content1 {
+    background-color: #C1DBC6; /* Background color */
+    color: #000; /* Text color */
+    flex: 1; /* Fill available space */
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Align content to the top */
+    padding: 20px;
+    overflow-y: auto; /* Handle content overflow */
+    position: relative;
+}
+.main-heading1 {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 46px; /* Keep the font size as is */
+    font-weight: 400;
+    color: #000;
+    text-align: center; /* Align text to the left */
+    margin-bottom: 20px; /* Add spacing below the heading */
+    margin-left: 100px;
+}
+.test-card {
+    background-color: #e9f3e6; /* Light green background for the card */
+    border: 2px solid #82b977; /* Green border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    max-width: 1000px; /* Limit the card's width */
+    margin: 20px auto; /* Center the card */
+    text-align: left;
+}
+.card{
+    cursor: pointer;
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card-logo {
+    width: 70px; /* Adjust the size of the logo */
+    height: 70px;
+    margin-right: 10px; /* Space between the logo and the title */
+}
+
+.card-heading {
+    font-size: 30px;
+    color: #263339;
+    margin-bottom: 10px;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.card-description {
+    font-size: 20px;
+    color: #4e4e4e;
+    margin-bottom: 20px;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.card-info {
+    font-size: 20px;
+    color: #263339;
+    margin-bottom: 20px;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+.start-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;  /* Space above the button */
+}
+/* Initial styles for the Start Test button */
+.start-button {
+    background-color: #388e3c; /* Darker green background */
+    color: white; /* White text */
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #145f28; /* Keep the background color unchanged on hover */
+}
+
+/* Enabled button state */
+.start-button:enabled {
+    background-color: #388e3c;
+    cursor: pointer;
+  }
+  
+  .start-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
+.instructions-heading {
+    font-size: 20px; /* Size of the instructions heading */
+    font-weight: bold;
+    color: #263339;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+.instruction-line {
+    border: none;
+    border-top: 2px solid #9BBF94; /* Green color for the horizontal line */
+    margin: 10px 0; /* Add some space above and below the line */
+    width: 145px; /* Adjust width to make it shorter */
+}
+.instruction-list {
+    font-size: 18px; /* Font size for the instructions */
+    color: #4e4e4e; /* Text color */
+    margin-left: 20px; /* Add left margin for indentation */
+    list-style-type: disc; /* Bullet points */
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.instruction-list li {
+    margin-bottom: 10px; /* Space between each bullet point */
+}
+/* Container for acknowledgment */
+.acknowledgment {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #4e4e4e;
+    display: flex;
+    align-items: center;
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
+/* Hide the default checkbox */
+/* Hide the default checkbox */
+.ack-checkbox {
+    -webkit-appearance: none;  /* Remove default styling for WebKit browsers */
+    -moz-appearance: none;     /* Remove default styling for Firefox */
+    appearance: none;          /* Remove default styling */
+    width: 20px;               /* Size of the custom checkbox */
+    height: 20px;              /* Size of the custom checkbox */
+    border: 2px solid #4e4e4e; /* Border color */
+    border-radius: 5px;        /* Rounded corners */
+    background-color: white;   /* Default background color */
+    position: relative;        /* For positioning checkmark */
+    cursor: pointer;          /* Show pointer cursor on hover */
+}
+
+/* Style the checkbox when it is checked */
+.ack-checkbox:checked {
+    background-color: #82b977; /* Green background when checked */
+    border-color: #82b977;     /* Border matches background color */
+}
+
+/* Add a checkmark inside the checkbox */
+.ack-checkbox:checked::before {
+    content: '\2713';          /* Unicode checkmark character */
+    font-size: 16px;           /* Size of the checkmark */
+    color: white;              /* White color for the checkmark */
+    position: absolute;        /* Position inside the checkbox */
+    top: 0;                    /* Align with top of the checkbox */
+    left: 3px;                 /* Adjust for centering */
+}
+
+
+/* Hover effect */
+.ack-checkbox:hover {
+    border-color: #388e3c;       /* Darker green border on hover */
+}
+
+/* Label styling */
+.ack-text {
+    font-size: 16px;
+    color: #4e4e4e;
+    cursor: pointer;  /* Change cursor to pointer for label */
+    font-family: 'Balsamiq Sans', sans-serif;
+}
+
