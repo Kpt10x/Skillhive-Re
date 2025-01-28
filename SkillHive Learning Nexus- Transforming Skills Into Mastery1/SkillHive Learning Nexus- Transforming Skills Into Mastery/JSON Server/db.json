@@ -328,7 +328,7 @@
         }
       ]
     }
-  ],      
+  ],
   "courses-enrolled-by-candidates": [
     {
       "id": "64872",
@@ -432,6 +432,28 @@
     {
       "id": "66069",
       "candidateId": "55874",
+      "courseId": "10243333",
+      "courseName": "AI for Beginners",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 4,
+      "instructorName": "Sanya Kapoor",
+      "startDate": "2025-10-01",
+      "endDate": "2026-02-01"
+    },
+    {
+      "id": "41737",
+      "candidateId": "47987",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "instructorName": "Raghav Verma",
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "67563",
+      "candidateId": "47987",
       "courseId": "10243333",
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",

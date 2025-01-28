@@ -45,7 +45,7 @@ export class CandidateDashboardComponent implements OnInit {
 
   logout(): void {
     this.candidateService.clearLoggedInCandidateId();
-    sessionStorage.removeItem('loggedInCandidate');
+    sessionStorage.removeItem('loggedInCandidateId');
     // Perform other logout logic like redirecting to the login page
   }
   

@@ -28,10 +28,11 @@ export class UpcomingCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     const loggedInUserId = this.candidateService.getLoggedInCandidateId();
-
+console.log(loggedInUserId, "Starrrrr");
     if (loggedInUserId) {
       this.candidateService.getCandidateById(loggedInUserId).subscribe({
         next: (candidate) => {
+          console.log(candidate);
           this.user = candidate;
           this.loadCourses();
         },

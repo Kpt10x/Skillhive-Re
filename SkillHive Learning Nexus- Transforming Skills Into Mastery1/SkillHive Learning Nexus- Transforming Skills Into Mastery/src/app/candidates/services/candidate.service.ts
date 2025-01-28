@@ -25,19 +25,21 @@ export class CandidateService {
 
   constructor(private http: HttpClient) {}
 
-  // Manage logged-in candidate ID
-  setLoggedInCandidateId(id: string): void {
-    this.loggedInCandidateId = id;
-    sessionStorage.setItem('loggedInCandidate', id);
-  }
+  // Manage logged-in candidate ID - set in login.component.ts
+  // setLoggedInCandidateId(id: string): void {
+  //   this.loggedInCandidateId = id;
+  //   sessionStorage.setItem('loggedInCandidate', id);
+  // }
 
   getLoggedInCandidateId(): string | null {
-    return this.loggedInCandidateId || sessionStorage.getItem('loggedInCandidate');
+    const storedId = sessionStorage.getItem('loggedInCandidateId');
+    return this.loggedInCandidateId || (storedId ? JSON.parse(storedId) : null);
+    // returned after the convertion of id say "123" to 123 (number)
   }
 
   clearLoggedInCandidateId(): void {
     this.loggedInCandidateId = null;
-    sessionStorage.removeItem('loggedInCandidate');
+    sessionStorage.removeItem('loggedInCandidateId');
   }
 
   // Fetch all candidates

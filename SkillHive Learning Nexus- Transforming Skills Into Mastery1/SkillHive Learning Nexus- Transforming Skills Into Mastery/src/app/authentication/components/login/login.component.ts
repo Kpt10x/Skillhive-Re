@@ -40,8 +40,11 @@ export class LoginComponent {
         .subscribe({
           next: (users) => {
             if (users.length > 0) {
-              const user = users[0];
+              const user = users[0]; //object
               sessionStorage.setItem('user', JSON.stringify(user));
+              sessionStorage.setItem('loggedInCandidateId', JSON.stringify(user.id)); 
+              // If user.id is 123, it's stored as "123" (string)
+
               this.navigateBasedOnRole(role, user);
             } else {
               this.showErrorAlert('Please check email and password.');
