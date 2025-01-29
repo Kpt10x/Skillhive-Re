@@ -1,75 +1,119 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { InstructorService } from '../../Services/instructor.service';
-import { HttpClientModule } from '@angular/common/http'; // Make sure HttpClientModule is available
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../../authentication/services/auth.service';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { InstructorService } from '../../services/instructor.service';
 @Component({
   selector: 'app-profile-update',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule], // Ensure HttpClientModule is imported
   templateUrl: './profile-update.component.html',
-  styleUrls: ['./profile-update.component.css']
+  styleUrls: ['./profile-update.component.css'],
+  standalone: true,
+  imports: [HttpClientModule, ReactiveFormsModule, CommonModule,RouterModule],
 })
 export class ProfileUpdateComponent implements OnInit {
   profileForm: FormGroup;
-  instructorId: string = ''; // This is fetched from localStorage or session
+  passwordForm: FormGroup;
+  instructorId: string = ''; // ID of the logged-in instructor
+  private readonly apiUrl = 'http://localhost:3000/profiles'; // JSON server endpoint
 
   constructor(
     private fb: FormBuilder,
-    private instructorService: InstructorService,
-    private router: Router
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthService, // Inject AuthService
+    private instructorService: InstructorService // Inject InstructorService
   ) {
+    // Initialize the profile form with validation rules
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      Area_of_Expertise: ['', Validators.required],
-      Experience: ['', [Validators.required, Validators.min(1)]],
+      areaOfExpertise: ['', Validators.required],
+      experience: ['', [Validators.required, Validators.min(1)]],
+    });
+
+    // Initialize the password form with validation rules
+    this.passwordForm = this.fb.group({
+      oldPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ngOnInit(): void {
-    // Fetch the logged-in instructor's ID (e.g., from localStorage or session)
-    this.instructorId = localStorage.getItem('instructorId') || '';
-    if (this.instructorId) {
-      this.loadProfile();
-    } else {
-      alert('Error: Could not fetch instructor ID.');
+    this.loadProfile(); // Load the profile for the logged-in user
+  }
+
+  private loadProfile(): void {
+    //const user = this.instructorService.getLoggedInInstructor();
+    const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+
+    console.log(loggedInInstructor,"Nishhh")
+    if (!loggedInInstructor) {
+      alert('Error: Unauthorized access. Only instructors can update their profile.');
       this.router.navigate(['/login']);
+      return;
+    }
+
+    this.instructorId = loggedInInstructor.id;
+    this.profileForm.patchValue(loggedInInstructor); // Populate the form with user data
+  }
+
+  // Update the profile data on the JSON server
+  onUpdateProfile(): void {
+    if (this.profileForm.valid) {
+      const updatedProfile = {
+        ...this.profileForm.value,
+        role: 'instructor', // Ensure the role is not altered
+      };
+      this.http.patch(`${this.apiUrl}/${this.instructorId}`, updatedProfile).subscribe({
+        next: () => {
+          alert('Profile updated successfully!');
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.error('Error updating profile:', err);
+          alert('Failed to update profile. Please try again later.');
+        },
+      });
+    } else {
+      alert('Please fill out all required fields correctly.');
     }
   }
 
-  loadProfile(): void {
-    this.instructorService.getInstructorById(this.instructorId).subscribe(
-      (data) => {
-        this.profileForm.patchValue(data);  // Patch values from response data
-      },
-      (error) => {
-        console.error('Error fetching profile:', error);
-        alert('Failed to load profile.');
-      }
-    );
-  }
+  // Update the password on the JSON server
+  onUpdatePassword(): void {
+    if (this.passwordForm.valid) {
+      const { oldPassword, newPassword } = this.passwordForm.value;
 
-  onUpdateProfile(): void {
-    if (this.profileForm.valid) {
-      this.instructorService
-        .updateInstructor(this.instructorId, this.profileForm.value)
-        .subscribe({
-          next: () => {
-            alert('Profile updated successfully!');
-            this.router.navigate(['/dashboard']);
-          },
-          error: (err) => {
-            console.error('Error updating profile:', err);
-            alert('Failed to update profile.');
-          },
-        });
+      this.http.get<any>(`${this.apiUrl}/${this.instructorId}`).subscribe({
+        next: (data) => {
+          if (data.default_password !== oldPassword) {  // Use default_password from db.json
+            alert('Error: Old password is incorrect.');
+            return;
+          }
+
+          this.http.patch(`${this.apiUrl}/${this.instructorId}`, { default_password: newPassword }).subscribe({
+            next: () => {
+              alert('Password updated successfully!');
+              this.router.navigate(['/dashboard']);
+            },
+            error: (err) => {
+              console.error('Error updating password:', err);
+              alert('Failed to update password. Please try again later.');
+            },
+          });
+        },
+        error: (err) => {
+          console.error('Error verifying old password:', err);
+          alert('Failed to verify old password. Please try again later.');
+        },
+      });
     } else {
-      alert('Please fill out the form correctly.');
+      alert('Please fill out all required fields correctly.');
     }
   }
 }

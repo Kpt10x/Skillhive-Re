@@ -9,7 +9,3 @@ export const authGuard: CanActivateFn = (route, state) => {
     return router.navigate(['login']);
   }
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/team1
