@@ -1,0 +1,243 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;600&display=swap');
+
+/* General Styles */
+body {
+  font-family: 'Balsamiq Sans', sans-serif;
+  margin: 0;
+  background-color: #E7FEEC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dashboard Container */
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar Section */
+.sidebar {
+  background-color: #263339;
+  color: white;
+  width: 235px;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.skill {
+  color: white;
+  font-size: 36px;
+}
+
+.hive {
+  color: #A4C6AC;
+  font-size: 36px;
+}
+
+.selections {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.sel1, .sel2, .sel3 {
+  display: flex;
+  align-items: center;
+  color: #C2DBC6;
+  font-size: 18px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.sel1 img, .sel2 img, .sel3 img {
+  margin-right: 10px;
+}
+
+.sel1:hover, .sel2:hover, .sel3:hover {
+  color: #A4C6AC;
+}
+
+.dropdown {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item {
+  margin: 5px 0;
+  cursor: pointer;
+  color: #C2DBC6;
+}
+
+.dropdown-item:hover {
+  color: #A4C6AC;
+}
+
+.extras {
+  margin-top: auto;
+}
+
+.user, .logout {
+  display: flex;
+  align-items: center;
+  color: #C2DBC6;
+  font-size: 18px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.user img, .logout img {
+  margin-right: 10px;
+}
+
+.user:hover, .logout:hover {
+  color: #A4C6AC;
+}
+
+/* Main Section */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.view-all-container {
+  margin: 20px;
+  font-family: 'Balsamiq Sans', cursive;
+  background-color: #C2DBC6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #263339;
+}
+
+h1 {
+  text-align: center;
+  color: #263339;
+  font-family: 'Balsamiq Sans', cursive;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #A4C6AC;
+}
+
+th {
+  background-color: #263339;
+  color: #C2DBC6;
+}
+
+td {
+  color: #263339;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #A4C6AC;
+  color: white;
+}
+
+.btn-save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #BBB;
+  color: white;
+}
+
+.edit-form {
+  margin-top: 20px;
+  background-color: #A4C6AC;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Footer Section */
+footer {
+  background-color: #263339;
+  color: #C2DBC6;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+footer ul li {
+  margin: 0;
+}
+
+footer ul li a {
+  color: #C2DBC6;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+#social-media {
+  margin-top: 10px;
+}
+
+#social-media a {
+  color: #C2DBC6;
+  margin: 0 10px;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+#social-media a:hover {
+  color: #A4C6AC;
+  transform: scale(1.1);
+}
+/* Root Variables */
+:root {
+  --fc-event-bg-color: #A4C6AC;
+  --fc-event-border-color: #A4C6AC;
+  --fc-event-text-color: #263339;
+}

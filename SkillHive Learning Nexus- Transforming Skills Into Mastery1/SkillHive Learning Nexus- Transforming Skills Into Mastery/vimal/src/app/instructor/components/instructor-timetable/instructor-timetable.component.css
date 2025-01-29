@@ -1,0 +1,214 @@
+/* Overall Page Layout */
+.instructor-timetable-container {
+  display: flex;
+  width: 100%;
+}
+
+/* General Styles */
+body {
+  font-family: 'Balsamiq Sans', sans-serif;
+  margin: 0;
+  background-color: #E7FEEC;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Sidebar Section */
+.sidebar {
+  background-color: #263339;
+  color: white;
+  width: 235px;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.skill {
+  color: white;
+  font-size: 36px;
+}
+
+.hive {
+  color: #A4C6AC;
+  font-size: 36px;
+}
+
+.selections {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.sel1, .sel2, .sel3 {
+  display: flex;
+  align-items: center;
+  color: #C2DBC6;
+  font-size: 18px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.sel1 img, .sel2 img, .sel3 img {
+  margin-right: 10px;
+}
+
+.sel1:hover, .sel2:hover, .sel3:hover {
+  color: #A4C6AC;
+}
+
+.extras {
+  margin-top: auto;
+}
+
+.user, .logout {
+  display: flex;
+  align-items: center;
+  color: #C2DBC6;
+  font-size: 18px;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.user img, .logout img {
+  margin-right: 10px;
+}
+
+.user:hover, .logout:hover {
+  color: #A4C6AC;
+}
+
+/* Main Content Section */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.assigned-courses-container {
+  margin: 20px auto;
+  font-family: 'Balsamiq Sans', cursive;
+  background-color: #C2DBC6; /* Light green */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  color: #263339; /* Dark green */
+  margin-bottom: 20px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #A4C6AC; /* Medium green */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  padding: 15px;
+  text-align: left;
+  background-color: #263339; /* Dark green for header */
+  color: #C2DBC6; /* Light green text */
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #0B0B0B;
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  color: #263339; /* Dark green text */
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/* Zebra striping for rows */
+tbody tr:nth-child(even) {
+  background-color: #C2DBC6; /* Light green for even rows */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #A4C6AC; /* Medium green for odd rows */
+}
+
+.no-courses-message {
+  text-align: center;
+  font-size: 18px;
+  color: #263339;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Footer Section */
+footer {
+  background-color: #263339;
+  color: #C2DBC6;
+  text-align: center;
+  padding: 15px 0;
+}
+
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+footer ul li {
+  margin: 0;
+}
+
+footer ul li span {
+  color: #C2DBC6;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer ul li span:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+#social-media {
+  margin-top: 10px;
+}
+
+#social-media span {
+  color: #C2DBC6;
+  margin: 0 10px;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+#social-media span:hover {
+  color: #A4C6AC;
+  transform: scale(1.1);
+}
