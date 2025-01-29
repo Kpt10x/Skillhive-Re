@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { Course } from '../../models/course.model';
 // import { AuthService } from '../../../authentication/services/auth.service';
 import { RouterModule } from '@angular/router';
- import { InstructorService } from '../../services/instructor.service';
+import { InstructorService } from '../../services/instructor.service';
+// IMPORT COURSE FROM COURSE MODULE'S MODEL CLASS
+import { Course } from '../../models/course.model';
 
 @Component({
   selector: 'app-instructor-timetable',
@@ -16,7 +17,7 @@ import { RouterModule } from '@angular/router';
 export class InstructorTimeTableComponent implements OnInit {
   assignedCourses: Course[] = [];
   apiUrlCourses = 'http://localhost:3000/courses'; // Endpoint for courses
-  loggedInInstructor: any = null; // Details of the logged-in instructor
+  loggedInInstructor: any = null; // Details of the locourse.instructorId.toLowerCase() === instructorName.toLowerCase()gged-in instructor
 
   constructor(private http: HttpClient, private instructorService: InstructorService) {}
 
@@ -40,12 +41,13 @@ export class InstructorTimeTableComponent implements OnInit {
           return;
         }
         this.assignedCourses = allCourses.filter(
-          (course) => course.instructor.toLowerCase() === instructorName.toLowerCase()
-        );
+          (course) => course.instructor && (course.instructor.toLowerCase() === this.loggedInInstructor.name.toLowerCase()));
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching courses:', error);
+      
       }
     );
-  }
+  
+}
 }

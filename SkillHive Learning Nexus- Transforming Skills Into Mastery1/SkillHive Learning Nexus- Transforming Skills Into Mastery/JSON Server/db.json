@@ -2,7 +2,7 @@
   "profiles": [
     {
       "id": "1",
-      "fullName": "John Doe",
+      "name": "John Doe",
       "email": "john.doe@example.com",
       "password": "admin123",
       "role": "admin"
@@ -13,9 +13,9 @@
       "email": "sujatha45@gmail.com",
       "phone": "1234567890",
       "areaOfExpertise": "Angular",
-      "Experience": "10",
+      "experience": "10",
       "role": "instructor",
-      "default_password": "KwKzEtQy"
+      "default_password": "KwKzEtQz"
     },
     {
       "id": "66534",
@@ -28,39 +28,85 @@
       "default_password": "VBmKmAly"
     },
     {
+      "id": "77891",
+      "name": "Arjun Nair",
+      "email": "arjun.nair@gmail.com",
+      "phone": "9876543211",
+      "areaOfExpertise": "Cyber Security",
+      "experience": 5,
+      "role": "instructor",
+      "default_password": "XkLmNpQr"
+    },
+    {
+      "id": "77892",
+      "name": "Kavya Kapoor",
+      "email": "kavya.kapoor@gmail.com",
+      "phone": "9876543212",
+      "areaOfExpertise": "Graphic Design",
+      "experience": 4,
+      "role": "instructor",
+      "default_password": "YmNpQrSt"
+    },
+    {
+      "id": "77893",
+      "name": "Sanya Kapoor",
+      "email": "sanya.kapoor@gmail.com",
+      "phone": "9876543213",
+      "areaOfExpertise": "Artificial Intelligence",
+      "experience": 6,
+      "role": "instructor",
+      "default_password": "ZnQrStUv"
+    },
+    {
+      "id": "77894",
+      "name": "Raghav Verma",
+      "email": "raghav.verma@gmail.com",
+      "phone": "9876543214",
+      "areaOfExpertise": "Machine Learning",
+      "experience": 5,
+      "role": "instructor",
+      "default_password": "WxStUvWy"
+    },
+    {
       "id": "3",
-      "fullName": "Alice Johnson",
+      "name": "Alice Johnson",
       "email": "alice.johnson@example.com",
       "password": "candidate1234",
       "role": "candidate"
     },
     {
       "id": "5",
-      "fullName": "Charlie Brown",
+      "name": "Charlie Brown",
       "email": "charlie.brown@example.com",
       "password": "admin456",
       "role": "admin"
     },
     {
       "id": "2san3pcv6e2",
-      "fullName": "oktested",
+      "name": "oktested",
       "email": "oktested@gmail.com",
       "password": "123456",
       "role": "admin"
     },
     {
       "id": "3",
-      "fullName": "Ishani",
+      "name": "Ishani",
       "email": "ishani@gmail.com",
-      "password": "instructor123",
-      "role": "instructor"
+      "phone": "9876543210",
+      "areaOfExpertise": "Web Development",
+      "experience": 5,
+      "role": "instructor",
+      "default_password": "instructor123"
     },
     {
       "id": "4",
-      "fullName": "Rohan Gupta",
+      "name": "Rohan Gupta",
       "email": "rohan@example.com",
-      "password": "instructor123",
-      "role": "instructor"
+      "phone": "8765432109",
+      "areaOfExpertise": "Machine Learning",
+      "experience": 6,
+      "role": "instructor",
+      "default_password": "instructor123"
     },
     {
       "id": "55874",
@@ -345,7 +391,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
+      "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
@@ -356,7 +402,7 @@
       "courseName": "Photography Basics",
       "courseCategory": "Arts",
       "courseDurationInMonths": 2,
-      "instructorName": "Rohan Gupta",
+      "instructor": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01"
     },
@@ -367,7 +413,7 @@
       "courseName": "Cyber Security",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
+      "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01"
     },
@@ -378,7 +424,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
+      "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
@@ -389,7 +435,7 @@
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructorName": "Kavya Kapoor",
+      "instructor": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01"
     },
@@ -400,7 +446,7 @@
       "courseName": "Photography Basics",
       "courseCategory": "Arts",
       "courseDurationInMonths": 2,
-      "instructorName": "Rohan Gupta",
+      "instructor": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01"
     },
@@ -411,7 +457,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
+      "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
@@ -422,7 +468,7 @@
       "courseName": "Cyber Security",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
+      "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01"
     },
@@ -433,7 +479,7 @@
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructorName": "Kavya Kapoor",
+      "instructor": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01"
     },
@@ -444,7 +490,7 @@
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 4,
-      "instructorName": "Sanya Kapoor",
+      "instructor": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01"
     },
@@ -455,7 +501,7 @@
       "courseName": "Machine Learning",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 5,
-      "instructorName": "Raghav Verma",
+      "instructor": "Raghav Verma",
       "startDate": "2025-03-01",
       "endDate": "2025-08-01"
     },
@@ -466,7 +512,7 @@
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 4,
-      "instructorName": "Sanya Kapoor",
+      "instructor": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01"
     }
@@ -477,7 +523,7 @@
       "courseName": "Web Development",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
-      "instructorName": "Tanishq Singh",
+      "instructor": "Tanishq Singh",
       "startDate": "2025-01-01",
       "endDate": "2025-05-01",
       "id": "3e97"
@@ -487,7 +533,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
+      "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01",
       "id": "a47e"
@@ -497,7 +543,7 @@
       "courseName": "Machine Learning",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 5,
-      "instructorName": "Raghav Verma",
+      "instructor": "Raghav Verma",
       "startDate": "2025-03-01",
       "endDate": "2025-08-01",
       "id": "5f13"
@@ -507,7 +553,7 @@
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructorName": "Kavya Kapoor",
+      "instructor": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01",
       "id": "c91d"
@@ -517,7 +563,7 @@
       "courseName": "Cyber Security",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
+      "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01",
       "id": "f29b"
@@ -527,7 +573,7 @@
       "courseName": "Digital Marketing",
       "courseCategory": "Marketing",
       "courseDurationInMonths": 3,
-      "instructorName": "Meera Iyer",
+      "instructor": "Meera Iyer",
       "startDate": "2025-03-01",
       "endDate": "2025-06-01",
       "id": "b63a"
@@ -537,7 +583,7 @@
       "courseName": "Cloud Computing",
       "courseCategory": "Technology",
       "courseDurationInMonths": 6,
-      "instructorName": "Vivek Kumar",
+      "instructor": "Vivek Kumar",
       "startDate": "2024-07-01",
       "endDate": "2024-12-01",
       "id": "d85f"
@@ -547,7 +593,7 @@
       "courseName": "Business Analytics",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 5,
-      "instructorName": "Priya Seth",
+      "instructor": "Priya Seth",
       "startDate": "2024-04-01",
       "endDate": "2024-07-01",
       "id": "e76d"
@@ -557,7 +603,7 @@
       "courseName": "Photography Basics",
       "courseCategory": "Arts",
       "courseDurationInMonths": 2,
-      "instructorName": "Rohan Gupta",
+      "instructor": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01",
       "id": "g47c"
@@ -567,7 +613,7 @@
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 4,
-      "instructorName": "Sanya Kapoor",
+      "instructor": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01",
       "id": "h93f"

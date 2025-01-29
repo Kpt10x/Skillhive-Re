@@ -32,6 +32,8 @@ import { CandidateProfileComponent } from './candidates/components/candidate-pro
 import { CandidateDashboardComponent } from './candidates/components/candidate-dashboard/candidate-dashboard.component';
 import { EnrolledCoursesComponent } from './candidates/components/enrolled-courses/enrolled-courses.component';
 import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
+import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
+import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 
@@ -49,7 +51,9 @@ export const routes: Routes = [
   { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
   
   // Instructor Management routes
-  { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
+  // { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
+  { path: 'instuctor-dashboard', component: InstructorDashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
+  { path: 'profile-update', component: ProfileUpdateComponent },
   { path: 'create-instructor', component: CreateInstructorComponent },
   
   // Instructor View routes

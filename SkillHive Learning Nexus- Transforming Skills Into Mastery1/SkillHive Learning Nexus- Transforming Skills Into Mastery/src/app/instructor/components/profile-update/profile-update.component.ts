@@ -47,8 +47,7 @@ export class ProfileUpdateComponent implements OnInit {
 
   // Load the instructor's profile data from the authentication service
   loadProfile(): any {
-
-    const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
 
     if (!user || user.role !== 'instructor') {
       alert('Error: Unauthorized access. Only instructors can update their profile.');

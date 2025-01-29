@@ -3,7 +3,7 @@ export interface Course {
     courseId: String;
     courseCategory: String;
     courseDurationMonths: Number;
-    instructorName: String;
+    instructor: String;
     startDate: Date;
     endDate: Date;
     assignmentDate: Date;
