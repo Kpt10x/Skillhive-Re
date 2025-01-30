@@ -93,7 +93,7 @@
       "name": "Ishani",
       "email": "ishani@gmail.com",
       "phone": "9876543210",
-      "areaOfExpertise": "Web Development",
+      "areaOfExpertise": "Data Science",
       "experience": 5,
       "role": "instructor",
       "default_password": "instructor123"
@@ -527,6 +527,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
+      "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     }

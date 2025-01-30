@@ -10,6 +10,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { CourseService } from "../../services/course_service";
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: "app-create-course",
@@ -20,18 +21,11 @@ import { CourseService } from "../../services/course_service";
 })
 export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
-  instructors: any[] = []; // This will be populated with hardcoded data
+  instructors: any[] = [];
   filteredInstructors: any[] = [];
-  categories: any[] = []; // Array to hold course categories
-  minAssignmentDate: string | null = null; // Property to hold the minimum assignment date
-
-
-  hardcodedInstructors: any[] = [
-    { id: 1, name: "John Doe", start_date: "2025-01-01", end_date: "2025-12-31", category: "Technology" },
-    { id: 2, name: "Jane Smith", start_date: "2025-02-01", end_date: "2025-11-30", category: "Data Analytics" },
-    { id: 3, name: "Alice Johnson", start_date: "2025-03-01", end_date: "2025-10-31", category: "Graphic Designing" },
-    { id: 4, name: "Bob Brown", start_date: "2025-04-01", end_date: "2025-09-30", category: "Technology" },
-  ];
+  categories: any[] = [];
+  minAssignmentDate: string | null = null;
+  existingCourses: any[] = [];
 
   // Hardcoded category data
   hardcodedCategories: any[] = [
@@ -49,36 +43,144 @@ export class CreateCourseComponent implements OnInit {
     this.createCourseForm = this.fb.group({
       courseName: ["", [Validators.required, Validators.minLength(3)]],
       courseCategory: ["", Validators.required],
-      courseDurationMonths: [
-        "",
-        [Validators.required, Validators.min(1), Validators.max(24)],
-      ],
-      instructorName: ["", Validators.required],
+      courseDurationMonths: ["", [Validators.required, Validators.min(1), Validators.max(24)]],
       startDate: ["", Validators.required],
       endDate: ["", Validators.required],
-      assignmentDate: ["", Validators.required],
-      status: ["", Validators.required],
+      instructor: ["", Validators.required],
+      assessmentDate: ["", Validators.required],
     });
+
+    // Subscribe to date changes
+    this.createCourseForm.get('startDate')?.valueChanges.subscribe(() => {
+      this.filterInstructors();
+    });
+
+    this.createCourseForm.get('endDate')?.valueChanges.subscribe(() => {
+      this.filterInstructors();
+    });
+
+    // Subscribe to course name changes
+    this.createCourseForm.get('courseName')?.valueChanges.subscribe(() => {
+      this.filterInstructors();
+    });
+  }
+
+  // Helper function to check if course name matches instructor expertise
+  doesCourseMatchExpertise(courseName: string, expertise: string): boolean {
+    if (!courseName || !expertise) return false;
+    
+    const courseNameLower = courseName.toLowerCase();
+    const expertiseLower = expertise.toLowerCase();
+
+    console.log('Matching course:', courseNameLower, 'with expertise:', expertiseLower);
+
+    // Simple direct match between course name and expertise
+    const matches = courseNameLower.includes(expertiseLower) || 
+                   expertiseLower.includes(courseNameLower);
+    
+    console.log('Match result:', matches);
+    return matches;
   }
 
   ngOnInit(): void {
-    this.filteredInstructors = this.hardcodedInstructors; // Initialize with hardcoded instructors
-    this.categories = this.hardcodedCategories; // Initialize with hardcoded categories
+    // Fetch both instructors and courses
+    forkJoin({
+      profiles: this.http.get<any[]>('http://localhost:3000/profiles'),
+      courses: this.http.get<any[]>('http://localhost:3000/courses')
+    }).subscribe({
+      next: (data) => {
+        // Store courses for availability checking
+        this.existingCourses = data.courses;
+        
+        // Filter profiles to get only instructors
+        this.instructors = data.profiles
+          .filter(profile => profile.role === 'instructor')
+          .map(instructor => ({
+            id: instructor.id,
+            name: instructor.name,
+            areaOfExpertise: instructor.areaOfExpertise,
+            experience: instructor.experience
+          }));
+        
+        this.filterInstructors();
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      }
+    });
+
+    this.categories = this.hardcodedCategories;
+    
+    // Set minimum assessment date
+    const today = new Date();
+    this.minAssignmentDate = today.toISOString().split('T')[0];
+  }
+
+  isInstructorAvailable(instructor: any, startDate: Date, endDate: Date): boolean {
+    if (!this.existingCourses) return true;
+    
+    // Convert dates to timestamps for comparison
+    const newStartTime = startDate.getTime();
+    const newEndTime = endDate.getTime();
+    
+    // Check if instructor has any overlapping courses
+    const hasOverlap = this.existingCourses.some(course => {
+      if (course.instructor === instructor.name) {
+        const courseStartTime = new Date(course.startDate).getTime();
+        const courseEndTime = new Date(course.endDate).getTime();
+        
+        // Check for date overlap
+        const overlaps = (newStartTime <= courseEndTime && newEndTime >= courseStartTime);
+        console.log('Checking overlap for', instructor.name, 'Course dates:', course.startDate, '-', course.endDate, 'Overlaps:', overlaps);
+        return overlaps;
+      }
+      return false;
+    });
+    
+    return !hasOverlap;
   }
 
   filterInstructors(): void {
-    const selectedCategory = this.createCourseForm.get("courseCategory")?.value;
-    const startDate = new Date(this.createCourseForm.get("startDate")?.value);
-    const endDate = new Date(this.createCourseForm.get("endDate")?.value);
+    const selectedCategory = this.createCourseForm.get('courseCategory')?.value;
+    const startDate = this.createCourseForm.get('startDate')?.value;
+    const endDate = this.createCourseForm.get('endDate')?.value;
+    const courseName = this.createCourseForm.get('courseName')?.value;
+    
+    this.filteredInstructors = [...this.instructors];
+    console.log('Initial instructors:', this.filteredInstructors);
 
-    this.filteredInstructors = this.hardcodedInstructors.filter((instructor) => {
-      const instructorStartDate = new Date(instructor.start_date);
-      const instructorEndDate = new Date(instructor.end_date);
-      const isAvailable = instructorStartDate <= endDate && instructorEndDate >= startDate;
-      const isInCategory = selectedCategory ? instructor.category === selectedCategory : true;
+    // Filter by course name matching expertise
+    if (courseName) {
+      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+        const matches = this.doesCourseMatchExpertise(courseName, instructor.areaOfExpertise);
+        console.log('Expertise filter:', instructor.name, instructor.areaOfExpertise, matches);
+        return matches;
+      });
+    }
 
-      return isAvailable && isInCategory;
-    });
+    // Filter by category if selected
+    if (selectedCategory) {
+      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+        const matches = instructor.areaOfExpertise.toLowerCase().includes(selectedCategory.toLowerCase()) ||
+                       selectedCategory.toLowerCase().includes(instructor.areaOfExpertise.toLowerCase());
+        console.log('Category filter:', instructor.name, matches);
+        return matches;
+      });
+    }
+
+    // Filter by availability if dates are selected
+    if (startDate && endDate) {
+      const startDateObj = new Date(startDate);
+      const endDateObj = new Date(endDate);
+      
+      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+        const isAvailable = this.isInstructorAvailable(instructor, startDateObj, endDateObj);
+        console.log('Availability filter:', instructor.name, isAvailable);
+        return isAvailable;
+      });
+    }
+
+    console.log('Final filtered instructors:', this.filteredInstructors);
   }
 
   onEndDateChange(): void {
@@ -87,7 +189,7 @@ export class CreateCourseComponent implements OnInit {
       const endDateObj = new Date(endDate);
       endDateObj.setDate(endDateObj.getDate() + 1); // Set to one day after the end date
       this.createCourseForm.patchValue({
-        assignmentDate: endDateObj.toISOString().split("T")[0], // Format to YYYY-MM-DD
+        assessmentDate: endDateObj.toISOString().split("T")[0], // Format to YYYY-MM-DD
       });
       this.minAssignmentDate = endDateObj.toISOString().split("T")[0]; // Update minAssignmentDate
     } else {
@@ -117,7 +219,7 @@ export class CreateCourseComponent implements OnInit {
 
   cancel() {
     this.createCourseForm.reset();
-    this.filteredInstructors = this.hardcodedInstructors; // Reset to all instructors
+    this.filteredInstructors = [...this.instructors]; // Reset to all instructors
     this.minAssignmentDate = null; // Reset minimum assignment date
   }
 }

@@ -66,10 +66,12 @@
         </div>
         <!-- Instructor Name -->
         <div class="form-group">
-          <label for="instructorName">Instructor Name:</label>
-          <select id="instructorName" formControlName="instructorName" required>
+          <label for="instructor">Instructor:</label>
+          <select id="instructor" formControlName="instructor" required>
             <option value="">Select Instructor</option>
-            <option *ngFor="let instructor of filteredInstructors" [value]="instructor.name">{{ instructor.name }}</option>
+            <option *ngFor="let instructor of filteredInstructors" [value]="instructor.id">
+              {{ instructor.name }} ({{ instructor.areaOfExpertise }} - {{ instructor.experience }} years)
+            </option>
           </select>
         </div>
         <!-- Assignment Date -->
