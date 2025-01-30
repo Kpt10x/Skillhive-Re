@@ -1,4 +1,4 @@
-.container {
+.scores-containeriner {
     width: 40%;
     height: auto;
     background: linear-gradient(145deg, #eaf5ea, #d4e5d7);
@@ -40,7 +40,7 @@ p {
     font-size: 16px;
     color: #666;
 }
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap'); */
 
 body {
     margin: 0;

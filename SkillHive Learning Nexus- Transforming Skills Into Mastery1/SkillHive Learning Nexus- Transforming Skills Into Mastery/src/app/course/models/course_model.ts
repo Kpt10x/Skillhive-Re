@@ -6,6 +6,6 @@ export interface Course {
     instructor: String;
     startDate: Date;
     endDate: Date;
-    assignmentDate: Date;
+    assessmentDate: Date;
     status:String;
 }

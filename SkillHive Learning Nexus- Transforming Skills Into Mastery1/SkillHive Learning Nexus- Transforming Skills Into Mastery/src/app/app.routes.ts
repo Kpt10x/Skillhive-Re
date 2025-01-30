@@ -87,7 +87,7 @@ export const routes: Routes = [
   {path : 'manage-course', component: ManageCourseInstructorComponent},
   {path: 'admin-veiw',component: AdminveiwComponent},
   // Fallback route
-  { path: '**', redirectTo: 'login' },
+  // { path: '**', redirectTo: 'login' },
 
   //assessment module routes
   { path: 'candidateassessment', component: CandidateassessmentComponent },

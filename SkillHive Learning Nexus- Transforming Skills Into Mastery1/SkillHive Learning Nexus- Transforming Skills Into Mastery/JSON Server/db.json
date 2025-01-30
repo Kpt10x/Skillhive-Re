@@ -153,21 +153,28 @@
     {
       "courseId": "7239999",
       "courseName": "Cloud Computing",
-      "assessmentDate": "2025-01-27",
+      "assessmentDate": "2025-30-01",
       "questions": [
         {
           "id": 1,
           "question": "What is Cloud Computing?",
-          "options": ["A way to store and access data over the internet",
-          "A type of weather forecasting",
-          "A type of computer virus",
-          "A hardware device for data storage"],
+          "options": [
+            "A way to store and access data over the internet",
+            "A type of weather forecasting",
+            "A type of computer virus",
+            "A hardware device for data storage"
+          ],
           "answer": "A way to store and access data over the internet"
         },
         {
           "id": 2,
           "question": "Which of the following is NOT a type of cloud deployment model?",
-          "options": ["Public Cloud", "Private Cloud", "Hybrid Cloud", "Legacy Cloud"],
+          "options": [
+            "Public Cloud",
+            "Private Cloud",
+            "Hybrid Cloud",
+            "Legacy Cloud"
+          ],
           "answer": "Legacy Cloud"
         },
         {
@@ -195,13 +202,23 @@
         {
           "id": 5,
           "question": "Which cloud service model focuses on providing a platform for developers to build applications?",
-          "options": ["IaaS", "PaaS", "SaaS", "DaaS"],
+          "options": [
+            "IaaS",
+            "PaaS",
+            "SaaS",
+            "DaaS"
+          ],
           "answer": "PaaS"
         },
         {
           "id": 6,
           "question": "Which of the following is an example of a SaaS application?",
-          "options": ["Google Docs", "Microsoft Azure", "Amazon EC2", "Docker"],
+          "options": [
+            "Google Docs",
+            "Microsoft Azure",
+            "Amazon EC2",
+            "Docker"
+          ],
           "answer": "Google Docs"
         },
         {
@@ -248,26 +265,34 @@
           ],
           "answer": "Cloud providers manage server resources dynamically"
         }
-      ]
+      ],
+      "id": "687d"
     },
     {
       "courseId": "8241111",
       "courseName": "Business Analytics",
-      "assessmentDate": "2025-01-27",
+      "assessmentDate": "2025-30-01",
       "questions": [
         {
           "id": 1,
           "question": "What is Business Analytics?",
-          "options": ["A process of analyzing business data to make decisions",
-          "A type of business accounting",
-          "Developing business strategies without data",
-          "A method for predicting weather patterns"],
+          "options": [
+            "A process of analyzing business data to make decisions",
+            "A type of business accounting",
+            "Developing business strategies without data",
+            "A method for predicting weather patterns"
+          ],
           "answer": "A process of analyzing business data to make decisions"
         },
         {
           "id": 2,
           "question": "Which of the following is a key component of Business Analytics?",
-          "options": ["Data Analysis", "Hardware Setup", "Manual Data Entry", "Data Destruction"],
+          "options": [
+            "Data Analysis",
+            "Hardware Setup",
+            "Manual Data Entry",
+            "Data Destruction"
+          ],
           "answer": "Data Analysis"
         },
         {
@@ -284,7 +309,12 @@
         {
           "id": 4,
           "question": "Which of these is a common tool used in Business Analytics?",
-          "options": ["Tableau", "Photoshop", "CorelDRAW", "Premiere Pro"],
+          "options": [
+            "Tableau",
+            "Photoshop",
+            "CorelDRAW",
+            "Premiere Pro"
+          ],
           "answer": "Tableau"
         },
         {
@@ -323,7 +353,12 @@
         {
           "id": 8,
           "question": "Which statistical technique is commonly used in Business Analytics?",
-          "options": ["Regression Analysis", "Cryptography", "Photosynthesis", "Gene Editing"],
+          "options": [
+            "Regression Analysis",
+            "Cryptography",
+            "Photosynthesis",
+            "Gene Editing"
+          ],
           "answer": "Regression Analysis"
         },
         {
@@ -348,7 +383,8 @@
           ],
           "answer": "Recommending actions based on data insights"
         }
-      ]
+      ],
+      "id": "b593"
     }
   ],
   "courses-enrolled-by-candidates": [
@@ -483,6 +519,16 @@
       "instructor": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01"
+    },
+    {
+      "id": "36311",
+      "candidateId": "3",
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "courseCategory": "Data Analytics",
+      "courseDurationInMonths": 6,
+      "startDate": "2025-02-01",
+      "endDate": "2025-08-01"
     }
   ],
   "courses": [
@@ -494,6 +540,7 @@
       "instructor": "Tanishq Singh",
       "startDate": "2025-01-01",
       "endDate": "2025-05-01",
+      "assessmentDate": "2025-06-31",
       "id": "3e97"
     },
     {
@@ -504,6 +551,7 @@
       "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01",
+      "assessmentDate": "2025-09-31",
       "id": "a47e"
     },
     {
@@ -514,6 +562,7 @@
       "instructor": "Raghav Verma",
       "startDate": "2025-03-01",
       "endDate": "2025-08-01",
+      "assessmentDate": "2025-09-31",
       "id": "5f13"
     },
     {
@@ -524,6 +573,7 @@
       "instructor": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01",
+      "assessmentDate": "2025-08-31",
       "id": "c91d"
     },
     {
@@ -534,6 +584,7 @@
       "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01",
+      "assessmentDate": "2025-09-31",
       "id": "f29b"
     },
     {
@@ -544,6 +595,7 @@
       "instructor": "Meera Iyer",
       "startDate": "2025-03-01",
       "endDate": "2025-06-01",
+      "assessmentDate": "2025-07-31",
       "id": "b63a"
     },
     {
@@ -554,9 +606,10 @@
       "instructor": "Vivek Kumar",
       "startDate": "2024-07-01",
       "endDate": "2024-12-01",
+      "assessmentDate": "2025-01-30",
       "id": "d85f"
     },
-    {
+    { 
       "courseId": "8241111",
       "courseName": "Business Analytics",
       "courseCategory": "Data Analytics",
@@ -564,6 +617,7 @@
       "instructor": "Priya Seth",
       "startDate": "2024-04-01",
       "endDate": "2024-07-01",
+      "assessmentDate": "2025-01-30",
       "id": "e76d"
     },
     {
@@ -574,6 +628,7 @@
       "instructor": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01",
+      "assessmentDate": "2025-06-31",
       "id": "g47c"
     },
     {
@@ -584,6 +639,7 @@
       "instructor": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01",
+      "assessmentDate": "2025-03-31",
       "id": "h93f"
     }
   ]

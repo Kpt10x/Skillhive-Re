@@ -189,10 +189,12 @@ export class McqTestComponent implements OnInit, OnDestroy {
   }
 
   submitQuiz() {
+    console.log("submitted");
     // Exit fullscreen mode if active
     if (document.fullscreenElement) {
       document.exitFullscreen();
     }
+    console.log("submitted");
   
     const quizResults = {
       courseId: this.testId,
@@ -202,7 +204,8 @@ export class McqTestComponent implements OnInit, OnDestroy {
       correctAnswers: this.calculateCorrectAnswers(),
       totalMarks: this.calculateTotalMarks(),
     };
-  
+    console.log(quizResults);
+
     this.router.navigate(['/scores'], {
       state: { quizResults },
     });

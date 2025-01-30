@@ -10,7 +10,7 @@ interface Course {
   courseCategory: string;
   courseDurationInMonths: number;
   instructorName: string;
-  testDate: string;  // Add testDate to the interface
+  assessmentDate: string;  // Add testDate to the interface
   id: string;
   logoUrl?: string;
   status?: string;  // To store status based on testDate
@@ -45,7 +45,7 @@ export class CandidateassessmentComponent implements OnInit {
         this.courses = data.map(course => ({
           ...course,
           logoUrl: this.getCourseLogo(course),
-          status: this.getCourseStatus(course.testDate)  // Assign status based on testDate
+          status: this.getCourseStatus(course.assessmentDate)  // Assign status based on testDate
         }));
 
         // Sort courses based on status: Live > Upcoming > Ended
@@ -66,7 +66,7 @@ export class CandidateassessmentComponent implements OnInit {
   getCourseStatus(testDate: string): string {
     const currentDate = new Date();
     const testDateObj = new Date(testDate);
-
+console.log(testDateObj.toDateString());
     if (testDateObj.toDateString() === currentDate.toDateString()) {
       return 'Live';  // If the test date is today
     } else if (testDateObj < currentDate) {
