@@ -1,70 +1,80 @@
 <div class="container">
-    <div class="sidebar">
-        <div class="logo1-container">
-            <span class="skill">Skill</span><span class="hive">Hive</span>
-        </div>
-        <div class="menu-container">
-            <div class="menu-item">
-                <img src="../../assets/home-icon.png" alt="Home Icon" class="menu-icon">
-                Home
-            </div>
-            <div class="menu-item">
-                <img src="../../assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
-                My Courses
-            </div>
-            <div class="menu-item">
-                <img src="../../assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
-                Assessments
-            </div>
-            <div class="menu-item">
-                <img src="../../assets/marksheet-icon.png" alt="Marksheet Icon" class="menu-icon">
-                Marksheet
-            </div>
-            <div class="bottom-menu-container">
-                <div class="menu-item">
-                    <img src="../../assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
-                    User Name
-                </div>
-                <div class="menu-item">
-                    <img src="../../assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
-                    Logout
-                </div>
-            </div>
-        </div>
+  <div class="sidebar">
+    <div class="logo1-container">
+      <span class="skill">Skill</span><span class="hive">Hive</span>
     </div>
-    <div class="main-content">
-        <h1 class="main-heading">
-            Get Ready for your next Online <span class="highlight">Assessment</span>!
-            <input type="text" 
-                   [(ngModel)]="searchText" 
-                   (ngModelChange)="filterCourses()"
-                   placeholder="Search for your next Assessment..." 
-                   class="search-bar">
-        </h1>
-        <h2 class="sub-heading">Explore the Assessments</h2>
+    <div class="menu-container">
+      <div class="menu-item">
+        <img src="../../assets/home-icon.png" alt="Home Icon" class="menu-icon">
+        Home
+      </div>
+      <div class="menu-item">
+        <img src="../../assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
+        My Courses
+      </div>
+      <div class="menu-item">
+        <img src="../../assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
+        Assessments
+      </div>
+      <div class="menu-item">
+        <img src="../../assets/marksheet-icon.png" alt="Marksheet Icon" class="menu-icon">
+        Marksheet
+      </div>
+      <div class="bottom-menu-container">
+        <div class="menu-item">
+          <img src="../../assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
+          User Name
+        </div>
+        <div class="menu-item">
+          <img src="../../assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
+          Logout
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="assessment-cards">
-            <div class="line-above-cards"></div>
-            
-            <div class="card" 
-                 *ngFor="let course of filteredCourses" 
-                 (click)="getCourseLink(course.id)"
-                 [class.disabled]="course.status.toLowerCase() !== 'live'"
-                 [class.clickable]="course.status.toLowerCase() === 'live'">
-                <div [ngClass]="getStatusClassAndText(course.status).statusClass + '-badge'">
-                    <span [ngClass]="getStatusClassAndText(course.status).statusClass + '-dot'"></span>
-                    <span [ngClass]="getStatusClassAndText(course.status).statusClass + '-text'">
-                        {{getStatusClassAndText(course.status).statusText}}
-                    </span>
-                </div>
-                <div class="card-content">
-                    <h3>{{course.name}}</h3>
-                    <p>Course ID: #{{course.id}}</p>
-                    <div class="card-hover-info" *ngIf="course.status.toLowerCase() === 'live'">
-                        <span class="click-hint">Click to start assessment</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+ <div class="main-content">
+  <h1 class="main-heading">
+    Get Ready for your next Online <span class="highlight">Assessment</span>!
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (ngModelChange)="filterCourses()"
+      placeholder="Search for your next Assessment..."
+      class="search-bar"
+    />
+  </h1>
+  <h2 class="sub-heading">Explore the Assessments</h2>
+
+  <div class="assessment-cards">
+    <div class="line-above-cards"></div>
+
+    <!-- Dynamic cards using *ngFor -->
+    <div
+      class="card"
+      *ngFor="let course of filteredCourses"
+      (click)="openCard(course)" 
+      [class.disabled]="course.status?.toLowerCase() !== 'live'"
+    >
+    <div class="logo-container">
+      <img [src]="course.logoUrl" alt="{{ course.courseName }} Logo" class="logo" />
+       
     </div>
+    <!-- Badge indicating status (Live, Upcoming, Ended) -->
+    <div class="badge-container">
+      <span class="badge-dot" [ngClass]="course.status?.toLowerCase()"></span>
+      <span class="badge-text">{{ course.status }}</span>
+    </div>
+      <div class="card-content">
+        <h3>{{ course.courseName }}</h3>
+        <p><strong>courseId:</strong> {{ course.courseId }}</p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-message">Loading courses...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+</div>
 </div>

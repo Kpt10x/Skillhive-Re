@@ -1,4 +1,33 @@
-<div class="container">
-    <h1>Assessment Results</h1>
-    <p id="scoreDisplay">Your scores will be displayed here.</p>
+<div class="scores-container">
+    <div class="scores-card">
+        <h2>Quiz Results</h2>
+        
+        <div class="result-item">
+            <span class="label">Course:</span>
+            <span class="value">{{ quizResults?.courseName }}</span>
+        </div>
+        <div class="result-item">
+            <span class="label">Total Questions:</span>
+            <span class="value">{{ quizResults?.totalQuestions }}</span>
+        </div>
+        <div class="result-item">
+            <span class="label">Answered Questions:</span>
+            <span class="value">{{ quizResults?.answeredQuestions }}</span>
+        </div>
+        <div class="result-item">
+            <span class="label">Correct Answers:</span>
+            <span class="value">{{ quizResults?.correctAnswers }}</span>
+        </div>
+        <div class="result-item">
+            <span class="label">Total Marks:</span>
+            <span class="value">{{ quizResults?.totalMarks }}</span>
+        </div>
+        
+        
+
+            <div class="actions">
+                <button (click)="navigateToAssessment()">Back to Candidate Assessment</button>
+            
+        </div>
+    </div>
 </div>

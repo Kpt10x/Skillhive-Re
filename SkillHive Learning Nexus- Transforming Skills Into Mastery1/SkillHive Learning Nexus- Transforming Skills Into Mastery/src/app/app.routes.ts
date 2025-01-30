@@ -4,6 +4,13 @@ import { provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { importProvidersFrom } from '@angular/core';
 
+// assessment imports
+import { CandidateassessmentComponent } from './assessmentgrading/components/candidateassessment/candidateassessment.component';
+import { AttemptAssessmentComponent } from './assessmentgrading/components/attemptassessment/attemptassessment.component';
+import { McqTestComponent } from './assessmentgrading/components/mcqtest/mcqtest.component';
+import { ScoresComponent } from './assessmentgrading/components/scores/scores.component';
+import { ViewassessmentComponent } from './assessmentgrading/components/viewassessment/viewassessment.component';
+
 // instructor imports
 import { DashboardComponent } from './instructor/components/dashboard/dashboard.component';
 import { CreateInstructorComponent } from './instructor/components/create-instructor/create-instructor.component';
@@ -35,7 +42,6 @@ import { UpcomingCoursesComponent } from './candidates/components/upcoming-cours
 import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
-
 
 export const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
@@ -81,7 +87,14 @@ export const routes: Routes = [
   {path : 'manage-course', component: ManageCourseInstructorComponent},
   {path: 'admin-veiw',component: AdminveiwComponent},
   // Fallback route
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' },
+
+  //assessment module routes
+  { path: 'candidateassessment', component: CandidateassessmentComponent },
+  { path: 'attemptassessment', component: AttemptAssessmentComponent },
+  { path: 'mcqtest', component: McqTestComponent },
+  { path: 'scores', component: ScoresComponent },
+  { path: 'viewassessment', component: ViewassessmentComponent },
 ];
 
 export const appRouterProviders = [

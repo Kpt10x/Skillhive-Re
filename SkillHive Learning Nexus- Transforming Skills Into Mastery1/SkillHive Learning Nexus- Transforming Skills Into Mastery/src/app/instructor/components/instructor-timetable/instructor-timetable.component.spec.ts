@@ -20,7 +20,7 @@ export class ViewAssignedCoursesComponent implements OnInit {
   loadAssignedCourses() {
     this.http.get<Course[]>('http://localhost:3000/courses').subscribe(
       (allCourses) => {
-        this.courses = allCourses.filter(course => course.instructorId === this.instructorId);
+        this.courses = allCourses.filter(course => course.instructor === this.instructorId);
       },
       (error) => {
         console.error('Error fetching courses:', error);

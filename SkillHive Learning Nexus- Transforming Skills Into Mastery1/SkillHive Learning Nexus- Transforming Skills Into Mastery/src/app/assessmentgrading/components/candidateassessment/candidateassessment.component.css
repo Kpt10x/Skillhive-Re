@@ -268,6 +268,7 @@ body {
     font-family: 'Balsamiq Sans', sans-serif; /* Consistent font */
 }
 
+
 /* Adding responsive styles for smaller screens */
 @media (max-width: 768px) {
     .card {
@@ -280,6 +281,43 @@ body {
         flex: 1 1 100%; /* Full width for small screens like mobiles */
     }
 }
+/* Badge container */
+.badge-container {
+    display: flex; /* Align dot and text horizontally */
+    align-items: center; /* Vertically center the content */
+    gap: 5px; /* Space between the dot and the text */
+    justify-content: center;
+    gap: 1em;
+}
+
+/* Common dot styles */
+.badge-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Circular dot */
+}
+
+/* Badge dot colors for statuses */
+.badge-dot.live {
+    background-color: rgb(0, 255, 68); /* Green for live */
+}
+
+.badge-dot.ended {
+    background-color: rgb(253, 42, 42); /* Red for ended */
+}
+
+.badge-dot.upcoming {
+    background-color: rgb(255, 219, 77); /* Yellow for upcoming */
+}
+
+/* Badge text */
+.badge-text {
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'Balsamiq Sans', sans-serif;
+    color: #263339;
+}
+
 /* Live badge container */
 .live-badge {
     position: absolute; /* Position inside the card */

@@ -5,9 +5,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface Course {
+  courseId: string;
+  courseName: string;
+  courseCategory: string;
+  courseDurationInMonths: number;
+  instructorName: string;
+  testDate: string;  // Add testDate to the interface
   id: string;
-  name: string;
-  status: string;
+  logoUrl?: string;
+  status?: string;  // To store status based on testDate
 }
 
 @Component({
@@ -24,10 +30,7 @@ export class CandidateassessmentComponent implements OnInit {
   isLoading: boolean = false;
   error: string | null = null;
 
-  constructor(
-    private http: HttpClient, 
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.loadCourses();
@@ -39,7 +42,15 @@ export class CandidateassessmentComponent implements OnInit {
 
     this.http.get<Course[]>('http://localhost:3000/courses').subscribe({
       next: (data) => {
-        this.courses = data;
+        this.courses = data.map(course => ({
+          ...course,
+          logoUrl: this.getCourseLogo(course),
+          status: this.getCourseStatus(course.testDate)  // Assign status based on testDate
+        }));
+
+        // Sort courses based on status: Live > Upcoming > Ended
+        this.courses.sort((a, b) => this.getStatusPriority(a.status) - this.getStatusPriority(b.status));
+      
         this.filteredCourses = [...this.courses];
         this.isLoading = false;
       },
@@ -51,51 +62,69 @@ export class CandidateassessmentComponent implements OnInit {
     });
   }
 
-  getCourseLink(courseId: string): void {
-    const course = this.courses.find(c => c.id === courseId);
-    if (course?.status.toLowerCase() === 'live') {
-        this.router.navigate(['/attempt-assessment'], { 
-            queryParams: { courseId: courseId } 
-        });
-    } else {
-        // Optional: Show a message for non-live courses
-        alert('This assessment is not currently available.');
-    }
-}
+  // Determine the course status based on testDate
+  getCourseStatus(testDate: string): string {
+    const currentDate = new Date();
+    const testDateObj = new Date(testDate);
 
-  isValidCourse(courseId: string): boolean {
-    const course = this.courses.find(c => c.id === courseId);
-    return course?.status.toLowerCase() === 'live';
+    if (testDateObj.toDateString() === currentDate.toDateString()) {
+      return 'Live';  // If the test date is today
+    } else if (testDateObj < currentDate) {
+      return 'Ended';  // If the test date is in the past
+    } else {
+      return 'Upcoming';  // If the test date is in the future
+    }
   }
 
-  getStatusClassAndText(status: string): { statusClass: string, statusText: string } {
-    const statusLower = status.toLowerCase();
-    switch (statusLower) {
-      case 'live':
-        return { statusClass: 'live', statusText: 'Live' };
-      case 'upcoming':
-        return { statusClass: 'upcoming', statusText: 'Upcoming' };
-      case 'completed':
-        return { statusClass: 'completed', statusText: 'Completed' };
-      default:
-        return { statusClass: 'unknown', statusText: 'Unknown' };
+  openCard(course: Course): void {
+    if (course.status?.toLowerCase() === 'live') {
+      this.router.navigate(['/attemptassessment'], { queryParams: { id: course.courseId } });
+    } else {
+      alert(`You cannot access this card. The assessment is ${course.status}.`);
     }
+  }
+  getStatusPriority(status?: string): number {
+    switch (status?.toLowerCase()) {
+      case 'live':
+        return 1; // Highest priority
+      case 'upcoming':
+        return 2; // Medium priority
+      case 'ended':
+        return 3; // Lowest priority
+      default:
+        return 4; // For unknown statuses
+    }
+  }
+  
+
+  getCourseLogo(course: Course): string {
+    const logoMap: { [key: string]: string } = {
+      'Web Development': 'assets/web-app-dev.png',
+      'Data Science': 'assets/data-science.png',
+      'Machine Learning': 'assets/machine-learning.png',
+      'Business Analytics':'assets/business-analytics.png',
+      'Cloud Computing': 'assets/cloud-service.png',
+      'AI for Beginners': 'assets/ai.png',
+      'Digital Marketing':'assets/digital-marketing.png',
+      'Cyber Security': 'assets/cyber-security.png',
+      'Graphic Design':'assets/graphic-design.png',
+      'Photography Basics':'assets/photography.png',
+      'default': 'assets/default-course-logo.png'
+    };
+
+    const logoUrl = logoMap[course.courseName] || logoMap['default'];
+    return logoUrl;
   }
 
   filterCourses(): void {
-    if (!this.searchText) {
-      this.filteredCourses = [...this.courses];
-      return;
-    }
-    
     const searchTextLower = this.searchText.toLowerCase().trim();
-    this.filteredCourses = this.courses.filter(course => 
-      course.name.toLowerCase().includes(searchTextLower) || 
-      course.id.toLowerCase().includes(searchTextLower)
+    this.filteredCourses = this.courses.filter(course =>
+      course.courseName.toLowerCase().includes(searchTextLower) ||
+      course.courseId.includes(searchTextLower) 
     );
   }
 
-  retryLoading(): void {
-    this.loadCourses();
+  getCourseLink(courseId: string): void {
+    this.router.navigate(['/attemptassessment'], { queryParams: { id: courseId } });
   }
 }
