@@ -16,7 +16,7 @@ if (!testId) {
 }
 
 // Load test name and questions based on the selected test
-fetch('../../Service/utils/db.json')
+fetch('../../Service/utils/mock.json')
     .then(response => response.json())
     .then(data => {
         console.log('Loaded data:', data);

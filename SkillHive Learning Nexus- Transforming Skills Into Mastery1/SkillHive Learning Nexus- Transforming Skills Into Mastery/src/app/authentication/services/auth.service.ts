@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { profiles} from '../models/interfaces/auth';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
   private baseUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getUserByEmail(email: string): Observable<profiles[]> {
     return this.http.get<profiles[]>(`${this.baseUrl}/profiles?email=${email}`).pipe(
@@ -19,5 +20,16 @@ export class AuthService {
         return throwError(() => new Error('Could not retrieve user details.'));
       })
     );
+  }
+
+  logout() {
+    // Clear all session storage items
+    sessionStorage.clear();
+    
+    // Navigate to login page
+    this.router.navigate(['/login']).then(() => {
+      // Reload the page to ensure all components are reset
+      window.location.reload();
+    });
   }
 }

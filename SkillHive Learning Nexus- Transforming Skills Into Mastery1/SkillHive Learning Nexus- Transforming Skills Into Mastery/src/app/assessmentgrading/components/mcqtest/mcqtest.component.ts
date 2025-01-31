@@ -172,29 +172,25 @@ export class McqTestComponent implements OnInit, OnDestroy {
   }
 
   private startTimer() {
-    this.timerInterval = setInterval(() => {
-      this.remainingTime = new Date(this.remainingTime.getTime() - 1000);
-      
-      // Extract hours, minutes, seconds
-      const hours = this.remainingTime.getUTCHours();
-      const minutes = this.remainingTime.getUTCMinutes();
-      const seconds = this.remainingTime.getUTCSeconds();
-  
-      // Check if time is up
-      if (hours === 0 && minutes === 0 && seconds === 0) {
-        clearInterval(this.timerInterval);
-        this.submitQuiz();
-      }
-    }, 1000);
-  }
+  let totalSeconds = 15 * 60; // 15 minutes in seconds
+
+  this.timerInterval = setInterval(() => {
+    totalSeconds--;
+
+    this.remainingTime = new Date(0, 0, 0, 0, Math.floor(totalSeconds / 60), totalSeconds % 60);
+
+    if (totalSeconds <= 0) {
+      clearInterval(this.timerInterval);
+      this.submitQuiz();
+    }
+  }, 1000);
+}
 
   submitQuiz() {
-    console.log("submitted");
     // Exit fullscreen mode if active
     if (document.fullscreenElement) {
       document.exitFullscreen();
     }
-    console.log("submitted");
   
     const quizResults = {
       courseId: this.testId,
@@ -204,8 +200,7 @@ export class McqTestComponent implements OnInit, OnDestroy {
       correctAnswers: this.calculateCorrectAnswers(),
       totalMarks: this.calculateTotalMarks(),
     };
-    console.log(quizResults);
-
+  
     this.router.navigate(['/scores'], {
       state: { quizResults },
     });

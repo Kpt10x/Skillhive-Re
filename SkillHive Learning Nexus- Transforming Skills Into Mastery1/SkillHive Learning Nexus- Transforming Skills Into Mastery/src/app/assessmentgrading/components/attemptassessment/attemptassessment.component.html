@@ -21,10 +21,10 @@
                 Marksheet
             </div>
             <div class="bottom-menu-container">
-                <!-- <div class="menu-item">
+                <div class="menu-item">
                     <img src="assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
-                    {{ userName }}
-                </div> -->
+                    <!-- {{ userName }} -->
+                </div>
                 <div class="menu-item">
                     <img src="assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
                     Logout
@@ -39,7 +39,7 @@
                 <h2 class="card-heading">{{ assessmentTitle }}</h2>
             </div>
             <div class="card-info">
-                <!-- <p><strong>Active Test Window:</strong> {{ startDate | date:'medium' }} to {{ endDate | date:'medium' }}</p> -->
+                <p><strong>Date of Assessment:</strong> {{ startDate | date:'MMMM d, y' }}</p>
                 <p><strong>Duration:</strong> {{ duration }} Minutes</p>
                 <p><strong>Number of Questions:</strong> {{ numberOfQuestions }}</p>
             </div>
@@ -55,15 +55,26 @@
                 </ul>
             </div>
             <div class="acknowledgment">
-                <input type="checkbox" id="acknowledge" [(ngModel)]="isAcknowledged" class="ack-checkbox">
-                <label for="acknowledge" class="ack-text">By starting the test, you acknowledge that you have read, understood, and will comply with these instructions.</label>
-            </div>
-            <div class="start-button-container">
-                <!-- <button class="start-button" [disabled]="!isAcknowledged" (click)="startTest()">Start Test</button> -->
-                <button (click)="startTest()">Start Test</button>
-<!-- Add this as a test -->
-<!-- <a [routerLink]="['/mcq-test']" [queryParams]="{testId: 'DS001'}">Test Direct Link</a> -->
-            </div>
+                <input
+                  type="checkbox"
+                  id="acknowledge"
+                  class="ack-checkbox"
+                  [(ngModel)]="isAcknowledged"
+                />
+                <label for="acknowledge" class="ack-text">
+                  By starting the test, you acknowledge that you have read, understood, and will comply with these instructions.
+                </label>
+              </div>
+              
+              <div class="start-button-container">
+                <button
+                  (click)="startTest()"
+                  class="start-button"
+                  [disabled]="!isAcknowledged"
+                >
+                  Start Test
+                </button>
+              </div>
         </div>
     </div>
 </div>

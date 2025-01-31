@@ -1,9 +1,12 @@
 <div [class.overlay]="showOverlay" id="overlay"></div>
 
 <div class="fullscreen-modal" *ngIf="showFullscreenModal">
-    <p>Click OK to take the test in Full screen mode.</p>
-    <button (click)="enterFullscreen()">OK</button>
-</div>
+    <div class="modal-content">
+      <p>Click OK to take the test in Fullscreen mode.</p>
+      <button (click)="enterFullscreen()">OK</button>
+    </div>
+  </div>
+  
 
 <div class="quiz-container">
     <header>
@@ -11,13 +14,9 @@
             <div class="left-section">
                 <h1>{{ testTitle }}</h1>
             </div>
-            <div class="right-section">
-                <button class="header-btn" (click)="reportError()">⚠ Report an Error</button>
-                <button class="header-btn" (click)="viewAllQuestions()">👁 View All Questions</button>
-            </div>
         </div>
         <div class="timer">
-            Remaining Time: <span>{{ remainingTime | date:'HH:mm:ss' }}</span>
+            Remaining Time: <span>{{ remainingTime | date:'mm:ss' }}</span>
         </div>
     </header>
 
@@ -33,16 +32,13 @@
                 </div>
             </div>
             <div class="question-content">
-                <p>{{ currentQuestion?.text }}</p>
+                <h3>{{ currentQuestion?.text }}</h3>
                 <div class="options-container">
-                    <div *ngFor="let option of currentQuestion?.options; let i = index" class="option">
-                        <input type="radio" 
-                               [id]="'option' + i" 
-                               [name]="'question'" 
-                               [value]="option"
-                               [(ngModel)]="selectedAnswer"
-                               (change)="onOptionSelect(option)">
-                        <label [for]="'option' + i">{{ option }}</label>
+                    <div *ngFor="let option of currentQuestion?.options; let i = index" 
+                         class="option"
+                         [class.selected]="selectedAnswer === option"
+                         (click)="onOptionSelect(option)">
+                        {{ option }}
                     </div>
                 </div>
             </div>

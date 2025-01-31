@@ -2,10 +2,22 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  if (sessionStorage.getItem('email')) {
-    return true;
-  } else {
-    const router = inject(Router);
-    return router.navigate(['login']);
+  const router = inject(Router);
+  const user = sessionStorage.getItem('user');
+  
+  if (user) {
+    // Check if the session is valid
+    try {
+      const userData = JSON.parse(user);
+      if (userData && userData.email) {
+        return true;
+      }
+    } catch (e) {
+      console.error('Invalid user session:', e);
+    }
   }
+
+  // Clear any invalid session data
+  sessionStorage.clear();
+  return router.navigate(['/login']);
 };
