@@ -578,6 +578,17 @@
       "id": "c91d"
     },
     {
+      "courseId": "4236666",
+      "courseName": "Angular",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructor": "Sujatha Sharma",
+      "startDate": "2025-02-01",
+      "endDate": "2025-07-01",
+      "assessmentDate": "2025-08-31",
+      "id": "c91d"
+    },
+    {
       "courseId": "5237777",
       "courseName": "Cyber Security",
       "courseCategory": "Technology",

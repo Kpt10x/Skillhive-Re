@@ -172,8 +172,11 @@ footer ul li span:hover {
   transform: scale(1.1);
 }
 /* Root Variables */
-:root {
-  --fc-event-bg-color: #A4C6AC;
-  --fc-event-border-color: #A4C6AC;
+
+:root{
   --fc-event-text-color: #263339;
+  --fc-event-text-color-alt: #263339;
+  --fc-event-background-color: #A4C6AC;
+  
+
 }

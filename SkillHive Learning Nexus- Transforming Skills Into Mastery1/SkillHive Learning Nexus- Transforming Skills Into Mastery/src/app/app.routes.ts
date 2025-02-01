@@ -12,9 +12,9 @@ import { ScoresComponent } from './assessmentgrading/components/scores/scores.co
 import { ViewassessmentComponent } from './assessmentgrading/components/viewassessment/viewassessment.component';
 
 // instructor imports
-import { DashboardComponent } from './instructor/components/dashboard/dashboard.component';
+// import { DashboardComponent } from './instructor/components/dashboard/dashboard.component';
 import { CreateInstructorComponent } from './instructor/components/create-instructor/create-instructor.component';
-import { ViewInstructorComponent } from './instructor/components/view-instructor/view-instructor.component';
+// import { ViewInstructorComponent } from './instructor/components/view-instructor/view-instructor.component';
 import { ViewByCourseComponent } from './instructor/components/view-by-course/view-by-course.component';
 //import { ViewByDetailsComponent } from './instructor/components/view-by-details/view-by-details.component';
 //import { ViewAssignedCoursesComponent } from './instructor/components/view-assigned-courses/view-assigned-courses.component';
@@ -41,6 +41,8 @@ import { EnrolledCoursesComponent } from './candidates/components/enrolled-cours
 import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
 import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
+import { ViewAllInstructorsComponent } from './instructor/components/view-all-instructors/view-all-instructors.component';
+import { DeleteInstructorComponent } from './instructor/components/delete-instructor/delete-instructor.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
@@ -61,9 +63,9 @@ export const routes: Routes = [
   { path: 'instuctor-dashboard', component: InstructorDashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
   { path: 'profile-update', component: ProfileUpdateComponent },
   { path: 'create-instructor', component: CreateInstructorComponent },
-  
+  {path:'delete-instructor',component:DeleteInstructorComponent},
   // Instructor View routes
-  { path: 'view-instructor', component: ViewInstructorComponent }, // Original view
+  { path: 'view-all-instructors', component: ViewAllInstructorsComponent }, // Original view
   { path: 'instructor/view', children: [ // New organized views
   //{ path: 'availability', component: ViewByAvailabilityComponent },
   { path: 'course', component: ViewByCourseComponent },

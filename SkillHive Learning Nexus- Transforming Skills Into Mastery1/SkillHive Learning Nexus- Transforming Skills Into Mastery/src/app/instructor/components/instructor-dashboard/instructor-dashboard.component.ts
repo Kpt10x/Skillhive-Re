@@ -26,6 +26,9 @@ export class InstructorDashboardComponent implements OnInit {
     },
     events: [], // To be populated dynamically
     dateClick: this.handleDateClick.bind(this), // Bind date click handler
+    businessHours: {
+      daysOfWeek: [1, 2, 3, 4, 5], // Monday to Friday
+    }
   };
 
   currentInstructor: string = ''; // To store the logged-in instructor's name
@@ -61,14 +64,29 @@ export class InstructorDashboardComponent implements OnInit {
         console.log('Filtered courses:', this.allCourses); // Log filtered courses
 
         // Populate calendar events based on the instructor's courses
-        const events = this.allCourses.map((course) => ({
-          title: course.courseName,
-          start: course.startDate,
-          end: course.endDate,
-          extendedProps: {
-            courseCategory: course.courseCategory,
-          },
-        }));
+        const events = this.allCourses.flatMap((course) => {
+          const eventDates = [];
+          let currentDate = new Date(course.startDate);
+          const endDate = new Date(course.endDate);
+
+          // Iterate through each date from start to end date
+          while (currentDate <= endDate) {
+            // Exclude Saturdays and Sundays
+            if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+              eventDates.push({
+                title: course.courseName,
+                start: currentDate.toISOString().split('T')[0],
+                allDay: true,
+                extendedProps: {
+                  courseCategory: course.courseCategory,
+                },
+              });
+            }
+            // Move to next date
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+          return eventDates;
+        });
 
         this.calendarOptions = { ...this.calendarOptions, events };
       },
