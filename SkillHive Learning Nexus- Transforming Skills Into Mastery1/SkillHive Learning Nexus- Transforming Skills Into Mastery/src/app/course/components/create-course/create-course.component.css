@@ -1,111 +1,291 @@
-/* General Reset */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #eaf8e6;
+  font-family: 'Balsamiq Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #A4C6AC;
 }
 
-/* Container Styling */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  background-color: #24353e;
+  color: white;
+  width: 235px;
+  height: 200vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.skill {
+  color: white;
+  font-size: 40px;
+}
+
+.hive {
+  color: #A4C6AC;
+  font-size: 40px;
+}
+
+.selections {
+  margin-top: 20px;
+}
+
+.sel1, .sel2, .sel3, .sel4 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #C1DBC6;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.sel1 img, .sel2 img, .sel3 img, .sel4 img {
+  margin-right: 10px;
+}
+
+.extras {
+  margin-top: 100px;
+}
+
+.user, .logout {
+  display: flex;
+  align-items: center;
+  color: #C1DBC6;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.user img, .logout img {
+  margin-right: 10px;
+}
+
+.dropdown {
+  display: block;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  background-color: #2C4B56;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown-item:hover {
+  background-color: #3D6A7D;
+}
+
 .create-course-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border: 3px solid #2a2929;
+  flex: 1;
+  max-width: 45%;
+  margin: 50px auto;
+  padding: 20px;
+  background: #FAFFFB;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .create-course-container h1 {
-    text-align: center;
-    font-size: 24px;
-    color:rgb(17, 158, 4);
-    margin-bottom: 20px;
+  text-align: center;
+  color: #263339;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
-
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    color: #018720;
-    margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #263339;
 }
 
 .form-group input,
+.form-group textarea,
 .form-group select {
-    width: 95%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #333;
-    align-items: center;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #8cb390;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f2f9f4;
+  color: #263339;
 }
 
 .form-group input:focus,
+.form-group textarea:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: #048021;
-    background-color: #fff;
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Buttons */
 button {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 button[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    transition: background-color 0.3s ease;
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #0a7621;
+  background-color: #0a7621;
 }
 
 button[type="button"] {
-    background-color: red;
-    color: #fff;
-    transition: background-color 0.3s ease;
+  background-color: red;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
 button[type="button"]:hover {
-    background-color: #8cb392;
+  background-color: #8cb392;
 }
 
-/* Check Availability Button */
-#checkAvailability {
-    background-color: #A4C6AC;
-    color: white;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+
+
+.social_media {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-#checkAvailability:hover {
-    background-color: #8cb392;
+.social_media a {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: color 0.3s, transform 0.3s;
 }
+
+.social_media a:hover {
+  color: #A4C6AC;
+  transform: scale(1.1);
+}
+
+
+
+
+
+footer {
+  background-color: #394B53; /* Changed color */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 0 px;
+}
+footer p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer ul li {
+  margin: 0 15px;
+}
+
+footer ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+#social-media {
+  margin-top: 10px;
+}
+
+#social-media a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+  align-items: center;
+  transition: color 0.3s, transform 0.3s;
+}
+
+#social-media a i {
+  margin-right: 5px;
+}
+
+#social-media a:hover {
+  color: #A4C6AC;
+  transform: scale(1.1);
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .create-course-container {
-        padding: 15px;
-    }
+  .container {
+    flex-direction: column;
+  }
 
-    button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+  .create-course-container {
+    max-width: 90%;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-course-container {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
 }
