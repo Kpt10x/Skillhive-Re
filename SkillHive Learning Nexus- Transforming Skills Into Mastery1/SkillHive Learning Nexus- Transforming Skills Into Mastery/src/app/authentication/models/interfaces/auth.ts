@@ -1,6 +1,6 @@
 export interface  profiles{
     id?: string;
-    fullName: string;
+    name: string;
     email: string;
     password: string;
     role: string;

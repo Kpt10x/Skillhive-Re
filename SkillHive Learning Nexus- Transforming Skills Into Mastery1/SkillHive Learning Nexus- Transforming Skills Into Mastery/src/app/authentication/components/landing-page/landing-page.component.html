@@ -25,11 +25,11 @@
   <!-- Hero Section -->
 <section id="home" class="hero">
   <div class="hero-content">
-      <h1>
+      <h1>Transforming
            <span><span class="highlight">Skills</span> Into Mastery</span>
       </h1>
       <p>Enroll in immersive courses with the world’s best instructors. Unlock your creative potential.</p>
-      <button class="cta-btn" routerLink="\login">Get Started</button>
+      <button class="cta-btn" routerLink="/login">Get Started</button>
   </div>
   <div class="hero-image">
       <img src="assets\Images\boy_img.png" alt="Student Illustration">
@@ -143,71 +143,27 @@
     display: block;
   }
 </style>
-
+ 
+ 
 <!-- Courses Section -->
 <section id="courses" class="section courses">
   <h1>Our Best Courses</h1>
   <div class="course-container">
     <div class="course-cards">
-      <!-- First Set of Courses -->
-      <div class="course-card" id="python">
+      <div *ngFor="let course of courses" class="course-card">
         <div class="card-content">
-          <img src="assets\Images/python_img.jpeg" alt="Python">
-          <h3>Python</h3>
-          <p>Course duration: 3 months<br>Instructor: XYZ</p>
-          <a href="#python" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
-        </div>
-      </div>
-      <div class="course-card" id="cpp">
-        <div class="card-content">
-          <img src="assets\Images/c++_img.png" alt="C++">
-          <h3>C++</h3>
-          <p>Course duration: 3 months<br>Instructor: ABC</p>
-          <a href="#cpp" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
-        </div>
-      </div>
-      <div class="course-card" id="java">
-        <div class="card-content">
-          <img src="assets\Images/java_img.jpeg" alt="Java">
-          <h3>Java</h3>
-          <p>Course duration: 3 months<br>Instructor: LMN</p>
-          <a href="#java" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
-        </div>
-      </div>
-      <!-- Second Set of Courses -->
-      <div class="course-card" id="javascript">
-        <div class="card-content">
-          <img src="assets\images/JavaScript-Symbol.png" alt="JavaScript">
-          <h3>JavaScript</h3>
-          <p>Course duration: 3 months<br>Instructor: DEF</p>
-          <a href="#javascript" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
-        </div>
-      </div>
-      <div class="course-card" id="ml">
-        <div class="card-content">
-          <img src="assets\images/machine_learning.png" alt="MachineLearning">
-          <h3>MachineLearning</h3>
-          <p>Course duration: 3 months<br>Instructor: GHI</p>
-          <a href="#ml" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
-        </div>
-      </div>
-      <div class="course-card" id="sql">
-        <div class="card-content">
-          <img src="assets\images/sql.jpeg" alt="SQL">
-          <h3>SQL</h3>
-          <p>Course duration: 3 months<br>Instructor: JKL</p>
-          <a href="#sql" class="enroll">Enroll Now</a>
-          <p class="message">You must log in to enroll.</p>
+          <img class="course-image-container" src="assets/Images/courses_common_image.jpg" alt="course.name">
+          <h3>{{ course.name }}</h3>
+          <p>Course duration: {{ course.courseDurationInMonths }} months</p>
+          <p>Category: {{ course.courseCategory }}</p>
+          <p>Instructor: {{ course.instructor }}</p>
+          <button class="enroll" routerLink="/login">Enroll Now</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <script>
   document.querySelectorAll('.enroll').forEach(button => {
@@ -239,94 +195,24 @@
 
 
 
-  <!-- Trainers Section -->
+ <!-- Trainers Section -->
 <section id="trainers" class="section trainers">
   <h1>Our Trainers</h1>
   <div class="trainer-container">
     <div class="trainer-cards">
-      <!-- Trainer 1 -->
-      <div class="trainer-card">
+      <div *ngFor="let instructor of profiles" class="trainer-card">
         <div class="card-content">
           <div class="trainer-image">
-            <img src="assets\Images\person1.jpeg" alt="Trainer 1">
+            <img src="assets/Images/trainers_common_image.jpg" alt="instructor.name">
           </div>
-          <h3>Instructor Name</h3>
-          <p>Full Stack Developer</p>
-        </div>
-      </div>
-      <!-- Trainer 2 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\person2.jpeg" alt="Trainer 2">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Python Developer</p>
-        </div>
-      </div>
-      <!-- Trainer 3 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\person3.jpeg" alt="Trainer 3">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Data Scientist</p>
-        </div>
-      </div>
-      <!-- Trainer 4 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\pic-1.jpeg" alt="Trainer 4">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Machine Learning Engineer</p>
-        </div>
-      </div>
-      <!-- Trainer 5 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\pic-2.jpeg" alt="Trainer 5">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Web Developer</p>
-        </div>
-      </div>
-      <!-- Trainer 6 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\pic-3.jpeg" alt="Trainer 6">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Graphic Designer</p>
-        </div>
-      </div>
-      <!-- Trainer 7 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\person8.png" alt="Trainer 7">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Mobile App Developer</p>
-        </div>
-      </div>
-      <!-- Trainer 8 -->
-      <div class="trainer-card">
-        <div class="card-content">
-          <div class="trainer-image">
-            <img src="assets\Images\person4.jpeg" alt="Trainer 8">
-          </div>
-          <h3>Instructor Name</h3>
-          <p>Cloud Specialist</p>
+          <h3>{{ instructor.name }}</h3>
+          <p>{{ instructor.areaOfExpertise }} - {{instructor.experience}} experience</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
   <!-- Footer -->
