@@ -6,6 +6,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../authentication/services/auth.service';
+
 
 @Component({
   selector: 'app-instructor-dashboard',
@@ -33,21 +35,21 @@ export class InstructorDashboardComponent implements OnInit {
 
   currentInstructor: string = ''; // To store the logged-in instructor's name
   private allCourses: any[] = []; // Store all courses fetched from API
+  assignedCourses: any[] = []; // Store assigned courses
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private authService: AuthService 
+  ) {}
 
   ngOnInit(): void {
     this.setCurrentInstructor();
     this.fetchCourses();
   }
 
-  /**
-   * Set the current instructor's name dynamically from a service or local storage.
-   */
+
   setCurrentInstructor(): void {
-    // Fetch the instructor name from local storage or a service
     const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
-    this.currentInstructor = loggedInInstructor.name || 'Instructor'; // Default to 'Instructor' if name is not available
+    this.currentInstructor = loggedInInstructor.name || 'Instructor'; 
   }
 
   /**
@@ -63,6 +65,9 @@ export class InstructorDashboardComponent implements OnInit {
         );
         console.log('Filtered courses:', this.allCourses); // Log filtered courses
 
+        // Separate logic to handle assigned courses for the tiles and calendar events
+        this.assignedCourses = this.allCourses.filter(course => course.openForEnrollment === true);
+        
         // Populate calendar events based on the instructor's courses
         const events = this.allCourses.flatMap((course) => {
           const eventDates = [];
@@ -117,5 +122,8 @@ export class InstructorDashboardComponent implements OnInit {
     } else {
       alert(`No courses assigned on ${info.dateStr}`);
     }
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }

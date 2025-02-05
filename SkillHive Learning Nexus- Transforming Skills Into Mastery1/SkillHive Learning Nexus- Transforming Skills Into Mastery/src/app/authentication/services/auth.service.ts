@@ -23,13 +23,14 @@ export class AuthService {
   }
 
   logout() {
-    // Clear all session storage items
-    sessionStorage.clear();
-    
-    // Navigate to login page
+    sessionStorage.clear(); 
     this.router.navigate(['/login']).then(() => {
-      // Reload the page to ensure all components are reset
-      window.location.reload();
-    });
-  }
+      setTimeout(() => {
+        history.pushState(null, '', location.href);
+        window.onpopstate = () => {
+          history.pushState(null, '', location.href);
+        };
+      }, 0);
+    })
+}
 }

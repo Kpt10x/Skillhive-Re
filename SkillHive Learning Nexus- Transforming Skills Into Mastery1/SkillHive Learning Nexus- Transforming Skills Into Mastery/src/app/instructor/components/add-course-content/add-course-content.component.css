@@ -116,69 +116,72 @@ body {
 .main {
   flex: 1;
   padding: 30px;
+
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #c2dbc6;
+    padding: 20px;
+    border-radius: 10px;
+
+
+  }
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    color: #263339; /* Dark green */
+    margin-bottom: 20px;
+  }
+
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    color: #263339;
+    margin-bottom: 5px;
+  }
+  
+  input, textarea {
+    max-width: 95%;
+    min-width:95%;
+    max-height: 300px;
+    min-height: 300px;
+    padding: 10px;
+    border: 1px solid #a4c6ac;
+    border-radius: 2px;
+    background-color: #f0f0f0;
+
+
+  }
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  justify-content: flex-start; 
 }
 
-.assigned-courses-container {
-  margin: 20px auto;
-  font-family: 'Balsamiq Sans', cursive;
-  background-color: #C2DBC6; /* Light green */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 28px;
-  color: #263339; /* Dark green */
-  margin-bottom: 20px;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #A4C6AC; /* Medium green */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-th {
-  padding: 15px;
-  text-align: left;
-  background-color: #263339; /* Dark green for header */
-  color: #C2DBC6; /* Light green text */
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 2px solid #0B0B0B;
-}
-
-td {
-  padding: 15px;
-  text-align: left;
-  color: #263339; /* Dark green text */
-  font-size: 14px;
-  vertical-align: middle;
-}
-
-/* Zebra striping for rows */
-tbody tr:nth-child(even) {
-  background-color: #C2DBC6; /* Light green for even rows */
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #A4C6AC; /* Medium green for odd rows */
-}
-
-.no-courses-message {
-  text-align: center;
-  font-size: 18px;
-  color: #263339;
-  margin: 20px 0;
-  font-weight: bold;
-}
+button {
+  padding: 10px 15px;
+  flex: 1 1 auto;
+  background-color: #263339;
+  color: #c2dbc6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px; }
+  
+  button:disabled {
+    background-color: #263339;
+  }
+  textarea[readonly] {
+    background-color: #c2dbc6;
+    cursor: not-allowed;
+  }
 
 /* Footer Section */
 footer {
@@ -235,24 +238,3 @@ footer ul li span:hover {
   color: #A4C6AC;
   transform: scale(1.1);
 }
-
-button {
-  padding: 10px 15px;
-  background-color: #263339;
-  color: #C2DBC6;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
-}
-
-  button:hover {
-    background-color: #A4C6AC;
-    color: #263339;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-  }

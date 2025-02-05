@@ -3,6 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
   selector: 'app-view-all-instructors',
@@ -20,7 +21,8 @@ export class ViewAllInstructorsComponent implements OnInit {
   selectedInstructor: any = null; // Declare selectedInstructor for editing
   isCoursesDropdownVisible=false;
   isInstructorsDropdownVisible=false;
-  constructor(private http: HttpClient) {}
+  isCandidateDropdownVisible=false;
+  constructor(private http: HttpClient, private authService: AuthService ) {}
 
   ngOnInit(): void {
     this.fetchInstructors();
@@ -82,4 +84,8 @@ export class ViewAllInstructorsComponent implements OnInit {
     this.isEditing = false;
     this.selectedInstructor = null;
   }
+  logout(): void {
+    this.authService.logout();
+  }
 }
+
