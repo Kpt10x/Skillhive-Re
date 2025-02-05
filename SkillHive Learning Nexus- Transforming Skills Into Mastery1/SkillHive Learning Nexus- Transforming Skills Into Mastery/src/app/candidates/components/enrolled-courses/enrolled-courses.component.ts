@@ -16,7 +16,7 @@ export class EnrolledCoursesComponent implements OnInit {
   enrolledCourses: any[] = [];
   user: Candidate | null = null;
   isCoursesDropdownVisible = false;
-
+  showWelcomeMessage = true;
   constructor(
     private candidateService: CandidateService,
     private route: ActivatedRoute,
@@ -25,6 +25,11 @@ export class EnrolledCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     const loggedInUserId = this.candidateService.getLoggedInCandidateId();
+    this.route.url.subscribe(urlSegments => {
+      const currentPath = urlSegments.map(segment => segment.path).join('/');
+      this.showWelcomeMessage = currentPath.startsWith('dashboard');
+    });
+    
 
     if (loggedInUserId) {
       this.candidateService

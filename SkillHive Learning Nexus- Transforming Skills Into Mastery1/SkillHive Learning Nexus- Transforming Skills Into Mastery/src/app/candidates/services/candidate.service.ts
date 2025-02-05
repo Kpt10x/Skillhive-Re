@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, of } from 'rxjs';  // <-- Correct import for forkJoin
 import { map, switchMap } from 'rxjs/operators';
-
+import {Router} from '@angular/router';
 export interface Candidate {
   id: string;
   name: string;
@@ -32,10 +32,13 @@ export class CandidateService {
   // }
 
   getLoggedInCandidateId(): string | null {
-    const storedId = sessionStorage.getItem('loggedInCandidateId');
-    return this.loggedInCandidateId || (storedId ? JSON.parse(storedId) : null);
-    // returned after the convertion of id say "123" to 123 (number)
+    if (typeof sessionStorage !== 'undefined') {
+      const storedId = sessionStorage.getItem('loggedInCandidateId');
+      return this.loggedInCandidateId || (storedId ? JSON.parse(storedId) : null);
+    }
+    return this.loggedInCandidateId;
   }
+
 
   clearLoggedInCandidateId(): void {
     this.loggedInCandidateId = null;
@@ -144,6 +147,6 @@ export class CandidateService {
   getCandidateById(id: string): Observable<Candidate> {
     return this.http.get<Candidate>(`${this.apiUrl}/${id}`);
   }
-
+  
 
 }
