@@ -13,59 +13,46 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      /* Add some basic styles for the table and filters */
-      /* .filters {
-            margin-bottom: 20px;
-        }
-        .course-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .course-table th, .course-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        .course-table th {
-            background-color: #f2f2f2;
-        } */
+      /* Add some basic styling for layout if needed */
     </style>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="container">
       <div class="sidebar" id="sidebar">
         <h2>Skill<span class="green-text">hive</span></h2>
         <ul>
+          <li><a href="#"><i class="fas fa-user"></i> My Profile</a></li>
+      
           <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-user"></i>My Profile</a
-            >
-          </li>
-          <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-book"></i>Courses</a
-            >
-            <div class="dropdown-container">
-              <a href="#">All courses</a>
-              <a href="#">Manage Courses</a>
+            <a href="#" #dropdownBtn class="dropdown-btn">
+              <i class="fas fa-book"></i> Courses
+            </a>
+            <div #dropdownContainer class="dropdown-container">
+              <a routerLink="/manage-course">All Courses</a>
+              <a routerLink="/create-course">Create Course</a>
+              <a routerLink="/admin-view">Course View - Admin</a>
+              <a routerLink="/manage-course">Course View - Instructor</a>
             </div>
+            
           </li>
+      
           <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-chalkboard-teacher"></i>Instructor</a
-            >
-            <div class="dropdown-container">
+            <a href="#" #dropdownBtn class="dropdown-btn">
+              <i class="fas fa-chalkboard-teacher"></i> Instructor
+            </a>
+            <div #dropdownContainer class="dropdown-container">
               <a href="#">Create Instructor</a>
               <a href="#">View All Instructors</a>
               <a href="#">View Assigned Courses by Instructor</a>
               <a href="#">Deletion/Update Instructor</a>
             </div>
           </li>
+      
           <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-users"></i>Candidates</a
-            >
-            <div class="dropdown-container">
+            <a href="#" #dropdownBtn class="dropdown-btn">
+              <i class="fas fa-users"></i> Candidates
+            </a>
+            <div #dropdownContainer class="dropdown-container">
               <a href="#">View All</a>
               <a href="#">View Upcoming Courses</a>
               <a href="#">View Enrolled Courses</a>
@@ -75,16 +62,14 @@
             </div>
           </li>
         </ul>
+      
         <ul class="bottom-links">
-          <li>
-            <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
-          </li>
-          <li>
-            <a href="#logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-          </li>
+          <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
         </ul>
       </div>
 
+      <!-- Main Content -->
       <div class="content">
         <!-- Filters -->
         <div class="filters">
@@ -95,8 +80,8 @@
             (change)="filterCourses(statusSelect.value)"
           >
             <option value="">All Statuses</option>
-            <option value="Open">Open</option>
-            <option value="Closed">Closed</option>
+            <option value="Ongoing">Ongoing</option>
+            <option value="Completed">Completed</option>
             <option value="Upcoming">Upcoming</option>
           </select>
         </div>
@@ -107,7 +92,7 @@
             <tr>
               <th>Course Category</th>
               <th>Course Name</th>
-              <th>Trainer Name</th>
+              <th>Instructor Name</th>
               <th>Start Date</th>
               <th>End Date</th>
               <th>No. of Enrollments</th>
@@ -116,42 +101,42 @@
             </tr>
           </thead>
           <tbody id="course-table-body">
-            <tr
-              *ngFor="let course of filteredCourses"
-              [attr.data-status]="course.status"
-            >
+            <tr *ngFor="let course of filteredCourses">
               <td>{{ course.courseCategory }}</td>
               <td>{{ course.courseName }}</td>
-              <td>{{ course.instructorName }}</td>
+              <td>{{ course.instructor }}</td>
               <td>{{ course.startDate }}</td>
               <td>{{ course.endDate }}</td>
-              <td>30</td>
-              <td>5</td>
-              <td>{{ course.status }}</td>
-            </tr>
+              <td>{{ enrollCandidate(course.id) }}</td> <!-- Display number of enrollments -->
+              <td>{{ updateSeatsLeft() }}</td> <!-- Display number of seats left -->
+              <td>{{ getCourseStatus(course) }}</td> <!-- Display course status -->
+            </tr>            
           </tbody>
         </table>
       </div>
     </div>
+
+    <!-- Footer -->
     <footer>
       <p>&copy; 2025 SkillHive</p>
       <ul>
-        <li><a id="terms" href="terms.html">Terms of Services</a></li>
+        <li><a id="terms" href="terms.html">Terms of Service</a></li>
         <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
         <li><a id="contact" href="contact.html">Contact Us</a></li>
       </ul>
       <div id="social-media">
-        <a href="https://facebook.com" target="_blank"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-        <a href="https://twitter.com" target="_blank"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a href="https://instagram.com" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
+        <a href="https://facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
     </footer>
+
+    <script src="./script.js"></script>
   </body>
-  <script src="./script.js"></script>
 </html>
