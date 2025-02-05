@@ -14,81 +14,71 @@
     />
   </head>
   <body>
-    <div class="wrapper">
-      <div class="sidebar" id="sidebar">
-        <h2>Skill<span class="green-text">hive</span></h2>
-        <ul>
-          <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-user"></i>My Profile</a
-            >
-          </li>
-          <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-book"></i>Courses</a
-            >
-            <div class="dropdown-container">
-              <a href="#">All courses</a>
-              <a href="#">Manage Courses</a>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+            <span class="skill">Skill</span><span class="hive">Hive</span>
+        </div>
+        <div class="selections">
+            <div class="sel1" routerLink="/admin-dashboard">
+                <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon"> Home
             </div>
-          </li>
-          <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-chalkboard-teacher"></i>Instructor</a
-            >
-            <div class="dropdown-container">
-              <a href="#">Create Instructor</a>
-              <a href="#">View All Instructors</a>
-              <a href="#">View Assigned Courses by Instructor</a>
-              <a href="#">Deletion/Update Instructor</a>
+            
+            <div class="sel2" (click)="isCoursesDropdownVisible = !isCoursesDropdownVisible">
+                <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses"> Courses
             </div>
-          </li>
-          <li>
-            <a href="#" class="dropdown-btn"
-              ><i class="fas fa-users"></i>Candidates</a
-            >
-            <div class="dropdown-container">
-              <a href="#">View All</a>
-              <a href="#">View Upcoming Courses</a>
-              <a href="#">View Enrolled Courses</a>
-              <a href="#">Delete Candidate</a>
-              <a href="#">Assessments</a>
-              <a href="#">Results</a>
+            <div *ngIf="isCoursesDropdownVisible" class="dropdown">
+                <div class="dropdown-item" routerLink="/create-course">Add Course</div>
+                <div class="dropdown-item" routerLink="/">Delete Course</div>
+                <div class="dropdown-item" routerLink="/">Update Course</div>
+                <div class="dropdown-item" routerLink="/view-assigned-courses">View Courses</div>
             </div>
-          </li>
-        </ul>
-        <ul class="bottom-links">
-          <li>
-            <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
-          </li>
-          <li>
-            <a href="#logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-          </li>
-        </ul>
+            
+            <div class="sel3" (click)="isInstructorsDropdownVisible = !isInstructorsDropdownVisible">
+                <img src="https://img.icons8.com/?size=30&id=38HJBFwphJ3I&format=png&color=c1dbc6" alt="instructors"> Instructors
+            </div>
+            <div *ngIf="isInstructorsDropdownVisible" class="dropdown">
+                <div class="dropdown-item" routerLink="/create-instructor">Add Instructor</div>
+                <div class="dropdown-item" routerLink="/delete-instructor">Delete Instructor</div>
+                <div class="dropdown-item" routerLink="/view-instructor">View Instructors</div>
+            </div>
+            
+            <div class="sel4" (click)="isCandidateDropdownVisible = !isCandidateDropdownVisible">
+                <img src="https://img.icons8.com/?size=30&id=82751&format=png&color=c1dbc6" alt="candidates"> Candidates
+            </div>
+            <div *ngIf="isCandidateDropdownVisible" class="dropdown">
+                <div class="dropdown-item" routerLink="/admin-dashboard">View Candidate</div>
+                <div class="dropdown-item" routerLink="/admin-dashboard">Delete Candidate</div>
+            </div>
+        </div>
+        <div class="extras">
+          <div class="user">
+              <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+              User Profile
+          </div>
+          <div class="logout" (click)="authService.logout()">
+              <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+              Logout
+          </div>
       </div>
+    </aside>
 
       <div class="content">
-        <!-- Filters -->
-        <div class="filters">
-          <label for="filter-status">Filter by Status:</label>
-          <select
-            id="filter-status"
-            #statusSelect
-            (change)="filterCourses(statusSelect.value)"
-          >
-            <option value="">All Statuses</option>
-            <option value="Open">Open</option>
-            <option value="Closed">Closed</option>
+        <div class="filter-container">
+          <label for="statusFilter">Filter by Status:</label>
+          <select id="statusFilter" (change)="filterCoursesByStatus($event)">
+            <option value="">All</option>
             <option value="Upcoming">Upcoming</option>
+            <option value="Ongoing">Ongoing</option>
+            <option value="Completed">Completed</option>
           </select>
         </div>
-        <!-- ... existing code ... -->
-
+        
         <!-- Table -->
         <table class="course-table">
           <thead>
             <tr>
-              <th>Course ID</th>
               <th>Course Category</th>
               <th>Course Name</th>
               <th>Trainer Name</th>
@@ -100,39 +90,46 @@
               <th>Manage</th>
             </tr>
           </thead>
-          <tbody id="course-table-body">
-            <tr
-              *ngFor="let course of filteredCourses"
-              [attr.data-status]="course.status"
-            >
-              <td>{{ course.id }}</td>
+          <tbody>
+            <!-- ngFor loop to populate course details -->
+            <tr *ngFor="let course of filteredCourses">
               <td>{{ course.courseCategory }}</td>
               <td>{{ course.courseName }}</td>
               <td>{{ course.instructorName }}</td>
-              <td>{{ course.startDate }}</td>
-              <td>{{ course.endDate }}</td>
-              <td>30</td>
-              <td>5</td>
+              <td>{{ course.startDate | date }}</td>
+              <td>{{ course.endDate | date }}</td>
+              <td>{{ course.noOfEnrollments }}</td>
+              <td>{{ course.seatsLeft }}</td>
               <td>{{ course.status }}</td>
               <td>
                 <div class="action-buttons">
+                  <!-- Edit course -->
                   <button
-                    id="edit-button"
                     class="edit-course-btn"
-                    (click)="onEdit(course.id)"
+                    (click)="editCourse(course.id)"
                   >
                     Edit
                   </button>
+                  <!-- Delete course -->
                   <button
-                    id="delete-button"
                     class="delete-course-btn"
                     (click)="deleteCourse(course.id)"
                   >
                     Delete
+
                   </button>
-                  <button id="assessment-button" class="assessment-btn">
-                    Enable Assessment
+                  <!-- Open for Enrollment -->
+                  <!--<button class="enroll-btn" (click)="toggleEnrollment(course)">Open for Enrollment</button> -->
+                  <!-- Button to toggle the "Open for Enrollment" status -->
+                  <button (click)="toggleEnrollment(course)" [disabled]="!course.contentUploaded">
+                    {{ course.openForEnrollment ? 'Close Enrollment' : 'Open Enrollment' }}
                   </button>
+
+                 
+
+                  
+                  <!-- Enable assessment -->
+                  <button class="assessment-btn">Enable Assessment</button>
                 </div>
               </td>
             </tr>
@@ -140,25 +137,21 @@
         </table>
       </div>
     </div>
+
     <footer>
       <p>&copy; 2025 SkillHive</p>
       <ul>
-        <li><a id="terms" href="terms.html">Terms of Services</a></li>
-        <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
-        <li><a id="contact" href="contact.html">Contact Us</a></li>
+          <li><a id="terms" href="terms.html">Terms of Services</a></li>
+          <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
+          <li><a id="contact" href="contact.html">Contact Us</a></li>
       </ul>
       <div id="social-media">
-        <a href="https://facebook.com" target="_blank"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-        <a href="https://twitter.com" target="_blank"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a href="https://instagram.com" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
-    </footer>
+  </footer>
+
+    <script src="./script.js"></script>
   </body>
-  <script src="./script.js"></script>
 </html>
