@@ -1,0 +1,84 @@
+<div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo"><span class="skill">Skill</span><span class="hive">hive</span></div>
+  
+      <div class="selections">
+        <div class="sel1" routerLink="/admin-dashboard" (click)="setActiveView('home')">
+          <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+          Home
+        </div>
+  
+        <div class="sel2" (click)="toggleDropdown('courses')">
+          <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses">
+          Courses
+        </div>
+        <div *ngIf="isCoursesDropdownVisible" class="dropdown">
+          <div class="dropdown-item" routerLink="/create-course">Add Course</div>
+          <div class="dropdown-item" routerLink="/">Delete Course</div>
+          <div class="dropdown-item" routerLink="/">Update Course</div>
+          <div class="dropdown-item" routerLink="/view-assigned-courses">View Courses</div>
+        </div>
+  
+        <div class="sel3" (click)="toggleDropdown('instructors')">
+          <img src="https://img.icons8.com/?size=30&id=38HJBFwphJ3I&format=png&color=c1dbc6" alt="instructors">
+          Instructors
+        </div>
+        <div *ngIf="isInstructorsDropdownVisible" class="dropdown">
+          <div class="dropdown-item" routerLink="/create-instructor">Add Instructor</div>
+          <div class="dropdown-item" routerLink="/view-instructor">View Instructors</div>
+        </div>
+  
+        <div class="sel4" (click)="toggleDropdown('candidates')">
+          <img src="https://img.icons8.com/?size=30&id=82751&format=png&color=c1dbc6" alt="candidates">
+          Candidates
+        </div>
+        <div *ngIf="isCandidateDropdownVisible" class="dropdown">
+          <div class="dropdown-item" (click)="setActiveView('candidates')">View Candidates</div>
+        </div>
+      </div>
+  
+      <div class="extras">
+        <div class="user" (click)="setActiveView('profile')">
+          <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+          <span>{{ adminName }} Profile</span>
+        </div>
+        
+        <div class="logout" (click)="logout()">
+          <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+          Logout
+        </div>
+      </div>
+    </aside>
+
+<!-- profile.component.html -->
+<div class="profile">
+    <h2>Update Profile</h2>
+    <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" [(ngModel)]="admin.name" name="name" required #name="ngModel">
+            <div *ngIf="name.invalid && name.touched" class="error">
+                Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" [(ngModel)]="admin.email" name="email" required email #email="ngModel">
+            <div *ngIf="email.invalid && email.touched" class="error">
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" [(ngModel)]="admin.password" name="password" required #password="ngModel">
+            <div *ngIf="password.invalid && password.touched" class="error">
+                Password is required.
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="profileForm.invalid">Save Changes</button>
+    </form>
+</div>

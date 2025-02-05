@@ -28,6 +28,7 @@ import { ManageCourseInstructorComponent } from './course/components/managecours
 
 // Authentication imports
 import { LandingPageComponent } from './authentication/components/landing-page/landing-page.component';
+import { ProfileComponent } from '../app/authentication/components/profile/profile.compoenent';
 import { LoginComponent } from './authentication/components/login/login.component';
 import { ForgotPasswordComponent } from './authentication/components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './authentication/components/reset-password/reset-password.component';
@@ -42,7 +43,6 @@ import { CandidateProfileComponent } from './candidates/components/candidate-pro
 import { CandidateDashboardComponent } from './candidates/components/candidate-dashboard/candidate-dashboard.component';
 import { EnrolledCoursesComponent } from './candidates/components/enrolled-courses/enrolled-courses.component';
 import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
-import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
 import { DeleteInstructorComponent } from './instructor/components/delete-instructor/delete-instructor.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
@@ -55,13 +55,15 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent,children: [{path: 'chart',component: ChartComponent,}], canActivate: [RoleGuard], data: { role: 'admin' } },
   // { path: 'home', component: HomeComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [RoleGuard], data: { role: 'admin'}},
-  { path: 'reset-password', component: ResetPasswordComponent ,canActivate: [RoleGuard], data: ['admin','instructor']},
+  { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'reset-password', component: ResetPasswordComponent ,canActivate: [RoleGuard], data: { role: { role: ['admin', 'instructor'] } }},
   { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
+  { path: 'admin-profile', component: ProfileComponent },
+
   
   // Instructor Management routes
   // { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
-  { path: 'profile-update', component: ProfileUpdateComponent,canActivate: [RoleGuard], data: ['admin','instructor'] },
+  { path: 'profile-update', component: ProfileUpdateComponent,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }  },
   { path: 'create-instructor', component: CreateInstructorComponent,canActivate: [RoleGuard], data: { role: 'admin' }  },
   {path:'delete-instructor',component:DeleteInstructorComponent ,canActivate: [RoleGuard], data: { role: 'admin' }},
   {path:'instructor-timetable',component:InstructorTimeTableComponent ,canActivate: [RoleGuard], data: { role: 'admin' }},
@@ -79,27 +81,27 @@ export const routes: Routes = [
   //{ path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
 
   //candidates routes
-  { path: 'register', component: CandidateRegistrationComponent ,canActivate: [RoleGuard], data: ['admin','instructor'] },
-  { path: 'profile/:id', component: CandidateProfileComponent, canActivate: [RoleGuard], data:['admin','instructor'] },
-  { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: ['admin','instructor']},
-  { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent, canActivate: [RoleGuard], data:['admin','instructor'] },
-  { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent ,canActivate: [RoleGuard], data:['admin','instructor']},
+  { path: 'register', component: CandidateRegistrationComponent ,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
+  { path: 'profile/:id', component: CandidateProfileComponent, canActivate: [RoleGuard], data:{ role: ['admin', 'instructor'] } },
+  { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent, canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
+  { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent ,canActivate: [RoleGuard], data:{ role: ['admin', 'instructor'] }},
   //{ path: 'view-candidates', component: ViewCandidatesComponent },
   
 
   //Course Module Routes
-  { path: 'create-course', component: CreateCourseComponent},
-  {path : 'manage-course', component: ManageCourseInstructorComponent},
-  {path: 'admin-veiw',component: AdminveiwComponent},
+  { path: 'create-course', component: CreateCourseComponent },
+  {path : 'manage-course', component: ManageCourseInstructorComponent, canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  {path: 'admin-veiw',component: AdminveiwComponent ,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
   // Fallback route
   // { path: '**', redirectTo: 'login' },
 
   //assessment module routes
-  { path: 'candidateassessment', component: CandidateassessmentComponent ,canActivate: [RoleGuard], data: ['admin','instructor'] },
-  { path: 'attemptassessment', component: AttemptAssessmentComponent ,  canActivate: [RoleGuard], data: ['admin','instructor']},
-  { path: 'mcqtest', component: McqTestComponent ,  canActivate: [RoleGuard], data: ['admin','instructor']},
-  { path: 'scores', component: ScoresComponent , canActivate: [RoleGuard], data: ['admin','instructor']},
-  { path: 'viewassessment', component: ViewassessmentComponent, canActivate: [RoleGuard], data: ['admin','instructor'] },
+  { path: 'candidateassessment', component: CandidateassessmentComponent ,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'attemptassessment', component: AttemptAssessmentComponent ,  canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'mcqtest', component: McqTestComponent ,  canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'scores', component: ScoresComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
+  { path: 'viewassessment', component: ViewassessmentComponent, canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
 ];
 
 export const appRouterProviders = [

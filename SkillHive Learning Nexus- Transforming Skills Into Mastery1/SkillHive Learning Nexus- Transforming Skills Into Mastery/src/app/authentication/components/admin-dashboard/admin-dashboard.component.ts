@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CandidateService } from '../../../candidates/services/candidate.service';
 import { admindashboardService } from "../../services/admin-dashboard.service";
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
