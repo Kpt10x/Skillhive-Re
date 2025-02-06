@@ -132,6 +132,7 @@
   }
   
   .course-card {
+    width: 350px;
     height: auto;
     background-color: #ffffff;
     color: #1E2A2F;

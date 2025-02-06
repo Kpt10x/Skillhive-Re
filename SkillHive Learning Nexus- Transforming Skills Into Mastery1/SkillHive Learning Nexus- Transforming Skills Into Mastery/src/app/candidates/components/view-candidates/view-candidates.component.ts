@@ -2,52 +2,63 @@ import { Component, OnInit } from '@angular/core';
 import { CandidateService, Candidate } from '../../../candidates/services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faUsers, faUserPlus, faBook } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-view-candidates',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],  // Add FontAwesomeModule to imports
+  imports: [CommonModule, RouterModule],
   templateUrl: './view-candidates.component.html',
   styleUrls: ['./view-candidates.component.css']
 })
 export class ViewCandidatesComponent implements OnInit {
   candidates: Candidate[] = [];
-  instructorName: string | null = '';
-  role: string | null = '';
-  isSidebarExpanded: boolean = false; // Track sidebar state
-  isCollapsed: boolean = false; // Track collapse state
+  instructorName: string = '';
+  currentInstructor: string = '';
 
   constructor(
-    private library: FaIconLibrary, 
-    private candidateService: CandidateService, 
+    private candidateService: CandidateService,
+    private http: HttpClient,
     private router: Router
-  ) {
-    // Add icons to the library
-    this.library.addIcons(faUsers, faUserPlus, faBook);
-  }
+  ) {}
 
   ngOnInit(): void {
-    const loggedInUserId = sessionStorage.getItem('loggedInCandidate');
-    
-    if (loggedInUserId) {
-      this.candidateService.getInstructorProfileById(loggedInUserId).subscribe((profile) => {
-        if (profile.role === 'instructor') {
-          this.instructorName = profile.fullName;
-          this.getCandidatesForInstructor();
-        } else {
-          // Redirect or show error as the user is not an instructor
-        }
-      });
-    }
+    this.setCurrentInstructor();
+    this.getCandidatesForInstructor();
   }
 
-  getCandidatesForInstructor(): void {
-    if (this.instructorName) {
-      this.candidateService.getCandidatesByInstructor(this.instructorName).subscribe((candidates) => {
-        this.candidates = candidates;
-      });
-    }
+  setCurrentInstructor(): void {
+    const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+    this.instructorName = loggedInInstructor.name || '';
+    this.currentInstructor = this.instructorName;
   }
-}
+
+
+  getCandidatesForInstructor(): void {
+    if (!this.instructorName) return;
+
+    forkJoin([
+      this.http.get<any[]>('http://localhost:3000/courses-enrolled-by-candidates'),
+      this.http.get<any[]>('http://localhost:3000/profiles')
+    ]).subscribe(([enrolledCourses, profiles]) => {
+      // Filter courses by current instructor
+      const filteredCourses = enrolledCourses.filter(course => 
+        course.instructor === this.instructorName
+      );
+
+      // Extract unique candidate IDs (convert to string for matching)
+      const candidateIds = [...new Set(filteredCourses.map(course => 
+        course.candidateId.toString()
+      ))];
+
+      // Match candidate IDs with profile IDs
+      this.candidates = profiles.filter(profile => 
+        profile.role === 'candidate' && 
+        candidateIds.includes(profile.id.toString())
+      );
+    }, error => {
+      console.error('Error fetching data:', error);
+    });
+  }
+}  

@@ -1,8 +1,24 @@
 
+* {
+  font: 1em sans-serif;
+  font-family: 'Balsamiq Sans', sans-serif;
+}
+
 .wrapper {
   display: flex;
      /* Make sure it takes up the full viewport height */
 }
+
+
+
+.main-content {
+  font-family: 'Balsamiq Sans', sans-serif;
+  flex: 1;
+  padding: 20px;
+  margin-left: 20px;
+
+}
+
 
 .card {
    background-color: #ffffff;
@@ -15,6 +31,7 @@
     margin-top: 20px;
     margin-right: 20px;
     margin-left: 20px;
+    width:175%;
 
 }
 
@@ -27,6 +44,8 @@
 .instructor-table {
   width: 100%;
   border-collapse: collapse;
+  align-items: center;
+  align-content: center;
   margin: 20px 0;
   font-family: Arial, sans-serif;
   text-align: left;
@@ -34,8 +53,9 @@
 }
 
 .instructor-table th {
+  /* width: 100%; */
   padding: 15px 20px;
-  text-align: left;
+  text-align: center;
   background-color: #394B53;
   color: white;
   font-weight: bold;
@@ -43,6 +63,7 @@
 
 .instructor-table td {
   padding: 12px 20px;
+  text-align: center;
   color: #263339;
 }
 
@@ -76,6 +97,19 @@
 
 
 
+* {
+  font: 1em sans-serif;
+  font-family: 'Balsamiq Sans', sans-serif;
+}
+
+
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  background-color: #ddffe4;
+
+}
 body {
   font-family: 'Balsamiq Sans', sans-serif;
   margin: 0;
@@ -84,11 +118,47 @@ body {
 .sidebar {
   background-color: #24353e;
   color: white;
-  width: 235px;
+  width: 265px;
   height: 115vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
+}
+
+
+.sidebar-link {
+  color: #C1DBC6;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.sidebar-link:hover {
+  color: #A8C4AF; /* Slightly darker shade on hover */
+}
+
+.sidebar-link img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.dropdown {
+  display: block;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  background-color: #2C4B56;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown-item:hover {
+  background-color: #3D6A7D;
 }
 
 .logo {
@@ -126,14 +196,13 @@ body {
 }
 
 .extras {
-  margin-top: 180px;
+  margin-top: 230px;
 }
-
 .user, .logout {
   display: flex;
   align-items: center;
   color: #C1DBC6;
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px 0;
 }
 
@@ -141,25 +210,6 @@ body {
   margin-right: 10px;
 }
 
-.dropdown {
-  display: block;
-}
-
-.dropdown.show {
-  display: block;
-}
-
-.dropdown-item {
-  padding: 10px;
-  background-color: #2C4B56;
-  color: white;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.dropdown-item:hover {
-  background-color: #3D6A7D;
-}
 
 .main {
   margin-left: 50px;
@@ -329,7 +379,3 @@ footer ul li a:hover {
   text-decoration: none;
   font-size: 20px;
 }
-.card{
-  width: 1200px;
-}
-

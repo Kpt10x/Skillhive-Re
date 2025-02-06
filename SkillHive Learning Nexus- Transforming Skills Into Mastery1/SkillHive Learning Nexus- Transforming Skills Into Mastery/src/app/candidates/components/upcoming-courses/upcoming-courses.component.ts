@@ -118,7 +118,7 @@ console.log(loggedInUserId, "Starrrrr");
       courseName: course.courseName,
       courseCategory: course.courseCategory,
       courseDurationInMonths: course.courseDurationInMonths,
-      instructorName: course.instructorName,
+      instructorName: course.instructor,
       startDate: course.startDate,
       endDate: course.endDate,
     };
@@ -154,6 +154,10 @@ console.log(loggedInUserId, "Starrrrr");
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
-    return new Date(course.startDate) >= tomorrow && new Date(course.endDate) >= today;
+    
+    return course.openForEnrollment && // Check if enrollment is open
+           new Date(course.startDate) >= tomorrow && 
+           new Date(course.endDate) >= today;
   }
+  
 }
