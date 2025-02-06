@@ -41,6 +41,7 @@ import { EnrolledCoursesComponent } from './candidates/components/enrolled-cours
 import { UpcomingCoursesComponent } from './candidates/components/upcoming-courses/upcoming-courses.component';
 import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
+import { ResultsComponent } from './assessmentgrading/components/results/results.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
@@ -76,7 +77,7 @@ export const routes: Routes = [
   //candidates routes
   { path: 'register', component: CandidateRegistrationComponent },
   { path: 'profile/:id', component: CandidateProfileComponent },
-  { path: 'dashboard/:id', component: CandidateDashboardComponent },
+  { path: 'dashboard/:id', component: EnrolledCoursesComponent},//#Dashboard Change
   { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent },
   { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent },
   //{ path: 'view-candidates', component: ViewCandidatesComponent },
@@ -90,11 +91,12 @@ export const routes: Routes = [
   // { path: '**', redirectTo: 'login' },
 
   //assessment module routes
-  { path: 'candidateassessment', component: CandidateassessmentComponent },
-  { path: 'attemptassessment', component: AttemptAssessmentComponent },
-  { path: 'mcqtest', component: McqTestComponent },
-  { path: 'scores', component: ScoresComponent },
+  { path: 'candidateassessment/:id', component: CandidateassessmentComponent },
+  { path: 'candidateassessment/:candidateId/attemptassessment/:courseId', component: AttemptAssessmentComponent },
+  { path: 'mcqtest/:candidateId/:testId', component: McqTestComponent },
+  { path: 'scores/:candidateId', component: ScoresComponent },
   { path: 'viewassessment', component: ViewassessmentComponent },
+  {path:'results/:candidateId',component:ResultsComponent}
 ];
 
 export const appRouterProviders = [
