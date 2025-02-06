@@ -147,13 +147,139 @@
       "phone": "9999999999",
       "password": "ben@gmail.com",
       "role": "candidate"
+    },
+    {
+      "id": "64555",
+      "name": "Lalitha ",
+      "email": "lalitha@gmail.com",
+      "phone": "0987654321",
+      "password": "lalitha",
+      "role": "candidate"
     }
   ],
   "assessments": [
     {
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "assessmentDate": "2025-02-5",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is Machine Learning?",
+          "options": [
+            "A type of artificial intelligence that allows software applications to become more accurate in predicting outcomes without being explicitly programmed to do so.",
+            "A programming language for robots",
+            "A method for storing large amounts of data",
+            "A type of computer virus"
+          ],
+          "answer": "A type of artificial intelligence that allows software applications to become more accurate in predicting outcomes without being explicitly programmed to do so."
+        },
+        {
+          "id": 2,
+          "question": "Which of the following is NOT a type of Machine Learning?",
+          "options": [
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Reinforcement Learning",
+            "Deterministic Learning"
+          ],
+          "answer": "Deterministic Learning"
+        },
+        {
+          "id": 3,
+          "question": "What is a common algorithm used in Supervised Learning for classification?",
+          "options": [
+            "Linear Regression",
+            "K-means Clustering",
+            "Decision Tree",
+            "Principal Component Analysis"
+          ],
+          "answer": "Decision Tree"
+        },
+        {
+          "id": 4,
+          "question": "Which of these is a popular library for Machine Learning in Python?",
+          "options": [
+            "NumPy",
+            "Pandas",
+            "Scikit-learn",
+            "All of the above"
+          ],
+          "answer": "All of the above"
+        },
+        {
+          "id": 5,
+          "question": "What is 'Overfitting' in Machine Learning?",
+          "options": [
+            "A model that performs well on training data but poorly on unseen data",
+            "A model that performs poorly on both training and unseen data",
+            "A model that is too complex to understand",
+            "A model that takes too long to train"
+          ],
+          "answer": "A model that performs well on training data but poorly on unseen data"
+        },
+        {
+          "id": 6,
+          "question": "Which of the following is an application of Unsupervised Learning?",
+          "options": [
+            "Image recognition",
+            "Spam detection",
+            "Customer segmentation",
+            "Predicting stock prices"
+          ],
+          "answer": "Customer segmentation"
+        },
+        {
+          "id": 7,
+          "question": "What is the purpose of a 'loss function' in Machine Learning?",
+          "options": [
+            "To measure the accuracy of the model",
+            "To visualize the data",
+            "To pre-process the data",
+            "To optimize the model parameters"
+          ],
+          "answer": "To measure the accuracy of the model"
+        },
+        {
+          "id": 8,
+          "question": "Which of the following is a technique for dimensionality reduction?",
+          "options": [
+            "Principal Component Analysis (PCA)",
+            "Support Vector Machines (SVM)",
+            "Linear Regression",
+            "K-Nearest Neighbors (KNN)"
+          ],
+          "answer": "Principal Component Analysis (PCA)"
+        },
+        {
+          "id": 9,
+          "question": "What is 'Deep Learning'?",
+          "options": [
+            "A subset of Machine Learning that uses artificial neural networks with multiple layers",
+            "A type of Machine Learning that uses only a single layer of neurons",
+            "A traditional statistical method for data analysis",
+            "A method for cleaning and preparing data"
+          ],
+          "answer": "A subset of Machine Learning that uses artificial neural networks with multiple layers"
+        },
+        {
+          "id": 10,
+          "question": "Which of the following is NOT a common activation function in neural networks?",
+          "options": [
+            "ReLU",
+            "Sigmoid",
+            "Tanh",
+            "Mean Squared Error"
+          ],
+          "answer": "Mean Squared Error"
+        }
+      ],
+      "id": "687d"
+    },
+    {
       "courseId": "7239999",
       "courseName": "Cloud Computing",
-      "assessmentDate": "2025-30-01",
+      "assessmentDate": "2025-01-5",
       "questions": [
         {
           "id": 1,
@@ -266,125 +392,597 @@
           "answer": "Cloud providers manage server resources dynamically"
         }
       ],
-      "id": "687d"
+      "id": "d85f"
     },
     {
-      "courseId": "8241111",
-      "courseName": "Business Analytics",
-      "assessmentDate": "2025-31-01",
+      "courseId": "2234444",
+      "courseName": "Data Science",
+      "assessmentDate": "2025-02-6",
       "questions": [
         {
           "id": 1,
-          "question": "What is Business Analytics?",
+          "question": "What is Data Science?",
           "options": [
-            "A process of analyzing business data to make decisions",
-            "A type of business accounting",
-            "Developing business strategies without data",
-            "A method for predicting weather patterns"
+            "A field that uses scientific methods, algorithms, and systems to extract insights from data",
+            "A programming language",
+            "A type of database",
+            "A type of cloud computing service"
           ],
-          "answer": "A process of analyzing business data to make decisions"
+          "answer": "A field that uses scientific methods, algorithms, and systems to extract insights from data"
         },
         {
           "id": 2,
-          "question": "Which of the following is a key component of Business Analytics?",
+          "question": "Which of the following is NOT a step in the Data Science process?",
           "options": [
+            "Data Cleaning",
             "Data Analysis",
-            "Hardware Setup",
-            "Manual Data Entry",
-            "Data Destruction"
+            "Model Training",
+            "Web Hosting"
           ],
-          "answer": "Data Analysis"
+          "answer": "Web Hosting"
         },
         {
           "id": 3,
-          "question": "What is the primary goal of Business Analytics?",
+          "question": "Which language is most commonly used in Data Science?",
           "options": [
-            "To improve decision-making",
-            "To eliminate the use of data",
-            "To increase manual reporting",
-            "To reduce the use of technology"
+            "Python",
+            "C++",
+            "Java",
+            "Swift"
           ],
-          "answer": "To improve decision-making"
+          "answer": "Python"
         },
         {
           "id": 4,
-          "question": "Which of these is a common tool used in Business Analytics?",
+          "question": "What is the primary purpose of Exploratory Data Analysis (EDA)?",
           "options": [
-            "Tableau",
-            "Photoshop",
-            "CorelDRAW",
-            "Premiere Pro"
+            "To create machine learning models",
+            "To summarize main characteristics of data using visualization and statistical techniques",
+            "To clean the dataset",
+            "To deploy the model"
           ],
-          "answer": "Tableau"
+          "answer": "To summarize main characteristics of data using visualization and statistical techniques"
         },
         {
           "id": 5,
-          "question": "What is 'Predictive Analytics' in the context of Business Analytics?",
+          "question": "Which of the following is a supervised learning algorithm?",
           "options": [
-            "A method to predict future trends using data",
-            "A technique for creating business presentations",
-            "A manual way to organize data",
-            "A form of digital marketing"
+            "K-Means Clustering",
+            "Decision Tree",
+            "Apriori Algorithm",
+            "DBSCAN"
           ],
-          "answer": "A method to predict future trends using data"
+          "answer": "Decision Tree"
         },
         {
           "id": 6,
-          "question": "Which of the following is an example of descriptive analytics?",
+          "question": "Which type of data visualization is best for showing the distribution of a numerical dataset?",
           "options": [
-            "Summarizing historical sales data",
-            "Predicting future customer behavior",
-            "Optimizing supply chain operations",
-            "Developing machine learning models"
+            "Bar Chart",
+            "Pie Chart",
+            "Histogram",
+            "Line Chart"
           ],
-          "answer": "Summarizing historical sales data"
+          "answer": "Histogram"
         },
         {
           "id": 7,
-          "question": "What does a 'Dashboard' provide in Business Analytics?",
+          "question": "What does the term 'Feature Engineering' mean in Data Science?",
           "options": [
-            "A graphical representation of key metrics",
-            "A detailed written report",
-            "An alternative to data storage",
-            "A manual method to record data"
+            "Cleaning data to remove missing values",
+            "Creating new input features that improve model performance",
+            "Writing code to automate machine learning",
+            "Collecting data from external sources"
           ],
-          "answer": "A graphical representation of key metrics"
+          "answer": "Creating new input features that improve model performance"
         },
         {
           "id": 8,
-          "question": "Which statistical technique is commonly used in Business Analytics?",
+          "question": "Which of the following is NOT a common machine learning model evaluation metric?",
           "options": [
-            "Regression Analysis",
-            "Cryptography",
-            "Photosynthesis",
-            "Gene Editing"
+            "Mean Squared Error (MSE)",
+            "F1-Score",
+            "Precision",
+            "SQL Query Execution Time"
           ],
-          "answer": "Regression Analysis"
+          "answer": "SQL Query Execution Time"
         },
         {
           "id": 9,
-          "question": "What is the role of data visualization in Business Analytics?",
+          "question": "What is the main purpose of a confusion matrix in classification problems?",
           "options": [
-            "To make data insights more understandable",
-            "To hide complex data",
-            "To replace statistical analysis",
-            "To store data permanently"
+            "To visualize relationships between features",
+            "To measure the performance of a classification model",
+            "To determine missing values in a dataset",
+            "To compare different datasets"
           ],
-          "answer": "To make data insights more understandable"
+          "answer": "To measure the performance of a classification model"
         },
         {
           "id": 10,
-          "question": "Which of the following describes 'Prescriptive Analytics'?",
+          "question": "Which of the following is a common data preprocessing technique?",
           "options": [
-            "Recommending actions based on data insights",
-            "Summarizing past data",
-            "Storing data securely",
-            "Predicting data loss"
+            "Feature Scaling",
+            "Training a neural network",
+            "Hyperparameter tuning",
+            "Model Deployment"
           ],
-          "answer": "Recommending actions based on data insights"
+          "answer": "Feature Scaling"
+        }
+      ],
+      "id": "a47e"
+    },
+    {
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "assessmentDate": "2025-02-5",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is Cyber Security?",
+          "options": [
+            "Protecting systems and networks from digital attacks",
+            "A type of computer virus",
+            "A software development methodology",
+            "A physical security system"
+          ],
+          "answer": "Protecting systems and networks from digital attacks"
+        },
+        {
+          "id": 2,
+          "question": "Which of the following is NOT a common type of cyber attack?",
+          "options": [
+            "Phishing",
+            "Malware",
+            "Firewalling",
+            "Denial-of-Service (DoS)"
+          ],
+          "answer": "Firewalling"
+        },
+        {
+          "id": 3,
+          "question": "What does 'VPN' stand for?",
+          "options": [
+            "Virtual Private Network",
+            "Verified Personal Node",
+            "Virtual Protected Namespace",
+            "Vulnerable Process Notifier"
+          ],
+          "answer": "Virtual Private Network"
+        },
+        {
+          "id": 4,
+          "question": "Which of these is a fundamental principle of Cyber Security?",
+          "options": [
+            "Confidentiality, Integrity, Availability",
+            "Hardware, Software, Network",
+            "Encryption, Hacking, Authentication",
+            "Development, Deployment, Debugging"
+          ],
+          "answer": "Confidentiality, Integrity, Availability"
+        },
+        {
+          "id": 5,
+          "question": "What is Phishing?",
+          "options": [
+            "A technique used to trick users into providing sensitive information",
+            "A type of firewall",
+            "An encryption method",
+            "A cloud security protocol"
+          ],
+          "answer": "A technique used to trick users into providing sensitive information"
+        },
+        {
+          "id": 6,
+          "question": "Which of the following is an example of Multi-Factor Authentication (MFA)?",
+          "options": [
+            "Using a password and a fingerprint scan",
+            "Logging in with a username only",
+            "Entering a password twice",
+            "Using a single sign-on (SSO) service"
+          ],
+          "answer": "Using a password and a fingerprint scan"
+        },
+        {
+          "id": 7,
+          "question": "What is the primary function of a firewall?",
+          "options": [
+            "To filter incoming and outgoing network traffic",
+            "To store encrypted data",
+            "To detect malware",
+            "To optimize network speed"
+          ],
+          "answer": "To filter incoming and outgoing network traffic"
+        },
+        {
+          "id": 8,
+          "question": "What is Social Engineering in Cyber Security?",
+          "options": [
+            "Manipulating people into divulging confidential information",
+            "A method of securing social media accounts",
+            "A security framework for businesses",
+            "A way to encrypt passwords"
+          ],
+          "answer": "Manipulating people into divulging confidential information"
+        },
+        {
+          "id": 9,
+          "question": "Which of the following is a strong password example?",
+          "options": [
+            "12345678",
+            "Password123",
+            "Tr0ub4dor&3!",
+            "qwerty"
+          ],
+          "answer": "Tr0ub4dor&3!"
+        },
+        {
+          "id": 10,
+          "question": "What is Ransomware?",
+          "options": [
+            "A type of malware that encrypts files and demands payment for decryption",
+            "A security patch for operating systems",
+            "A method of data backup",
+            "An encryption algorithm"
+          ],
+          "answer": "A type of malware that encrypts files and demands payment for decryption"
         }
       ],
       "id": "b593"
+    },
+    {
+      "courseId": "4236666",
+      "courseName": "Graphic Design",
+      "assessmentDate": "2025-02-07",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the primary purpose of Graphic Design?",
+          "options": [
+            "To communicate messages visually",
+            "To create programming code",
+            "To develop business strategies",
+            "To analyze financial data"
+          ],
+          "answer": "To communicate messages visually"
+        },
+        {
+          "id": 2,
+          "question": "Which of the following is NOT a design principle?",
+          "options": [
+            "Contrast",
+            "Balance",
+            "Repetition",
+            "Debugging"
+          ],
+          "answer": "Debugging"
+        },
+        {
+          "id": 3,
+          "question": "What does 'RGB' stand for in design?",
+          "options": [
+            "Red, Green, Blue",
+            "Raster, Gradient, Bitmap",
+            "Random Graphic Blend",
+            "Right Gradient Balance"
+          ],
+          "answer": "Red, Green, Blue"
+        },
+        {
+          "id": 4,
+          "question": "Which file format is commonly used for logos and scalable graphics?",
+          "options": [
+            "JPEG",
+            "SVG",
+            "BMP",
+            "GIF"
+          ],
+          "answer": "SVG"
+        },
+        {
+          "id": 5,
+          "question": "Which tool is widely used for vector-based graphic design?",
+          "options": [
+            "Adobe Illustrator",
+            "Photoshop",
+            "MS Paint",
+            "Lightroom"
+          ],
+          "answer": "Adobe Illustrator"
+        },
+        {
+          "id": 6,
+          "question": "What is 'Typography' in Graphic Design?",
+          "options": [
+            "The art of arranging text and fonts",
+            "A type of image compression",
+            "A color blending technique",
+            "A 3D modeling process"
+          ],
+          "answer": "The art of arranging text and fonts"
+        },
+        {
+          "id": 7,
+          "question": "Which color mode is used for printing?",
+          "options": [
+            "RGB",
+            "CMYK",
+            "HSB",
+            "Monochrome"
+          ],
+          "answer": "CMYK"
+        },
+        {
+          "id": 8,
+          "question": "What is the role of 'Negative Space' in design?",
+          "options": [
+            "To create contrast and clarity",
+            "To add more elements to a design",
+            "To increase color saturation",
+            "To blend different patterns"
+          ],
+          "answer": "To create contrast and clarity"
+        },
+        {
+          "id": 9,
+          "question": "Which of the following is a raster-based image editing software?",
+          "options": [
+            "Adobe Photoshop",
+            "CorelDRAW",
+            "Figma",
+            "Sketch"
+          ],
+          "answer": "Adobe Photoshop"
+        },
+        {
+          "id": 10,
+          "question": "What does DPI stand for in graphic design?",
+          "options": [
+            "Dots Per Inch",
+            "Digital Processing Interface",
+            "Design Pixel Integration",
+            "Depth Per Image"
+          ],
+          "answer": "Dots Per Inch"
+        }
+      ],
+      "id": "c91d"
+    },
+    {
+      "courseId": "6238888",
+      "courseName": "Digital Marketing",
+      "assessmentDate": "2025-07-31",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is SEO?",
+          "options": [
+            "Search Engine Optimization",
+            "Social Engine Operations",
+            "System Engineering Options",
+            "Search Entry Organization"
+          ],
+          "answer": "Search Engine Optimization"
+        },
+        {
+          "id": 2,
+          "question": "Which metric measures the percentage of visitors who leave after viewing only one page?",
+          "options": [
+            "Bounce Rate",
+            "Conversion Rate",
+            "Click-through Rate",
+            "Page Views"
+          ],
+          "answer": "Bounce Rate"
+        },
+        {
+          "id": 3,
+          "question": "What is a Call-to-Action (CTA)?",
+          "options": [
+            "A prompt encouraging users to take a specific action",
+            "A phone call to customers",
+            "An automated marketing system",
+            "A social media post"
+          ],
+          "answer": "A prompt encouraging users to take a specific action"
+        },
+        {
+          "id": 4,
+          "question": "Which platform is best for B2B marketing?",
+          "options": [
+            "LinkedIn",
+            "TikTok",
+            "Instagram",
+            "Snapchat"
+          ],
+          "answer": "LinkedIn"
+        },
+        {
+          "id": 5,
+          "question": "What is A/B testing?",
+          "options": [
+            "Comparing two versions of content to see which performs better",
+            "Testing website loading speed",
+            "Checking email deliverability",
+            "Analyzing competitor websites"
+          ],
+          "answer": "Comparing two versions of content to see which performs better"
+        },
+        {
+          "id": 6,
+          "question": "What does PPC stand for?",
+          "options": [
+            "Pay-Per-Click",
+            "Price Per Customer",
+            "Post Per Category",
+            "Page Per Click"
+          ],
+          "answer": "Pay-Per-Click"
+        },
+        {
+          "id": 7,
+          "question": "Which tool is used for tracking website analytics?",
+          "options": [
+            "Google Analytics",
+            "WordPress",
+            "Photoshop",
+            "Microsoft Excel"
+          ],
+          "answer": "Google Analytics"
+        },
+        {
+          "id": 8,
+          "question": "What is content marketing?",
+          "options": [
+            "Creating and distributing valuable content to attract customers",
+            "Paid advertising",
+            "Email spam",
+            "Direct mail campaigns"
+          ],
+          "answer": "Creating and distributing valuable content to attract customers"
+        },
+        {
+          "id": 9,
+          "question": "What is the purpose of meta descriptions?",
+          "options": [
+            "To summarize page content for search results",
+            "To store website data",
+            "To track user behavior",
+            "To create backlinks"
+          ],
+          "answer": "To summarize page content for search results"
+        },
+        {
+          "id": 10,
+          "question": "What is remarketing?",
+          "options": [
+            "Targeting ads to users who previously visited your website",
+            "Rebranding a company",
+            "Reselling products",
+            "Redesigning a website"
+          ],
+          "answer": "Targeting ads to users who previously visited your website"
+        }
+      ],
+      "id": "3a6b"
+    },
+    {
+      "courseId": "10243333",
+      "courseName": "AI for Beginners",
+      "assessmentDate": "2025-03-31",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is Machine Learning?",
+          "options": [
+            "A subset of AI that enables systems to learn from data",
+            "A programming language",
+            "A type of computer hardware",
+            "A database management system"
+          ],
+          "answer": "A subset of AI that enables systems to learn from data"
+        },
+        {
+          "id": 2,
+          "question": "What is the difference between supervised and unsupervised learning?",
+          "options": [
+            "Supervised learning uses labeled data, unsupervised doesn't",
+            "Supervised learning is faster than unsupervised",
+            "Supervised learning requires more computing power",
+            "There is no difference"
+          ],
+          "answer": "Supervised learning uses labeled data, unsupervised doesn't"
+        },
+        {
+          "id": 3,
+          "question": "What is a neural network?",
+          "options": [
+            "A computing system inspired by biological neural networks",
+            "A computer network protocol",
+            "A type of internet connection",
+            "A database structure"
+          ],
+          "answer": "A computing system inspired by biological neural networks"
+        },
+        {
+          "id": 4,
+          "question": "What is Deep Learning?",
+          "options": [
+            "A subset of machine learning using multiple layers of neural networks",
+            "Learning while sleeping",
+            "Studying complex topics",
+            "A database query method"
+          ],
+          "answer": "A subset of machine learning using multiple layers of neural networks"
+        },
+        {
+          "id": 5,
+          "question": "Which of these is a common AI application?",
+          "options": [
+            "Natural Language Processing",
+            "Web browsing",
+            "File compression",
+            "Disk defragmentation"
+          ],
+          "answer": "Natural Language Processing"
+        },
+        {
+          "id": 6,
+          "question": "What is the role of training data in AI?",
+          "options": [
+            "To teach the model patterns and relationships",
+            "To test computer speed",
+            "To store user information",
+            "To create backups"
+          ],
+          "answer": "To teach the model patterns and relationships"
+        },
+        {
+          "id": 7,
+          "question": "What is bias in AI?",
+          "options": [
+            "Systematic errors in AI systems often reflecting human prejudices",
+            "A programming language",
+            "A type of computer virus",
+            "A hardware component"
+          ],
+          "answer": "Systematic errors in AI systems often reflecting human prejudices"
+        },
+        {
+          "id": 8,
+          "question": "What is computer vision?",
+          "options": [
+            "AI technology that enables computers to understand visual information",
+            "A type of computer display",
+            "A graphics card",
+            "A video game console"
+          ],
+          "answer": "AI technology that enables computers to understand visual information"
+        },
+        {
+          "id": 9,
+          "question": "What is reinforcement learning?",
+          "options": [
+            "Learning through trial and error with rewards and penalties",
+            "Learning by watching videos",
+            "Learning from textbooks",
+            "Learning through social media"
+          ],
+          "answer": "Learning through trial and error with rewards and penalties"
+        },
+        {
+          "id": 10,
+          "question": "What is the Turing test?",
+          "options": [
+            "A test of a machine's ability to exhibit intelligent behavior",
+            "A computer speed test",
+            "A programming exam",
+            "A hardware diagnostic tool"
+          ],
+          "answer": "A test of a machine's ability to exhibit intelligent behavior"
+        }
+      ],
+      "id": "0bad"
     }
   ],
   "courses-enrolled-by-candidates": [
@@ -530,6 +1128,106 @@
       "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
+    },
+    {
+      "id": "16875",
+      "candidateId": "55874",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "79582",
+      "candidateId": "55874",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "13717",
+      "candidateId": "55874",
+      "courseId": "6238888",
+      "courseName": "Digital Marketing",
+      "courseCategory": "Marketing",
+      "courseDurationInMonths": 3,
+      "startDate": "2025-03-01",
+      "endDate": "2025-06-01"
+    },
+    {
+      "id": "50995",
+      "candidateId": "3",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "81451",
+      "candidateId": "3",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "64183",
+      "candidateId": "42829",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "80749",
+      "candidateId": "64555",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "79655",
+      "candidateId": "64555",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
+    },
+    {
+      "id": "90985",
+      "candidateId": "64555",
+      "courseId": "4236666",
+      "courseName": "Graphic Design",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "startDate": "2025-04-01",
+      "endDate": "2025-07-01"
+    },
+    {
+      "id": "88906",
+      "candidateId": "64555",
+      "courseId": "6238888",
+      "courseName": "Digital Marketing",
+      "courseCategory": "Marketing",
+      "courseDurationInMonths": 3,
+      "startDate": "2025-03-01",
+      "endDate": "2025-06-01"
     }
   ],
   "courses": [
@@ -585,7 +1283,7 @@
       "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01",
-      "assessmentDate": "2025-09-31",
+      "assessmentDate": "2025-02-2",
       "id": "f29b"
     },
     {
@@ -610,7 +1308,7 @@
       "assessmentDate": "2025-01-30",
       "id": "d85f"
     },
-    { 
+    {
       "courseId": "8241111",
       "courseName": "Business Analytics",
       "courseCategory": "Data Analytics",
@@ -642,6 +1340,68 @@
       "endDate": "2026-02-01",
       "assessmentDate": "2025-03-31",
       "id": "h93f"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "772c",
+      "candidateId": "64555",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "totalQuestions": 10,
+      "answeredQuestions": 4,
+      "correctAnswers": 4,
+      "totalMarks": 4,
+      "submissionDate": "2025-02-02T11:34:34.346Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "0746",
+      "candidateId": "3",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "totalQuestions": 10,
+      "answeredQuestions": 6,
+      "correctAnswers": 5,
+      "totalMarks": 5,
+      "submissionDate": "2025-02-02T11:41:14.388Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "30f4",
+      "candidateId": "55874",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "totalQuestions": 10,
+      "answeredQuestions": 6,
+      "correctAnswers": 3,
+      "totalMarks": 3,
+      "submissionDate": "2025-02-02T11:47:57.397Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "eaeb",
+      "candidateId": "55874",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "totalQuestions": 10,
+      "answeredQuestions": 8,
+      "correctAnswers": 6,
+      "totalMarks": 6,
+      "submissionDate": "2025-02-02T12:12:14.354Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "aa7a",
+      "candidateId": "64555",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "totalQuestions": 10,
+      "answeredQuestions": 1,
+      "correctAnswers": 1,
+      "totalMarks": 1,
+      "submissionDate": "2025-02-04T13:14:44.189Z",
+      "status": "Submitted"
     }
   ]
 }
