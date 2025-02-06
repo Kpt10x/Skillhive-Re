@@ -1,29 +1,24 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router'; // Add this import
 
 interface Question {
   text: string;
   options: string[];
   isAnswered: boolean;
   isMarked: boolean;
+  isVisited: boolean;
   selectedAnswer?: string;
-  correctAnswer?: string; // Add this
+  correctAnswer?: string;
 }
 
 interface Course {
   courseId: string;
   courseName: string;
-  courseCategory: string;
-  courseDurationInMonths: number;
-  instructorName: string;
-  startDate: string;
-  endDate: string;
-  testDate: string;
+  assessmentDate: string;
 }
 
 @Component({
@@ -37,78 +32,84 @@ export class McqTestComponent implements OnInit, OnDestroy {
   testId: string = '';
   testTitle: string = '';
   courses: Course[] = [];
-  showOverlay: boolean = false;
-  showFullscreenModal: boolean = true;
-  remainingTime: Date = new Date(0, 0, 0, 0, 1, 0); // Initialize with 30 minutes
-  currentQuestionIndex: number = 0;
-  correctMarks: number = 1.0;
-  negativeMarks: number = 0.0;
   questions: Question[] = [];
-  selectedAnswer?: string;
-  quizResults: any;
+  currentQuestionIndex: number = 0;
+  candidateId: string = '';
+  showFullscreenModal: boolean = true;
+  showOverlay: boolean = true;
+  remainingTime: Date = new Date(0, 0, 0, 0, 15, 0);
+  private timerInterval: any;
+  private isQuizSubmitted: boolean = false;
+  
 
-  // Statistics
   answeredCount: number = 0;
   notAnsweredCount: number = 0;
   notVisitedCount: number = 0;
   markedForReviewCount: number = 0;
+  correctMarks: number = 1;
+  negativeMarks: number = 0;
+  selectedAnswer?: string;
+user: any;
 
-  private timerInterval: any;
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router // Add Router to constructor
-  ) {
-    console.log('MCQ Test Component constructed');
-  }
- 
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.http.get<Course[]>('http://localhost:3000/courses').subscribe((data) => {
-      this.courses = data;
-
-      this.route.queryParams.subscribe((params) => {
-        this.testId = params['testId'];
-
-        const course = this.courses.find((c) => c.courseId === this.testId);
+    this.route.params.subscribe(params => {
+      this.candidateId = params['candidateId'];
+      this.testId = params['testId'];
+      
+      this.http.get<Course[]>('http://localhost:3000/courses').subscribe(data => {
+        const course = data.find(c => c.courseId === this.testId);
         this.testTitle = course ? course.courseName : 'MCQ Test';
+        this.loadQuestions();
       });
-
-      this.loadQuestions();
     });
-
     this.startTimer();
+    this.enterFullscreen();
+    this.addFullscreenChangeListener();
   }
 
   ngOnDestroy() {
-    // Clear the timer interval when the component is destroyed
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
+    if (this.timerInterval) clearInterval(this.timerInterval);
+    this.removeFullscreenChangeListener();
   }
 
   get currentQuestion(): Question | undefined {
     return this.questions[this.currentQuestionIndex];
   }
 
-  enterFullscreen() {
-    document.documentElement.requestFullscreen();
-    this.showFullscreenModal = false;
-  }
+  loadQuestions() {
+    this.http.get<any[]>('http://localhost:3000/assessments').subscribe(data => {
+      const assessment = data.find(a => a.courseId === this.testId);
+      if (assessment) {
+        this.questions = assessment.questions.map((q: any) => ({
+          text: q.question,
+          options: q.options,
+          correctAnswer: q.answer,
+          isAnswered: false,
+          isMarked: false,
+          isVisited: false,
+        }));
+        this.notVisitedCount = this.questions.length;
 
-  reportError() {
-    // Error reporting logic here
-  }
-
-  viewAllQuestions() {
-    // View all questions logic
+        if (this.questions.length > 0) {
+          this.questions[0].isVisited = true;
+          this.notVisitedCount--;
+        }
+        this.updateCounts();
+      }
+    });
   }
 
   onOptionSelect(option: string) {
     if (this.currentQuestion) {
-      this.selectedAnswer = this.selectedAnswer === option ? '' : option;
       this.currentQuestion.selectedAnswer = option;
       this.currentQuestion.isAnswered = true;
+      this.selectedAnswer = option;
       this.updateCounts();
     }
   }
@@ -116,111 +117,139 @@ export class McqTestComponent implements OnInit, OnDestroy {
   markForReview() {
     if (this.currentQuestion) {
       this.currentQuestion.isMarked = true;
+      // If an option is selected, mark it as answered too
+    if (this.currentQuestion.selectedAnswer) {
+      this.currentQuestion.isAnswered = true;
+    }
       this.updateCounts();
     }
-    this.goToNext();
+    this.saveAndNext();
   }
 
   clearResponse() {
     if (this.currentQuestion) {
-      this.selectedAnswer = ''; // Clear the selected answer
-      this.currentQuestion.selectedAnswer = undefined;
+      this.currentQuestion.selectedAnswer = undefined; // Set to undefined
       this.currentQuestion.isAnswered = false;
+      this.currentQuestion.isMarked = false;
+      this.selectedAnswer = undefined; // Reset selectedAnswer
       this.updateCounts();
     }
   }
+  
 
   saveAndNext() {
-    this.goToNext();
-  }
-
-  goToQuestion(index: number) {
-    this.currentQuestionIndex = index;
-  }
-
-  goToNext() {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
+    if (this.currentQuestion) {
+      if (this.currentQuestion.selectedAnswer) {
+        this.currentQuestion.isAnswered = true;
+        this.currentQuestion.isMarked = false; // Remove mark for review if answered
+      }
+  
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.currentQuestionIndex++;
+        if (!this.questions[this.currentQuestionIndex].isVisited) {
+          this.questions[this.currentQuestionIndex].isVisited = true;
+          this.notVisitedCount--;
+        }
+      }
+  
+      this.updateCounts();
     }
   }
-
   
-  private loadQuestions() {
-    this.http.get<any[]>('http://localhost:3000/assessments').subscribe((data) => {
-      const course = data.find((c) => c.courseId === this.testId);
-      if (course) {
-        this.questions = course.questions.map((q: any) => ({
-          text: q.question,
-          options: q.options,
-          correctAnswer: q.answer, // Fetch correct answer
-          isAnswered: false,
-          isMarked: false,
-        }));
-        this.notVisitedCount = this.questions.length;
-        this.updateCounts(); // Initialize counts
-      } else {
-        console.error('Assessment not found');
+
+  goToQuestion(index: number) {
+    if (index >= 0 && index < this.questions.length) {
+      this.currentQuestionIndex = index;
+
+      if (!this.questions[index].isVisited) {
+        this.questions[index].isVisited = true;
+        this.notVisitedCount--;
       }
-    });
+    }
   }
 
   private updateCounts() {
-    this.answeredCount = this.questions.filter((q) => q.isAnswered).length;
-    this.notAnsweredCount = this.questions.length - this.answeredCount;
-    this.markedForReviewCount = this.questions.filter((q) => q.isMarked).length;
-    this.notVisitedCount = this.questions.length - this.answeredCount - this.markedForReviewCount;
+    this.answeredCount = this.questions.filter(q => q.isAnswered).length;
+    this.markedForReviewCount = this.questions.filter(q => q.isMarked && !q.isAnswered).length;
+    this.notAnsweredCount = this.questions.filter(q => !q.isAnswered && !q.isMarked).length;
   }
+  
 
   private startTimer() {
-  let totalSeconds = 15 * 60; // 15 minutes in seconds
+    let totalSeconds = 15 * 60;
+    this.timerInterval = setInterval(() => {
+      totalSeconds--;
+      this.remainingTime = new Date(0, 0, 0, 0, Math.floor(totalSeconds / 60), totalSeconds % 60);
+      if (totalSeconds <= 0) {
+        clearInterval(this.timerInterval);
+        this.submitQuiz();
+      }
+    }, 1000);
+  }
 
-  this.timerInterval = setInterval(() => {
-    totalSeconds--;
+  enterFullscreen() {
+    this.showFullscreenModal = false;
+    this.showOverlay = false;
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+  }
 
-    this.remainingTime = new Date(0, 0, 0, 0, Math.floor(totalSeconds / 60), totalSeconds % 60);
+  addFullscreenChangeListener() {
+    document.addEventListener('fullscreenchange', this.onFullscreenChange.bind(this));
+  }
 
-    if (totalSeconds <= 0) {
-      clearInterval(this.timerInterval);
+  removeFullscreenChangeListener() {
+    document.removeEventListener('fullscreenchange', this.onFullscreenChange.bind(this));
+  }
+
+  onFullscreenChange() {
+    if (!document.fullscreenElement && !this.isQuizSubmitted) {
+      alert('You have exited fullscreen mode. Your test will now be submitted.');
       this.submitQuiz();
     }
-  }, 1000);
-}
+  }
 
   submitQuiz() {
-    // Exit fullscreen mode if active
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    }
-  
+    if (this.isQuizSubmitted) return;
+
+    this.isQuizSubmitted = true;
+
     const quizResults = {
+      candidateId: this.candidateId,
       courseId: this.testId,
       courseName: this.testTitle,
       totalQuestions: this.questions.length,
       answeredQuestions: this.answeredCount,
       correctAnswers: this.calculateCorrectAnswers(),
       totalMarks: this.calculateTotalMarks(),
+      submissionDate: new Date().toISOString(),
+      status: 'Submitted',
     };
-  
-    this.router.navigate(['/scores'], {
-      state: { quizResults },
-    });
+
+    console.log('Submitting results:', quizResults);
+
+    this.http.post('http://localhost:3000/submissions', quizResults).subscribe(
+      (response) => {
+        console.log('Submission successful:', response);
+        alert('Your test has been submitted successfully.');
+        this.router.navigate(['/scores', this.candidateId], { state: { quizResults } });
+      },
+      (error) => {
+        console.error('Submission error:', error);
+        alert('Failed to submit the quiz. Please try again.');
+      }
+    );
   }
-  
 
-private calculateCorrectAnswers(): number {
-  // This assumes you'll add a 'correctAnswer' property to your Question interface
-  return this.questions.filter(q => 
-    q.isAnswered && q.selectedAnswer === q.correctAnswer
-  ).length;
-}
+  private calculateCorrectAnswers(): number {
+    return this.questions.filter(q => 
+      q.isAnswered && q.selectedAnswer === q.correctAnswer
+    ).length;
+  }
 
-private calculateTotalMarks(): number {
-  const correctAnswers = this.calculateCorrectAnswers();
-  const incorrectAnswers = this.questions.filter(q => 
-    q.isAnswered && q.selectedAnswer !== q.correctAnswer
-  ).length;
-
-  return (correctAnswers * this.correctMarks) ;
-}
-
+  private calculateTotalMarks(): number {
+    return this.calculateCorrectAnswers() * this.correctMarks;
+  }
 }
