@@ -4,6 +4,7 @@ import { Candidate } from '../../services/candidate.service';  // Assuming you h
 import { CandidateService } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { EnrolledCoursesComponent } from '../enrolled-courses/enrolled-courses.component';
+import { AuthService } from '../../../authentication/services/auth.service';
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
@@ -19,7 +20,8 @@ export class CandidateDashboardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private candidateService: CandidateService
+    private candidateService: CandidateService,
+    private authService: AuthService 
   ) { }
   // constructor(private userService: CandidateService) {}
 
@@ -47,19 +49,8 @@ export class CandidateDashboardComponent implements OnInit {
   }
   
   
-
-  logout() {
-    sessionStorage.clear(); // Clear session storage
-  
-    // Navigate to login page
-    this.router.navigate(['/login']).then(() => {
-      setTimeout(() => {
-        history.pushState(null, '', location.href);
-        window.onpopstate = () => {
-          history.pushState(null, '', location.href);
-        };
-      }, 0);
-    });
+  logout(): void {
+    this.authService.logout();
   }
   
 }
