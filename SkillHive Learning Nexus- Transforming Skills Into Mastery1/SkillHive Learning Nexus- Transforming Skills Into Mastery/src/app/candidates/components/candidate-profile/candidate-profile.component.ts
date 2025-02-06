@@ -72,9 +72,5 @@ export class CandidateProfileComponent implements OnInit {
     }
   }
 
-  // navigateTo(route: string): void {
-  //   if () {
-  //     this.router.navigate([route, this.loggedInUserId]);
-  //   }
-  // }
+  
 }

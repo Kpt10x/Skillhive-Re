@@ -3,10 +3,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Candidate } from '../../services/candidate.service';  // Assuming you have Candidate model
 import { CandidateService } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
+import { EnrolledCoursesComponent } from '../enrolled-courses/enrolled-courses.component';
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule,CommonModule,EnrolledCoursesComponent],
   templateUrl: './candidate-dashboard.component.html',
   styleUrl: './candidate-dashboard.component.css'
 })
@@ -22,31 +23,43 @@ export class CandidateDashboardComponent implements OnInit {
   ) { }
   // constructor(private userService: CandidateService) {}
 
-  ngOnInit(): void {
-    // Get the candidate ID from the route parameter
-    const candidateId = this.route.snapshot.paramMap.get('id');
-    if (candidateId) {
-      // Fetch candidate details based on the ID
-      this.candidateService.getCandidateById(candidateId).subscribe({
-        next: (candidate) => {
-          this.user = candidate;
-        },
-        error: (err) => {
-          console.error('Error fetching candidate details:', err);
-          // Redirect to login if candidate details cannot be fetched
-          this.router.navigate(['/login']);
-        },
-      });
-    } else {
-      // Redirect to login if no ID is provided
-      this.router.navigate(['/login']);
-    }
-  }
 
-  logout(): void {
-    this.candidateService.clearLoggedInCandidateId();
-    sessionStorage.removeItem('loggedInCandidateId');
-    // Perform other logout logic like redirecting to the login page
+    // Get the candidate ID from the route parameter
+    ngOnInit(): void {
+      const candidateId = this.route.snapshot.paramMap.get('id');
+      console.log("Candidate ID:", candidateId);  // Debugging
+  
+      if (candidateId) {
+          this.candidateService.getCandidateById(candidateId).subscribe({
+              next: (candidate) => {
+                  this.user = candidate;
+                  console.log("Fetched Candidate:", this.user);  // Debugging
+              },
+              error: (err) => {
+                  console.error('Error fetching candidate details:', err);
+                  this.router.navigate(['/login']);
+              },
+          });
+      } else {
+          console.log("No Candidate ID found");
+          this.router.navigate(['/login']);
+      }
+  }
+  
+  
+
+  logout() {
+    sessionStorage.clear(); // Clear session storage
+  
+    // Navigate to login page
+    this.router.navigate(['/login']).then(() => {
+      setTimeout(() => {
+        history.pushState(null, '', location.href);
+        window.onpopstate = () => {
+          history.pushState(null, '', location.href);
+        };
+      }, 0);
+    });
   }
   
 }
