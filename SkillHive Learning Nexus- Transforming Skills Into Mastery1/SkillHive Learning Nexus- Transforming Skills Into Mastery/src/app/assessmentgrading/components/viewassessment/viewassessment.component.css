@@ -54,7 +54,7 @@ body {
 }
 
 .menu-item {
-    display: flex;
+    display: flex; 
     align-items: center;
     font-family: 'Balsamiq Sans', sans-serif;
     font-size: 18px;
@@ -66,7 +66,9 @@ body {
     transition: background-color 0.3s, transform 0.2s; /* Smooth interactions */
     cursor: pointer;
 }
-
+.menu-item img {
+    margin-right: 10px; /* Add space between image and text */
+}
 .menu-item:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Soft hover background */
     transform: translateX(5px); /* Slight shift on hover */
@@ -89,7 +91,44 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-top: 190px; /* Add extra spacing above bottom-menu-container if needed */
+    padding-top: 270px; /* Add extra spacing above bottom-menu-container if needed */
+}
+/* General Styles for User and Logout as buttons */
+.user, .logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensure items are aligned to the left */
+    color: #C1DBC6;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s ease, color 0.3s;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Adjust the image in the logout button to align with text */
+.user img, .logout img {
+    margin-right: 10px; /* Space between image and text */
+    vertical-align: middle; /* Ensure alignment with text */
+}
+
+/* Remove any default link styles */
+.user a, .logout a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Hover effects for User and Logout */
+.user:hover, .logout:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    color: #A8C4AF;
+}
+
+.user:active, .logout:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(2px);
 }
 
 /* Main Content Styles */
@@ -236,5 +275,12 @@ select:focus {
     border: 2px solid #263339; /* Focus border */
     background-color: #C1DBC6;
 }
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+
 
 
