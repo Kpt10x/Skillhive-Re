@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
   selector: 'app-delete-instructor',
@@ -15,9 +16,10 @@ export class DeleteInstructorComponent implements OnInit {
   profiles: any[] = [];
   profilesApiUrl = 'http://localhost:3000/profiles';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService ) {}
   isCoursesDropdownVisible=false;
   isInstructorsDropdownVisible=false;
+  isCandidateDropdownVisible=false;
   ngOnInit(): void {
     this.loadProfiles();
   }
@@ -42,4 +44,8 @@ export class DeleteInstructorComponent implements OnInit {
       });
     }
   }
+  logout(): void {
+    this.authService.logout();
+  }
 }
+

@@ -6,6 +6,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../authentication/services/auth.service';
+
 
 @Component({
   selector: 'app-instructor-dashboard',
@@ -26,25 +28,28 @@ export class InstructorDashboardComponent implements OnInit {
     },
     events: [], // To be populated dynamically
     dateClick: this.handleDateClick.bind(this), // Bind date click handler
+    businessHours: {
+      daysOfWeek: [1, 2, 3, 4, 5], // Monday to Friday
+    }
   };
 
   currentInstructor: string = ''; // To store the logged-in instructor's name
   private allCourses: any[] = []; // Store all courses fetched from API
+  assignedCourses: any[] = []; // Store assigned courses
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private authService: AuthService 
+  ) {}
 
   ngOnInit(): void {
     this.setCurrentInstructor();
     this.fetchCourses();
   }
 
-  /**
-   * Set the current instructor's name dynamically from a service or local storage.
-   */
+
   setCurrentInstructor(): void {
-    // Fetch the instructor name from local storage or a service
     const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
-    this.currentInstructor = loggedInInstructor.name || 'Instructor'; // Default to 'Instructor' if name is not available
+    this.currentInstructor = loggedInInstructor.name || 'Instructor'; 
   }
 
   /**
@@ -60,15 +65,33 @@ export class InstructorDashboardComponent implements OnInit {
         );
         console.log('Filtered courses:', this.allCourses); // Log filtered courses
 
+        // Separate logic to handle assigned courses for the tiles and calendar events
+        this.assignedCourses = this.allCourses.filter(course => course.openForEnrollment === true);
+        
         // Populate calendar events based on the instructor's courses
-        const events = this.allCourses.map((course) => ({
-          title: course.courseName,
-          start: course.startDate,
-          end: course.endDate,
-          extendedProps: {
-            courseCategory: course.courseCategory,
-          },
-        }));
+        const events = this.allCourses.flatMap((course) => {
+          const eventDates = [];
+          let currentDate = new Date(course.startDate);
+          const endDate = new Date(course.endDate);
+
+          // Iterate through each date from start to end date
+          while (currentDate <= endDate) {
+            // Exclude Saturdays and Sundays
+            if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+              eventDates.push({
+                title: course.courseName,
+                start: currentDate.toISOString().split('T')[0],
+                allDay: true,
+                extendedProps: {
+                  courseCategory: course.courseCategory,
+                },
+              });
+            }
+            // Move to next date
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+          return eventDates;
+        });
 
         this.calendarOptions = { ...this.calendarOptions, events };
       },
@@ -99,5 +122,8 @@ export class InstructorDashboardComponent implements OnInit {
     } else {
       alert(`No courses assigned on ${info.dateStr}`);
     }
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }

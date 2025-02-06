@@ -32,8 +32,8 @@
       "name": "Arjun Nair",
       "email": "arjun.nair@gmail.com",
       "phone": "9876543211",
-      "areaOfExpertise": "Cyber Security",
-      "experience": 5,
+      "areaOfExpertise": "Cloud Computing",
+      "experience": 7,
       "role": "instructor",
       "default_password": "XkLmNpQr"
     },
@@ -151,7 +151,7 @@
   ],
   "assessments": [
     {
-      "courseId": "7239999",
+      "courseId": "5237777",
       "courseName": "Cloud Computing",
       "assessmentDate": "2025-30-01",
       "questions": [
@@ -502,7 +502,7 @@
       "id": "41737",
       "candidateId": "47987",
       "courseId": "3235555",
-      "courseName": "Machine Learning",
+      "courseName": "Cloud Computing",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 5,
       "instructor": "Raghav Verma",
@@ -524,7 +524,7 @@
       "id": "36311",
       "candidateId": "3",
       "courseId": "2234444",
-      "courseName": "Data Science",
+      "courseName": "Cloud Computing",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
       "instructor": "Ishani",
@@ -542,7 +542,10 @@
       "startDate": "2025-01-01",
       "endDate": "2025-05-01",
       "assessmentDate": "2025-06-31",
-      "id": "3e97"
+      "id": "3e97",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "2234444",
@@ -553,7 +556,10 @@
       "startDate": "2025-02-01",
       "endDate": "2025-08-01",
       "assessmentDate": "2025-09-31",
-      "id": "a47e"
+      "id": "a47e",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "3235555",
@@ -564,7 +570,10 @@
       "startDate": "2025-03-01",
       "endDate": "2025-08-01",
       "assessmentDate": "2025-09-31",
-      "id": "5f13"
+      "id": "5f13",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "4236666",
@@ -575,18 +584,38 @@
       "startDate": "2025-04-01",
       "endDate": "2025-07-01",
       "assessmentDate": "2025-08-31",
-      "id": "c91d"
+      "id": "c91d",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
+    },
+    {
+      "courseId": "4236666",
+      "courseName": "Angular",
+      "courseCategory": "Design",
+      "courseDurationInMonths": 3,
+      "instructor": "Sujatha Sharma",
+      "startDate": "2025-02-01",
+      "endDate": "2025-07-01",
+      "assessmentDate": "2025-08-31",
+      "id": "c91d",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "5237777",
-      "courseName": "Cyber Security",
+      "courseName": "Cloud Computing",
       "courseCategory": "Technology",
       "courseDurationInMonths": 4,
       "instructor": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01",
       "assessmentDate": "2025-09-31",
-      "id": "f29b"
+      "id": "f29b",
+      "openForEnrollment": true,
+      "content": "Objective: Provide an understanding of what cloud computing is, its history, evolution, and why it is important in the modern technological landscape.\n\nContent:\n\nDefinition: Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, and analytics—over the internet (the cloud). It offers faster innovation, flexible resources, and economies of scale.\n\nHistory and Evolution: Cloud computing has evolved from the traditional client-server model to the advanced, scalable cloud services we know today. Key milestones include the advent of virtualization technologies, the launch of AWS in 2006, and the widespread adoption of cloud services by major enterprises.\n\nImportance and Benefits: Cloud computing provides numerous benefits such as cost savings, scalability, flexibility, and remote accessibility. Businesses can reduce their infrastructure costs, scale up or down based on demand, and access powerful computing resources from anywhere in the world.",
+      "enableAssessment": false
     },
     {
       "courseId": "6238888",
@@ -597,7 +626,10 @@
       "startDate": "2025-03-01",
       "endDate": "2025-06-01",
       "assessmentDate": "2025-07-31",
-      "id": "b63a"
+      "id": "b63a",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "7239999",
@@ -608,9 +640,12 @@
       "startDate": "2024-07-01",
       "endDate": "2024-12-01",
       "assessmentDate": "2025-01-30",
-      "id": "d85f"
+      "id": "d85f",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
-    { 
+    {
       "courseId": "8241111",
       "courseName": "Business Analytics",
       "courseCategory": "Data Analytics",
@@ -619,7 +654,10 @@
       "startDate": "2024-04-01",
       "endDate": "2024-07-01",
       "assessmentDate": "2025-01-31",
-      "id": "e76d"
+      "id": "e76d",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "9242222",
@@ -630,7 +668,10 @@
       "startDate": "2025-02-01",
       "endDate": "2025-05-01",
       "assessmentDate": "2025-06-31",
-      "id": "g47c"
+      "id": "g47c",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     },
     {
       "courseId": "10243333",
@@ -641,7 +682,10 @@
       "startDate": "2025-10-01",
       "endDate": "2026-02-01",
       "assessmentDate": "2025-03-31",
-      "id": "h93f"
+      "id": "h93f",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false
     }
   ]
 }

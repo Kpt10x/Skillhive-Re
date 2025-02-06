@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Update Instructor Profile</title>
+  <title>Profile Update</title>
   <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="profile-update.component.css">
 </head>
-
 <body>
-  <div class="profile-container">
-    <!-- Sidebar Section -->
+<div class="profile">
     <aside class="sidebar">
-      <div class="logo"><span class="skill">Skill</span><span class="hive">hive</span></div>
-
-      <ul class="selections">
-        <li class="sel1" routerLink="/instructor-dashboard">
-          <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C2DBC6" alt="home icon">
-          <span>Dashboard</span>
-        </li>
-
-        <li class="sel2" routerLink="/instructor-timetable">
-          <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=C2DBC6" alt="courses">
-          <span>Timetable</span>
-        </li>
-
-        <li class="sel3" routerLink="/profile-update">
-          <img src="https://img.icons8.com/?size=30&id=82751&format=png&color=C2DBC6" alt="profile">
-          <span>Update Profile</span>
-        </li>
-      </ul>
-
-      <div class="extras">
-        <div class="user" routerLink="/profile-update">
-          <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=C2DBC6" alt="user">
-          <span>User Profile</span>
+        <div class="logo">
+            <span class="skill">Skill</span><span class="hive">hive</span>
         </div>
-        <div class="logout" routerLink="/login">
-          <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=C2DBC6" alt="logout">
-          <span>Logout</span>
+        <div class="selections">
+            <div class="sel1">
+                <a routerLink='/instructor-dashboard'  class="sidebar-link">
+                    <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+                    Dashboard
+                </a>
+            </div>
+            <div class="sel1">
+              <a routerLink='/instructor-timetable'  class="sidebar-link">
+                  <img width="26" height="26" src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=C2DBC6" alt="todo-list">
+                  Timetable
+              </a>
+          </div>
+      
+            
+            <div class="sel1">
+                <a [routerLink]="['/viewassessment']" class="sidebar-link">
+                    <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
+                    View Assessments
+                </a>
+            </div>
+            <div class="sel1">
+                <a [routerLink]="['/view-candidates']" class="sidebar-link">
+                    <img width="27" height="27" src="https://img.icons8.com/?size=100&id=LK2tNJ1EaZJK&format=png&color=C1DBC6" alt="results">
+                    View Candidates
+                </a>
+            </div>
         </div>
-      </div>
+        <div class="extras">
+            <div class="user">
+                <a [routerLink]="['/profile-update']" class="sidebar-link">
+                    <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+                    {{ currentInstructor }}
+                </a>
+            </div>
+            <div class="logout">
+              <a (click)="logout()" class="sidebar-link">
+                <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+                Logout
+              </a>              
+            </div>
+        </div>
     </aside>
-
     <!-- Main Section -->
     <div class="main">
       <div class="profile-update-container">

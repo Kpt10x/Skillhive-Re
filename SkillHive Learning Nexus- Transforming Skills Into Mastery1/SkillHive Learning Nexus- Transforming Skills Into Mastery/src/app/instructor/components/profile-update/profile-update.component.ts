@@ -18,7 +18,7 @@ export class ProfileUpdateComponent implements OnInit {
   passwordForm: FormGroup;
   instructorId: string = ''; // ID of the logged-in instructor
   private readonly apiUrl = 'http://localhost:3000/profiles'; // JSON server endpoint
-
+  currentInstructor: string = '';
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -42,46 +42,65 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadProfile(); // Load the profile for the logged-in user
+    this.loadProfile(); 
+    this.setCurrentInstructor();
   }
+  setCurrentInstructor(): void {
+    const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+    this.currentInstructor = loggedInInstructor.name || 'Instructor'; }
 
-  // Load the instructor's profile data from the authentication service
-  loadProfile(): any {
-const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
-
-    if (!user || user.role !== 'instructor') {
-      alert('Error: Unauthorized access. Only instructors can update their profile.');
-      this.router.navigate(['/login']);
-      return;
+    
+    loadProfile(): any {
+      const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+    
+      if (!user || user.role !== 'instructor') {
+        alert('Error: Unauthorized access. Only instructors can update their profile.');
+        this.router.navigate(['/login']);
+        return;
+      }
+    
+      this.instructorId = user.id;
+      this.profileForm.patchValue(user); 
     }
-
-    this.instructorId = user.id;
-    this.profileForm.patchValue(user); // Populate the form with user data
-  }
-
-  // Update the profile data on the JSON server
-  onUpdateProfile(): void {
-    if (this.profileForm.valid) {
-      const updatedProfile = {
-        ...this.profileForm.value,
-        role: 'instructor', // Ensure the role is not altered
-      };
-      this.http.put(`${this.apiUrl}/${this.instructorId}`, updatedProfile).subscribe({
-        next: () => {
-          alert('Profile updated successfully!');
-          this.router.navigate(['/dashboard']);
-        },
-        error: (err) => {
-          console.error('Error updating profile:', err);
-          alert('Failed to update profile. Please try again later.');
-        },
-      });
-    } else {
-      alert('Please fill out all required fields correctly.');
+    
+    onUpdateProfile(): void {
+      if (this.profileForm.valid) {
+        const updatedProfile = {
+          name: this.profileForm.get('name')?.value,
+          email: this.profileForm.get('email')?.value,
+          phone: this.profileForm.get('phone')?.value,
+          areaOfExpertise: this.profileForm.get('areaOfExpertise')?.value,
+          experience: this.profileForm.get('experience')?.value,
+          role: 'instructor', // Ensure the role is not altered
+        };
+    
+        this.http.patch(`${this.apiUrl}/${this.instructorId}`, updatedProfile).subscribe({
+          next: () => {
+            alert('Profile updated successfully!');
+    
+            // Update session storage with the new profile data
+            const updatedUser = {
+              ...JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}'),
+              ...updatedProfile
+            };
+            sessionStorage.setItem('loggedInInstructor', JSON.stringify(updatedUser));
+    
+            // Reload the profile to reflect the updated data
+            this.loadProfile();
+          },
+          error: (err) => {
+            console.error('Error updating profile:', err);
+            alert('Failed to update profile. Please try again later.');
+          },
+        });
+      } else {
+        alert('Please fill out all required fields correctly.');
+      }
     }
-  }
+    
+  
 
-  // Update the password on the JSON server
+  // Update the password 
   onUpdatePassword(): void {
     if (this.passwordForm.valid) {
       const { oldPassword, newPassword } = this.passwordForm.value;
@@ -96,7 +115,7 @@ const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
           this.http.patch(`${this.apiUrl}/${this.instructorId}`, { default_password: newPassword }).subscribe({
             next: () => {
               alert('Password updated successfully!');
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/login']);
             },
             error: (err) => {
               console.error('Error updating password:', err);
@@ -113,4 +132,8 @@ const user = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
       alert('Please fill out all required fields correctly.');
     }
   }
+  logout(): void {
+    this.authService.logout();
+  }
 }
+

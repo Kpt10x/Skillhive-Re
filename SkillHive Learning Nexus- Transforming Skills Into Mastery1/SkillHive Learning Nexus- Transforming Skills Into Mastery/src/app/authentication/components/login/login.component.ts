@@ -74,7 +74,7 @@ export class LoginComponent {
       case 'instructor':
         sessionStorage.setItem('loggedInInstructor', JSON.stringify(user));
         sessionStorage.setItem('loggedInInstructorId', JSON.stringify(user.id));
-        this.router.navigate(['instuctor-dashboard']);
+        this.router.navigate(['instructor-dashboard']);
         break;
       case 'candidate':
         sessionStorage.setItem('loggedInCandidate', JSON.stringify(user));

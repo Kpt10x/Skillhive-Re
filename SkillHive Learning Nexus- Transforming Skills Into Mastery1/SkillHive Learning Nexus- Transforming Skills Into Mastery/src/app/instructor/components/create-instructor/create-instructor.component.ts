@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
   selector: 'app-create-instructor',
@@ -16,7 +17,10 @@ export class CreateInstructorComponent implements OnInit {
   profilesApiUrl = 'http://localhost:3000/profiles';
   isCoursesDropdownVisible=false;
   isInstructorsDropdownVisible=false;
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  isCandidateDropdownVisible=false;
+  constructor(private fb: FormBuilder, private http: HttpClient,
+    private authService: AuthService 
+  ) {
     this.createInstructorForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -71,4 +75,8 @@ export class CreateInstructorComponent implements OnInit {
     }
     return password;
   }
+  logout(): void {
+    this.authService.logout();
+  }
 }
+
