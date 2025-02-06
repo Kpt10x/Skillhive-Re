@@ -11,9 +11,10 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { CourseService } from "../../services/course_service";
 import { forkJoin } from 'rxjs';
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
-  selector: "app-create-course",
+  selector: "create-course",
   standalone: true,
   imports: [RouterModule, CommonModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: "./create-course.component.html",
@@ -26,6 +27,9 @@ export class CreateCourseComponent implements OnInit {
   categories: any[] = [];
   minAssignmentDate: string | null = null;
   existingCourses: any[] = [];
+  isCoursesDropdownVisible = false;
+  isInstructorsDropdownVisible = false;
+  isCandidateDropdownVisible: boolean = false;
 
   // Hardcoded category data
   hardcodedCategories: any[] = [
@@ -38,7 +42,8 @@ export class CreateCourseComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private courseService: CourseService,
-    private http: HttpClient
+    private http: HttpClient,
+    public authService: AuthService
   ) {
     this.createCourseForm = this.fb.group({
       courseName: ["", [Validators.required, Validators.minLength(3)]],
@@ -65,23 +70,6 @@ export class CreateCourseComponent implements OnInit {
     });
   }
 
-  // Helper function to check if course name matches instructor expertise
-  doesCourseMatchExpertise(courseName: string, expertise: string): boolean {
-    if (!courseName || !expertise) return false;
-    
-    const courseNameLower = courseName.toLowerCase();
-    const expertiseLower = expertise.toLowerCase();
-
-    console.log('Matching course:', courseNameLower, 'with expertise:', expertiseLower);
-
-    // Simple direct match between course name and expertise
-    const matches = courseNameLower.includes(expertiseLower) || 
-                   expertiseLower.includes(courseNameLower);
-    
-    console.log('Match result:', matches);
-    return matches;
-  }
-
   ngOnInit(): void {
     // Fetch both instructors and courses
     forkJoin({
@@ -91,7 +79,7 @@ export class CreateCourseComponent implements OnInit {
       next: (data) => {
         // Store courses for availability checking
         this.existingCourses = data.courses;
-        
+
         // Filter profiles to get only instructors
         this.instructors = data.profiles
           .filter(profile => profile.role === 'instructor')
@@ -101,7 +89,7 @@ export class CreateCourseComponent implements OnInit {
             areaOfExpertise: instructor.areaOfExpertise,
             experience: instructor.experience
           }));
-        
+
         this.filterInstructors();
       },
       error: (error) => {
@@ -110,7 +98,7 @@ export class CreateCourseComponent implements OnInit {
     });
 
     this.categories = this.hardcodedCategories;
-    
+
     // Set minimum assessment date
     const today = new Date();
     this.minAssignmentDate = today.toISOString().split('T')[0];
@@ -118,69 +106,75 @@ export class CreateCourseComponent implements OnInit {
 
   isInstructorAvailable(instructor: any, startDate: Date, endDate: Date): boolean {
     if (!this.existingCourses) return true;
-    
+
     // Convert dates to timestamps for comparison
     const newStartTime = startDate.getTime();
     const newEndTime = endDate.getTime();
-    
+
     // Check if instructor has any overlapping courses
     const hasOverlap = this.existingCourses.some(course => {
       if (course.instructor === instructor.name) {
         const courseStartTime = new Date(course.startDate).getTime();
         const courseEndTime = new Date(course.endDate).getTime();
-        
+
         // Check for date overlap
-        const overlaps = (newStartTime <= courseEndTime && newEndTime >= courseStartTime);
-        console.log('Checking overlap for', instructor.name, 'Course dates:', course.startDate, '-', course.endDate, 'Overlaps:', overlaps);
-        return overlaps;
+        return (newStartTime <= courseEndTime && newEndTime >= courseStartTime);
       }
       return false;
     });
-    
+
     return !hasOverlap;
   }
 
   filterInstructors(): void {
-    const selectedCategory = this.createCourseForm.get('courseCategory')?.value;
+    //const selectedCategory = this.createCourseForm.get('courseCategory')?.value;
     const startDate = this.createCourseForm.get('startDate')?.value;
     const endDate = this.createCourseForm.get('endDate')?.value;
     const courseName = this.createCourseForm.get('courseName')?.value;
-    
+
     this.filteredInstructors = [...this.instructors];
-    console.log('Initial instructors:', this.filteredInstructors);
+
+    //console.log('Selected Category:', selectedCategory);
+    console.log('Initial Instructors:', this.filteredInstructors);
 
     // Filter by course name matching expertise
     if (courseName) {
-      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
-        const matches = this.doesCourseMatchExpertise(courseName, instructor.areaOfExpertise);
-        console.log('Expertise filter:', instructor.name, instructor.areaOfExpertise, matches);
-        return matches;
-      });
+        this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+            return this.doesCourseMatchExpertise(courseName, instructor.areaOfExpertise);
+        });
+        console.log('Instructors after course name filter:', this.filteredInstructors);
     }
 
     // Filter by category if selected
-    if (selectedCategory) {
-      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
-        const matches = instructor.areaOfExpertise.toLowerCase().includes(selectedCategory.toLowerCase()) ||
-                       selectedCategory.toLowerCase().includes(instructor.areaOfExpertise.toLowerCase());
-        console.log('Category filter:', instructor.name, matches);
-        return matches;
-      });
-    }
+    /*if (selectedCategory) {
+        this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+            const matches = instructor.areaOfExpertise.toLowerCase().includes(selectedCategory.toLowerCase());
+            console.log(`Instructor: ${instructor.name}, Expertise: ${instructor.areaOfExpertise}, Matches: ${matches}`);
+            return matches;
+        });
+        console.log('Instructors after category filter:', this.filteredInstructors);
+    }*/
 
     // Filter by availability if dates are selected
     if (startDate && endDate) {
-      const startDateObj = new Date(startDate);
-      const endDateObj = new Date(endDate);
-      
-      this.filteredInstructors = this.filteredInstructors.filter(instructor => {
-        const isAvailable = this.isInstructorAvailable(instructor, startDateObj, endDateObj);
-        console.log('Availability filter:', instructor.name, isAvailable);
-        return isAvailable;
-      });
+        const startDateObj = new Date(startDate);
+        const endDateObj = new Date(endDate);
+
+        this.filteredInstructors = this.filteredInstructors.filter(instructor => {
+            return this.isInstructorAvailable(instructor, startDateObj, endDateObj);
+        });
+        console.log('Instructors after availability filter:', this.filteredInstructors);
     }
 
     console.log('Final filtered instructors:', this.filteredInstructors);
+}
+  doesCourseMatchExpertise(courseName: string, expertise: string): boolean {
+    if (!courseName || !expertise) return false;
+
+    const courseNameLower = courseName.toLowerCase();
+    const expertiseLower = expertise.toLowerCase();
+
+    return courseNameLower.includes(expertiseLower) || expertiseLower.includes(courseNameLower);
   }
 
   onEndDateChange(): void {

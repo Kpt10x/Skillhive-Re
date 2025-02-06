@@ -1,4 +1,4 @@
-import { AdminveiwComponent } from './course/components/adminveiw/adminveiw.component';
+import { AdminViewComponent } from './course/components/adminveiw/adminveiw.component';
 import { Routes } from '@angular/router';
 import { provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -87,7 +87,7 @@ export const routes: Routes = [
   //Course Module Routes
   { path: 'create-course', component: CreateCourseComponent},
   {path : 'manage-course', component: ManageCourseInstructorComponent},
-  {path: 'admin-veiw',component: AdminveiwComponent},
+  {path: 'admin-veiw',component: AdminViewComponent},
   // Fallback route
   // { path: '**', redirectTo: 'login' },
 
