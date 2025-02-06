@@ -4,7 +4,7 @@ export interface Course {
   courseCategory: string;
   description: string; 
   courseDurationMonths: number;
-  instructorName: string;
+  instructor: string;
   startDate: string | Date;
   endDate: string | Date;
   assessmentDate: string | Date;

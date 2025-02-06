@@ -47,10 +47,10 @@ import { ProfileUpdateComponent } from './instructor/components/profile-update/p
 import { ViewAllInstructorsComponent } from './instructor/components/view-all-instructors/view-all-instructors.component';
 import { DeleteInstructorComponent } from './instructor/components/delete-instructor/delete-instructor.component';
 import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
-//import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
+import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   
   // Authentication routes
   { path: 'landing-page', component: LandingPageComponent},
@@ -59,7 +59,7 @@ export const routes: Routes = [
   // { path: 'home', component: HomeComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
   { path: 'reset-password', component: ResetPasswordComponent ,canActivate: [RoleGuard], data: { role: { role: ['admin', 'instructor'] } }},
-  { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
+  // { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
   { path: 'admin-profile', component: ProfileComponent },
 
   
@@ -76,19 +76,19 @@ export const routes: Routes = [
   { path: 'instructor/view', children: [ // New organized views
   //{ path: 'availability', component: ViewByAvailabilityComponent },
   { path: 'course', component: ViewByCourseComponent },
-  //{ path: 'details', component: ViewByDetailsComponent }
+  // { path: 'details', component: ViewByDetailsComponent }
   ]},
   
   // Course Management routes
   //{ path: 'view-assigned-courses', component: ViewAssignedCoursesComponent },
 
   //candidates routes
-  { path: 'register', component: CandidateRegistrationComponent ,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
+  { path: 'register', component: CandidateRegistrationComponent },
   { path: 'profile/:id', component: CandidateProfileComponent, canActivate: [RoleGuard], data:{ role: ['admin', 'instructor'] } },
-  { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent, canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
-  { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent ,canActivate: [RoleGuard], data:{ role: ['admin', 'instructor'] }},
-  //{ path: 'view-candidates', component: ViewCandidatesComponent },
+  { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: { role: ['candidate'] }},
+  { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent, canActivate: [RoleGuard], data: { role: ['candidate'] } },
+  { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent ,canActivate: [RoleGuard], data:{ role: ['candidate'] }},
+  { path: 'view-candidates', component: ViewCandidatesComponent },
 
 
   //Course Module Routes

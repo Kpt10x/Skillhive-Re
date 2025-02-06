@@ -94,7 +94,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
           // Match course by courseName and instructorName
           const course = this.courses.find(c => 
             c.courseName === candidate.courseName && 
-            c.instructorName === candidate.instructorName
+            c.instructor === candidate.instructor
           );
 
           if (course && course.seatsLeft > 0) {

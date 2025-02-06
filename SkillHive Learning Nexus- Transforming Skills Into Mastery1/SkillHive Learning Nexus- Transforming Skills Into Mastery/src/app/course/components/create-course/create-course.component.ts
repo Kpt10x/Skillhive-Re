@@ -193,8 +193,15 @@ export class CreateCourseComponent implements OnInit {
 
   onSubmit() {
     if (this.createCourseForm.valid) {
-      const courseData = this.createCourseForm.value;
-
+      //const courseData = this.createCourseForm.value;
+      const courseData = {
+        ...this.createCourseForm.value,
+        openForEnrollment: false,
+        content: "",
+        enableAssessment: false,
+        noOfEnrollments: 30,
+        seatsLeft: 30
+      };
       this.http.post("http://localhost:3000/courses", courseData).subscribe(
         (response) => {
           console.log("Course data saved successfully:", response);
@@ -218,3 +225,4 @@ export class CreateCourseComponent implements OnInit {
   }
   
 }
+

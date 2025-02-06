@@ -79,7 +79,12 @@ export class LoginComponent {
       case 'candidate':
         sessionStorage.setItem('loggedInCandidate', JSON.stringify(user));
         sessionStorage.setItem('loggedInCandidateId', JSON.stringify(user.id));
-        this.router.navigate([`dashboard/${user.id}`]);
+        // console.log('Login Response:', [`dashboard/${user.id}`]); // Add this
+        // sessionStorage.setItem('session', JSON.stringify(user));
+
+        const route = `dashboard/${user.id}`;
+  console.log('Navigating to:', route);
+  this.router.navigate([route]);
         break;
       default:
         this.showErrorAlert('Invalid role selected.');

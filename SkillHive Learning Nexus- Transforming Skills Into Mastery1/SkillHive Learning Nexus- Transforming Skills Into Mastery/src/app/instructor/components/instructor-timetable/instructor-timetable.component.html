@@ -68,7 +68,6 @@
         <table *ngIf="assignedCourses.length > 0">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Course Name</th>
               <th>Category</th>
               <th>Start Date</th>
@@ -79,7 +78,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let course of assignedCourses">
-              <td>{{ course.courseId }}</td>
+              <!-- <td>{{ course.courseId }}</td> -->
               <td>{{ course.courseName }}</td>
               <td>{{ course.courseCategory }}</td>
               <td>{{ course.startDate }}</td>

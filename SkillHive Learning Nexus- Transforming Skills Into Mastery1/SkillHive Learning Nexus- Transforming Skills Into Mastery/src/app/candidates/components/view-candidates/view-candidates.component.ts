@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CandidateService, Candidate } from '../../../candidates/services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faUsers, faUserPlus, faBook } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+// import { faUsers, faUserPlus, faBook } from '@fortawesome/free-solid-svg-icons';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-view-candidates',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],  // Add FontAwesomeModule to imports
+  imports: [CommonModule, RouterModule,MatIconModule , MatDialogModule], 
   templateUrl: './view-candidates.component.html',
   styleUrls: ['./view-candidates.component.css']
 })
@@ -20,12 +23,12 @@ export class ViewCandidatesComponent implements OnInit {
   isCollapsed: boolean = false; // Track collapse state
 
   constructor(
-    private library: FaIconLibrary, 
+    // private library: FaIconLibrary, 
     private candidateService: CandidateService, 
     private router: Router
   ) {
     // Add icons to the library
-    this.library.addIcons(faUsers, faUserPlus, faBook);
+    // this.library.addIcons(faUsers, faUserPlus, faBook);
   }
 
   ngOnInit(): void {

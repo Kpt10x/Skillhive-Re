@@ -102,7 +102,7 @@
                     <label for="instructor">Instructor:</label>
                     <select id="instructor" formControlName="instructor" required>
                         <option value="">Select Instructor</option>
-                        <option *ngFor="let instructor of filteredInstructors" [value]="instructor.id">
+                        <option *ngFor="let instructor of filteredInstructors" [value]="instructor.name">
                             {{ instructor.name }} ({{ instructor.areaOfExpertise }} - {{ instructor.experience }} years)
                         </option>
                     </select>

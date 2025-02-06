@@ -530,6 +530,14 @@
       "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
+    },
+    {
+      "id": "58140",
+      "candidateId": "55874",
+      "courseName": "Data Science",
+      "courseCategory": "Technology",
+      "startDate": "2025-12-19",
+      "endDate": "2026-01-22"
     }
   ],
   "courses": [
@@ -708,26 +716,6 @@
       "enableAssessment": false,
       "noOfEnrollments": 30,
       "seatsLeft": 28
-    },
-    {
-      "id": "4f29",
-      "courseName": "Data Science",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 2,
-      "startDate": "2025-11-05",
-      "endDate": "2026-01-15",
-      "instructor": "3",
-      "assessmentDate": "2026-01-16"
-    },
-    {
-      "id": "0e00",
-      "courseName": "Data Science",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 1,
-      "startDate": "2025-12-13",
-      "endDate": "2025-12-31",
-      "instructor": "3",
-      "assessmentDate": "2026-01-01"
     }
   ]
 }

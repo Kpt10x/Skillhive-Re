@@ -4,10 +4,12 @@ import { Candidate } from '../../services/candidate.service';  // Assuming you h
 import { CandidateService } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { EnrolledCoursesComponent } from '../enrolled-courses/enrolled-courses.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-candidate-dashboard',
   standalone: true,
-  imports: [RouterModule,CommonModule,EnrolledCoursesComponent],
+  imports: [RouterModule,CommonModule,EnrolledCoursesComponent,MatButtonModule, MatIconModule],
   templateUrl: './candidate-dashboard.component.html',
   styleUrl: './candidate-dashboard.component.css'
 })
@@ -20,7 +22,12 @@ export class CandidateDashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private candidateService: CandidateService
-  ) { }
+  ) { 
+
+    console.log('CandidateDashboardComponent constructor called'); // Add this
+
+  }
+
   // constructor(private userService: CandidateService) {}
 
 
