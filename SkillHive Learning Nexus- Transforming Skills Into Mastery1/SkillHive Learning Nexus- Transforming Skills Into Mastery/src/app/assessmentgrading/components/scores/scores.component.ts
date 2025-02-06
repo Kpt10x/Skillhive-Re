@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-scores',
@@ -7,20 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./scores.component.css']
 })
 export class ScoresComponent implements OnInit {
-  quizResults: any; // Holds the quiz data including questions and user responses
-  totalQuestions: number = 0; // Total number of questions
-  correctAnswers: number = 0; // Number of correct answers
-  marksObtained: number = 0; // Total marks obtained
-  totalMarks: number = 0; // Maximum possible marks
-  
+  quizResults: any;
+  totalQuestions: number = 0;
+  correctAnswers: number = 0;
+  marksObtained: number = 0;
+  totalMarks: number = 0;
+  candidateId: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Access the passed state
+    this.candidateId = this.route.snapshot.paramMap.get('candidateId');
     this.quizResults = history.state?.quizResults;
 
-    if (this.quizResults && this.quizResults.questions) {
+    if (this.quizResults?.questions) {
       this.calculateScores();
     }
   }
@@ -29,23 +29,28 @@ export class ScoresComponent implements OnInit {
     const questions = this.quizResults.questions;
 
     this.totalQuestions = questions.length;
-    this.correctAnswers = questions.reduce((count: number, question: any) => {
-      return count + (question.userAnswer === question.correctAnswer ? 1 : 0);
-    }, 0);
+    this.correctAnswers = questions.reduce(
+      (count: number, question: any) => count + (question.userAnswer === question.correctAnswer ? 1 : 0),
+      0
+    );
 
-    // Assuming each correct answer carries 1 mark, calculate total marks
-    this.totalMarks = questions.reduce((sum: number, question: any) => {
-      return sum + (question.marks || 1); // Default 1 mark per question if not specified
-    }, 0);
+    this.totalMarks = questions.reduce(
+      (sum: number, question: any) => sum + (question.marks || 1),
+      0
+    );
 
-    
-
-    // Marks obtained by the user
-    this.marksObtained = questions.reduce((sum: number, question: any) => {
-      return sum + (question.userAnswer === question.correctAnswer ? (question.marks || 1) : 0);
-    }, 0);
+    this.marksObtained = questions.reduce(
+      (sum: number, question: any) => sum + (question.userAnswer === question.correctAnswer ? (question.marks || 1) : 0),
+      0
+    );
   }
+
   navigateToAssessment(): void {
-    this.router.navigate(['/candidate-assessment']); // Replace with the actual route of the Candidate Assessment page
+    if (this.candidateId) {
+      this.router.navigate(['/candidateassessment', this.candidateId]);
+    } else {
+      console.error('Candidate ID not found');
+      this.router.navigate(['/landing-page']);
+    }
   }
 }
