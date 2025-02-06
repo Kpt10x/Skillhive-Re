@@ -53,4 +53,7 @@ export class EnrolledCoursesComponent implements OnInit {
       this.enrolledCourses = [];
     }
   }
+
+  get candidateId(): number | undefined {
+    return this.user?.id ? Number(this.user.id) : undefined;  }
 }

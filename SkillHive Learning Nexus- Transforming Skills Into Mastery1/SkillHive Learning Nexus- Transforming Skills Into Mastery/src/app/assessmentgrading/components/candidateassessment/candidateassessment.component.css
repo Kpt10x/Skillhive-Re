@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 
+* {
+    font: 1em sans-serif;
+  }
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Balsamiq Sans', sans-serif;
 }
 
 .container {
@@ -48,6 +51,102 @@ body {
     border-color: #e0e0e0;
 }
 
+/* Sidebar Styles */
+.sidebar {
+    background-color: #24353e;
+    color: white;
+    width: 170px;
+    height: 92vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-link {
+    color: #C1DBC6;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .sidebar-link:hover {
+    color: #A8C4AF; /* Slightly darker shade on hover */
+  }
+  
+  .sidebar-link img {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  .dropdown {
+    display: block;
+  }
+  
+  .dropdown.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    background-color: #2C4B56;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #3D6A7D;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+  
+  .skill {
+    color: white;
+    font-size: 40px;
+  }
+  
+  .hive {
+    color: #A4C6AC;
+    font-size: 40px;
+  }
+  
+  .selections {
+    margin-top: 20px;
+  }
+  
+  .sel1, .sel2, .sel3, .sel4 {
+    display: flex;
+    align-items: center;
+    color: #C1DBC6;
+    font-size: 20px;
+    padding: 10px 0;
+  }
+  
+  .sel1 img, .sel2 img, .sel3 img, .sel4 img {
+    margin-right: 10px;
+  }
+  
+  .extras {
+    margin-top: 230px;
+  }
+  .user, .logout {
+    display: flex;
+    align-items: center;
+    color: #C1DBC6;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  
+  .user img, .logout img {
+    margin-right: 10px;
+  }
+
+
 /* Optional: Add a subtle ripple effect on click */
 .card.clickable::after {
     content: '';
@@ -77,16 +176,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.sidebar {
-    background-color: #263339;
-    color: white;
-    width: 15%; /* Reduced width */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center logo horizontally */
-    transition: all 0.3s ease;
-}
+
 
 .logo1-container {
     font-family: 'Balsamiq Sans', sans-serif;

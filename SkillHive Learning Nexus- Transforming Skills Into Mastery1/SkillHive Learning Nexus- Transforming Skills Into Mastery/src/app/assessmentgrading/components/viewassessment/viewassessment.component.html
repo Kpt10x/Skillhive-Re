@@ -11,35 +11,34 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo1-container">
-                <span class="skill">Skill</span><span class="hive">Hive</span>
+                <span class="skill">Skill</span><span class="hive">hive</span>
             </div>
             <div class="menu-container">
                 <div class="menu-item">
-                    <img src="assets/home-icon.png" alt="Home Icon" class="menu-icon">
-                    Home
+                    <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+                       Home
                 </div>
                 <div class="menu-item">
-                    <img src="assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
+                    <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses">
                     Course
                 </div>
                 <div class="menu-item">
-                    <img src="assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
+                    <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
                     Assessments
                 </div>
-                <div class="menu-item">
-                    <img src="assets/marksheet-icon.png" alt="Courses Icon" class="menu-icon">
-                    Submission
-                </div>
+               
                 
             <div class="bottom-menu-container">
-                    <div class="menu-item">
-                        <img src="assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
-                        User Name
-                    </div>
-                    <div class="menu-item">
-                        <img src="assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
-                        Logout
-                    </div>
+                <div class="user">
+                    <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+                    <div routerLink="/instructor-dashboard">User Profile</div>
+                  </div>
+                    <div class="logout">
+                        <a [routerLink]="['/login']" class="sidebar-link">
+                          <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+                          Logout
+                        </a>
+                      </div>
                 </div>
             </div>
         </div>
@@ -51,104 +50,45 @@
                 <h3>View Submissions</h3>
                 <div class="filters">
                     <label for="course-filter">Filter by Course:</label>
-                    <select id="course-filter">
+                    <select id="course-filter" (change)="filterSubmissions($event)">
                         <option value="all">All Courses</option>
-                        <option value="course1">Course 1</option>
-                        <option value="course2">Course 2</option>
+                        <option *ngFor="let course of courses" [value]="course.courseName">
+                            {{ course.courseName }}
+                        </option>
                     </select>
-                   <!---- <div class="status-container">
-                    <label for="status-filter">Filter by Status:</label>
-                    <select id="status-filter">
-                        <option value="all">All Statuses</option>
-                        <option value="submitted">Submitted</option>
-                        <option value="pending">Pending</option>
-                    </select>-->
                 </div>
                 </div>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>Student ID</th>
-                            <th>Student Name</th>
+                            <th>Candidate ID</th>
+                            <th>Candidate Name</th>
                             <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Submission Date</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>A0001</td>
-                            <td>Jeevani</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
+                        <tr *ngIf="filteredSubmissions.length === 0">
+                            <td colspan="7" class="no-data">No submissions found for this course</td>
                         </tr>
-                        <tr>
-                            <td>A0002</td>
-                            <td>Fatima</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
+                        <tr *ngFor="let submission of filteredSubmissions">
+                            <td>{{ submission.candidateId }}</td>
+                            <td>{{ getCandidateName(submission.candidateId) }}</td>
+                            <td>{{ submission.courseId }}</td>
+                            <td>{{ submission.courseName }}</td>
+                            <td>{{ submission.submissionDate | date:'short' }}</td>
+                            <td>{{ submission.status }}</td>
+                            <td>{{submission.totalMarks}} </td>
                         </tr>
-                        <tr>
-                            <td>A0003</td>
-                            <td>Lalita</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
-                        </tr>
-                        <tr>
-                            <td>A0004</td>
-                            <td>Ayushman</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
-                        </tr>
-                        <tr>
-                            <td>A0005</td>
-                            <td>Akash</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
-                        </tr>
-                        <tr>
-                            <td>A0006</td>
-                            <td>Rohit</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
-                        </tr>
-                        <tr>
-                            <td>A0007</td>
-                            <td>Riya</td>
-                            <td>PY001</td>
-                            <td>Course 1</td>
-                            <td>2024-12-20</td>
-                            <td>Submitted</td>
-                            <td><button>View</button></td>
-                        </tr>
-                        
-                    </tbody>
+                    </tbody>                     
                 </table>
             </div>
-        </div>
-    
-</body>
-</html>
+        </div>   
 
         
+</body>
+</html>

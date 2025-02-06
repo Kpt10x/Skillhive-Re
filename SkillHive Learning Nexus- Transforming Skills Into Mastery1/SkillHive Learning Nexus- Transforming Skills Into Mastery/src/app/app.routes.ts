@@ -99,11 +99,12 @@ export const routes: Routes = [
   // { path: '**', redirectTo: 'login' },
 
   //assessment module routes
-  { path: 'candidateassessment', component: CandidateassessmentComponent ,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'attemptassessment', component: AttemptAssessmentComponent ,  canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'mcqtest', component: McqTestComponent ,  canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'scores', component: ScoresComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'viewassessment', component: ViewassessmentComponent, canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] } },
+  { path: 'candidateassessment/:id', component: CandidateassessmentComponent },
+  { path: 'candidateassessment/:candidateId/attemptassessment/:courseId', component: AttemptAssessmentComponent },
+  { path: 'mcqtest/:candidateId/:testId', component: McqTestComponent },
+  { path: 'scores/:candidateId', component: ScoresComponent },
+  { path: 'viewassessment', component: ViewassessmentComponent }
+  // {path:'results/:candidateId',component:ResultsComponent}
 ];
 
 export const appRouterProviders = [
