@@ -328,6 +328,10 @@ main {
     background-color: #fff3e0;
     border-color: #ffcc80;
 }
+.grid button.answered.marked {
+    background-color: #e8f5e9 !important; /* Keep answered color */
+    border-color: #a5d6a7 !important;
+}
 .options-container {
     margin-top: 2rem;
     display: flex;
@@ -336,10 +340,12 @@ main {
 }
 
 .option:hover {
-    border-color: #007bff;
+    border-color: #0056b3; /* Darker hover border */
+    background-color: #f1f8ff; /* Light hover background */
 }
 
+
 .option.selected {
-    border: 2px solid #007bff;
-    background-color: light #007bff;
+    border: 2px solid #0056b3; /* Darker border color */
+    background-color: #e6f2ff; /* Light blue background to indicate selection */
 }
