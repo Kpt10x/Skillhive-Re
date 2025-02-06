@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+// import { CourseService } from '../../services/Course.service';
+import { CourseService } from '../../../course/services/course_service';
+import { Course } from '../../../course/models/course_model';
 
 @Component({
   selector: 'app-chart',
@@ -11,10 +14,29 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 export class ChartComponent implements OnInit {
   @Input() courses: any[] = []; 
   chartOptions: any;
+  chartData: {
+    y: any; // Add fallback to 0
+    label: string;
+  }[] | undefined;
+  constructor(private courseService: CourseService) { }
+
   
+  // ngOnInit() {
+  //   this.updateChart();
+  // }
   ngOnInit() {
-    this.updateChart();
-  }
+    this.courseService.fetchCourses().subscribe(courses => {
+        this.courses = courses;
+        this.chartData = courses.map(course => ({
+            y: course.noOfEnrollments || 0, // Add fallback to 0
+            label: course.courseName
+        }));
+        // Update chart
+        console.log('Fetched courses:', courses); // Debug log
+
+        this.updateChart();
+    });
+}
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -22,6 +44,30 @@ export class ChartComponent implements OnInit {
   }
 
   updateChart() {
+
+    if (!this.courses || this.courses.length === 0) {
+      console.log('No courses available'); // Debug log
+      return;
+  }
+
+  const dataPoints = this.courses.map(course => {
+      const expectedEnrollments = Number(course.noOfEnrollments) || 0;
+      const seatsLeft = Number(course.seatsLeft) || 0;
+      
+      console.log(`Course: ${course.courseName}`, { // Debug log
+          expectedEnrollments,
+          seatsLeft,
+          
+      });
+
+      return {
+          expected: expectedEnrollments,
+          actual: expectedEnrollments - seatsLeft,
+          label: course.courseName
+      };
+  });
+
+
     this.chartOptions = {
       animationEnabled: true,
       width: window.innerWidth - 30,  // Full width minus some padding
@@ -47,7 +93,9 @@ export class ChartComponent implements OnInit {
           barWidth: 15,
           dataPoints: this.courses.map(course => ({
             label: course.courseName,
-            y: course.noOfEnrollments + course.seatsLeft
+            // Fix: Calculate total capacity (enrolled + seats left)
+            y: (course.noOfEnrollments || 0) 
+            //+ (course.seatsLeft || 0)
           }))
         },
         {
@@ -59,7 +107,7 @@ export class ChartComponent implements OnInit {
           barWidth: 15,
           dataPoints: this.courses.map(course => ({
             label: course.courseName,
-            y: course.noOfEnrollments
+            y: course.noOfEnrollments - course.seatsLeft || 0  // Add fallback to 0
           }))
         }
       ]

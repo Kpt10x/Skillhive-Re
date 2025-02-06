@@ -216,4 +216,5 @@ export class CreateCourseComponent implements OnInit {
     this.filteredInstructors = [...this.instructors]; // Reset to all instructors
     this.minAssignmentDate = null; // Reset minimum assignment date
   }
+  
 }

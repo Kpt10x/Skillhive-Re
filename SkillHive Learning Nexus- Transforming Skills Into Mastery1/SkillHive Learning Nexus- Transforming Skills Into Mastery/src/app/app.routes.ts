@@ -46,10 +46,11 @@ import { UpcomingCoursesComponent } from './candidates/components/upcoming-cours
 import { ProfileUpdateComponent } from './instructor/components/profile-update/profile-update.component';
 import { ViewAllInstructorsComponent } from './instructor/components/view-all-instructors/view-all-instructors.component';
 import { DeleteInstructorComponent } from './instructor/components/delete-instructor/delete-instructor.component';
+import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 //import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  // { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   
   // Authentication routes
   { path: 'landing-page', component: LandingPageComponent},
@@ -63,11 +64,11 @@ export const routes: Routes = [
 
   
   // Instructor Management routes
-  // { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
+  { path: 'instructor-dashboard', component: InstructorDashboardComponent, canActivate: [RoleGuard], data: { role: 'instructor' }},
   { path: 'profile-update', component: ProfileUpdateComponent,canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }  },
   { path: 'create-instructor', component: CreateInstructorComponent,canActivate: [RoleGuard], data: { role: 'admin' }  },
   {path:'delete-instructor',component:DeleteInstructorComponent ,canActivate: [RoleGuard], data: { role: 'admin' }},
-  {path:'instructor-timetable',component:InstructorTimeTableComponent ,canActivate: [RoleGuard], data: { role: 'admin' }},
+  {path:'instructor-timetable',component:InstructorTimeTableComponent ,canActivate: [RoleGuard], data: { role: 'instructor' }},
   {path:'add-course-content/:id',component:AddCourseContentComponent},
 
   // Instructor View routes

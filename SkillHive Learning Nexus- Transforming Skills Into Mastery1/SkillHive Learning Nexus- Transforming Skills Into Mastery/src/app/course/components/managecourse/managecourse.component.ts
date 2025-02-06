@@ -48,6 +48,9 @@ export class ManageCourseInstructorComponent implements OnInit, AfterViewInit {
 
           if (course && course.seatsLeft > 0) {
             course.seatsLeft -= 1; // Reduce available seats per enrolled student
+  
+            course.expectedEnrollments = course.totalSeats - course.seatsLeft;
+
           }
         });
 

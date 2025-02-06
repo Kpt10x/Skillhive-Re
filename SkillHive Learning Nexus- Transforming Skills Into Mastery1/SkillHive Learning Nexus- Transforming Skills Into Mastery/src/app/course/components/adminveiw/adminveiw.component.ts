@@ -99,6 +99,9 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
 
           if (course && course.seatsLeft > 0) {
             course.seatsLeft -= 1; // Reduce available seats per enrolled student
+            // the same update should be done in courses array in db.json
+
+            this.http.put(`http://localhost:3000/courses/${course.id}`, course)
           }
         });
 

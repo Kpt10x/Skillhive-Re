@@ -545,7 +545,9 @@
       "id": "3e97",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "2234444",
@@ -558,8 +560,10 @@
       "assessmentDate": "2025-09-31",
       "id": "a47e",
       "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false
+      "content": "This is a new content!!!",
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 27
     },
     {
       "courseId": "3235555",
@@ -573,7 +577,9 @@
       "id": "5f13",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "4236666",
@@ -587,7 +593,9 @@
       "id": "c91d",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 28
     },
     {
       "courseId": "4236666",
@@ -601,7 +609,9 @@
       "id": "c91d",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "5237777",
@@ -615,7 +625,9 @@
       "id": "f29b",
       "openForEnrollment": true,
       "content": "Objective: Provide an understanding of what cloud computing is, its history, evolution, and why it is important in the modern technological landscape.\n\nContent:\n\nDefinition: Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, and analytics—over the internet (the cloud). It offers faster innovation, flexible resources, and economies of scale.\n\nHistory and Evolution: Cloud computing has evolved from the traditional client-server model to the advanced, scalable cloud services we know today. Key milestones include the advent of virtualization technologies, the launch of AWS in 2006, and the widespread adoption of cloud services by major enterprises.\n\nImportance and Benefits: Cloud computing provides numerous benefits such as cost savings, scalability, flexibility, and remote accessibility. Businesses can reduce their infrastructure costs, scale up or down based on demand, and access powerful computing resources from anywhere in the world.",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 28
     },
     {
       "courseId": "6238888",
@@ -629,7 +641,9 @@
       "id": "b63a",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "7239999",
@@ -643,7 +657,9 @@
       "id": "d85f",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "8241111",
@@ -657,7 +673,9 @@
       "id": "e76d",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     },
     {
       "courseId": "9242222",
@@ -671,7 +689,9 @@
       "id": "g47c",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 28
     },
     {
       "courseId": "10243333",
@@ -685,8 +705,29 @@
       "id": "h93f",
       "openForEnrollment": false,
       "content": "",
-      "enableAssessment": false
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 28
+    },
+    {
+      "id": "4f29",
+      "courseName": "Data Science",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 2,
+      "startDate": "2025-11-05",
+      "endDate": "2026-01-15",
+      "instructor": "3",
+      "assessmentDate": "2026-01-16"
+    },
+    {
+      "id": "0e00",
+      "courseName": "Data Science",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-12-13",
+      "endDate": "2025-12-31",
+      "instructor": "3",
+      "assessmentDate": "2026-01-01"
     }
-
   ]
 }

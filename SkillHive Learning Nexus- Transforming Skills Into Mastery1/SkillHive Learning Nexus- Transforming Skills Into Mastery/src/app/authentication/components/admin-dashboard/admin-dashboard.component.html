@@ -51,7 +51,7 @@
           <div class="extras">
             <div class="user">
               <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
-              <a routerLink="/admin-profile">{{ adminName }} Profile</a>
+              <a routerLink="/admin-profile">{{ adminName }}</a>
             </div>
             <div class="logout" (click)="logout()">
               <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
@@ -93,7 +93,7 @@
                     <td>
                       <ul>
                         <li *ngFor="let course of candidate.enrolledCourses">
-                          {{ course.courseName }} ({{ course.instructorName }})
+                          {{ course.courseName }} ({{ course.instructor}})
                         </li>
                       </ul>
                     </td>

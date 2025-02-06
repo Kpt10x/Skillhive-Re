@@ -13,6 +13,6 @@ export interface Course {
   seatsLeft: number;        // Ensure this is a number
   contentUploaded: boolean ; // Default to false, content hasn't been uploaded yet
   openForEnrollment: boolean ; // Default to false, enrollment closed until content is uploaded
-  totalSeats?: number; // Optional: Total seats available for the course
-  enrolledCandidates?: string[]; // Optional: List of candidate IDs enrolled in the course
+  // totalSeats?: number; // Optional: Total seats available for the course
+  // enrolledCandidates?: string[]; // Optional: List of candidate IDs enrolled in the course
 }
