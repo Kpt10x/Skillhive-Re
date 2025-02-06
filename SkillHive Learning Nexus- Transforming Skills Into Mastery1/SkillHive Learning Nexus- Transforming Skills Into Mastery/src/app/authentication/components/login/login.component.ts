@@ -47,7 +47,7 @@ export class LoginComponent {
 
               this.navigateBasedOnRole(role, user);
             } else {
-              this.showErrorAlert('Please check email and password.');
+              this.showErrorAlert('Please check email, password or role.');
             }
           },
           error: () => {

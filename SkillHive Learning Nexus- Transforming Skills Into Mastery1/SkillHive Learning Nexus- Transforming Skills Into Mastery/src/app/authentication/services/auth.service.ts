@@ -22,6 +22,15 @@ export class AuthService {
     );
   }
 
+  getAdminProfile(): Observable<profiles[]> {
+    return this.http.get<profiles[]>(`${this.baseUrl}/profiles`).pipe(
+      catchError((error) => {
+        console.error('Error fetching profiles:', error);
+        return throwError(() => new Error('Could not retrieve profiles.'));
+      })
+    );
+  }
+
   logout() {
     sessionStorage.clear(); 
     this.router.navigate(['/login']).then(() => {
