@@ -13,7 +13,7 @@
       </div>
       <div class="selections">
         <div class="sel1">
-          <a [routerLink]="['/dashboard',user?.id]" class="sidebar-link">
+          <a [routerLink]="['/enrolled-courses',user?.id]" class="sidebar-link">
             <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
             Dashboard
           </a>
@@ -31,13 +31,13 @@
             </div>
           </div>
         <div class="sel1">
-          <a [routerLink]="['/assessments']" class="sidebar-link">
+          <a [routerLink]="['/candidateassessment',user?.id]" class="sidebar-link">
             <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
             Assessments
           </a>
         </div>
         <div class="sel1">
-          <a [routerLink]="['/results']" class="sidebar-link">
+          <a [routerLink]="['/results', candidateId]" class="sidebar-link">
             <img src="https://img.icons8.com/?size=35&id=ODt7c6FPZPl4&format=png&color=C1DBC6" alt="results">
             Results
           </a>
@@ -65,7 +65,7 @@
           <h3>{{ course.courseName }}</h3>
           <p><strong>Category:</strong> {{ course.courseCategory }}</p>
           <p><strong>Duration:</strong> {{ course.courseDurationInMonths }} months</p>
-          <p><strong>Instructor:</strong> {{ course.instructorName }}</p>
+          <p><strong>Instructor:</strong> {{ course.instructor }}</p>
           <p><strong>Start Date:</strong> {{ course.startDate }}</p>
           <p><strong>End Date:</strong> {{ course.endDate }}</p>
           <button class="enroll-btn">Enrolled</button>
