@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { AuthService } from '../../../authentication/services/auth.service';
 @Component({
   selector: 'app-upcoming-courses',
   standalone: true,
@@ -23,7 +23,8 @@ export class UpcomingCoursesComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private candidateService: CandidateService
+    private candidateService: CandidateService,
+    private authService : AuthService
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +58,7 @@ console.log(loggedInUserId, "Starrrrr");
       .subscribe((data: any) => {
         if (Array.isArray(data)) {
           this.courses = data;
+          console.log("Dafff",this.courses)
 
           const today = new Date();
           const tomorrow = new Date(today);
@@ -118,7 +120,7 @@ console.log(loggedInUserId, "Starrrrr");
       courseName: course.courseName,
       courseCategory: course.courseCategory,
       courseDurationInMonths: course.courseDurationInMonths,
-      instructorName: course.instructor,
+      instructor: course.instructor,
       startDate: course.startDate,
       endDate: course.endDate,
     };
@@ -159,5 +161,7 @@ console.log(loggedInUserId, "Starrrrr");
            new Date(course.startDate) >= tomorrow && 
            new Date(course.endDate) >= today;
   }
-  
+  logout(): void {
+    this.authService.logout();
+  }
 }

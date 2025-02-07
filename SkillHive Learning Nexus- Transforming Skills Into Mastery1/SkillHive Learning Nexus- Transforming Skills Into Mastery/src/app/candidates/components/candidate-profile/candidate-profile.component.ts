@@ -4,7 +4,7 @@ import { CandidateService, Candidate } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { AuthService } from '../../../authentication/services/auth.service';
 @Component({
   selector: 'app-candidate-profile',
   templateUrl: './candidate-profile.component.html',
@@ -23,7 +23,8 @@ export class CandidateProfileComponent implements OnInit {
   constructor(
     private candidateService: CandidateService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService : AuthService
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +72,8 @@ export class CandidateProfileComponent implements OnInit {
       );
     }
   }
-
+  logout(): void {
+    this.authService.logout();
+  }
   
 }

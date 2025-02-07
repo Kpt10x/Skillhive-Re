@@ -4,7 +4,7 @@ import { CandidateService, Candidate } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { catchError, of, switchMap } from 'rxjs';
-
+import { AuthService } from '../../../authentication/services/auth.service';
 @Component({
   selector: 'app-enrolled-courses',
   standalone: true,
@@ -20,7 +20,8 @@ export class EnrolledCoursesComponent implements OnInit {
   constructor(
     private candidateService: CandidateService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService : AuthService
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +53,8 @@ export class EnrolledCoursesComponent implements OnInit {
       console.error('No logged-in candidate found.');
       this.enrolledCourses = [];
     }
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }
