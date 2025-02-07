@@ -1,0 +1,91 @@
+<div class="results-container">
+    <aside class="sidebar">
+    <div class="logo">
+    <span class="skill">Skill</span><span class="hive">hive</span>
+    </div>
+    <div class="selections">
+    <div class="sel1">
+    <a [routerLink]="['/dashboard', candidateId]" class="sidebar-link">
+    <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+              Dashboard
+    </a>
+    </div>
+    <div class="sel2" (click)="isCoursesDropdownVisible = !isCoursesDropdownVisible">
+    <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses">
+            Courses
+    </div>
+    <div *ngIf="isCoursesDropdownVisible" class="dropdown">
+    <div class="dropdown-item">
+    <a [routerLink]="['/enrolled-courses', user?.id]" class="sidebar-link">Enrolled Courses</a>
+    </div>
+    <div class="dropdown-item">
+    <a [routerLink]="['/upcoming-courses', user?.id]" class="sidebar-link">Upcoming Courses</a>
+    </div>
+    </div>
+    <div class="sel1">
+    <a [routerLink]="['/candidateassessment',candidateId]" class="sidebar-link">
+    <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
+              Assessments
+    </a>
+    </div>
+    <div class="sel1">
+    <a [routerLink]="['/results', candidateId]" class="sidebar-link">
+    <img src="https://img.icons8.com/?size=35&id=ODt7c6FPZPl4&format=png&color=C1DBC6" alt="results">
+              Results
+    </a>
+    </div>
+    </div>
+    <div class="extras">
+    <div class="user">
+    <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
+    <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+              {{ user?.name }}
+    </a>
+    </div>
+    <div class="logout">
+    <a [routerLink]="['/login']" class="sidebar-link">
+    <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+              Logout
+    </a>
+    </div>
+    </div>
+    </aside>
+     
+     
+    <div class="marksheet-container">
+    <h3>View Marksheets</h3>
+    <table *ngIf="filteredMarksheets.length > 0">
+    <thead>
+    <tr>
+    <th>Candidate ID</th>
+    <th>Candidate Name</th>
+    <th>Course ID</th>
+    <th>Course Name</th>
+    <th>Total Marks</th>
+    <th>Marks Obtained</th>
+    <th>Percentage</th>
+    <th>Grade</th>
+    <!-- <th>Result</th> -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let marksheet of filteredMarksheets">
+    <td>{{ marksheet.candidateId }}</td>
+    <td>{{ getCandidateName(marksheet.candidateId) }}</td>
+    <td>{{ marksheet.courseId }}</td>
+    <td>{{ marksheet.courseName }}</td>
+    <td>{{ marksheet.totalQuestions }}</td>
+    <td>{{ marksheet.correctAnswers }}</td>
+    <td>{{ (marksheet.correctAnswers / marksheet.totalQuestions) * 100 | number:'1.2-2' }}%</td>
+    <td>{{ calculateGrade(marksheet.correctAnswers, marksheet.totalQuestions) }}</td>
+    <!-- <td>{{ marksheet.correctAnswers >= 4 ? 'Pass' : 'Fail' }}</td> -->
+    </tr>
+    </tbody>
+    </table>
+     
+      <div *ngIf="filteredMarksheets.length === 0">
+    <p class="no-data">No marksheet found for this candidate.</p>
+    </div>
+    </div>
+     
+    </div>

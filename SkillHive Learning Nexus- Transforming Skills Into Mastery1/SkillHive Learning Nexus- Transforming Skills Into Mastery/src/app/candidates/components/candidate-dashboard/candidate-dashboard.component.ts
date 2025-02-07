@@ -4,6 +4,7 @@ import { Candidate } from '../../services/candidate.service';  // Assuming you h
 import { CandidateService } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
 import { EnrolledCoursesComponent } from '../enrolled-courses/enrolled-courses.component';
+import { AuthService } from '../../../authentication/services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
@@ -21,13 +22,9 @@ export class CandidateDashboardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private candidateService: CandidateService
-  ) { 
-
-    console.log('CandidateDashboardComponent constructor called'); // Add this
-
-  }
-
+    private candidateService: CandidateService,
+    private authService: AuthService 
+  ) { }
   // constructor(private userService: CandidateService) {}
 
 
@@ -54,7 +51,9 @@ export class CandidateDashboardComponent implements OnInit {
   }
   
   
-
+  // logout(): void {
+  //   this.authService.logout();
+  // }
   logout() {
     sessionStorage.clear(); // Clear session storage
   

@@ -48,9 +48,10 @@ import { ViewAllInstructorsComponent } from './instructor/components/view-all-in
 import { DeleteInstructorComponent } from './instructor/components/delete-instructor/delete-instructor.component';
 import { InstructorDashboardComponent } from './instructor/components/instructor-dashboard/instructor-dashboard.component';
 import { ViewCandidatesComponent } from './candidates/components/view-candidates/view-candidates.component';
+import { ResultsComponent } from './assessmentgrading/components/results/results.component';
 
 export const routes: Routes = [
-  //{ path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   
   // Authentication routes
   { path: 'landing-page', component: LandingPageComponent},
@@ -84,11 +85,12 @@ export const routes: Routes = [
 
   //candidates routes
   { path: 'register', component: CandidateRegistrationComponent },
-  { path: 'profile/:id', component: CandidateProfileComponent, canActivate: [RoleGuard], data:{ role: ['admin', 'instructor'] } },
-  { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: { role: ['candidate'] }},
+  { path: 'profile/:id', component: CandidateProfileComponent, canActivate: [RoleGuard], data:{ role: ['admin', 'instructor','candidate'] } },
+  // { path: 'dashboard/:id', component: CandidateDashboardComponent , canActivate: [RoleGuard], data: { role: ['candidate'] }},
   { path: 'enrolled-courses/:id', component: EnrolledCoursesComponent, canActivate: [RoleGuard], data: { role: ['candidate'] } },
   { path: 'upcoming-courses/:id', component: UpcomingCoursesComponent ,canActivate: [RoleGuard], data:{ role: ['candidate'] }},
-  { path: 'view-candidates', component: ViewCandidatesComponent },
+  { path: 'view-candidates', component: ViewCandidatesComponent ,canActivate: [RoleGuard], data:{ role: ['instructor'] }},
+{ path: 'dashboard/:id', component: EnrolledCoursesComponent },
 
 
   //Course Module Routes
@@ -99,12 +101,12 @@ export const routes: Routes = [
   // { path: '**', redirectTo: 'login' },
 
   //assessment module routes
-  { path: 'candidateassessment/:id', component: CandidateassessmentComponent },
+  { path: 'candidateassessment/:id', component: CandidateassessmentComponent ,canActivate: [RoleGuard], data:{ role: ['candidate'] }},
   { path: 'candidateassessment/:candidateId/attemptassessment/:courseId', component: AttemptAssessmentComponent },
-  { path: 'mcqtest/:candidateId/:testId', component: McqTestComponent },
-  { path: 'scores/:candidateId', component: ScoresComponent },
-  { path: 'viewassessment', component: ViewassessmentComponent }
-  // {path:'results/:candidateId',component:ResultsComponent}
+  { path: 'mcqtest/:candidateId/:testId', component: McqTestComponent ,canActivate: [RoleGuard], data:{ role: ['candidate'] }},
+  { path: 'scores/:candidateId', component: ScoresComponent ,canActivate: [RoleGuard], data:{ role: ['candidate'] }},
+  { path: 'viewassessments', component: ViewassessmentComponent ,canActivate: [RoleGuard], data:{ role: ['instructor'] }},
+  { path:'results/:candidateId',component: ResultsComponent, canActivate: [RoleGuard], data:{ role: ['candidate']}}
 ];
 
 export const appRouterProviders = [

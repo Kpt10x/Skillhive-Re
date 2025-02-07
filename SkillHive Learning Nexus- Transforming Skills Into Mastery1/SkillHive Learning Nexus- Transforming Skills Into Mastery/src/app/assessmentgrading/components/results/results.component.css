@@ -1,0 +1,414 @@
+/* General Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+.marksheet-container h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+  text-align:center ;
+}
+
+.marksheet-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.marksheet-container table th, .marksheet-container table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.marksheet-container .no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  padding: 20px;
+}
+
+* {
+    font: 1em sans-serif;
+  }
+body {
+    margin: 0;
+    font-family: 'Balsamiq Sans', sans-serif;
+    background-color: #C1DBC6;
+}
+
+.results-container {
+  display: flex;
+  gap: 20px; 
+  align-items: flex-start;
+  background-color: #C1DBC6;
+}
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh; 
+  background-color: #263339; 
+  padding: 20px;
+  color: white;
+}
+
+.marksheet-container {
+  flex-grow: 1; /* Take remaining space */
+  padding: 20px;
+  background-color: #C1DBC6; /* Light background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #24353e;
+    color: white;
+    width: 170px;
+    height: 90vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-link {
+    color: #C1DBC6;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .sidebar-link:hover {
+    color: #A8C4AF; /* Slightly darker shade on hover */
+  }
+  
+  .sidebar-link img {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  .dropdown {
+    display: block;
+  }
+  
+  .dropdown.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    background-color: #2C4B56;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #3D6A7D;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+  
+  .skill {
+    color: white;
+    font-size: 40px;
+  }
+  
+  .hive {
+    color: #A4C6AC;
+    font-size: 40px;
+  }
+  
+  .selections {
+    margin-top: 20px;
+  }
+  
+  .sel1, .sel2, .sel3, .sel4 {
+    display: flex;
+    align-items: center;
+    color: #C1DBC6;
+    font-size: 20px;
+    padding: 10px 0;
+  }
+  
+  .sel1 img, .sel2 img, .sel3 img, .sel4 img {
+    margin-right: 10px;
+  }
+  
+  .extras {
+    margin-top: 230px;
+  }
+  .user, .logout {
+    display: flex;
+    align-items: center;
+    color: #C1DBC6;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+  
+  .user img, .logout img {
+    margin-right: 10px;
+  }
+
+.menu-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Uniform spacing between items */
+    margin-bottom: 40px;
+    padding-top: 40px; /* Add space between menu-container and bottom-menu-container */
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgba(193, 219, 198, 1);
+    padding: 10px 15px;
+    border-radius: 8px; /* Smooth rounded corners */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth interactions */
+    cursor: pointer;
+}
+
+.menu-item img {
+    margin-right: 10px; /* Add space between image and text */
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Soft hover background */
+    transform: translateX(5px); /* Slight shift on hover */
+}
+
+.menu-item:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Active state feedback */
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease; /* Smooth scaling */
+}
+
+.bottom-menu-container {
+    margin-top: auto; /* Push the bottom items to the bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 270px; /* Add extra spacing above bottom-menu-container if needed */
+}
+
+/* General Styles for User and Logout as buttons */
+.user,
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensure items are aligned to the left */
+    color: #C1DBC6;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s ease, color 0.3s;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Adjust the image in the logout button to align with text */
+.user img,
+.logout img {
+    margin-right: 10px; /* Space between image and text */
+    vertical-align: middle; /* Ensure alignment with text */
+}
+
+/* Remove any default link styles */
+.user a,
+.logout a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Hover effects for User and Logout */
+.user:hover,
+.logout:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    color: #A8C4AF;
+}
+
+.user:active,
+.logout:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(2px);
+}
+
+/* Main Content Styles */
+.main-content {
+    background-color: #C1DBC6;
+    font-family: 'Balsamiq Sans', sans-serif; /* Lighter background for better contrast */
+    color: #000;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure full width usage */
+    padding: 20px; /* Add spacing inside the main content */
+    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.main-content h3 {
+    font-family: 'Balsamiq Sans', sans-serif; /* Matching font */
+    font-size: 35px; /* Slightly larger for emphasis */
+    font-weight: 600; /* Semi-bold for better hierarchy */
+    margin-bottom: 20px;
+    color: #263339; /* Dark green to align with the theme */
+    text-align: center; /* Consistent alignment */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 5px; /* Move the heading slightly upwards */
+}
+
+/* Filters Section */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increased spacing for better clarity */
+    margin-bottom: 20px;
+    font-family: 'Balsamiq Sans', sans-serif; /* Font consistency */
+    font-size: 15px; /* Slightly larger font for readability */
+}
+
+.filters label {
+    font-weight: 600; /* Slightly bolder text */
+    color: #263339; /* Dark green to match the theme */
+    font-family: 'Balsamiq Sans', sans-serif; /* Font consistency */
+}
+
+.filters select {
+    padding: 10px; /* Comfortable padding */
+    border: 1px solid #9BBF94; /* Border color matching theme */
+    border-radius: 8px; /* Smooth rounded corners */
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-size: 14px;
+    background-color: #abcba5; /* Matching dropdown background */
+    color: #263339; /* Dark green text color */
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth interaction */
+}
+
+.filters select:hover {
+    background-color: #C1DBC6; /* Lightened green on hover */
+    border-color: #263339; /* Dark border on hover */
+}
+
+.filters select:focus {
+    outline: none;
+    background-color: #C1DBC6; /* Focus state background */
+    border: 2px solid #263339; /* Stronger border for focus state */
+}
+
+.filters .status-container {
+    margin-left: auto; /* Push the entire "Filter by Status" group to the right */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adjust spacing between label and dropdown */
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse;
+    background-color: #b2d2ab; /* Soft green to match the main content */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 20px; /* Space above the table */
+}
+
+table thead {
+    background-color: #263339; /* Dark header background */
+    color: #FFF; /* White text for headers */
+}
+
+table th,
+table td {
+    padding: 15px; /* Spacing inside cells */
+    text-align: left;
+    border-bottom: 3.5px solid #C1DBC6; /* Subtle border matching bg */
+    box-sizing: border-box;
+}
+
+table th {
+    font-family: 'Balsamiq Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table tbody tr:hover {
+    background-color: #C1DBC6; /* Highlight row on hover */
+}
+
+table button {
+    background-color: #263339; /* Dark button color */
+    color: #FFF; /* White text */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Balsamiq Sans', sans-serif; /* Button font */
+}
+
+table button:hover {
+    background-color: #1F2B30; /* Slightly darker hover color */
+}
+
+/* Dropdown Styles */
+select {
+    font-family: 'Balsamiq Sans', sans-serif;
+    background-color: #9BBF94; /* Soft green dropdown */
+    color: #263339; /* Text color */
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: #C1DBC6; /* Lighten color on hover */
+}
+
+select:focus {
+    outline: none;
+    border: 2px solid #263339; /* Focus border */
+    background-color: #C1DBC6;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}

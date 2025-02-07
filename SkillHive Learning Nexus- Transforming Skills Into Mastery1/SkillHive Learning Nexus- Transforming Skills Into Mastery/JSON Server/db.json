@@ -120,7 +120,7 @@
       "id": "47987",
       "name": "Dhyrya",
       "email": "dhyrya@gmail.com",
-      "phone": "9019831137",
+      "phone": "1234567890",
       "password": "090909",
       "role": "candidate"
     },
@@ -155,13 +155,21 @@
       "phone": "0987654321",
       "password": "lalitha",
       "role": "candidate"
+    },
+    {
+      "id": "82718",
+      "name": "Nisha",
+      "email": "nisha@gmail.com",
+      "phone": "1234567890",
+      "password": "nisha@gmail.com",
+      "role": "candidate"
     }
   ],
   "assessments": [
     {
       "courseId": "5237777",
       "courseName": "Cloud Computing",
-      "assessmentDate": "2025-01-5",
+      "assessmentDate": "2025-02-07",
       "questions": [
         {
           "id": 1,
@@ -397,7 +405,7 @@
     {
       "courseId": "5237777",
       "courseName": "Cyber Security",
-      "assessmentDate": "2025-02-5",
+      "assessmentDate": "2025-02-05",
       "questions": [
         {
           "id": 1,
@@ -1018,6 +1026,17 @@
       "courseCategory": "Technology",
       "startDate": "2025-12-19",
       "endDate": "2026-01-22"
+    },
+    {
+      "id": "75276",
+      "candidateId": "82718",
+      "courseId": "5237777",
+      "courseName": "Cloud Computing",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
     }
   ],
   "courses": [
@@ -1047,9 +1066,9 @@
       "endDate": "2025-08-01",
       "assessmentDate": "2025-09-31",
       "id": "a47e",
-      "openForEnrollment": false,
-      "content": "This is a new content!!!",
-      "enableAssessment": false,
+      "openForEnrollment": true,
+      "content": "This is a brand new content!!!",
+      "enableAssessment": true,
       "noOfEnrollments": 30,
       "seatsLeft": 27
     },
@@ -1257,6 +1276,30 @@
       "correctAnswers": 1,
       "totalMarks": 1,
       "submissionDate": "2025-02-04T13:14:44.189Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "4e4d",
+      "candidateId": "47987",
+      "courseId": "5237777",
+      "courseName": "Cloud Computing",
+      "totalQuestions": 10,
+      "answeredQuestions": 2,
+      "correctAnswers": 1,
+      "totalMarks": 1,
+      "submissionDate": "2025-02-07T05:56:28.656Z",
+      "status": "Submitted"
+    },
+    {
+      "id": "a9de",
+      "candidateId": "82718",
+      "courseId": "5237777",
+      "courseName": "Cloud Computing",
+      "totalQuestions": 10,
+      "answeredQuestions": 0,
+      "correctAnswers": 0,
+      "totalMarks": 0,
+      "submissionDate": "2025-02-07T06:24:00.577Z",
       "status": "Submitted"
     }
   ]
