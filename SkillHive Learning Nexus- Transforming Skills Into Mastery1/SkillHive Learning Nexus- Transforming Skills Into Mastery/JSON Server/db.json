@@ -403,122 +403,122 @@
       "id": "a47e"
     },
     {
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "assessmentDate": "2025-02-05",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "assessmentDate": "2025-09-31",
       "questions": [
         {
           "id": 1,
-          "question": "What is Cyber Security?",
+          "question": "What is Machine Learning?",
           "options": [
-            "Protecting systems and networks from digital attacks",
-            "A type of computer virus",
-            "A software development methodology",
-            "A physical security system"
+            "A subset of AI that enables systems to learn and improve from experience",
+            "A programming language for artificial intelligence",
+            "A type of computer hardware",
+            "A database management system"
           ],
-          "answer": "Protecting systems and networks from digital attacks"
+          "answer": "A subset of AI that enables systems to learn and improve from experience"
         },
         {
           "id": 2,
-          "question": "Which of the following is NOT a common type of cyber attack?",
+          "question": "Which of the following is NOT a type of Machine Learning?",
           "options": [
-            "Phishing",
-            "Malware",
-            "Firewalling",
-            "Denial-of-Service (DoS)"
+            "Supervised Learning",
+            "Unsupervised Learning",
+            "Reinforcement Learning",
+            "Mechanical Learning"
           ],
-          "answer": "Firewalling"
+          "answer": "Mechanical Learning"
         },
         {
           "id": 3,
-          "question": "What does 'VPN' stand for?",
+          "question": "What is the purpose of the training dataset in Machine Learning?",
           "options": [
-            "Virtual Private Network",
-            "Verified Personal Node",
-            "Virtual Protected Namespace",
-            "Vulnerable Process Notifier"
+            "To test the model's performance",
+            "To deploy the model",
+            "To teach the model patterns and relationships in data",
+            "To validate the model's architecture"
           ],
-          "answer": "Virtual Private Network"
+          "answer": "To teach the model patterns and relationships in data"
         },
         {
           "id": 4,
-          "question": "Which of these is a fundamental principle of Cyber Security?",
+          "question": "Which algorithm is best suited for classification problems?",
           "options": [
-            "Confidentiality, Integrity, Availability",
-            "Hardware, Software, Network",
-            "Encryption, Hacking, Authentication",
-            "Development, Deployment, Debugging"
+            "Linear Regression",
+            "Random Forest",
+            "K-means Clustering",
+            "Principal Component Analysis"
           ],
-          "answer": "Confidentiality, Integrity, Availability"
+          "answer": "Random Forest"
         },
         {
           "id": 5,
-          "question": "What is Phishing?",
+          "question": "What is overfitting in Machine Learning?",
           "options": [
-            "A technique used to trick users into providing sensitive information",
-            "A type of firewall",
-            "An encryption method",
-            "A cloud security protocol"
+            "When a model performs too well on training data but poorly on new data",
+            "When a model is too simple to capture patterns",
+            "When a model is trained on too little data",
+            "When a model runs too slowly"
           ],
-          "answer": "A technique used to trick users into providing sensitive information"
+          "answer": "When a model performs too well on training data but poorly on new data"
         },
         {
           "id": 6,
-          "question": "Which of the following is an example of Multi-Factor Authentication (MFA)?",
+          "question": "What is the purpose of cross-validation?",
           "options": [
-            "Using a password and a fingerprint scan",
-            "Logging in with a username only",
-            "Entering a password twice",
-            "Using a single sign-on (SSO) service"
+            "To clean the dataset",
+            "To evaluate model performance on different subsets of data",
+            "To increase processing speed",
+            "To reduce memory usage"
           ],
-          "answer": "Using a password and a fingerprint scan"
+          "answer": "To evaluate model performance on different subsets of data"
         },
         {
           "id": 7,
-          "question": "What is the primary function of a firewall?",
+          "question": "Which of the following is a common activation function in neural networks?",
           "options": [
-            "To filter incoming and outgoing network traffic",
-            "To store encrypted data",
-            "To detect malware",
-            "To optimize network speed"
+            "ReLU",
+            "SQL",
+            "HTTP",
+            "XML"
           ],
-          "answer": "To filter incoming and outgoing network traffic"
+          "answer": "ReLU"
         },
         {
           "id": 8,
-          "question": "What is Social Engineering in Cyber Security?",
+          "question": "What is the purpose of regularization in Machine Learning?",
           "options": [
-            "Manipulating people into divulging confidential information",
-            "A method of securing social media accounts",
-            "A security framework for businesses",
-            "A way to encrypt passwords"
+            "To speed up model training",
+            "To prevent overfitting by adding a penalty term",
+            "To increase model complexity",
+            "To clean input data"
           ],
-          "answer": "Manipulating people into divulging confidential information"
+          "answer": "To prevent overfitting by adding a penalty term"
         },
         {
           "id": 9,
-          "question": "Which of the following is a strong password example?",
+          "question": "Which metric is commonly used to evaluate regression models?",
           "options": [
-            "12345678",
-            "Password123",
-            "Tr0ub4dor&3!",
-            "qwerty"
+            "Confusion Matrix",
+            "F1 Score",
+            "Mean Squared Error",
+            "Precision"
           ],
-          "answer": "Tr0ub4dor&3!"
+          "answer": "Mean Squared Error"
         },
         {
           "id": 10,
-          "question": "What is Ransomware?",
+          "question": "What is the role of the learning rate in gradient descent?",
           "options": [
-            "A type of malware that encrypts files and demands payment for decryption",
-            "A security patch for operating systems",
-            "A method of data backup",
-            "An encryption algorithm"
+            "Controls how much the model parameters are updated in each iteration",
+            "Determines the size of the training dataset",
+            "Sets the number of features in the model",
+            "Defines the model architecture"
           ],
-          "answer": "A type of malware that encrypts files and demands payment for decryption"
+          "answer": "Controls how much the model parameters are updated in each iteration"
         }
       ],
-      "id": "b593"
+      "id": "5f13"
     },
     {
       "courseId": "4236666",
@@ -899,17 +899,6 @@
       "endDate": "2025-05-01"
     },
     {
-      "id": "24797",
-      "candidateId": "47987",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructor": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
-    },
-    {
       "id": "80903",
       "candidateId": "55874",
       "courseId": "2234444",
@@ -952,17 +941,6 @@
       "instructor": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
-    },
-    {
-      "id": "82649",
-      "candidateId": "84644",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructor": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
     },
     {
       "id": "53193",
@@ -1037,6 +1015,28 @@
       "instructorName": "Arjun Nair",
       "startDate": "2025-05-01",
       "endDate": "2025-09-01"
+    },
+    {
+      "id": "17043",
+      "candidateId": "64555",
+      "courseId": "5237777",
+      "courseName": "Cloud Computing",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
+    },
+    {
+      "id": "22736",
+      "candidateId": "64555",
+      "courseId": "3235555",
+      "courseName": "Machine Learning",
+      "courseCategory": "Artificial Intelligence",
+      "courseDurationInMonths": 5,
+      "instructorName": "Raghav Verma",
+      "startDate": "2025-03-01",
+      "endDate": "2025-08-01"
     }
   ],
   "courses": [
@@ -1082,7 +1082,7 @@
       "endDate": "2025-08-01",
       "assessmentDate": "2025-09-31",
       "id": "5f13",
-      "openForEnrollment": false,
+      "openForEnrollment": true,
       "content": "",
       "enableAssessment": false,
       "noOfEnrollments": 30,
@@ -1153,22 +1153,6 @@
       "seatsLeft": 30
     },
     {
-      "courseId": "7239999",
-      "courseName": "Cloud Computing",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 6,
-      "instructor": "Vivek Kumar",
-      "startDate": "2024-07-01",
-      "endDate": "2024-12-01",
-      "assessmentDate": "2025-01-30",
-      "id": "d85f",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
-    },
-    {
       "courseId": "8241111",
       "courseName": "Business Analytics",
       "courseCategory": "Data Analytics",
@@ -1219,30 +1203,6 @@
   ],
   "submissions": [
     {
-      "id": "772c",
-      "candidateId": "64555",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "totalQuestions": 10,
-      "answeredQuestions": 4,
-      "correctAnswers": 4,
-      "totalMarks": 4,
-      "submissionDate": "2025-02-02T11:34:34.346Z",
-      "status": "Submitted"
-    },
-    {
-      "id": "0746",
-      "candidateId": "3",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "totalQuestions": 10,
-      "answeredQuestions": 6,
-      "correctAnswers": 5,
-      "totalMarks": 5,
-      "submissionDate": "2025-02-02T11:41:14.388Z",
-      "status": "Submitted"
-    },
-    {
       "id": "30f4",
       "candidateId": "55874",
       "courseId": "3235555",
@@ -1264,18 +1224,6 @@
       "correctAnswers": 6,
       "totalMarks": 6,
       "submissionDate": "2025-02-02T12:12:14.354Z",
-      "status": "Submitted"
-    },
-    {
-      "id": "aa7a",
-      "candidateId": "64555",
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "totalQuestions": 10,
-      "answeredQuestions": 1,
-      "correctAnswers": 1,
-      "totalMarks": 1,
-      "submissionDate": "2025-02-04T13:14:44.189Z",
       "status": "Submitted"
     },
     {
