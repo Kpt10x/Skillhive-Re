@@ -44,7 +44,21 @@ export class ResultsComponent {
     if (this.candidateId) {
       this.fetchProfiles();
       this.fetchMarksheets();
+      this.loadUser();
     }
+  }
+
+  // Fetch user data based on candidateId
+  loadUser(): void {
+    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+      next: (profiles) => {
+        this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+        this.user = { name: 'Unknown Candidate' };
+      }
+    });
   }
 
  
