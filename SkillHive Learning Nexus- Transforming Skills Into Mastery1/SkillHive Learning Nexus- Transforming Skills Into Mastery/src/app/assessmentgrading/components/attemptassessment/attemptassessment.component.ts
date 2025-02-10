@@ -22,6 +22,7 @@ export class AttemptAssessmentComponent {
   duration: number = 15;
   numberOfQuestions: number = 10;
   candidateId: string = '';
+  isCoursesDropdownVisible: any;
 
   courseLogos: { [key: string]: string } = {
     'Web Development': 'assets/web-app-dev.png',
@@ -35,6 +36,7 @@ export class AttemptAssessmentComponent {
     'Graphic Design': 'assets/graphic-design.png',
     'Photography Basics': 'assets/photography.png'
   };
+  user: any;
 
   constructor(
     private http: HttpClient,
@@ -48,6 +50,20 @@ export class AttemptAssessmentComponent {
       this.candidateId = params['candidateId'];
       this.selectedCourseId = params['courseId'];
       this.loadCourses();
+      this.loadUser();
+    });
+  }
+
+  // Fetch user data based on candidateId
+  loadUser(): void {
+    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+      next: (profiles) => {
+        this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+        this.user = { name: 'Unknown Candidate' };
+      }
     });
   }
 
