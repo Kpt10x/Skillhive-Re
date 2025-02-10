@@ -32,8 +32,8 @@
       "name": "Arjun Nair",
       "email": "arjun.nair@gmail.com",
       "phone": "9876543211",
-      "areaOfExpertise": "Cloud Computing",
-      "experience": 7,
+      "areaOfExpertise": "Cyber Security",
+      "experience": 5,
       "role": "instructor",
       "default_password": "XkLmNpQr"
     },
@@ -120,7 +120,7 @@
       "id": "47987",
       "name": "Dhyrya",
       "email": "dhyrya@gmail.com",
-      "phone": "1234567890",
+      "phone": "9019831137",
       "password": "090909",
       "role": "candidate"
     },
@@ -147,29 +147,13 @@
       "phone": "9999999999",
       "password": "ben@gmail.com",
       "role": "candidate"
-    },
-    {
-      "id": "64555",
-      "name": "Lalitha ",
-      "email": "lalitha@gmail.com",
-      "phone": "0987654321",
-      "password": "lalitha",
-      "role": "candidate"
-    },
-    {
-      "id": "82718",
-      "name": "Nisha",
-      "email": "nisha@gmail.com",
-      "phone": "1234567890",
-      "password": "nisha@gmail.com",
-      "role": "candidate"
     }
   ],
   "assessments": [
     {
-      "courseId": "5237777",
+      "courseId": "7239999",
       "courseName": "Cloud Computing",
-      "assessmentDate": "2025-02-07",
+      "assessmentDate": "2025-30-01",
       "questions": [
         {
           "id": 1,
@@ -282,597 +266,125 @@
           "answer": "Cloud providers manage server resources dynamically"
         }
       ],
-      "id": "d85f"
+      "id": "687d"
     },
     {
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "assessmentDate": "2025-02-6",
+      "courseId": "8241111",
+      "courseName": "Business Analytics",
+      "assessmentDate": "2025-31-01",
       "questions": [
         {
           "id": 1,
-          "question": "What is Data Science?",
+          "question": "What is Business Analytics?",
           "options": [
-            "A field that uses scientific methods, algorithms, and systems to extract insights from data",
-            "A programming language",
-            "A type of database",
-            "A type of cloud computing service"
+            "A process of analyzing business data to make decisions",
+            "A type of business accounting",
+            "Developing business strategies without data",
+            "A method for predicting weather patterns"
           ],
-          "answer": "A field that uses scientific methods, algorithms, and systems to extract insights from data"
+          "answer": "A process of analyzing business data to make decisions"
         },
         {
           "id": 2,
-          "question": "Which of the following is NOT a step in the Data Science process?",
+          "question": "Which of the following is a key component of Business Analytics?",
           "options": [
-            "Data Cleaning",
             "Data Analysis",
-            "Model Training",
-            "Web Hosting"
+            "Hardware Setup",
+            "Manual Data Entry",
+            "Data Destruction"
           ],
-          "answer": "Web Hosting"
+          "answer": "Data Analysis"
         },
         {
           "id": 3,
-          "question": "Which language is most commonly used in Data Science?",
+          "question": "What is the primary goal of Business Analytics?",
           "options": [
-            "Python",
-            "C++",
-            "Java",
-            "Swift"
+            "To improve decision-making",
+            "To eliminate the use of data",
+            "To increase manual reporting",
+            "To reduce the use of technology"
           ],
-          "answer": "Python"
+          "answer": "To improve decision-making"
         },
         {
           "id": 4,
-          "question": "What is the primary purpose of Exploratory Data Analysis (EDA)?",
+          "question": "Which of these is a common tool used in Business Analytics?",
           "options": [
-            "To create machine learning models",
-            "To summarize main characteristics of data using visualization and statistical techniques",
-            "To clean the dataset",
-            "To deploy the model"
-          ],
-          "answer": "To summarize main characteristics of data using visualization and statistical techniques"
-        },
-        {
-          "id": 5,
-          "question": "Which of the following is a supervised learning algorithm?",
-          "options": [
-            "K-Means Clustering",
-            "Decision Tree",
-            "Apriori Algorithm",
-            "DBSCAN"
-          ],
-          "answer": "Decision Tree"
-        },
-        {
-          "id": 6,
-          "question": "Which type of data visualization is best for showing the distribution of a numerical dataset?",
-          "options": [
-            "Bar Chart",
-            "Pie Chart",
-            "Histogram",
-            "Line Chart"
-          ],
-          "answer": "Histogram"
-        },
-        {
-          "id": 7,
-          "question": "What does the term 'Feature Engineering' mean in Data Science?",
-          "options": [
-            "Cleaning data to remove missing values",
-            "Creating new input features that improve model performance",
-            "Writing code to automate machine learning",
-            "Collecting data from external sources"
-          ],
-          "answer": "Creating new input features that improve model performance"
-        },
-        {
-          "id": 8,
-          "question": "Which of the following is NOT a common machine learning model evaluation metric?",
-          "options": [
-            "Mean Squared Error (MSE)",
-            "F1-Score",
-            "Precision",
-            "SQL Query Execution Time"
-          ],
-          "answer": "SQL Query Execution Time"
-        },
-        {
-          "id": 9,
-          "question": "What is the main purpose of a confusion matrix in classification problems?",
-          "options": [
-            "To visualize relationships between features",
-            "To measure the performance of a classification model",
-            "To determine missing values in a dataset",
-            "To compare different datasets"
-          ],
-          "answer": "To measure the performance of a classification model"
-        },
-        {
-          "id": 10,
-          "question": "Which of the following is a common data preprocessing technique?",
-          "options": [
-            "Feature Scaling",
-            "Training a neural network",
-            "Hyperparameter tuning",
-            "Model Deployment"
-          ],
-          "answer": "Feature Scaling"
-        }
-      ],
-      "id": "a47e"
-    },
-    {
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "assessmentDate": "2025-09-31",
-      "questions": [
-        {
-          "id": 1,
-          "question": "What is Machine Learning?",
-          "options": [
-            "A subset of AI that enables systems to learn and improve from experience",
-            "A programming language for artificial intelligence",
-            "A type of computer hardware",
-            "A database management system"
-          ],
-          "answer": "A subset of AI that enables systems to learn and improve from experience"
-        },
-        {
-          "id": 2,
-          "question": "Which of the following is NOT a type of Machine Learning?",
-          "options": [
-            "Supervised Learning",
-            "Unsupervised Learning",
-            "Reinforcement Learning",
-            "Mechanical Learning"
-          ],
-          "answer": "Mechanical Learning"
-        },
-        {
-          "id": 3,
-          "question": "What is the purpose of the training dataset in Machine Learning?",
-          "options": [
-            "To test the model's performance",
-            "To deploy the model",
-            "To teach the model patterns and relationships in data",
-            "To validate the model's architecture"
-          ],
-          "answer": "To teach the model patterns and relationships in data"
-        },
-        {
-          "id": 4,
-          "question": "Which algorithm is best suited for classification problems?",
-          "options": [
-            "Linear Regression",
-            "Random Forest",
-            "K-means Clustering",
-            "Principal Component Analysis"
-          ],
-          "answer": "Random Forest"
-        },
-        {
-          "id": 5,
-          "question": "What is overfitting in Machine Learning?",
-          "options": [
-            "When a model performs too well on training data but poorly on new data",
-            "When a model is too simple to capture patterns",
-            "When a model is trained on too little data",
-            "When a model runs too slowly"
-          ],
-          "answer": "When a model performs too well on training data but poorly on new data"
-        },
-        {
-          "id": 6,
-          "question": "What is the purpose of cross-validation?",
-          "options": [
-            "To clean the dataset",
-            "To evaluate model performance on different subsets of data",
-            "To increase processing speed",
-            "To reduce memory usage"
-          ],
-          "answer": "To evaluate model performance on different subsets of data"
-        },
-        {
-          "id": 7,
-          "question": "Which of the following is a common activation function in neural networks?",
-          "options": [
-            "ReLU",
-            "SQL",
-            "HTTP",
-            "XML"
-          ],
-          "answer": "ReLU"
-        },
-        {
-          "id": 8,
-          "question": "What is the purpose of regularization in Machine Learning?",
-          "options": [
-            "To speed up model training",
-            "To prevent overfitting by adding a penalty term",
-            "To increase model complexity",
-            "To clean input data"
-          ],
-          "answer": "To prevent overfitting by adding a penalty term"
-        },
-        {
-          "id": 9,
-          "question": "Which metric is commonly used to evaluate regression models?",
-          "options": [
-            "Confusion Matrix",
-            "F1 Score",
-            "Mean Squared Error",
-            "Precision"
-          ],
-          "answer": "Mean Squared Error"
-        },
-        {
-          "id": 10,
-          "question": "What is the role of the learning rate in gradient descent?",
-          "options": [
-            "Controls how much the model parameters are updated in each iteration",
-            "Determines the size of the training dataset",
-            "Sets the number of features in the model",
-            "Defines the model architecture"
-          ],
-          "answer": "Controls how much the model parameters are updated in each iteration"
-        }
-      ],
-      "id": "5f13"
-    },
-    {
-      "courseId": "4236666",
-      "courseName": "Graphic Design",
-      "assessmentDate": "2025-02-07",
-      "questions": [
-        {
-          "id": 1,
-          "question": "What is the primary purpose of Graphic Design?",
-          "options": [
-            "To communicate messages visually",
-            "To create programming code",
-            "To develop business strategies",
-            "To analyze financial data"
-          ],
-          "answer": "To communicate messages visually"
-        },
-        {
-          "id": 2,
-          "question": "Which of the following is NOT a design principle?",
-          "options": [
-            "Contrast",
-            "Balance",
-            "Repetition",
-            "Debugging"
-          ],
-          "answer": "Debugging"
-        },
-        {
-          "id": 3,
-          "question": "What does 'RGB' stand for in design?",
-          "options": [
-            "Red, Green, Blue",
-            "Raster, Gradient, Bitmap",
-            "Random Graphic Blend",
-            "Right Gradient Balance"
-          ],
-          "answer": "Red, Green, Blue"
-        },
-        {
-          "id": 4,
-          "question": "Which file format is commonly used for logos and scalable graphics?",
-          "options": [
-            "JPEG",
-            "SVG",
-            "BMP",
-            "GIF"
-          ],
-          "answer": "SVG"
-        },
-        {
-          "id": 5,
-          "question": "Which tool is widely used for vector-based graphic design?",
-          "options": [
-            "Adobe Illustrator",
+            "Tableau",
             "Photoshop",
-            "MS Paint",
-            "Lightroom"
-          ],
-          "answer": "Adobe Illustrator"
-        },
-        {
-          "id": 6,
-          "question": "What is 'Typography' in Graphic Design?",
-          "options": [
-            "The art of arranging text and fonts",
-            "A type of image compression",
-            "A color blending technique",
-            "A 3D modeling process"
-          ],
-          "answer": "The art of arranging text and fonts"
-        },
-        {
-          "id": 7,
-          "question": "Which color mode is used for printing?",
-          "options": [
-            "RGB",
-            "CMYK",
-            "HSB",
-            "Monochrome"
-          ],
-          "answer": "CMYK"
-        },
-        {
-          "id": 8,
-          "question": "What is the role of 'Negative Space' in design?",
-          "options": [
-            "To create contrast and clarity",
-            "To add more elements to a design",
-            "To increase color saturation",
-            "To blend different patterns"
-          ],
-          "answer": "To create contrast and clarity"
-        },
-        {
-          "id": 9,
-          "question": "Which of the following is a raster-based image editing software?",
-          "options": [
-            "Adobe Photoshop",
             "CorelDRAW",
-            "Figma",
-            "Sketch"
+            "Premiere Pro"
           ],
-          "answer": "Adobe Photoshop"
-        },
-        {
-          "id": 10,
-          "question": "What does DPI stand for in graphic design?",
-          "options": [
-            "Dots Per Inch",
-            "Digital Processing Interface",
-            "Design Pixel Integration",
-            "Depth Per Image"
-          ],
-          "answer": "Dots Per Inch"
-        }
-      ],
-      "id": "c91d"
-    },
-    {
-      "courseId": "6238888",
-      "courseName": "Digital Marketing",
-      "assessmentDate": "2025-07-31",
-      "questions": [
-        {
-          "id": 1,
-          "question": "What is SEO?",
-          "options": [
-            "Search Engine Optimization",
-            "Social Engine Operations",
-            "System Engineering Options",
-            "Search Entry Organization"
-          ],
-          "answer": "Search Engine Optimization"
-        },
-        {
-          "id": 2,
-          "question": "Which metric measures the percentage of visitors who leave after viewing only one page?",
-          "options": [
-            "Bounce Rate",
-            "Conversion Rate",
-            "Click-through Rate",
-            "Page Views"
-          ],
-          "answer": "Bounce Rate"
-        },
-        {
-          "id": 3,
-          "question": "What is a Call-to-Action (CTA)?",
-          "options": [
-            "A prompt encouraging users to take a specific action",
-            "A phone call to customers",
-            "An automated marketing system",
-            "A social media post"
-          ],
-          "answer": "A prompt encouraging users to take a specific action"
-        },
-        {
-          "id": 4,
-          "question": "Which platform is best for B2B marketing?",
-          "options": [
-            "LinkedIn",
-            "TikTok",
-            "Instagram",
-            "Snapchat"
-          ],
-          "answer": "LinkedIn"
+          "answer": "Tableau"
         },
         {
           "id": 5,
-          "question": "What is A/B testing?",
+          "question": "What is 'Predictive Analytics' in the context of Business Analytics?",
           "options": [
-            "Comparing two versions of content to see which performs better",
-            "Testing website loading speed",
-            "Checking email deliverability",
-            "Analyzing competitor websites"
+            "A method to predict future trends using data",
+            "A technique for creating business presentations",
+            "A manual way to organize data",
+            "A form of digital marketing"
           ],
-          "answer": "Comparing two versions of content to see which performs better"
+          "answer": "A method to predict future trends using data"
         },
         {
           "id": 6,
-          "question": "What does PPC stand for?",
+          "question": "Which of the following is an example of descriptive analytics?",
           "options": [
-            "Pay-Per-Click",
-            "Price Per Customer",
-            "Post Per Category",
-            "Page Per Click"
+            "Summarizing historical sales data",
+            "Predicting future customer behavior",
+            "Optimizing supply chain operations",
+            "Developing machine learning models"
           ],
-          "answer": "Pay-Per-Click"
+          "answer": "Summarizing historical sales data"
         },
         {
           "id": 7,
-          "question": "Which tool is used for tracking website analytics?",
+          "question": "What does a 'Dashboard' provide in Business Analytics?",
           "options": [
-            "Google Analytics",
-            "WordPress",
-            "Photoshop",
-            "Microsoft Excel"
+            "A graphical representation of key metrics",
+            "A detailed written report",
+            "An alternative to data storage",
+            "A manual method to record data"
           ],
-          "answer": "Google Analytics"
+          "answer": "A graphical representation of key metrics"
         },
         {
           "id": 8,
-          "question": "What is content marketing?",
+          "question": "Which statistical technique is commonly used in Business Analytics?",
           "options": [
-            "Creating and distributing valuable content to attract customers",
-            "Paid advertising",
-            "Email spam",
-            "Direct mail campaigns"
+            "Regression Analysis",
+            "Cryptography",
+            "Photosynthesis",
+            "Gene Editing"
           ],
-          "answer": "Creating and distributing valuable content to attract customers"
+          "answer": "Regression Analysis"
         },
         {
           "id": 9,
-          "question": "What is the purpose of meta descriptions?",
+          "question": "What is the role of data visualization in Business Analytics?",
           "options": [
-            "To summarize page content for search results",
-            "To store website data",
-            "To track user behavior",
-            "To create backlinks"
+            "To make data insights more understandable",
+            "To hide complex data",
+            "To replace statistical analysis",
+            "To store data permanently"
           ],
-          "answer": "To summarize page content for search results"
+          "answer": "To make data insights more understandable"
         },
         {
           "id": 10,
-          "question": "What is remarketing?",
+          "question": "Which of the following describes 'Prescriptive Analytics'?",
           "options": [
-            "Targeting ads to users who previously visited your website",
-            "Rebranding a company",
-            "Reselling products",
-            "Redesigning a website"
+            "Recommending actions based on data insights",
+            "Summarizing past data",
+            "Storing data securely",
+            "Predicting data loss"
           ],
-          "answer": "Targeting ads to users who previously visited your website"
+          "answer": "Recommending actions based on data insights"
         }
       ],
-      "id": "3a6b"
-    },
-    {
-      "courseId": "10243333",
-      "courseName": "AI for Beginners",
-      "assessmentDate": "2025-03-31",
-      "questions": [
-        {
-          "id": 1,
-          "question": "What is Machine Learning?",
-          "options": [
-            "A subset of AI that enables systems to learn from data",
-            "A programming language",
-            "A type of computer hardware",
-            "A database management system"
-          ],
-          "answer": "A subset of AI that enables systems to learn from data"
-        },
-        {
-          "id": 2,
-          "question": "What is the difference between supervised and unsupervised learning?",
-          "options": [
-            "Supervised learning uses labeled data, unsupervised doesn't",
-            "Supervised learning is faster than unsupervised",
-            "Supervised learning requires more computing power",
-            "There is no difference"
-          ],
-          "answer": "Supervised learning uses labeled data, unsupervised doesn't"
-        },
-        {
-          "id": 3,
-          "question": "What is a neural network?",
-          "options": [
-            "A computing system inspired by biological neural networks",
-            "A computer network protocol",
-            "A type of internet connection",
-            "A database structure"
-          ],
-          "answer": "A computing system inspired by biological neural networks"
-        },
-        {
-          "id": 4,
-          "question": "What is Deep Learning?",
-          "options": [
-            "A subset of machine learning using multiple layers of neural networks",
-            "Learning while sleeping",
-            "Studying complex topics",
-            "A database query method"
-          ],
-          "answer": "A subset of machine learning using multiple layers of neural networks"
-        },
-        {
-          "id": 5,
-          "question": "Which of these is a common AI application?",
-          "options": [
-            "Natural Language Processing",
-            "Web browsing",
-            "File compression",
-            "Disk defragmentation"
-          ],
-          "answer": "Natural Language Processing"
-        },
-        {
-          "id": 6,
-          "question": "What is the role of training data in AI?",
-          "options": [
-            "To teach the model patterns and relationships",
-            "To test computer speed",
-            "To store user information",
-            "To create backups"
-          ],
-          "answer": "To teach the model patterns and relationships"
-        },
-        {
-          "id": 7,
-          "question": "What is bias in AI?",
-          "options": [
-            "Systematic errors in AI systems often reflecting human prejudices",
-            "A programming language",
-            "A type of computer virus",
-            "A hardware component"
-          ],
-          "answer": "Systematic errors in AI systems often reflecting human prejudices"
-        },
-        {
-          "id": 8,
-          "question": "What is computer vision?",
-          "options": [
-            "AI technology that enables computers to understand visual information",
-            "A type of computer display",
-            "A graphics card",
-            "A video game console"
-          ],
-          "answer": "AI technology that enables computers to understand visual information"
-        },
-        {
-          "id": 9,
-          "question": "What is reinforcement learning?",
-          "options": [
-            "Learning through trial and error with rewards and penalties",
-            "Learning by watching videos",
-            "Learning from textbooks",
-            "Learning through social media"
-          ],
-          "answer": "Learning through trial and error with rewards and penalties"
-        },
-        {
-          "id": 10,
-          "question": "What is the Turing test?",
-          "options": [
-            "A test of a machine's ability to exhibit intelligent behavior",
-            "A computer speed test",
-            "A programming exam",
-            "A hardware diagnostic tool"
-          ],
-          "answer": "A test of a machine's ability to exhibit intelligent behavior"
-        }
-      ],
-      "id": "0bad"
+      "id": "b593"
     }
   ],
   "courses-enrolled-by-candidates": [
@@ -883,7 +395,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructor": "Ishani",
+      "instructorName": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
@@ -894,9 +406,20 @@
       "courseName": "Photography Basics",
       "courseCategory": "Arts",
       "courseDurationInMonths": 2,
-      "instructor": "Rohan Gupta",
+      "instructorName": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01"
+    },
+    {
+      "id": "24797",
+      "candidateId": "47987",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
     },
     {
       "id": "80903",
@@ -905,7 +428,7 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructor": "Ishani",
+      "instructorName": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
     },
@@ -916,7 +439,7 @@
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructor": "Kavya Kapoor",
+      "instructorName": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01"
     },
@@ -927,7 +450,7 @@
       "courseName": "Photography Basics",
       "courseCategory": "Arts",
       "courseDurationInMonths": 2,
-      "instructor": "Rohan Gupta",
+      "instructorName": "Rohan Gupta",
       "startDate": "2025-02-01",
       "endDate": "2025-05-01"
     },
@@ -938,9 +461,20 @@
       "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructor": "Ishani",
+      "instructorName": "Ishani",
       "startDate": "2025-02-01",
       "endDate": "2025-08-01"
+    },
+    {
+      "id": "82649",
+      "candidateId": "84644",
+      "courseId": "5237777",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationInMonths": 4,
+      "instructorName": "Arjun Nair",
+      "startDate": "2025-05-01",
+      "endDate": "2025-09-01"
     },
     {
       "id": "53193",
@@ -949,7 +483,7 @@
       "courseName": "Graphic Design",
       "courseCategory": "Design",
       "courseDurationInMonths": 3,
-      "instructor": "Kavya Kapoor",
+      "instructorName": "Kavya Kapoor",
       "startDate": "2025-04-01",
       "endDate": "2025-07-01"
     },
@@ -960,7 +494,7 @@
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 4,
-      "instructor": "Sanya Kapoor",
+      "instructorName": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01"
     },
@@ -968,10 +502,10 @@
       "id": "41737",
       "candidateId": "47987",
       "courseId": "3235555",
-      "courseName": "Cloud Computing",
+      "courseName": "Machine Learning",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 5,
-      "instructor": "Raghav Verma",
+      "instructorName": "Raghav Verma",
       "startDate": "2025-03-01",
       "endDate": "2025-08-01"
     },
@@ -982,7 +516,7 @@
       "courseName": "AI for Beginners",
       "courseCategory": "Artificial Intelligence",
       "courseDurationInMonths": 4,
-      "instructor": "Sanya Kapoor",
+      "instructorName": "Sanya Kapoor",
       "startDate": "2025-10-01",
       "endDate": "2026-02-01"
     },
@@ -990,265 +524,109 @@
       "id": "36311",
       "candidateId": "3",
       "courseId": "2234444",
-      "courseName": "Cloud Computing",
+      "courseName": "Data Science",
       "courseCategory": "Data Analytics",
       "courseDurationInMonths": 6,
-      "instructor": "Ishani",
+      "instructorName": "Ishani",
       "startDate": "2025-02-01",
-      "endDate": "2025-08-01"
-    },
-    {
-      "id": "58140",
-      "candidateId": "55874",
-      "courseName": "Data Science",
-      "courseCategory": "Technology",
-      "startDate": "2025-12-19",
-      "endDate": "2026-01-22"
-    },
-    {
-      "id": "75276",
-      "candidateId": "82718",
-      "courseId": "5237777",
-      "courseName": "Cloud Computing",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
-    },
-    {
-      "id": "17043",
-      "candidateId": "64555",
-      "courseId": "5237777",
-      "courseName": "Cloud Computing",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
-    },
-    {
-      "id": "22736",
-      "candidateId": "64555",
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 5,
-      "instructorName": "Raghav Verma",
-      "startDate": "2025-03-01",
       "endDate": "2025-08-01"
     }
   ],
   "courses": [
     {
-      "courseId": "1233333",
-      "courseName": "Web Development",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructor": "Tanishq Singh",
-      "startDate": "2025-01-01",
-      "endDate": "2025-05-01",
-      "assessmentDate": "2025-06-31",
-      "id": "3e97",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
-    },
-    {
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 6,
-      "instructor": "Ishani",
-      "startDate": "2025-02-01",
-      "endDate": "2025-08-01",
-      "assessmentDate": "2025-09-31",
-      "id": "a47e",
-      "openForEnrollment": true,
-      "content": "This is a brand new content!!!",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 27
-    },
-    {
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 5,
-      "instructor": "Raghav Verma",
-      "startDate": "2025-03-01",
-      "endDate": "2025-08-01",
-      "assessmentDate": "2025-09-31",
-      "id": "5f13",
-      "openForEnrollment": true,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
-    },
-    {
-      "courseId": "4236666",
+      "id": "9699",
       "courseName": "Graphic Design",
-      "courseCategory": "Design",
-      "courseDurationInMonths": 3,
+      "courseCategory": "Graphic Designing",
+      "courseDurationMonths": 1,
+      "startDate": "2025-02-05",
+      "endDate": "2025-03-05",
       "instructor": "Kavya Kapoor",
-      "startDate": "2025-04-01",
-      "endDate": "2025-07-01",
-      "assessmentDate": "2025-08-31",
-      "id": "c91d",
+      "assessmentDate": "2025-03-06",
       "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
+      "contentUploaded": false,
+      "status": "Ongoing",
       "noOfEnrollments": 30,
       "seatsLeft": 28
     },
     {
-      "courseId": "4236666",
-      "courseName": "Angular",
-      "courseCategory": "Design",
-      "courseDurationInMonths": 3,
-      "instructor": "Sujatha Sharma",
-      "startDate": "2025-02-01",
-      "endDate": "2025-07-01",
-      "assessmentDate": "2025-08-31",
-      "id": "c91d",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
-    },
-    {
-      "courseId": "5237777",
-      "courseName": "Cloud Computing",
+      "id": "7537",
+      "courseName": "Data Science",
       "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
+      "courseDurationMonths": 1,
+      "startDate": "2025-02-06",
+      "endDate": "2025-03-06",
+      "instructor": "Saleem",
+      "assessmentDate": "2025-03-07"
+    },
+    {
+      "id": "8a33",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-02-06",
+      "endDate": "2025-03-06",
       "instructor": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01",
-      "assessmentDate": "2025-09-31",
-      "id": "f29b",
-      "openForEnrollment": true,
-      "content": "Objective: Provide an understanding of what cloud computing is, its history, evolution, and why it is important in the modern technological landscape.\n\nContent:\n\nDefinition: Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, and analytics—over the internet (the cloud). It offers faster innovation, flexible resources, and economies of scale.\n\nHistory and Evolution: Cloud computing has evolved from the traditional client-server model to the advanced, scalable cloud services we know today. Key milestones include the advent of virtualization technologies, the launch of AWS in 2006, and the widespread adoption of cloud services by major enterprises.\n\nImportance and Benefits: Cloud computing provides numerous benefits such as cost savings, scalability, flexibility, and remote accessibility. Businesses can reduce their infrastructure costs, scale up or down based on demand, and access powerful computing resources from anywhere in the world.",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 28
+      "assessmentDate": "2025-03-07"
     },
     {
-      "courseId": "6238888",
-      "courseName": "Digital Marketing",
-      "courseCategory": "Marketing",
-      "courseDurationInMonths": 3,
-      "instructor": "Meera Iyer",
-      "startDate": "2025-03-01",
-      "endDate": "2025-06-01",
-      "assessmentDate": "2025-07-31",
-      "id": "b63a",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
+      "id": "8ef8",
+      "courseName": "Angular",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-01-06",
+      "endDate": "2025-02-05",
+      "instructor": "Sujatha Sharma",
+      "assessmentDate": "2025-02-06"
     },
     {
-      "courseId": "8241111",
-      "courseName": "Business Analytics",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 5,
-      "instructor": "Priya Seth",
-      "startDate": "2024-04-01",
-      "endDate": "2024-07-01",
-      "assessmentDate": "2025-01-31",
-      "id": "e76d",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 30
+      "id": "4024",
+      "courseName": "Graphic Design",
+      "courseCategory": "Graphic Designing",
+      "courseDurationMonths": 2,
+      "startDate": "2025-03-07",
+      "endDate": "2025-05-07",
+      "instructor": "Kavya Kapoor",
+      "assessmentDate": "2025-05-08"
     },
     {
-      "courseId": "9242222",
-      "courseName": "Photography Basics",
-      "courseCategory": "Arts",
-      "courseDurationInMonths": 2,
+      "id": "a039",
+      "courseName": "Data Science",
+      "courseCategory": "Graphic Designing",
+      "courseDurationMonths": 1,
+      "startDate": "2025-02-06",
+      "endDate": "2025-03-06",
+      "instructor": "Ishani",
+      "assessmentDate": "2025-03-07"
+    },
+    {
+      "id": "ef66",
+      "courseName": "Data Science",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-03-07",
+      "endDate": "2025-04-07",
+      "instructor": "Saleem",
+      "assessmentDate": "2025-04-08"
+    },
+    {
+      "id": "f4c5",
+      "courseName": "Machine Learning",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-02-07",
+      "endDate": "2025-03-07",
       "instructor": "Rohan Gupta",
-      "startDate": "2025-02-01",
-      "endDate": "2025-05-01",
-      "assessmentDate": "2025-06-31",
-      "id": "g47c",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 28
+      "assessmentDate": "2025-03-08"
     },
     {
-      "courseId": "10243333",
-      "courseName": "AI for Beginners",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 4,
-      "instructor": "Sanya Kapoor",
-      "startDate": "2025-10-01",
-      "endDate": "2026-02-01",
-      "assessmentDate": "2025-03-31",
-      "id": "h93f",
-      "openForEnrollment": false,
-      "content": "",
-      "enableAssessment": false,
-      "noOfEnrollments": 30,
-      "seatsLeft": 28
-    }
-  ],
-  "submissions": [
-    {
-      "id": "30f4",
-      "candidateId": "55874",
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "totalQuestions": 10,
-      "answeredQuestions": 6,
-      "correctAnswers": 3,
-      "totalMarks": 3,
-      "submissionDate": "2025-02-02T11:47:57.397Z",
-      "status": "Submitted"
-    },
-    {
-      "id": "eaeb",
-      "candidateId": "55874",
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "totalQuestions": 10,
-      "answeredQuestions": 8,
-      "correctAnswers": 6,
-      "totalMarks": 6,
-      "submissionDate": "2025-02-02T12:12:14.354Z",
-      "status": "Submitted"
-    },
-    {
-      "id": "4e4d",
-      "candidateId": "47987",
-      "courseId": "5237777",
-      "courseName": "Cloud Computing",
-      "totalQuestions": 10,
-      "answeredQuestions": 2,
-      "correctAnswers": 1,
-      "totalMarks": 1,
-      "submissionDate": "2025-02-07T05:56:28.656Z",
-      "status": "Submitted"
-    },
-    {
-      "id": "a9de",
-      "candidateId": "82718",
-      "courseId": "5237777",
-      "courseName": "Cloud Computing",
-      "totalQuestions": 10,
-      "answeredQuestions": 0,
-      "correctAnswers": 0,
-      "totalMarks": 0,
-      "submissionDate": "2025-02-07T06:24:00.577Z",
-      "status": "Submitted"
+      "id": "1b95",
+      "courseName": "Cyber Security",
+      "courseCategory": "Technology",
+      "courseDurationMonths": 1,
+      "startDate": "2025-04-11",
+      "endDate": "2025-05-11",
+      "instructor": "Arjun Nair",
+      "assessmentDate": "2025-05-12"
     }
   ]
 }

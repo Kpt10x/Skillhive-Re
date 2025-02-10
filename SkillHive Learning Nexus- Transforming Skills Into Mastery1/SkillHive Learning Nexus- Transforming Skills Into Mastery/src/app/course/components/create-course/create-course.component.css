@@ -17,7 +17,7 @@ body {
   background-color: #24353e;
   color: white;
   width: 235px;
-  height: 200vh;
+  height: 105vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -62,12 +62,21 @@ body {
   margin-top: 100px;
 }
 
-.user, .logout {
+.logout {
   display: flex;
   align-items: center;
-  color: #C1DBC6;
+  color: #c1dbc6;
   font-size: 20px;
   padding: 10px 0;
+  
+}
+.user {
+  display: flex;
+  align-items: center;
+  color: #c1dbc6;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-top: 235px;
 }
 
 .user img, .logout img {

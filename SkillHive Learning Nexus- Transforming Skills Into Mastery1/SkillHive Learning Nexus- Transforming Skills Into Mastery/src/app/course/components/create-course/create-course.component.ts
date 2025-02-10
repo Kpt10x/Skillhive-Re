@@ -10,8 +10,8 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { CourseService } from "../../services/course_service";
-import { forkJoin } from 'rxjs';
-import { AuthService } from '../../../authentication/services/auth.service';
+import { forkJoin } from "rxjs";
+import { AuthService } from "../../../authentication/services/auth.service";
 
 @Component({
   selector: "create-course",
@@ -48,7 +48,10 @@ export class CreateCourseComponent implements OnInit {
     this.createCourseForm = this.fb.group({
       courseName: ["", [Validators.required, Validators.minLength(3)]],
       courseCategory: ["", Validators.required],
-      courseDurationMonths: ["", [Validators.required, Validators.min(1), Validators.max(24)]],
+      courseDurationMonths: [
+        "",
+        [Validators.required, Validators.min(1), Validators.max(24)],
+      ],
       startDate: ["", Validators.required],
       endDate: ["", Validators.required],
       instructor: ["", Validators.required],
@@ -56,16 +59,16 @@ export class CreateCourseComponent implements OnInit {
     });
 
     // Subscribe to date changes
-    this.createCourseForm.get('startDate')?.valueChanges.subscribe(() => {
+    this.createCourseForm.get("startDate")?.valueChanges.subscribe(() => {
       this.filterInstructors();
     });
 
-    this.createCourseForm.get('endDate')?.valueChanges.subscribe(() => {
+    this.createCourseForm.get("endDate")?.valueChanges.subscribe(() => {
       this.filterInstructors();
     });
 
     // Subscribe to course name changes
-    this.createCourseForm.get('courseName')?.valueChanges.subscribe(() => {
+    this.createCourseForm.get("courseName")?.valueChanges.subscribe(() => {
       this.filterInstructors();
     });
   }
@@ -73,8 +76,8 @@ export class CreateCourseComponent implements OnInit {
   ngOnInit(): void {
     // Fetch both instructors and courses
     forkJoin({
-      profiles: this.http.get<any[]>('http://localhost:3000/profiles'),
-      courses: this.http.get<any[]>('http://localhost:3000/courses')
+      profiles: this.http.get<any[]>("http://localhost:3000/profiles"),
+      courses: this.http.get<any[]>("http://localhost:3000/courses"),
     }).subscribe({
       next: (data) => {
         // Store courses for availability checking
@@ -82,29 +85,33 @@ export class CreateCourseComponent implements OnInit {
 
         // Filter profiles to get only instructors
         this.instructors = data.profiles
-          .filter(profile => profile.role === 'instructor')
-          .map(instructor => ({
+          .filter((profile) => profile.role === "instructor")
+          .map((instructor) => ({
             id: instructor.id,
             name: instructor.name,
             areaOfExpertise: instructor.areaOfExpertise,
-            experience: instructor.experience
+            experience: instructor.experience,
           }));
 
         this.filterInstructors();
       },
       error: (error) => {
-        console.error('Error fetching data:', error);
-      }
+        console.error("Error fetching data:", error);
+      },
     });
 
     this.categories = this.hardcodedCategories;
 
     // Set minimum assessment date
     const today = new Date();
-    this.minAssignmentDate = today.toISOString().split('T')[0];
+    this.minAssignmentDate = today.toISOString().split("T")[0];
   }
 
-  isInstructorAvailable(instructor: any, startDate: Date, endDate: Date): boolean {
+  isInstructorAvailable(
+    instructor: any,
+    startDate: Date,
+    endDate: Date
+  ): boolean {
     if (!this.existingCourses) return true;
 
     // Convert dates to timestamps for comparison
@@ -112,13 +119,13 @@ export class CreateCourseComponent implements OnInit {
     const newEndTime = endDate.getTime();
 
     // Check if instructor has any overlapping courses
-    const hasOverlap = this.existingCourses.some(course => {
+    const hasOverlap = this.existingCourses.some((course) => {
       if (course.instructor === instructor.name) {
         const courseStartTime = new Date(course.startDate).getTime();
         const courseEndTime = new Date(course.endDate).getTime();
 
         // Check for date overlap
-        return (newStartTime <= courseEndTime && newEndTime >= courseStartTime);
+        return newStartTime <= courseEndTime && newEndTime >= courseStartTime;
       }
       return false;
     });
@@ -128,21 +135,29 @@ export class CreateCourseComponent implements OnInit {
 
   filterInstructors(): void {
     //const selectedCategory = this.createCourseForm.get('courseCategory')?.value;
-    const startDate = this.createCourseForm.get('startDate')?.value;
-    const endDate = this.createCourseForm.get('endDate')?.value;
-    const courseName = this.createCourseForm.get('courseName')?.value;
+    const startDate = this.createCourseForm.get("startDate")?.value;
+    const endDate = this.createCourseForm.get("endDate")?.value;
+    const courseName = this.createCourseForm.get("courseName")?.value;
 
     this.filteredInstructors = [...this.instructors];
 
     //console.log('Selected Category:', selectedCategory);
-    console.log('Initial Instructors:', this.filteredInstructors);
+    console.log("Initial Instructors:", this.filteredInstructors);
 
     // Filter by course name matching expertise
     if (courseName) {
-        this.filteredInstructors = this.filteredInstructors.filter(instructor => {
-            return this.doesCourseMatchExpertise(courseName, instructor.areaOfExpertise);
-        });
-        console.log('Instructors after course name filter:', this.filteredInstructors);
+      this.filteredInstructors = this.filteredInstructors.filter(
+        (instructor) => {
+          return this.doesCourseMatchExpertise(
+            courseName,
+            instructor.areaOfExpertise
+          );
+        }
+      );
+      console.log(
+        "Instructors after course name filter:",
+        this.filteredInstructors
+      );
     }
 
     // Filter by category if selected
@@ -157,24 +172,36 @@ export class CreateCourseComponent implements OnInit {
 
     // Filter by availability if dates are selected
     if (startDate && endDate) {
-        const startDateObj = new Date(startDate);
-        const endDateObj = new Date(endDate);
+      const startDateObj = new Date(startDate);
+      const endDateObj = new Date(endDate);
 
-        this.filteredInstructors = this.filteredInstructors.filter(instructor => {
-            return this.isInstructorAvailable(instructor, startDateObj, endDateObj);
-        });
-        console.log('Instructors after availability filter:', this.filteredInstructors);
+      this.filteredInstructors = this.filteredInstructors.filter(
+        (instructor) => {
+          return this.isInstructorAvailable(
+            instructor,
+            startDateObj,
+            endDateObj
+          );
+        }
+      );
+      console.log(
+        "Instructors after availability filter:",
+        this.filteredInstructors
+      );
     }
 
-    console.log('Final filtered instructors:', this.filteredInstructors);
-}
+    console.log("Final filtered instructors:", this.filteredInstructors);
+  }
   doesCourseMatchExpertise(courseName: string, expertise: string): boolean {
     if (!courseName || !expertise) return false;
 
     const courseNameLower = courseName.toLowerCase();
     const expertiseLower = expertise.toLowerCase();
 
-    return courseNameLower.includes(expertiseLower) || expertiseLower.includes(courseNameLower);
+    return (
+      courseNameLower.includes(expertiseLower) ||
+      expertiseLower.includes(courseNameLower)
+    );
   }
 
   onEndDateChange(): void {
@@ -193,16 +220,24 @@ export class CreateCourseComponent implements OnInit {
 
   onSubmit() {
     if (this.createCourseForm.valid) {
-      //const courseData = this.createCourseForm.value;
-      const courseData = {
-        ...this.createCourseForm.value,
-        openForEnrollment: false,
-        content: "",
-        enableAssessment: false,
-        noOfEnrollments: 30,
-        seatsLeft: 30
+      const courseData = this.createCourseForm.value;
+
+      // Get the selected instructor's ID
+      const selectedInstructorId =
+        this.createCourseForm.get("instructor")?.value;
+
+      // Find the instructor's name based on the selected ID
+      const selectedInstructor = this.instructors.find(
+        (instructor) => instructor.id === selectedInstructorId
+      );
+
+      // Create a new object with the selected instructor's name
+      const courseToSave = {
+        ...courseData,
+        instructor: selectedInstructor ? selectedInstructor.name : "", // Save the instructor's name
       };
-      this.http.post("http://localhost:3000/courses", courseData).subscribe(
+
+      this.http.post("http://localhost:3000/courses", courseToSave).subscribe(
         (response) => {
           console.log("Course data saved successfully:", response);
           alert("Course data saved successfully!");
@@ -219,10 +254,14 @@ export class CreateCourseComponent implements OnInit {
   }
 
   cancel() {
-    this.createCourseForm.reset();
-    this.filteredInstructors = [...this.instructors]; // Reset to all instructors
-    this.minAssignmentDate = null; // Reset minimum assignment date
+    this.createCourseForm.reset({
+      courseName: "",
+      courseCategory: "",
+      courseDurationMonths: "",
+      startDate: "",
+      endDate: "",
+      instructor: "",
+      assessmentDate: "",
+    }); // Set all form fields to null
   }
-  
 }
-

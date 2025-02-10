@@ -1,11 +1,11 @@
 body {
-  font-family: 'Balsamiq Sans', sans-serif;
+  font-family: "Balsamiq Sans", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #A4C6AC;
+  background-color: #a4c6ac;
 }
 
 .container {
@@ -17,7 +17,7 @@ body {
   background-color: #24353e;
   color: white;
   width: 235px;
-  height: 200vh;
+  height: 105vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ body {
 }
 
 .hive {
-  color: #A4C6AC;
+  color: #a4c6ac;
   font-size: 40px;
 }
 
@@ -45,16 +45,22 @@ body {
   margin-top: 20px;
 }
 
-.sel1, .sel2, .sel3, .sel4 {
+.sel1,
+.sel2,
+.sel3,
+.sel4 {
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #C1DBC6;
+  color: #c1dbc6;
   font-size: 20px;
   padding: 10px 0;
 }
 
-.sel1 img, .sel2 img, .sel3 img, .sel4 img {
+.sel1 img,
+.sel2 img,
+.sel3 img,
+.sel4 img {
   margin-right: 10px;
 }
 
@@ -62,15 +68,25 @@ body {
   margin-top: 100px;
 }
 
-.user, .logout {
+.logout {
   display: flex;
   align-items: center;
-  color: #C1DBC6;
+  color: #c1dbc6;
   font-size: 20px;
   padding: 10px 0;
+  
+}
+.user {
+  display: flex;
+  align-items: center;
+  color: #c1dbc6;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-top: 235px;
 }
 
-.user img, .logout img {
+.user img,
+.logout img {
   margin-right: 10px;
 }
 
@@ -84,27 +100,27 @@ body {
 
 .dropdown-item {
   padding: 10px;
-  background-color: #2C4B56;
+  background-color: #2c4b56;
   color: white;
   cursor: pointer;
   font-size: 18px;
 }
 
 .dropdown-item:hover {
-  background-color: #3D6A7D;
+  background-color: #3d6a7d;
 }
 
 .main_content {
   flex: 1;
   padding: 20px;
-  background-color: #E7F0EB;
+  background-color: #e7f0eb;
   margin-bottom: 20px;
 }
 
 /* Start editing */
 
 .main_content h2 {
-  color: #394B53;
+  color: #394b53;
   font-size: 24px;
   margin-top: 0;
   text-align: center;
@@ -117,15 +133,19 @@ body {
 
 .filters label {
   font-weight: bold;
-  color: #394B53;
+  color: #394b53;
 }
 
 .course-table {
   width: 100%;
   border-collapse: collapse;
+  margin-left: 8px;
+  padding: 40px;
+  font-size: 14.5px;
 }
 
-.course-table th, .course-table td {
+.course-table th,
+.course-table td {
   border: 1px solid #999;
   padding: 8px;
   text-align: left;
@@ -133,7 +153,7 @@ body {
 }
 
 .course-table th {
-  background-color: #394B53;
+  background-color: #394b53;
   color: white;
 }
 
@@ -148,30 +168,8 @@ body {
   margin-bottom: 20px;
 }
 
-.social_media {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.social_media a {
-  color: white;
-  font-size: 20px;
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.3s;
-}
-
-.social_media a:hover {
-  color: #A4C6AC;
-  transform: scale(1.1);
-}
-
-
-
-
-
 footer {
-  background-color: #394B53; /* Changed color */
+  background-color: #394b53; /* Changed color */
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -228,10 +226,9 @@ footer ul li a:hover {
 }
 
 #social-media a:hover {
-  color: #A4C6AC;
+  color: #a4c6ac;
   transform: scale(1.1);
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -271,43 +268,43 @@ footer ul li a:hover {
 
 .filters label {
   font-weight: bold;
-  color: #394B53;
+  color: #394b53;
   margin-right: 10px;
 }
 
 .filters select {
   padding: 8px 12px;
-  border: 1px solid #394B53;
+  border: 1px solid #394b53;
   border-radius: 5px;
   font-size: 16px;
   background-color: #d4e7d4;
-  color: #394B53;
+  color: #394b53;
   transition: box-shadow 0.3s;
 }
 
 .filters select:focus {
   outline: none;
-  box-shadow: 0 0 5px #A4C6AC;
+  box-shadow: 0 0 5px #a4c6ac;
 }
 
 .filters select option {
   background-color: white;
-  color: #394B53;
+  color: #394b53;
 }
 
 #filter {
   padding: 8px 12px;
-  border: 1px solid #394B53;
+  border: 1px solid #394b53;
   border-radius: 5px;
   font-size: 16px;
   background-color: #d4e7d4;
-  color: #394B53;
+  color: #394b53;
   transition: box-shadow 0.3s;
 }
 
 #filter:focus {
   outline: none;
-  box-shadow: 0 0 5px #A4C6AC;
+  box-shadow: 0 0 5px #a4c6ac;
 }
 
 /* CSS for the dropdown menu */
@@ -334,9 +331,6 @@ footer ul li a:hover {
 .dropdown-container {
   transition: all 0.3s ease;
 }
-
-
-
 
 /* Styling the Edit button */
 .edit-course-btn {
@@ -398,4 +392,137 @@ footer ul li a:hover {
 
 .enroll-btn:hover {
   background-color: #138496; /* Darker teal on hover */
+}
+
+/* Add this CSS to your stylesheet */
+.edit-course-form {
+  position: fixed; /* Fixes the form to the viewport */
+  top: 30px; /* Aligns the form to the top of the screen */
+  left: 50%; /* Centers the form horizontally */
+  transform: translateX(-50%); /* Adjusts the centering */
+  width: 90%; /* Sets a width for the form */
+  max-width: 600px; /* Maximum width for larger screens */
+  background-color: white; /* Background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+  padding: 20px; /* Adds padding inside the form */
+  z-index: 1000; /* Ensures the form is above other elements */
+  transition: all 0.3s ease; /* Smooth transition for opening */
+  border-radius: 8px; /* Rounded corners */
+  display: block; /* Ensure the form is displayed */
+}
+
+/* Form header styling */
+.edit-course-form h3 {
+  color: #394b53; /* Header color */
+  margin-bottom: 20px; /* Space below the header */
+  text-align: center; /* Center the header text */
+}
+
+/* Input field styling */
+.edit-course-form input[type="text"],
+.edit-course-form input[type="date"] {
+  width: 95%; /* Full width */
+  padding: 10px; /* Padding inside the input */
+  margin-bottom: 20px; /* Space below each input */
+  border: 1px solid #8cb390; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  transition: border-color 0.3s; /* Transition for border color */
+  background-color: #f2f9f4;
+  color: #263339;
+}
+
+/* Input focus effect */
+.edit-course-form input[type="text"]:focus,
+.edit-course-form input[type="date"]:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Button group styling */
+.button-group {
+  display: flex; /* Flexbox for button alignment */
+  justify-content: space-between; /* Space between buttons */
+}
+
+/* Button styling */
+.button-group button {
+  padding: 10px 15px; /* Padding inside buttons */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for background color */
+}
+
+/* Update button styling */
+.button-group button[type="submit"] {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  transition: background-color 0.3s ease;
+}
+
+/* Update button hover effect */
+.button-group button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Cancel button styling */
+.button-group button[type="button"] {
+  background-color: #dc3545; /* Red background */
+  color: white; /* White text */
+  transition: background-color 0.3s ease;
+}
+
+/* Cancel button hover effect */
+.button-group button[type="button"]:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Show the form when selectedCourse is present */
+.edit-course-form.ng-enter {
+  display: block; /* Show the form */
+  opacity: 0; /* Start with opacity 0 */
+  transform: translateY(-20px); /* Start slightly above */
+}
+
+.edit-course-form.ng-enter-active {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
+}
+
+.backdrop {
+  position: fixed; /* Fixes the backdrop to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Below the form */
+}
+.filter-box {
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Space inside the box */
+  background-color: #d4e7d4; /* Light background color */
+  margin: 20px 0; /* Space above and below the box */
+  margin-left: 40px;
+}
+
+.filter-box label {
+  display: block; /* Make label take full width */
+  margin-bottom: 10px; /* Space below the label */
+  font-weight: bold; /* Bold text for the label */
+}
+
+.filter-box select {
+  width: 100%; /* Full width for the select box */
+  padding: 10px; /* Space inside the select box */
+  border: 1px solid #ccc; /* Light gray border for the select */
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 16px; /* Font size for the select */
+}
+.form-group {
+  margin-left: 10px;
 }

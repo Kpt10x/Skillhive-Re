@@ -1,23 +1,23 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { AdminveiwComponent } from './adminveiw.component';
+import { AdminViewComponent } from './adminveiw.component';
 
-// describe('AdminveiwComponent', () => {
-//   let component: AdminveiwComponent;
-//   let fixture: ComponentFixture<AdminveiwComponent>;
+describe('AdminveiwComponent', () => {
+  let component: AdminViewComponent;
+  let fixture: ComponentFixture<AdminViewComponent>;
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [AdminveiwComponent]
-//     })
-//     .compileComponents();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AdminViewComponent]
+    })
+    .compileComponents();
     
-//     fixture = TestBed.createComponent(AdminveiwComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    fixture = TestBed.createComponent(AdminViewComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,130 +1,111 @@
 body {
-  font-family: 'Balsamiq Sans', sans-serif;
+  font-family: "Balsamiq Sans", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #A4C6AC;
+  background-color: #a4c6ac;
 }
 
-.container {
+.wrapper {
   display: flex;
   width: 100%;
   flex: 1;
 }
 
 .sidebar {
-  width: 240px;
-  background: linear-gradient(180deg, #394B53, #2F3E45);
+  background-color: #24353e;
   color: white;
-  height: 100vh;
+  width: 235px;
+  height: 105vh;
   padding: 20px;
-  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Ensures top links remain at the top */
-  transition: height 0.3s;
 }
 
-.sidebar.expanded {
-  height: auto;
-}
-
-.sidebar h2 {
-  text-align: center;
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
-  font-weight: 400;
+  white-space: nowrap;
+}
+
+.skill {
+  color: white;
   font-size: 40px;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 500;
-  font-size: 60px;
-  font-style: bold;
+.hive {
+  color: #a4c6ac;
+  font-size: 40px;
 }
 
-.green-text {
-  color: #A4C6AC;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin: 10px 0;
-}
-
-.sidebar ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.sidebar ul li a:hover {
-  background-color: #A4C6AC;
-  color: #263339;
-  transform: scale(1.05);
-}
-
-.sidebar ul li a i {
-  margin-right: 10px;
-}
-
-.dropdown-container {
-  display: none;
-  background-color: #394B53;
-  margin-left: 20px;
-  padding-left: 10px;
-  border-left: 3px solid #3e4c53;
-  border-radius: 5px;
-}
-
-.dropdown-container a {
-  color: #E7F0EB;
-  margin: 5px 0;
-  padding: 10px;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.dropdown-container a:hover {
-  background-color: #A4C6AC;
-  color: #263339;
-  transform: scale(1.05);
-}
-
-.dropdown-container a i {
-  margin-right: 10px;
-}
-
-.social_media {
-  display: flex;
-  justify-content: center;
+.selections {
   margin-top: 20px;
 }
 
-.social_media a {
-  color: white;
+.sel1,
+.sel2,
+.sel3,
+.sel4 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #c1dbc6;
   font-size: 20px;
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.3s;
+  padding: 10px 0;
 }
 
-.social_media a:hover {
-  color: #A4C6AC;
-  transform: scale(1.1);
+.sel1 img,
+.sel2 img,
+.sel3 img,
+.sel4 img {
+  margin-right: 10px;
+}
+
+.extras {
+  margin-top: 100px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  color: #c1dbc6;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-top: 235px;
+}
+.logout {
+  display: flex;
+  align-items: center;
+  color: #c1dbc6;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.user img,
+.logout img {
+  margin-right: 10px;
+}
+.dropdown {
+  display: block;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  background-color: #2c4b56;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown-item:hover {
+  background-color: #3d6a7d;
 }
 
 .bottom-links {
@@ -149,7 +130,7 @@ body {
 }
 
 .bottom-links a:hover {
-  background-color: #A4C6AC;
+  background-color: #a4c6ac;
   color: #263339;
   transform: scale(1.05);
 }
@@ -157,14 +138,14 @@ body {
 .main_content {
   flex: 1;
   padding: 20px;
-  background-color: #E7F0EB;
+  background-color: #e7f0eb;
   margin-bottom: 20px;
 }
 
 /* Start editing */
 
 .main_content h2 {
-  color: #394B53;
+  color: #394b53;
   font-size: 24px;
   margin-top: 0;
   text-align: center;
@@ -177,15 +158,19 @@ body {
 
 .filters label {
   font-weight: bold;
-  color: #394B53;
+  color: #394b53;
 }
 
 .course-table {
   width: 100%;
   border-collapse: collapse;
+  margin-left: 30px;
+  padding: 40px;
+  font-size: 18px;
 }
 
-.course-table th, .course-table td {
+.course-table th,
+.course-table td {
   border: 1px solid #999;
   padding: 8px;
   text-align: left;
@@ -193,7 +178,7 @@ body {
 }
 
 .course-table th {
-  background-color: #394B53;
+  background-color: #394b53;
   color: white;
 }
 
@@ -209,15 +194,15 @@ body {
 }
 
 footer {
-  background-color:#263339;
+  background-color: #394b53; /* Changed color */
   color: white;
   text-align: center;
   padding: 10px 0;
   position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 0 px;
 }
-
 footer p {
   margin: 0;
   padding: 0;
@@ -266,10 +251,9 @@ footer ul li a:hover {
 }
 
 #social-media a:hover {
-  color: #A4C6AC;
+  color: #a4c6ac;
   transform: scale(1.1);
 }
-
 
 .filters {
   margin: 20px 0;
@@ -278,44 +262,43 @@ footer ul li a:hover {
 
 .filters label {
   font-weight: bold;
-  color: #394B53;
+  color: #394b53;
   margin-right: 10px;
 }
 
 .filters select {
   padding: 8px 12px;
-  border: 1px solid #394B53;
+  border: 1px solid #394b53;
   border-radius: 5px;
   font-size: 16px;
   background-color: #d4e7d4;
-  color: #394B53;
+  color: #394b53;
   transition: box-shadow 0.3s;
 }
 
 .filters select:focus {
   outline: none;
-  box-shadow: 0 0 5px #A4C6AC;
+  box-shadow: 0 0 5px #a4c6ac;
 }
 
 .filters select option {
   background-color: white;
-  color: #394B53;
+  color: #394b53;
 }
-
 
 #filter {
   padding: 8px 12px;
-  border: 1px solid #394B53;
+  border: 1px solid #394b53;
   border-radius: 5px;
   font-size: 16px;
   background-color: #d4e7d4;
-  color: #394B53;
+  color: #394b53;
   transition: box-shadow 0.3s;
 }
 
 #filter:focus {
   outline: none;
-  box-shadow: 0 0 5px #A4C6AC;
+  box-shadow: 0 0 5px #a4c6ac;
 }
 
 /* CSS for the dropdown menu */
@@ -341,4 +324,28 @@ footer ul li a:hover {
 /* Add transition effect for smooth dropdown */
 .dropdown-container {
   transition: all 0.3s ease;
+}
+
+/* Add this to your CSS file */
+.filter-box {
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 15px; /* Space inside the box */
+  background-color: #d4e7d4; /* Light background color */
+  margin: 20px 0; /* Space above and below the box */
+  margin-left: 40px;
+}
+
+.filter-box label {
+  display: block; /* Make label take full width */
+  margin-bottom: 10px; /* Space below the label */
+  font-weight: bold; /* Bold text for the label */
+}
+
+.filter-box select {
+  width: 100%; /* Full width for the select box */
+  padding: 10px; /* Space inside the select box */
+  border: 1px solid #ccc; /* Light gray border for the select */
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 16px; /* Font size for the select */
 }
