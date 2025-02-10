@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 
+
 interface Course {
   courseId: string;
   courseName: string;
@@ -44,7 +45,21 @@ isCoursesDropdownVisible: any;
 
   ngOnInit(): void {
     this.candidateId = this.route.snapshot.paramMap.get('id') || '';
+    this.loadUser();
     this.loadCourses();
+  }
+
+  // Fetch user data based on candidateId
+  loadUser(): void {
+    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+      next: (profiles) => {
+        this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
+      },
+      error: (error) => {
+        console.error('Error fetching user:', error);
+        this.user = { name: 'Unknown Candidate' };
+      }
+    });
   }
 
   loadCourses(): void {

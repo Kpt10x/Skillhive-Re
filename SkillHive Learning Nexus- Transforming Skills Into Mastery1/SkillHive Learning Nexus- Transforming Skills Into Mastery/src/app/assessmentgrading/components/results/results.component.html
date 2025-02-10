@@ -36,12 +36,12 @@
     </div>
     </div>
     <div class="extras">
-    <div class="user">
-    <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
-    <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
-              {{ user?.name }}
-    </a>
-    </div>
+      <div class="user">
+        <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
+          <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+          {{ user?.name || 'Loading...' }}
+        </a>
+      </div>
     <div class="logout">
     <a [routerLink]="['/login']" class="sidebar-link">
     <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
@@ -89,3 +89,16 @@
     </div>
      
     </div>
+    <footer>
+      <p>&copy; 2025 SkillHive</p>
+      <ul>
+          <li><a id="terms" href="terms.html">Terms of Services</a></li>
+          <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
+          <li><a id="contact" href="contact.html">Contact Us</a></li>
+      </ul>
+      <div id="social-media">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+  </footer>
