@@ -7,42 +7,54 @@
     <link rel="stylesheet" href="viewassessment.component.css">
 </head>
 <body>
-    <div class="dashboard">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo1-container">
+ <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
                 <span class="skill">Skill</span><span class="hive">hive</span>
             </div>
-            <div class="menu-container">
-                <div class="menu-item">
-                    <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
-                       Home
+            <div class="selections">
+                <div class="sel1">
+                    <a [routerLink]="['/instructor-dashboard' ]" class="sidebar-link">
+                        <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+                        Dashboard
+                    </a>
                 </div>
-                <div class="menu-item">
-                    <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses">
-                    Course
-                </div>
-                <div class="menu-item">
-                    <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
-                    Assessments
-                </div>
-               
+                <div class="sel1">
+                  <a [routerLink]="['/instructor-timetable']" class="sidebar-link">
+                      <img width="26" height="26" src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=C2DBC6" alt="todo-list">
+                      Timetable
+                  </a>
+              </div>
+            
                 
-            <div class="bottom-menu-container">
-                <div class="user">
-                    <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
-                    <div routerLink="/instructor-dashboard">User Profile</div>
-                  </div>
-                    <div class="logout">
-                        <a [routerLink]="['/login']" class="sidebar-link">
-                          <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
-                          Logout
-                        </a>
-                      </div>
+                <div class="sel1">
+                    <a [routerLink]="['/viewassessments']" class="sidebar-link">
+                        <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
+                        View Assessments
+                    </a>
+                </div>
+                <div class="sel1">
+                    <a [routerLink]="['/view-candidates']" class="sidebar-link">
+                        <img width="27" height="27" src="https://img.icons8.com/?size=100&id=LK2tNJ1EaZJK&format=png&color=C1DBC6" alt="results">
+                        View Candidates
+                    </a>
                 </div>
             </div>
-        </div>
-
+            <div class="extras">
+                <div class="user">
+                    <a [routerLink]="['/profile-update']" class="sidebar-link">
+                        <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+                        {{ currentInstructor }}
+                    </a>
+                </div>
+                <div class="logout">
+                  <a (click)="logout()" class="sidebar-link">
+                    <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+                    Logout
+                  </a>              
+                </div>
+            </div>
+        </aside>
         <!-- Main Content -->
         <div class="main-content">
               <!-- View Submissions Section -->
