@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; // Import RouterModule
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
   selector: 'app-viewassessment',
@@ -20,18 +21,19 @@ export class ViewassessmentComponent implements OnInit {
   selectedCourse: string = 'all';
   candidateNames: { [key: string]: string } = {};
   courses: any[] = [];
+  currentInstructor: string = '';
   
   // Define the 'user' property
   user: { id: number, name: string } | null = null; // Example structure
 isCoursesDropdownVisible: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {
     this.loadSubmissions();
     this.loadProfiles();
     this.loadCourses();
-    
+    this.setCurrentInstructor();
     // Example of how you might load user data
     this.loadUser();
   }
@@ -60,6 +62,11 @@ isCoursesDropdownVisible: any;
         console.error('Error fetching profiles:', error);
       }
     );
+  }
+
+  setCurrentInstructor(): void {
+    const loggedInInstructor = JSON.parse(sessionStorage.getItem('loggedInInstructor') || '{}');
+    this.currentInstructor = loggedInInstructor.name || 'Instructor'; 
   }
 
   loadCourses() {
@@ -101,5 +108,8 @@ isCoursesDropdownVisible: any;
         submission.courseName === selectedValue
       );
     }
+  }
+  logout(): void {
+    this.authService.logout();
   }
 }
