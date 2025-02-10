@@ -5,7 +5,7 @@
     </div>
     <div class="selections">
       <div class="sel1">
-        <a [routerLink]="['/enrolled-courses',candidateId]" class="sidebar-link">
+        <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">
           <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
           Dashboard
         </a>
@@ -15,15 +15,15 @@
         Courses
       </div>
       <div *ngIf="isCoursesDropdownVisible" class="dropdown">
-          <div class="dropdown-item">
-            <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">Enrolled Courses</a>
-          </div>
-          <div class="dropdown-item" >
-            <a [routerLink]="['/upcoming-courses', candidateId]" class="sidebar-link">Upcoming Courses</a>
-          </div>
+        <div class="dropdown-item">
+          <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">Enrolled Courses</a>
         </div>
+        <div class="dropdown-item">
+          <a [routerLink]="['/upcoming-courses', candidateId]" class="sidebar-link">Upcoming Courses</a>
+        </div>
+      </div>
       <div class="sel1">
-        <a [routerLink]="['/candidateassessment',candidateId]" class="sidebar-link">
+        <a [routerLink]="['/candidateassessment', candidateId]" class="sidebar-link">
           <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
           Assessments
         </a>
@@ -39,9 +39,10 @@
       <div class="user">
         <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
           <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
-          {{ user?.name }}
+          {{ user?.name || 'Loading...' }}
         </a>
       </div>
+      
       <div class="logout">
         <a [routerLink]="['/login']" class="sidebar-link">
           <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
@@ -50,51 +51,60 @@
       </div>
     </div>
   </aside>
-  
 
+  <div class="main-content">
+    <h1 class="main-heading">
+      Get Ready for your next Online <span class="highlight">Assessment</span>!
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (ngModelChange)="filterCourses()"
+        placeholder="Search for your next Assessment..."
+        class="search-bar"
+      />
+    </h1>
+    <h2 class="sub-heading">Explore the Assessments</h2>
 
- <div class="main-content">
-  <h1 class="main-heading">
-    Get Ready for your next Online <span class="highlight">Assessment</span>!
-    <input
-      type="text"
-      [(ngModel)]="searchText"
-      (ngModelChange)="filterCourses()"
-      placeholder="Search for your next Assessment..."
-      class="search-bar"
-    />
-  </h1>
-  <h2 class="sub-heading">Explore the Assessments</h2>
+    <div class="assessment-cards">
+      <div class="line-above-cards"></div>
 
-  <div class="assessment-cards">
-    <div class="line-above-cards"></div>
-
-    <!-- Dynamic cards using *ngFor -->
-    <div
-      class="card"
-      *ngFor="let course of filteredCourses"
-      (click)="openCard(course)" 
-      [class.disabled]="course.status?.toLowerCase() !== 'live'"
-    >
-    <div class="logo-container">
-      <img [src]="course.logoUrl" alt="{{ course.courseName }} Logo" class="logo" />
-       
-    </div>
-    <!-- Badge indicating status (Live, Upcoming, Ended) -->
-    <div class="badge-container">
-      <span class="badge-dot" [ngClass]="course.status?.toLowerCase()"></span>
-      <span class="badge-text">{{ course.status }}</span>
-    </div>
-      <div class="card-content">
-        <h3>{{ course.courseName }}</h3>
-        <p><strong>courseId:</strong> {{ course.courseId }}</p>
-        
+      <!-- Dynamic cards using *ngFor -->
+      <div
+        class="card"
+        *ngFor="let course of filteredCourses"
+        (click)="openCard(course)" 
+        [class.disabled]="course.status?.toLowerCase() !== 'live'"
+      >
+        <div class="logo-container">
+          <img [src]="course.logoUrl" alt="{{ course.courseName }} Logo" class="logo" />
+        </div>
+        <!-- Badge indicating status (Live, Upcoming, Ended) -->
+        <div class="badge-container">
+          <span class="badge-dot" [ngClass]="course.status?.toLowerCase()"></span>
+          <span class="badge-text">{{ course.status }}</span>
+        </div>
+        <div class="card-content">
+          <h3>{{ course.courseName }}</h3>
+          <p><strong>courseId:</strong> {{ course.courseId }}</p>
+        </div>
       </div>
     </div>
+
+    <div *ngIf="isLoading" class="loading-message">Loading courses...</div>
+    <div *ngIf="error" class="error-message">{{ error }}</div>
   </div>
-
-  <div *ngIf="isLoading" class="loading-message">Loading courses...</div>
-  <div *ngIf="error" class="error-message">{{ error }}</div>
- </div>
-
 </div>
+
+<footer>
+  <p>&copy; 2025 SkillHive</p>
+  <ul>
+    <li><a id="terms" href="terms.html">Terms of Services</a></li>
+    <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
+    <li><a id="contact" href="contact.html">Contact Us</a></li>
+  </ul>
+  <div id="social-media">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
