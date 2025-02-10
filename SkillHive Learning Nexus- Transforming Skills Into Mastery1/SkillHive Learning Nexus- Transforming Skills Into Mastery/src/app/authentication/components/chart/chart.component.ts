@@ -25,6 +25,7 @@ export class ChartComponent implements OnInit {
   //   this.updateChart();
   // }
   ngOnInit() {
+    this.initializeChart();
     this.courseService.fetchCourses().subscribe(courses => {
         this.courses = courses;
         this.chartData = courses.map(course => ({
@@ -34,14 +35,43 @@ export class ChartComponent implements OnInit {
         // Update chart
         console.log('Fetched courses:', courses); // Debug log
 
-        this.updateChart();
+        //this.updateChart();
+        setTimeout(() => {
+          this.updateChart();
+      }, 0);
     });
 }
 
+
+private initializeChart() {
+  this.chartOptions = {
+    animationEnabled: true,
+    width: Math.max(window.innerWidth - 30, 600),
+    height: 500,
+    title: { text: "Course Enrollments: Expected vs Actual" },
+    axisX: { title: "Courses", labelAngle: -15 },
+    axisY: { title: "Number of Enrollments" },
+    toolTip: { shared: true },
+    legend: {
+      cursor: "pointer",
+      itemclick: function (e: any) {
+        e.dataSeries.visible = !e.dataSeries.visible;
+        e.chart.render();
+      }
+    },
+    data: [{ type: "column", dataPoints: [] }]  // Initialize with empty data
+  };
+}
+
+
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.updateChart();  // Update chart on window resize
+    if (this.chartOptions) {
+      this.chartOptions.width = Math.max(window.innerWidth - 30, 600);
+      this.updateChart();
+    }
   }
+
 
   updateChart() {
 
@@ -63,14 +93,17 @@ export class ChartComponent implements OnInit {
       return {
           expected: expectedEnrollments,
           actual: expectedEnrollments - seatsLeft,
-          label: course.courseName
+          // label: course.courseName 
+          label: `${course.courseName}(${course.courseId})`
+
       };
   });
 
 
     this.chartOptions = {
       animationEnabled: true,
-      width: window.innerWidth - 30,  // Full width minus some padding
+      //width: window.innerWidth - 30,  // Full width minus some padding
+      width: Math.max(window.innerWidth - 30, 600),  // Minimum width of 600px
       height: 500,  // Set a fixed height
       title: { text: "Course Enrollments: Expected vs Actual" },
       axisX: { title: "Courses", labelAngle: -15 },
@@ -93,6 +126,8 @@ export class ChartComponent implements OnInit {
           barWidth: 15,
           dataPoints: this.courses.map(course => ({
             label: course.courseName,
+            //label: `${course.courseName}(${course.courseId})`,
+
             // Fix: Calculate total capacity (enrolled + seats left)
             y: (course.noOfEnrollments || 0) 
             //+ (course.seatsLeft || 0)
@@ -107,6 +142,7 @@ export class ChartComponent implements OnInit {
           barWidth: 15,
           dataPoints: this.courses.map(course => ({
             label: course.courseName,
+            //label: `${course.courseName}(${course.courseId})`,
             y: course.noOfEnrollments - course.seatsLeft || 0  // Add fallback to 0
           }))
         }

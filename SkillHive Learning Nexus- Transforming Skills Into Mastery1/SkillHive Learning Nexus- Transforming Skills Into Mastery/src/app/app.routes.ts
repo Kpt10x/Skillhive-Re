@@ -58,8 +58,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent,children: [{path: 'chart',component: ChartComponent,}], canActivate: [RoleGuard], data: { role: 'admin' } },
   // { path: 'home', component: HomeComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [RoleGuard], data: { role: ['admin', 'instructor'] }},
-  { path: 'reset-password', component: ResetPasswordComponent ,canActivate: [RoleGuard], data: { role: { role: ['admin', 'instructor'] } }},
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent },
   // { path: '', redirectTo: '/forgot-password', pathMatch: 'full' },
   { path: 'admin-profile', component: ProfileComponent },
 

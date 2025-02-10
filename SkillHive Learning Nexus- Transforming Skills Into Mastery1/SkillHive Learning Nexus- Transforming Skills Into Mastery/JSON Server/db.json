@@ -1068,7 +1068,7 @@
       "id": "a47e",
       "openForEnrollment": true,
       "content": "This is a brand new content!!!",
-      "enableAssessment": true,
+      "enableAssessment": false,
       "noOfEnrollments": 30,
       "seatsLeft": 27
     },

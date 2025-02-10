@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
-
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
