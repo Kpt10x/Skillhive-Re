@@ -1,37 +1,57 @@
 <div class="container">
-    <div class="sidebar">
-        <div class="logo1-container">
-            <span class="skill">Skill</span><span class="hive">Hive</span>
+    <aside class="sidebar">
+        <div class="logo">
+          <span class="skill">Skill</span><span class="hive">hive</span>
         </div>
-        <div class="menu-container">
-            <div class="menu-item">
-                <img src="assets/home-icon.png" alt="Home Icon" class="menu-icon">
-                Home
+        <div class="selections">
+          <div class="sel1">
+            <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">
+              <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
+              Dashboard
+            </a>
+          </div>
+          <div class="sel2" (click)="isCoursesDropdownVisible = !isCoursesDropdownVisible">
+            <img src="https://img.icons8.com/?size=30&id=GirzvjIPde0n&format=png&color=c1dbc6" alt="courses">
+            Courses
+          </div>
+          <div *ngIf="isCoursesDropdownVisible" class="dropdown">
+            <div class="dropdown-item">
+              <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">Enrolled Courses</a>
             </div>
-            <div class="menu-item">
-                <img src="assets/courses-icon.png" alt="Courses Icon" class="menu-icon">
-                My Courses
+            <div class="dropdown-item">
+              <a [routerLink]="['/upcoming-courses', candidateId]" class="sidebar-link">Upcoming Courses</a>
             </div>
-            <div class="menu-item" [routerLink]="['/view-assessment']">
-                <img src="assets/assessments-icon.png" alt="Assessments Icon" class="menu-icon">
-                Assessments
-            </div>
-            <div class="menu-item">
-                <img src="assets/marksheet-icon.png" alt="Marksheet Icon" class="menu-icon">
-                Marksheet
-            </div>
-            <div class="bottom-menu-container">
-                <div class="menu-item">
-                    <img src="assets/profile-icon.png" alt="Settings Icon" class="menu-icon">
-                    <!-- {{ userName }} -->
-                </div>
-                <div class="menu-item">
-                    <img src="assets/logout-icon.png" alt="Logout Icon" class="menu-icon">
-                    Logout
-                </div>
-            </div>
+          </div>
+          <div class="sel1">
+            <a [routerLink]="['/candidateassessment', candidateId]" class="sidebar-link">
+              <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
+              Assessments
+            </a>
+          </div>
+          <div class="sel1">
+            <a [routerLink]="['/results', candidateId]" class="sidebar-link">
+              <img src="https://img.icons8.com/?size=35&id=ODt7c6FPZPl4&format=png&color=C1DBC6" alt="results">
+              Results
+            </a>        
+          </div>
         </div>
-    </div>
+        <div class="extras">
+          <div class="user">
+            <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
+              <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
+              {{ user?.name || 'Loading...' }}
+            </a>
+          </div>
+          
+          <div class="logout">
+            <a [routerLink]="['/login']" class="sidebar-link">
+              <img src="https://img.icons8.com/?size=30&id=vGj0AluRnTSa&format=png&color=c1dbc6" alt="logout">
+              Logout
+            </a>
+          </div>
+        </div>
+      </aside>
+    
     <div class="main-content1">
         <div class="test-card">
             <div class="card-header">
@@ -39,7 +59,6 @@
                 <h2 class="card-heading">{{ assessmentTitle }}</h2>
             </div>
             <div class="card-info">
-                <p><strong>Date of Assessment:</strong> {{ startDate | date:'MMMM d, y' }}</p>
                 <p><strong>Duration:</strong> {{ duration }} Minutes</p>
                 <p><strong>Number of Questions:</strong> {{ numberOfQuestions }}</p>
             </div>
@@ -78,3 +97,17 @@
         </div>
     </div>
 </div>
+
+<footer>
+    <p>&copy; 2025 SkillHive</p>
+    <ul>
+      <li><a id="terms" href="terms.html">Terms of Services</a></li>
+      <li><a id="privacy" href="privacy.html">Privacy Policy</a></li>
+      <li><a id="contact" href="contact.html">Contact Us</a></li>
+    </ul>
+    <div id="social-media">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
