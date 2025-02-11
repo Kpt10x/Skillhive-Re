@@ -46,6 +46,7 @@ export class CreateCourseComponent implements OnInit {
     public authService: AuthService
   ) {
     this.createCourseForm = this.fb.group({
+      courseId: ["", [Validators.required, Validators.minLength(7)]],
       courseName: ["", [Validators.required, Validators.minLength(3)]],
       courseCategory: ["", Validators.required],
       courseDurationMonths: [
@@ -220,8 +221,15 @@ export class CreateCourseComponent implements OnInit {
 
   onSubmit() {
     if (this.createCourseForm.valid) {
-      const courseData = this.createCourseForm.value;
-
+      //const courseData = this.createCourseForm.value;
+      const courseData = {
+        ...this.createCourseForm.value,
+        openForEnrollment: false,
+        content: "",
+        enableAssessment: false,
+        noOfEnrollments: 30,
+        seatsLeft: 30
+      };
       // Get the selected instructor's ID
       const selectedInstructorId =
         this.createCourseForm.get("instructor")?.value;
@@ -236,6 +244,8 @@ export class CreateCourseComponent implements OnInit {
         ...courseData,
         instructor: selectedInstructor ? selectedInstructor.name : "", // Save the instructor's name
       };
+
+      
 
       this.http.post("http://localhost:3000/courses", courseToSave).subscribe(
         (response) => {

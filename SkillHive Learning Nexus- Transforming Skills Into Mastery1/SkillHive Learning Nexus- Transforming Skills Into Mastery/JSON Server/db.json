@@ -8,152 +8,73 @@
       "role": "admin"
     },
     {
-      "id": "95133",
-      "name": "Sujatha Sharma",
-      "email": "sujatha45@gmail.com",
+      "id": "69586",
+      "name": "Binoy Benson",
+      "email": "binoy@gmail.com",
       "phone": "1234567890",
-      "areaOfExpertise": "Angular",
-      "experience": "10",
-      "role": "instructor",
-      "default_password": "KwKzEtQz"
+      "password": "binoy@gmail.com",
+      "role": "candidate"
     },
     {
-      "id": "66534",
-      "name": "Saleem",
-      "email": "saleem@gmail.com",
-      "phone": "8769376846",
-      "areaOfExpertise": "Data Science",
-      "experience": 4,
-      "role": "instructor",
-      "default_password": "VBmKmAly"
+      "id": "72690",
+      "name": "Abiya",
+      "email": "abiya@gmail.com",
+      "phone": "1234567893",
+      "password": "abiya@gmail.com",
+      "role": "candidate"
     },
     {
-      "id": "77891",
-      "name": "Arjun Nair",
-      "email": "arjun.nair@gmail.com",
-      "phone": "9876543211",
-      "areaOfExpertise": "Cyber Security",
-      "experience": 5,
-      "role": "instructor",
-      "default_password": "XkLmNpQr"
+      "id": "14667",
+      "name": "Abel",
+      "email": "abel@gmail.com",
+      "phone": "1234567893",
+      "password": "abel@gmail.com",
+      "role": "candidate"
     },
     {
-      "id": "77892",
-      "name": "Kavya Kapoor",
-      "email": "kavya.kapoor@gmail.com",
-      "phone": "9876543212",
-      "areaOfExpertise": "Graphic Design",
-      "experience": 4,
-      "role": "instructor",
-      "default_password": "YmNpQrSt"
+      "id": "53625",
+      "name": "Dev",
+      "email": "dev@gmail.com",
+      "phone": "1234567894",
+      "password": "dev@gmail.com",
+      "role": "candidate"
     },
     {
-      "id": "77893",
-      "name": "Sanya Kapoor",
-      "email": "sanya.kapoor@gmail.com",
-      "phone": "9876543213",
-      "areaOfExpertise": "Artificial Intelligence",
+      "id": "97031",
+      "name": "Joshua Jose",
+      "email": "joshua@gmail.com",
+      "phone": "1234567877",
+      "areaOfExpertise": "Cloud Computing",
+      "experience": 7,
+      "role": "instructor",
+      "default_password": "S84TbURB"
+    },
+    {
+      "id": "47753",
+      "name": "Linoy Lazar",
+      "email": "linoy@gmail.com",
+      "phone": "1234567878",
+      "areaOfExpertise": "Cloud Computing",
+      "experience": 3,
+      "role": "instructor",
+      "default_password": "QtUmFCHJ"
+    },
+    {
+      "id": "72054",
+      "name": "Ayush",
+      "email": "ayush@gmail.com",
+      "phone": "1234567879",
+      "areaOfExpertise": "Business Analytics",
       "experience": 6,
       "role": "instructor",
-      "default_password": "ZnQrStUv"
-    },
-    {
-      "id": "77894",
-      "name": "Raghav Verma",
-      "email": "raghav.verma@gmail.com",
-      "phone": "9876543214",
-      "areaOfExpertise": "Machine Learning",
-      "experience": 5,
-      "role": "instructor",
-      "default_password": "WxStUvWy"
-    },
-    {
-      "id": "3",
-      "name": "Alice Johnson",
-      "email": "alice.johnson@example.com",
-      "password": "candidate1234",
-      "role": "candidate"
-    },
-    {
-      "id": "5",
-      "name": "Charlie Brown",
-      "email": "charlie.brown@example.com",
-      "password": "admin456",
-      "role": "admin"
-    },
-    {
-      "id": "2san3pcv6e2",
-      "name": "oktested",
-      "email": "oktested@gmail.com",
-      "password": "123456",
-      "role": "admin"
-    },
-    {
-      "id": "3",
-      "name": "Ishani",
-      "email": "ishani@gmail.com",
-      "phone": "9876543210",
-      "areaOfExpertise": "Data Science",
-      "experience": 5,
-      "role": "instructor",
-      "default_password": "instructor123"
-    },
-    {
-      "id": "4",
-      "name": "Rohan Gupta",
-      "email": "rohan@example.com",
-      "phone": "8765432109",
-      "areaOfExpertise": "Machine Learning",
-      "experience": 6,
-      "role": "instructor",
-      "default_password": "instructor123"
-    },
-    {
-      "id": "55874",
-      "name": "Ramya",
-      "email": "ramya@gmail.com",
-      "phone": "9019831137",
-      "password": "989898",
-      "role": "candidate"
-    },
-    {
-      "id": "47987",
-      "name": "Dhyrya",
-      "email": "dhyrya@gmail.com",
-      "phone": "9019831137",
-      "password": "090909",
-      "role": "candidate"
-    },
-    {
-      "id": "84644",
-      "name": "Arjun",
-      "email": "arjunbs@gmail.com",
-      "phone": "9019831137",
-      "password": "090909",
-      "role": "candidate"
-    },
-    {
-      "id": "18626",
-      "name": "Samrat",
-      "email": "sam@gmail.com",
-      "phone": "9538164926",
-      "password": "98989898",
-      "role": "candidate"
-    },
-    {
-      "id": "42829",
-      "name": "Ben",
-      "email": "ben@gmail.com",
-      "phone": "9999999999",
-      "password": "ben@gmail.com",
-      "role": "candidate"
+      "default_password": "fT6LHb7c"
     }
   ],
   "assessments": [
     {
       "courseId": "7239999",
       "courseName": "Cloud Computing",
-      "assessmentDate": "2025-30-01",
+      "assessmentDate": "2025-02-11",
       "questions": [
         {
           "id": 1,
@@ -271,7 +192,7 @@
     {
       "courseId": "8241111",
       "courseName": "Business Analytics",
-      "assessmentDate": "2025-31-01",
+      "assessmentDate": "2025-06-06",
       "questions": [
         {
           "id": 1,
@@ -389,244 +310,78 @@
   ],
   "courses-enrolled-by-candidates": [
     {
-      "id": "64872",
-      "candidateId": "47987",
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
-      "startDate": "2025-02-01",
-      "endDate": "2025-08-01"
-    },
-    {
-      "id": "87970",
-      "candidateId": "47987",
-      "courseId": "9242222",
-      "courseName": "Photography Basics",
-      "courseCategory": "Arts",
-      "courseDurationInMonths": 2,
-      "instructorName": "Rohan Gupta",
-      "startDate": "2025-02-01",
-      "endDate": "2025-05-01"
-    },
-    {
-      "id": "24797",
-      "candidateId": "47987",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
+      "id": "68261",
+      "candidateId": "69586",
+      "courseId": "7239999",
+      "courseName": "Cloud Computing",
       "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
-    },
+      "instructor": "Joshua Jose",
+      "startDate": "2025-02-11",
+      "endDate": "2025-03-11"
+    }
+  ],
+  "submissions": [
     {
-      "id": "80903",
-      "candidateId": "55874",
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
-      "startDate": "2025-02-01",
-      "endDate": "2025-08-01"
-    },
-    {
-      "id": "58429",
-      "candidateId": "55874",
-      "courseId": "4236666",
-      "courseName": "Graphic Design",
-      "courseCategory": "Design",
-      "courseDurationInMonths": 3,
-      "instructorName": "Kavya Kapoor",
-      "startDate": "2025-04-01",
-      "endDate": "2025-07-01"
-    },
-    {
-      "id": "91660",
-      "candidateId": "55874",
-      "courseId": "9242222",
-      "courseName": "Photography Basics",
-      "courseCategory": "Arts",
-      "courseDurationInMonths": 2,
-      "instructorName": "Rohan Gupta",
-      "startDate": "2025-02-01",
-      "endDate": "2025-05-01"
-    },
-    {
-      "id": "53525",
-      "candidateId": "84644",
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
-      "startDate": "2025-02-01",
-      "endDate": "2025-08-01"
-    },
-    {
-      "id": "82649",
-      "candidateId": "84644",
-      "courseId": "5237777",
-      "courseName": "Cyber Security",
-      "courseCategory": "Technology",
-      "courseDurationInMonths": 4,
-      "instructorName": "Arjun Nair",
-      "startDate": "2025-05-01",
-      "endDate": "2025-09-01"
-    },
-    {
-      "id": "53193",
-      "candidateId": "84644",
-      "courseId": "4236666",
-      "courseName": "Graphic Design",
-      "courseCategory": "Design",
-      "courseDurationInMonths": 3,
-      "instructorName": "Kavya Kapoor",
-      "startDate": "2025-04-01",
-      "endDate": "2025-07-01"
-    },
-    {
-      "id": "66069",
-      "candidateId": "55874",
-      "courseId": "10243333",
-      "courseName": "AI for Beginners",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 4,
-      "instructorName": "Sanya Kapoor",
-      "startDate": "2025-10-01",
-      "endDate": "2026-02-01"
-    },
-    {
-      "id": "41737",
-      "candidateId": "47987",
-      "courseId": "3235555",
-      "courseName": "Machine Learning",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 5,
-      "instructorName": "Raghav Verma",
-      "startDate": "2025-03-01",
-      "endDate": "2025-08-01"
-    },
-    {
-      "id": "67563",
-      "candidateId": "47987",
-      "courseId": "10243333",
-      "courseName": "AI for Beginners",
-      "courseCategory": "Artificial Intelligence",
-      "courseDurationInMonths": 4,
-      "instructorName": "Sanya Kapoor",
-      "startDate": "2025-10-01",
-      "endDate": "2026-02-01"
-    },
-    {
-      "id": "36311",
-      "candidateId": "3",
-      "courseId": "2234444",
-      "courseName": "Data Science",
-      "courseCategory": "Data Analytics",
-      "courseDurationInMonths": 6,
-      "instructorName": "Ishani",
-      "startDate": "2025-02-01",
-      "endDate": "2025-08-01"
+      "id": "a206",
+      "candidateId": "69586",
+      "courseId": "7239999",
+      "courseName": "Cloud Computing",
+      "totalQuestions": 10,
+      "answeredQuestions": 0,
+      "correctAnswers": 0,
+      "totalMarks": 0,
+      "submissionDate": "2025-02-11T04:15:02.630Z",
+      "status": "Submitted"
     }
   ],
   "courses": [
     {
-      "id": "9699",
-      "courseName": "Graphic Design",
-      "courseCategory": "Graphic Designing",
+      "id": "4ea9",
+      "courseId": "8241111",
+      "courseName": "Business Analytics",
+      "courseCategory": "Data Analytics",
       "courseDurationMonths": 1,
-      "startDate": "2025-02-05",
-      "endDate": "2025-03-05",
-      "instructor": "Kavya Kapoor",
-      "assessmentDate": "2025-03-06",
-      "openForEnrollment": false,
-      "contentUploaded": false,
-      "status": "Ongoing",
+      "startDate": "2025-02-11",
+      "endDate": "2025-03-11",
+      "instructor": "Ayush",
+      "assessmentDate": "2025-03-12",
+      "openForEnrollment": true,
+      "content": "Business analytics is the practice of using data analysis and statistical methods to extract insights from business data, enabling informed decision-making and strategic planning. ",
+      "enableAssessment": false,
       "noOfEnrollments": 30,
-      "seatsLeft": 28
+      "seatsLeft": 30
     },
     {
-      "id": "7537",
-      "courseName": "Data Science",
+      "id": "a146",
+      "courseId": "7239999",
+      "courseName": "Cloud Computing",
       "courseCategory": "Technology",
       "courseDurationMonths": 1,
-      "startDate": "2025-02-06",
-      "endDate": "2025-03-06",
-      "instructor": "Saleem",
-      "assessmentDate": "2025-03-07"
+      "startDate": "2025-02-11",
+      "endDate": "2025-03-11",
+      "instructor": "Joshua Jose",
+      "assessmentDate": "2025-03-12",
+      "openForEnrollment": true,
+      "content": "Cloud computing is the delivery of computing services like storage, servers, and software over the internet, allowing users to access resources on-demand without managing physical infrastructure",
+      "enableAssessment": true,
+      "noOfEnrollments": 30,
+      "seatsLeft": 29
     },
     {
-      "id": "8a33",
-      "courseName": "Cyber Security",
+      "id": "f586",
+      "courseId": "8241112",
+      "courseName": "Cloud Computing",
       "courseCategory": "Technology",
       "courseDurationMonths": 1,
-      "startDate": "2025-02-06",
-      "endDate": "2025-03-06",
-      "instructor": "Arjun Nair",
-      "assessmentDate": "2025-03-07"
-    },
-    {
-      "id": "8ef8",
-      "courseName": "Angular",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 1,
-      "startDate": "2025-01-06",
-      "endDate": "2025-02-05",
-      "instructor": "Sujatha Sharma",
-      "assessmentDate": "2025-02-06"
-    },
-    {
-      "id": "4024",
-      "courseName": "Graphic Design",
-      "courseCategory": "Graphic Designing",
-      "courseDurationMonths": 2,
-      "startDate": "2025-03-07",
-      "endDate": "2025-05-07",
-      "instructor": "Kavya Kapoor",
-      "assessmentDate": "2025-05-08"
-    },
-    {
-      "id": "a039",
-      "courseName": "Data Science",
-      "courseCategory": "Graphic Designing",
-      "courseDurationMonths": 1,
-      "startDate": "2025-02-06",
-      "endDate": "2025-03-06",
-      "instructor": "Ishani",
-      "assessmentDate": "2025-03-07"
-    },
-    {
-      "id": "ef66",
-      "courseName": "Data Science",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 1,
-      "startDate": "2025-03-07",
-      "endDate": "2025-04-07",
-      "instructor": "Saleem",
-      "assessmentDate": "2025-04-08"
-    },
-    {
-      "id": "f4c5",
-      "courseName": "Machine Learning",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 1,
-      "startDate": "2025-02-07",
-      "endDate": "2025-03-07",
-      "instructor": "Rohan Gupta",
-      "assessmentDate": "2025-03-08"
-    },
-    {
-      "id": "1b95",
-      "courseName": "Cyber Security",
-      "courseCategory": "Technology",
-      "courseDurationMonths": 1,
-      "startDate": "2025-04-11",
-      "endDate": "2025-05-11",
-      "instructor": "Arjun Nair",
-      "assessmentDate": "2025-05-12"
+      "startDate": "2025-02-11",
+      "endDate": "2025-03-11",
+      "instructor": "Linoy Lazar",
+      "assessmentDate": "2025-03-12",
+      "openForEnrollment": false,
+      "content": "",
+      "enableAssessment": false,
+      "noOfEnrollments": 30,
+      "seatsLeft": 30
     }
   ]
 }

@@ -58,24 +58,48 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
   }
 
   fetchCourses() {
-    this.http.get("http://localhost:3000/courses").subscribe((data: any) => {
-      this.courses = data.map((course: any) => ({
-        ...course,
-        openForEnrollment: course.openForEnrollment ?? false,
-        contentUploaded: course.contentUploaded ?? false,
-        status: this.updateCourseStatus(course),
-        noOfEnrollments: 30,
-        seatsLeft: 30,
-      }));
+    this.http.get<Course[]>("http://localhost:3000/courses").subscribe(
+      (courses) => {
+        // Check and update enableAssessment based on assessment date
+        const currentDate = new Date();
+        const coursesToUpdate: { id: string, enableAssessment: boolean }[] = [];
 
-      this.filteredCourses = [...this.courses];
-      this.extractUniqueStatuses();
+        this.courses = courses.map((course) => {
+          const assessmentDate = new Date(course.assessmentDate);
+          const shouldEnableAssessment = currentDate >= assessmentDate;
 
-      // ✅ Ensure `updateSeatsLeft()` runs **after** courses are loaded
-      setTimeout(() => {
+          // If assessment should be enabled but isn't, add to update list
+          if (shouldEnableAssessment && !course.enableAssessment) {
+            coursesToUpdate.push({ id: course.id, enableAssessment: true });
+          }
+
+          return {
+            ...course,
+            status: this.updateCourseStatus(course),
+            enableAssessment: shouldEnableAssessment || course.enableAssessment
+          };
+        });
+
+        // Update courses in db.json if needed
+        if (coursesToUpdate.length > 0) {
+          console.log('Courses to enable assessment:', coursesToUpdate);
+          coursesToUpdate.forEach(update => {
+            this.http.patch(`http://localhost:3000/courses/${update.id}`, { enableAssessment: true })
+              .subscribe(
+                () => console.log(`Assessment enabled for course ${update.id}`),
+                error => console.error(`Error enabling assessment for course ${update.id}:`, error)
+              );
+          });
+        }
+
         this.updateSeatsLeft();
-      }, 500);
-    });
+        this.extractUniqueStatuses();
+        this.filteredCourses = [...this.courses];
+      },
+      (error) => {
+        console.error("Error fetching courses:", error);
+      }
+    );
   }
 
   updateCourseStatus(course: Course): string {
@@ -96,28 +120,25 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
     this.http
       .get<any[]>("http://localhost:3000/courses-enrolled-by-candidates")
       .subscribe(
-        (candidates: any[]) => {
-          console.log("Fetched enrolled candidates:", candidates); // ✅ Debugging log
+        (enrollments: any[]) => {
+          console.log("Fetched enrolled candidates:", enrollments);
 
-          this.courses.forEach((course) => {
-            course.seatsLeft = 30;
+          // Group enrollments by courseId
+          const enrollmentCounts = enrollments.reduce((acc, enrollment) => {
+            acc[enrollment.courseId] = (acc[enrollment.courseId] || 0) + 1;
+            return acc;
+          }, {} as { [key: string]: number });
+
+          // Update seatsLeft for each course based on enrollments
+          this.courses = this.courses.map((course) => {
+            const enrolledCount = enrollmentCounts[course.courseId] || 0;
+            return {
+              ...course,
+              seatsLeft: course.noOfEnrollments - enrolledCount,
+            };
           });
 
-          candidates.forEach((candidate: any) => {
-            const course = this.courses.find(
-              (c) =>
-                c.courseName.trim().toLowerCase() ===
-                  candidate.courseName.trim().toLowerCase() &&
-                c.instructor.trim().toLowerCase() ===
-                  candidate.instructorName.trim().toLowerCase()
-            );
-
-            if (course && course.seatsLeft > 0) {
-              course.seatsLeft -= 1;
-            }
-          });
-
-          console.log("Updated courses with seatsLeft:", this.courses); // ✅ Debugging log
+          console.log("Updated courses with seatsLeft:", this.courses);
           this.filteredCourses = [...this.courses];
         },
         (error) => {
@@ -125,6 +146,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
         }
       );
   }
+
   extractUniqueStatuses(): void {
     const statuses = new Set(this.courses.map((course) => course.status));
     this.uniqueStatuses = Array.from(statuses);
@@ -212,16 +234,6 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
     );
   }
 
-  enableAssessment(course: Course): void {
-    const endDate = new Date(course.endDate);
-    const currentDate = new Date();
-    if (currentDate > endDate) {
-      console.log("Assessment enabled for course:", course.courseName);
-    } else {
-      console.log("Assessment can be enabled only after the course end date.");
-    }
-  }
-
   updateCourse() {
     if (this.selectedCourse) {
       this.courseService.updateCourse(this.selectedCourse).subscribe(
@@ -253,6 +265,5 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
     this.router.navigate(["/create-course"]);
     this.router.navigate(["/manage-course"]);
     this.router.navigate(["/admin-dashboard"]);
-
   }
 }

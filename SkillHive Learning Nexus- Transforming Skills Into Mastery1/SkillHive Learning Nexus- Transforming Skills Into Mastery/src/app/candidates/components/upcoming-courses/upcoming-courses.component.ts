@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../authentication/services/auth.service';
+
 @Component({
   selector: 'app-upcoming-courses',
   standalone: true,
@@ -20,16 +21,15 @@ export class UpcomingCoursesComponent implements OnInit {
   filteredCourses: any[] = [];
   isCoursesDropdownVisible = false;
 
-
   constructor(
     private http: HttpClient,
     private candidateService: CandidateService,
-    private authService : AuthService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     const loggedInUserId = this.candidateService.getLoggedInCandidateId();
-console.log(loggedInUserId, "Starrrrr");
+    console.log(loggedInUserId, "Starrrrr");
     if (loggedInUserId) {
       this.candidateService.getCandidateById(loggedInUserId).subscribe({
         next: (candidate) => {
@@ -58,11 +58,11 @@ console.log(loggedInUserId, "Starrrrr");
       .subscribe((data: any) => {
         if (Array.isArray(data)) {
           this.courses = data;
-          console.log("Dafff",this.courses)
+          console.log("All courses:", this.courses);
 
+          // Get today's date and set time to start of day
           const today = new Date();
-          const tomorrow = new Date(today);
-          tomorrow.setDate(today.getDate() + 1);
+          today.setHours(0, 0, 0, 0);
 
           // Fetch enrolled courses from the backend
           this.http.get(`http://localhost:3000/courses-enrolled-by-candidates?candidateId=${this.user?.id}`)
@@ -72,12 +72,17 @@ console.log(loggedInUserId, "Starrrrr");
                   this.enrolledCourses = enrolledData;
 
                   // Filter out courses the candidate has already enrolled in
-                  this.filteredCourses = this.courses.filter(
-                    (course) =>
-                      !this.enrolledCourses.some((enrolledCourse: any) => enrolledCourse.courseId === course.courseId) &&
-                      new Date(course.startDate) >= tomorrow &&
-                      new Date(course.endDate) >= today
-                  );
+                  this.filteredCourses = this.courses.filter(course => {
+                    // Convert course start date to Date object and set time to start of day
+                    const startDate = new Date(course.startDate);
+                    startDate.setHours(0, 0, 0, 0);
+
+                    // Check if course is not enrolled, open for enrollment, has content, and starts today or later
+                    return !this.enrolledCourses.some(enrolled => enrolled.courseId === course.courseId) &&
+                           course.openForEnrollment === true &&
+                           course.content !== "" &&
+                           startDate >= today;
+                  });
                 }
               },
               error: (err) => {
@@ -104,12 +109,17 @@ console.log(loggedInUserId, "Starrrrr");
       return;
     }
 
+    // Set time to start of day for accurate date comparison
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
     const startDate = new Date(course.startDate);
+    startDate.setHours(0, 0, 0, 0);
     const endDate = new Date(course.endDate);
+    endDate.setHours(0, 0, 0, 0);
 
-    if (startDate <= today || endDate < today) {
-      alert('You can only enroll in courses starting from tomorrow.');
+    // Allow enrollment for courses starting today or in the future
+    if (startDate < today || endDate < today) {
+      alert('You can only enroll in courses starting from today.');
       return;
     }
 
@@ -119,27 +129,44 @@ console.log(loggedInUserId, "Starrrrr");
       courseId: course.courseId,
       courseName: course.courseName,
       courseCategory: course.courseCategory,
-      courseDurationInMonths: course.courseDurationInMonths,
       instructor: course.instructor,
       startDate: course.startDate,
-      endDate: course.endDate,
+      endDate: course.endDate
     };
 
-    this.http.post('http://localhost:3000/courses-enrolled-by-candidates', enrollmentData)
+    // First update the course seats
+    const updatedCourse = { 
+      ...course, 
+      seatsLeft: course.seatsLeft - 1 
+    };
+    
+    console.log('Original course:', course);
+    console.log('Updated course:', updatedCourse);
+
+    this.http.put(`http://localhost:3000/courses/${course.id}`, updatedCourse)
       .subscribe({
         next: () => {
-          alert('Enrolled successfully!');
-          this.enrolledCourses.push(course); // Add to enrolled courses
-
-          // Remove the course from filtered courses
-          this.filteredCourses = this.filteredCourses.filter(
-            (c) => c.courseId !== course.courseId
-          );
+          // Then create the enrollment
+          this.http.post('http://localhost:3000/courses-enrolled-by-candidates', enrollmentData)
+            .subscribe({
+              next: () => {
+                alert('Enrolled successfully!');
+                this.loadCourses(); // Reload the courses to update the list
+                // Remove the course from filtered courses
+                this.filteredCourses = this.filteredCourses.filter(
+                  (c) => c.courseId !== course.courseId
+                );
+              },
+              error: (err) => {
+                console.error('Error creating enrollment:', err);
+                alert('Failed to complete enrollment. Please try again.');
+              }
+            });
         },
         error: (err) => {
-          console.error('Error enrolling in course:', err);
-          alert('Failed to enroll. Please try again.');
-        },
+          console.error('Error updating course seats:', err);
+          alert('Failed to update course seats. Please try again.');
+        }
       });
   }
 
@@ -153,14 +180,16 @@ console.log(loggedInUserId, "Starrrrr");
   }
 
   isCourseAvailable(course: any): boolean {
+    // Set time to start of day for accurate date comparison
     const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
+    today.setHours(0, 0, 0, 0);
+    const startDate = new Date(course.startDate);
+    startDate.setHours(0, 0, 0, 0);
     
     return course.openForEnrollment && // Check if enrollment is open
-           new Date(course.startDate) >= tomorrow && 
-           new Date(course.endDate) >= today;
+           startDate >= today;  // Allow enrollment for courses starting today or later
   }
+
   logout(): void {
     this.authService.logout();
   }

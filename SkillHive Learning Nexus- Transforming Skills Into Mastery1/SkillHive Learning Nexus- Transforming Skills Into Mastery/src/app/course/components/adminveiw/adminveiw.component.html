@@ -167,7 +167,10 @@
                     Delete
                   </button>
                   <!-- Enable assessment -->
-                  <button class="assessment-btn">Enable Assessment</button>
+                  <!-- Assessment Status -->
+                  <div class="assessment-status" [ngStyle]="{'color': course.enableAssessment ? 'green' : 'orange'}">
+                    Assessment: {{ course.enableAssessment ? 'Enabled' : 'Will be enabled on ' + (course.assessmentDate | date:'mediumDate') }}
+                  </div>
 
                   <!-- Open for Enrollment -->
                   <!--<button class="enroll-btn" (click)="toggleEnrollment(course)">Open for Enrollment</button> -->

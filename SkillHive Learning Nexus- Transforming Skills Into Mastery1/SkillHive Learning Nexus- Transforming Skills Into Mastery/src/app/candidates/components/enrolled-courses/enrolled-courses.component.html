@@ -13,7 +13,7 @@
       </div>
       <div class="selections">
         <div class="sel1">
-          <a [routerLink]="['/enrolled-courses',user?.id]" class="sidebar-link">
+          <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">
             <img src="https://img.icons8.com/?size=30&id=14096&format=png&color=C1DBC6" alt="home icon">
             Dashboard
           </a>
@@ -24,14 +24,14 @@
         </div>
         <div *ngIf="isCoursesDropdownVisible" class="dropdown">
             <div class="dropdown-item">
-              <a [routerLink]="['/enrolled-courses', user?.id]" class="sidebar-link">Enrolled Courses</a>
+              <a [routerLink]="['/enrolled-courses', candidateId]" class="sidebar-link">Enrolled Courses</a>
             </div>
             <div class="dropdown-item" >
-              <a [routerLink]="['/upcoming-courses', user?.id]" class="sidebar-link">Upcoming Courses</a>
+              <a [routerLink]="['/upcoming-courses', candidateId]" class="sidebar-link">Upcoming Courses</a>
             </div>
           </div>
         <div class="sel1">
-          <a [routerLink]="['/candidateassessment',user?.id]" class="sidebar-link">
+          <a [routerLink]="['/candidateassessment', candidateId]" class="sidebar-link">
             <img width="26" height="26" src="https://img.icons8.com/?size=100&id=4022&format=png&color=C1DBC6" alt="todo-list">
             Assessments
           </a>
@@ -45,7 +45,7 @@
       </div>
       <div class="extras">
         <div class="user">
-          <a [routerLink]="['/profile', user?.id]" class="sidebar-link">
+          <a [routerLink]="['/profile', candidateId]" class="sidebar-link">
             <img src="https://img.icons8.com/?size=30&id=15263&format=png&color=c1dbc6" alt="user">
              {{user?.name}}
           </a>
@@ -71,10 +71,10 @@
         <div *ngFor="let course of enrolledCourses" class="course-card enrolled-course-card">
           <h3>{{ course.courseName }}</h3>
           <p><strong>Category:</strong> {{ course.courseCategory }}</p>
-          <p><strong>Duration:</strong> {{ course.courseDurationInMonths }} months</p>
+          <p><strong>Duration:</strong> {{ course.courseDurationMonths }} months</p>
           <p><strong>Instructor:</strong> {{ course.instructor }}</p>
-          <p><strong>Start Date:</strong> {{ course.startDate }}</p>
-          <p><strong>End Date:</strong> {{ course.endDate }}</p>
+          <p><strong>Start Date:</strong> {{ course.startDate | date:'mediumDate' }}</p>
+          <p><strong>End Date:</strong> {{ course.endDate | date:'mediumDate' }}</p>
           <button class="enroll-btn">View Content</button>
         </div>
       </div>

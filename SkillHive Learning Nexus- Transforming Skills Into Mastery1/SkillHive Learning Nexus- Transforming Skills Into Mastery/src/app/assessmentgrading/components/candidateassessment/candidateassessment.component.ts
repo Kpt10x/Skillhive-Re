@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute, RouterModule } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 
@@ -22,7 +23,7 @@ interface Course {
 @Component({
   selector: 'app-candidateassessment',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './candidateassessment.component.html',
   styleUrls: ['./candidateassessment.component.css']
 })
@@ -45,6 +46,7 @@ isCoursesDropdownVisible: any;
 
   ngOnInit(): void {
     this.candidateId = this.route.snapshot.paramMap.get('id') || '';
+    console.log('Current user:', JSON.parse(sessionStorage.getItem('user') || '{}'));
     this.loadUser();
     this.loadCourses();
   }
@@ -76,9 +78,11 @@ isCoursesDropdownVisible: any;
         const candidateCourses = enrolledCourses.filter((ec: any) => ec.candidateId === this.candidateId);
         const enrolledCourseIds = candidateCourses.map((ec: any) => ec.courseId);
 
-        const candidateAssessments = assessments.filter((a: any) => 
-          enrolledCourseIds.includes(a.courseId)
-        );
+        // Get only enabled assessments for enrolled courses
+        const candidateAssessments = assessments.filter((a: any) => {
+          const course = allCourses.find((c: any) => c.courseId === a.courseId);
+          return enrolledCourseIds.includes(a.courseId) && course?.enableAssessment === true;
+        });
 
         // Identify already attempted courses
         submissions.forEach((submission: any) => {
@@ -118,9 +122,17 @@ isCoursesDropdownVisible: any;
   getCourseStatus(testDate: string): string {
     const currentDate = new Date();
     const testDateObj = new Date(testDate);
-    if (testDateObj.toDateString() === currentDate.toDateString()) {
+    
+    // Reset time parts to compare only dates
+    currentDate.setHours(0, 0, 0, 0);
+    testDateObj.setHours(0, 0, 0, 0);
+
+    const currentTimestamp = currentDate.getTime();
+    const testTimestamp = testDateObj.getTime();
+
+    if (currentTimestamp === testTimestamp) {
       return 'Live';
-    } else if (testDateObj < currentDate) {
+    } else if (testTimestamp < currentTimestamp) {
       return 'Ended';
     } else {
       return 'Upcoming';

@@ -114,6 +114,17 @@
         <h1>Create New Course</h1>
         <form [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
           <!-- Course Name -->
+
+          <div class="form-group">
+            <label for="courseId">Course ID:</label>
+            <input
+              type="text"
+              id="courseId"
+              formControlName="courseId"
+              placeholder="Enter Course ID (e.g., 8241111)"
+              required
+            />
+          </div>
           <div class="form-group">
             <label for="courseName">Course Name:</label>
             <input
