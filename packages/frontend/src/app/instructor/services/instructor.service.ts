@@ -6,8 +6,8 @@ import { Course } from '../models/course.model';
   providedIn: 'root',
 })
 export class InstructorService {
-  private profilesApiUrl = 'http://localhost:3000/profiles';
-  private coursesApiUrl = 'http://localhost:3000/courses';
+  private profilesApiUrl = 'http://localhost:5000/api/profiles';
+  private coursesApiUrl = 'http://localhost:5000/api/courses';
 
   constructor(private http: HttpClient) {}
 

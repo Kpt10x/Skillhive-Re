@@ -77,8 +77,8 @@ export class CreateCourseComponent implements OnInit {
   ngOnInit(): void {
     // Fetch both instructors and courses
     forkJoin({
-      profiles: this.http.get<any[]>("http://localhost:3000/profiles"),
-      courses: this.http.get<any[]>("http://localhost:3000/courses"),
+      profiles: this.http.get<any[]>("http://localhost:5000/api/profiles"),
+      courses: this.http.get<any[]>("http://localhost:5000/api/courses"),
     }).subscribe({
       next: (data) => {
         // Store courses for availability checking
@@ -247,7 +247,7 @@ export class CreateCourseComponent implements OnInit {
 
       
 
-      this.http.post("http://localhost:3000/courses", courseToSave).subscribe(
+      this.http.post("http://localhost:5000/api/courses", courseToSave).subscribe(
         (response) => {
           console.log("Course data saved successfully:", response);
           alert("Course data saved successfully!");

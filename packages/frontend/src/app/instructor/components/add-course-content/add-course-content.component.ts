@@ -16,7 +16,7 @@ export class AddCourseContentComponent implements OnInit {
   courseId: string | null = null;
   courseDetails: any = null;
   courseContentForm: FormGroup;
-  apiUrlCourses = 'http://localhost:3000/courses'; // Endpoint for courses
+  apiUrlCourses = 'http://localhost:5000/api/courses'; // Endpoint for courses
   isEditing: boolean = false;
   currentInstructor:string='';
 

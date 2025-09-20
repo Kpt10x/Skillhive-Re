@@ -24,7 +24,7 @@ export class LandingPageComponent implements OnInit {
 
   private fetchProfiles(): void {
     // Fetch profiles from the backend
-    this.http.get<any[]>('http://localhost:3000/profiles').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/profiles').subscribe(
       (data) => {
         // Filter profiles to include only those with the role of 'Instructor'
         this.profiles = data.filter(profile => profile.role === 'instructor');
@@ -37,7 +37,7 @@ export class LandingPageComponent implements OnInit {
   
 
   private fetchCourses(): void {
-    this.http.get<any[]>('http://localhost:3000/courses').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/courses').subscribe(
       (data) => {
         this.courses = data;
       },

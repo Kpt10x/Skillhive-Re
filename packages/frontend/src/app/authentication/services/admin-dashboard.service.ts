@@ -17,9 +17,9 @@ export interface Candidate {
     providedIn: 'root',
 })
 export class admindashboardService {
-    private apiUrl = 'http://localhost:3000/profiles'; // API URL for candidate profiles
-    private coursesUrl = 'http://localhost:3000/courses'; // API URL for courses (if required)
-    private coursesEnrolledUrl = 'http://localhost:3000/courses-enrolled-by-candidates'; // API URL for courses enrolled by candidates
+    private apiUrl = 'http://localhost:5000/api/profiles'; // API URL for candidate profiles
+    private coursesUrl = 'http://localhost:5000/api/courses'; // API URL for courses (if required)
+    private coursesEnrolledUrl = 'http://localhost:5000/api/enrollments'; // API URL for courses enrolled by candidates
 
     private loggedInCandidateId: string | null = null;
 

@@ -56,7 +56,7 @@ export class AttemptAssessmentComponent {
 
   // Fetch user data based on candidateId
   loadUser(): void {
-    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+    this.http.get<any[]>('http://localhost:5000/api/profiles').subscribe({
       next: (profiles) => {
         this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
       },
@@ -68,7 +68,7 @@ export class AttemptAssessmentComponent {
   }
 
   loadCourses(): void {
-    this.http.get<any[]>('http://localhost:3000/courses').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/courses').subscribe(
       (data) => {
         this.courses = data || [];
         this.isLoadingCourses = false;

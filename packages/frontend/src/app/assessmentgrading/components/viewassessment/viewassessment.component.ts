@@ -39,7 +39,7 @@ isCoursesDropdownVisible: any;
   }
 
   loadSubmissions() {
-    this.http.get<any[]>('http://localhost:3000/submissions').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/submissions').subscribe(
       (data) => {
         console.log('Fetched submissions:', data);
         this.submissions = data;
@@ -52,7 +52,7 @@ isCoursesDropdownVisible: any;
   }
 
   loadProfiles() {
-    this.http.get<any[]>('http://localhost:3000/profiles').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/profiles').subscribe(
       (data) => {
         console.log('Fetched profiles:', data);
         this.profiles = data;
@@ -70,7 +70,7 @@ isCoursesDropdownVisible: any;
   }
 
   loadCourses() {
-    this.http.get<any[]>('http://localhost:3000/courses').subscribe(
+    this.http.get<any[]>('http://localhost:5000/api/courses').subscribe(
       (data) => {
         console.log('Fetched courses:', data);
         this.courses = data;

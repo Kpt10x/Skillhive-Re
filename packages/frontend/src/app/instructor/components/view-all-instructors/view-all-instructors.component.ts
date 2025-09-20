@@ -16,7 +16,7 @@ export class ViewAllInstructorsComponent implements OnInit {
   instructors: any[] = [];
   filteredInstructors: any[] = [];
   searchQuery: string = '';
-  profilesApiUrl = 'http://localhost:3000/profiles'; // JSON server API endpoint
+  profilesApiUrl = 'http://localhost:5000/api/profiles'; // JSON server API endpoint
   isEditing: boolean = false;
   selectedInstructor: any = null; // Declare selectedInstructor for editing
   isCoursesDropdownVisible=false;

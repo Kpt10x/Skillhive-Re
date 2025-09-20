@@ -17,8 +17,8 @@ import { AuthService } from '../../../authentication/services/auth.service';
 })
 export class InstructorTimeTableComponent implements OnInit {
   assignedCourses: Course[] = [];
-  apiUrlCourses = 'http://localhost:3000/courses'; 
-  apiUrlAssessments='http://localhost:3000/assessments';
+  apiUrlCourses = 'http://localhost:5000/api/courses'; 
+  apiUrlAssessments='http://localhost:5000/api/assessments';
   loggedInInstructor: any = null; // Details of the logged-in instructor
 currentInstructor:string='';
   constructor(private http: HttpClient, 
@@ -64,7 +64,7 @@ currentInstructor:string='';
   
 
   allowEnroll(courseId: string): void {
-    this.http.patch(`http://localhost:3000/courses/${courseId}`, { openForEnrollment: true })
+    this.http.patch(`http://localhost:5000/api/courses/${courseId}`, { openForEnrollment: true })
       .subscribe(() => {
         alert('Enrollment allowed for this course!');
         this.fetchAssignedCourses(this.loggedInInstructor.name); // Refresh list

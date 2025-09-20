@@ -15,14 +15,14 @@ const profileRoutes = require('./routes/profileRoutes');
 const assesmentRoutes = require('./routes/assesmentRoutes');
 const enrollmentRoutes = require('./routes/enrollmentRoutes');
 const submissionRoutes = require('./routes/submissionRoutes');
-
+const authRoutes = require('./routes/authRoutes');
 // Import routes
 app.use('/api/courses', courseRoutes);
 app.use('/api/profiles', profileRoutes);
 app.use('/api/assesments', assesmentRoutes);
 app.use('/api/enrollments', enrollmentRoutes);
 app.use('/api/submissions', submissionRoutes);
-
+app.use('/api/auth', authRoutes);
 // Connect to MongoDB
 mongoose.connect(MONGO_URI)
     .then(() => console.log('MongoDB connected successfully'))

@@ -56,7 +56,7 @@ export class InstructorDashboardComponent implements OnInit {
    * Fetch all courses from the backend and filter them for the current instructor.
    */
   fetchCourses(): void {
-    const apiUrl = 'http://localhost:3000/courses'; // API endpoint
+    const apiUrl = 'http://localhost:5000/api/courses'; // API endpoint
     this.http.get<any[]>(apiUrl).subscribe({
       next: (data) => {
         console.log('All courses:', data); 

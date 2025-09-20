@@ -58,7 +58,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
   }
 
   fetchCourses() {
-    this.http.get<Course[]>("http://localhost:3000/courses").subscribe(
+    this.http.get<Course[]>("http://localhost:5000/api/courses").subscribe(
       (courses) => {
         // Check and update enableAssessment based on assessment date
         const currentDate = new Date();
@@ -84,7 +84,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
         if (coursesToUpdate.length > 0) {
           console.log('Courses to enable assessment:', coursesToUpdate);
           coursesToUpdate.forEach(update => {
-            this.http.patch(`http://localhost:3000/courses/${update.id}`, { enableAssessment: true })
+            this.http.patch(`http://localhost:5000/api/courses/${update.id}`, { enableAssessment: true })
               .subscribe(
                 () => console.log(`Assessment enabled for course ${update.id}`),
                 error => console.error(`Error enabling assessment for course ${update.id}:`, error)
@@ -118,7 +118,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
 
   updateSeatsLeft(): void {
     this.http
-      .get<any[]>("http://localhost:3000/courses-enrolled-by-candidates")
+      .get<any[]>("http://localhost:5000/api/enrollments")
       .subscribe(
         (enrollments: any[]) => {
           console.log("Fetched enrolled candidates:", enrollments);
@@ -154,7 +154,7 @@ export class AdminViewComponent implements OnInit, AfterViewInit {
 
   enrollCandidate(courseId: string): void {
     this.http
-      .post("http://localhost:3000/enroll", { courseId })
+      .post("http://localhost:5000/api/enroll", { courseId })
       .subscribe(() => {
         console.log(`Enrolled in course ID: ${courseId}`);
         this.updateSeatsLeft();

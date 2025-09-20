@@ -39,11 +39,11 @@ export class ResetPasswordComponent {
     }
 
     // Update password in the mock server
-    this.http.get<any[]>(`http://localhost:3000/profiles?email=${this.email}`).subscribe((profiles) => {
+    this.http.get<any[]>(`http://localhost:5000/api/profiles?email=${this.email}`).subscribe((profiles) => {
       if (profiles.length > 0) {
         const profile = profiles[0];
         this.http
-          .patch(`http://localhost:3000/profiles/${profile.id}`, { password: newPassword })
+          .patch(`http://localhost:5000/api/profiles/${profile.id}`, { password: newPassword })
           .subscribe(() => {
             alert('Password updated successfully');
             this.router.navigate(['/login']);

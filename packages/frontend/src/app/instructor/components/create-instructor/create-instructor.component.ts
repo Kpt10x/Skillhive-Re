@@ -14,7 +14,7 @@ import { AuthService } from '../../../authentication/services/auth.service';
 })
 export class CreateInstructorComponent implements OnInit {
   createInstructorForm: FormGroup;
-  profilesApiUrl = 'http://localhost:3000/profiles';
+  profilesApiUrl = 'http://localhost:5000/api/profiles';
   isCoursesDropdownVisible=false;
   isInstructorsDropdownVisible=false;
   isCandidateDropdownVisible=false;

@@ -62,7 +62,7 @@ user: any;
       this.candidateId = params['candidateId'];
       this.testId = params['testId'];
       
-      this.http.get<Course[]>('http://localhost:3000/courses').subscribe(data => {
+      this.http.get<Course[]>('http://localhost:5000/api/courses').subscribe(data => {
         const course = data.find(c => c.courseId === this.testId);
         this.testTitle = course ? course.courseName : 'MCQ Test';
         this.loadQuestions();
@@ -83,7 +83,7 @@ user: any;
   }
 
   loadQuestions() {
-    this.http.get<any[]>('http://localhost:3000/assessments').subscribe(data => {
+    this.http.get<any[]>('http://localhost:5000/api/assessments').subscribe(data => {
       const assessment = data.find(a => a.courseId === this.testId);
       if (assessment) {
         this.questions = assessment.questions.map((q: any) => ({
@@ -230,7 +230,7 @@ user: any;
 
     console.log('Submitting results:', quizResults);
 
-    this.http.post('http://localhost:3000/submissions', quizResults).subscribe(
+    this.http.post('http://localhost:5000/api/submissions', quizResults).subscribe(
       (response) => {
         console.log('Submission successful:', response);
         alert('Your test has been submitted successfully.');

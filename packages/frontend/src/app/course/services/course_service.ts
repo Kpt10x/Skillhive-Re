@@ -7,8 +7,8 @@ import { Course } from '../models/course_model';
   providedIn: 'root',
 })
 export class CourseService {
-  private apiUrl = 'http://localhost:3000/courses'; // Endpoint URL
-  private enrollmentApiUrl = 'http://localhost:3000/courses-enrolled-by-candidates'; // Enrollment API URL
+  private apiUrl = 'http://localhost:5000/api/courses'; // Endpoint URL
+  private enrollmentApiUrl = 'http://localhost:5000/api/enrollments'; // Enrollment API URL
 
   constructor(private http: HttpClient) {}
 

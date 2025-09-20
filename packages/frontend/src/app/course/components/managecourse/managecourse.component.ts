@@ -76,7 +76,7 @@ export class ManageCourseInstructorComponent implements OnInit, AfterViewInit {
   }
 
   fetchCourses() {
-    this.http.get("http://localhost:3000/courses").subscribe((data: any) => {
+    this.http.get("http://localhost:5000/api/courses").subscribe((data: any) => {
       this.courses = data.map((course: any) => ({
         ...course,
         openForEnrollment: course.openForEnrollment ?? false, // Initialize the new attribute
@@ -107,7 +107,7 @@ export class ManageCourseInstructorComponent implements OnInit, AfterViewInit {
   }
   updateSeatsLeft(): void {
     this.http
-      .get<any[]>("http://localhost:3000/courses-enrolled-by-candidates")
+      .get<any[]>("http://localhost:5000/api/enrollments")
       .subscribe(
         (candidates: any[]) => {
           // Reset seatsLeft for all courses before updating
@@ -139,7 +139,7 @@ export class ManageCourseInstructorComponent implements OnInit, AfterViewInit {
 
   enrollCandidate(courseId: string): void {
     this.http
-      .post("http://localhost:3000/courses-enrolled-by-candidates", {
+      .post("http://localhost:5000/api/enrollments", {
         courseId,
       })
       .subscribe(() => {
@@ -195,7 +195,7 @@ export class ManageCourseInstructorComponent implements OnInit, AfterViewInit {
   }
 
   fetchInstructors() {
-    this.http.get<any[]>("http://localhost:3000/courses").subscribe((data) => {
+    this.http.get<any[]>("http://localhost:5000/api/courses").subscribe((data) => {
       // Extract unique instructor names from courses
       const uniqueInstructors = [
         ...new Set(data.map((course) => course.instructor)),

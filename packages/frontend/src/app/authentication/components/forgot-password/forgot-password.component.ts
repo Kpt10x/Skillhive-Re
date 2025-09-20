@@ -22,7 +22,7 @@ export class ForgotPasswordComponent {
     const email = this.forgotPasswordForm.value.email;
 
     // Check if email exists in the mock server
-    this.http.get<any[]>(`http://localhost:3000/profiles?email=${email}`).subscribe((profiles) => {
+    this.http.get<any[]>(`http://localhost:5000/api/profiles?email=${email}`).subscribe((profiles) => {
       if (profiles.length > 0) {
         alert('Password reset link sent to your email (mocked)');
         this.router.navigate(['/reset-password'], { queryParams: { email } });

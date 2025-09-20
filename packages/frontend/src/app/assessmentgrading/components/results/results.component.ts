@@ -50,7 +50,7 @@ export class ResultsComponent {
 
   // Fetch user data based on candidateId
   loadUser(): void {
-    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+    this.http.get<any[]>('http://localhost:5000/api/profiles').subscribe({
       next: (profiles) => {
         this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
       },
@@ -63,13 +63,13 @@ export class ResultsComponent {
 
  
   fetchProfiles() {
-    this.http.get<Profile[]>('http://localhost:3000/profiles').subscribe(data => {
+    this.http.get<Profile[]>('http://localhost:5000/api/profiles').subscribe(data => {
       this.profiles = data;
     });
   }
  
   fetchMarksheets() {
-    this.http.get<Marksheet[]>('http://localhost:3000/submissions').subscribe(data => {
+    this.http.get<Marksheet[]>('http://localhost:5000/api/submissions').subscribe(data => {
       this.allMarksheets = data;
       this.searchMarksheet();
     });

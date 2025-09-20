@@ -45,8 +45,8 @@ export class ViewCandidatesComponent implements OnInit {
     if (!this.instructorName) return;
 
     forkJoin([
-      this.http.get<any[]>('http://localhost:3000/courses-enrolled-by-candidates'),
-      this.http.get<any[]>('http://localhost:3000/profiles')
+      this.http.get<any[]>('http://localhost:5000/api/enrollments'),
+      this.http.get<any[]>('http://localhost:5000/api/profiles')
     ]).subscribe(([enrolledCourses, profiles]) => {
       // Filter courses by current instructor
       const filteredCourses = enrolledCourses.filter(course => 

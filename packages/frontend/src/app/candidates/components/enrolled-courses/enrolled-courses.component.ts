@@ -43,12 +43,12 @@ export class EnrolledCoursesComponent implements OnInit {
           switchMap((candidate) => {
             this.user = candidate;
             // Get enrolled courses and their full details
-            return this.http.get<any[]>('http://localhost:3000/courses-enrolled-by-candidates').pipe(
+            return this.http.get<any[]>('http://localhost:5000/api/enrollments').pipe(
               switchMap(enrolledCourses => {
                 const candidateEnrollments = enrolledCourses.filter(ec => ec.candidateId === this.candidateId);
                 
                 // Get full course details for each enrolled course
-                return this.http.get<any[]>('http://localhost:3000/courses').pipe(
+                return this.http.get<any[]>('http://localhost:5000/api/courses').pipe(
                   map(allCourses => {
                     return candidateEnrollments.map(enrollment => {
                       const courseDetails = allCourses.find(c => c.courseId === enrollment.courseId);

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl = 'http://localhost:3000/profiles';  // URL to the mock JSON server
+  private apiUrl = 'http://localhost:5000/api/profiles';  // URL to the mock JSON server
 
   constructor(private http: HttpClient) { }
 

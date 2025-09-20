@@ -61,6 +61,6 @@ describe('InstructorTimeTableComponent', () => {
     component.loggedInInstructor = { name: 'John Doe' };
     component.allowEnroll('123');
 
-    expect(component['http'].patch).toHaveBeenCalledWith('http://localhost:3000/courses/123', { openForEnrollment: true });
+    expect(component['http'].patch).toHaveBeenCalledWith('http://localhost:5000/api/courses/123', { openForEnrollment: true });
   });
 });

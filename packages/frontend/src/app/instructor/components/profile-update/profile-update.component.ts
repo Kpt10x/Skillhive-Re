@@ -17,7 +17,7 @@ export class ProfileUpdateComponent implements OnInit {
   profileForm: FormGroup;
   passwordForm: FormGroup;
   instructorId: string = ''; // ID of the logged-in instructor
-  private readonly apiUrl = 'http://localhost:3000/profiles'; // JSON server endpoint
+  private readonly apiUrl = 'http://localhost:5000/api/profiles'; // JSON server endpoint
   currentInstructor: string = '';
   constructor(
     private fb: FormBuilder,

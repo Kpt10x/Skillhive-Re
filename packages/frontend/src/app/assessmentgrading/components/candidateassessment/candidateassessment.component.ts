@@ -53,7 +53,7 @@ isCoursesDropdownVisible: any;
 
   // Fetch user data based on candidateId
   loadUser(): void {
-    this.http.get<any[]>('http://localhost:3000/profiles').subscribe({
+    this.http.get<any[]>('http://localhost:5000/api/profiles').subscribe({
       next: (profiles) => {
         this.user = profiles.find((c: any) => c.id === this.candidateId && c.role === 'candidate') || { name: 'Unknown Candidate' };
       },
@@ -69,10 +69,10 @@ isCoursesDropdownVisible: any;
     this.error = null;
 
     forkJoin([
-      this.http.get<any[]>('http://localhost:3000/courses-enrolled-by-candidates'),
-      this.http.get<any[]>('http://localhost:3000/assessments'),
-      this.http.get<any[]>('http://localhost:3000/courses'),
-      this.http.get<any[]>('http://localhost:3000/submissions')
+      this.http.get<any[]>('http://localhost:5000/api/enrollments'),
+      this.http.get<any[]>('http://localhost:5000/api/assessments'),
+      this.http.get<any[]>('http://localhost:5000/api/courses'),
+      this.http.get<any[]>('http://localhost:5000/api/submissions')
     ]).subscribe({
       next: ([enrolledCourses, assessments, allCourses, submissions]) => {
         const candidateCourses = enrolledCourses.filter((ec: any) => ec.candidateId === this.candidateId);

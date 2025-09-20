@@ -34,7 +34,7 @@ export class LoginComponent {
       const { email, password, role } = this.loginForm.value;
 
       this.http
-        .get<any[]>('http://localhost:3000/profiles', {
+        .get<any[]>('http://localhost:5000/api/profiles', {
           params: { email, password, role },
         })
         .subscribe({

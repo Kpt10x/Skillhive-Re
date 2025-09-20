@@ -19,7 +19,7 @@ export class ViewByCourseComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3000/courses').subscribe((data) => {
+    this.http.get<any[]>('http://localhost:5000/api/courses').subscribe((data) => {
       // Extracting relevant fields from the response
       this.instructors = data.map((instructor) => ({
         id: instructor.id,

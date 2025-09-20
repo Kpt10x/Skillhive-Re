@@ -48,7 +48,7 @@ export class UpcomingCoursesComponent implements OnInit {
 
   loadCourses(): void {
     this.http
-      .get('http://localhost:3000/courses')
+      .get('http://localhost:5000/api/courses')
       .pipe(
         catchError((error) => {
           console.error('Error fetching courses:', error);
@@ -65,7 +65,7 @@ export class UpcomingCoursesComponent implements OnInit {
           today.setHours(0, 0, 0, 0);
 
           // Fetch enrolled courses from the backend
-          this.http.get(`http://localhost:3000/courses-enrolled-by-candidates?candidateId=${this.user?.id}`)
+          this.http.get(`http://localhost:5000/api/enrollments?candidateId=${this.user?.id}`)
             .subscribe({
               next: (enrolledData: any) => {
                 if (Array.isArray(enrolledData)) {
@@ -143,11 +143,11 @@ export class UpcomingCoursesComponent implements OnInit {
     console.log('Original course:', course);
     console.log('Updated course:', updatedCourse);
 
-    this.http.put(`http://localhost:3000/courses/${course.id}`, updatedCourse)
+    this.http.put(`http://localhost:5000/api/courses/${course.id}`, updatedCourse)
       .subscribe({
         next: () => {
           // Then create the enrollment
-          this.http.post('http://localhost:3000/courses-enrolled-by-candidates', enrollmentData)
+          this.http.post('http://localhost:5000/api/enrollments', enrollmentData)
             .subscribe({
               next: () => {
                 alert('Enrolled successfully!');

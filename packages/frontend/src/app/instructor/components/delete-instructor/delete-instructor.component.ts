@@ -14,7 +14,7 @@ import { AuthService } from '../../../authentication/services/auth.service';
 })
 export class DeleteInstructorComponent implements OnInit {
   profiles: any[] = [];
-  profilesApiUrl = 'http://localhost:3000/profiles';
+  profilesApiUrl = 'http://localhost:5000/api/profiles';
 
   constructor(private http: HttpClient, private authService: AuthService ) {}
   isCoursesDropdownVisible=false;
